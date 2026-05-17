@@ -34,8 +34,13 @@ BRANCH=$(git rev-parse --abbrev-ref HEAD)
 APP_NAME=${APP_NAME}${SYSTEM}
 
 echo "Branch ${BRANCH} ${SYSTEM}"
-
-if [[ ${SYSTEM} == "Test" ]]; then
+DEV id="c4755d9c-e9e1-4924-b458-04e708ce8888"
+TEST id="c4755d9c-e9e1-4924-b458-04e708ce9999"
+PROD id="c4755d9c-e9e1-4924-b458-04e708ce0001"
+if [[ ${SYSTEM} == "main" ]]; then
+    # Main count of commits without merges
+    
+elif [[ ${SYSTEM} == "test" ]]; then
     # Test
 
     git status manifest.xml | grep manifest.xml
@@ -49,7 +54,7 @@ if [[ ${SYSTEM} == "Test" ]]; then
     
     APP_ID=$(echo -e "setns iq=http://www.garmin.com/xml/connectiq\ncat //iq:manifest/iq:application/@id" | xmllint --shell manifest.xml | grep -v ">" | cut -f 2 -d "=" | tr -d \");
     echo "Current Application@id=${APP_ID}"
-    APP_ID_TEST=${APP_ID::-4}"9999"
+    APP_ID_TEST="c4755d9c-e9e1-4924-b458-04e708ce9999"
     echo "  Write Application@id=${APP_ID_TEST}"
     echo -e "setns iq=http://www.garmin.com/xml/connectiq\ncd //iq:manifest/iq:application/@id\nset ${APP_ID_TEST}\nsave\nbye" | xmllint --shell manifest.xml | grep -v ">" 
     #GITCOUNT=$(git rev-list --count --first-parent main..${BRANCH})
@@ -60,13 +65,16 @@ if [[ ${SYSTEM} == "Test" ]]; then
     echo "Set version=${APP_VERSION}.${BRANCH}.${GITCOUNT}"
     echo -e "cd /strings/string[@id=\"version\"]\nset ${APP_VERSION}.${BRANCH}.${GITCOUNT}\nsave" | xmllint --shell ${APP_FILE} | grep -v ">"
 else
-    # Main count of commits without merges
-    GITCOUNT=$(git rev-list --no-merges --count HEAD )
-    echo "Set AppName=${APP_NAME} ${APP_VERSION}.${GITCOUNT}"
-    echo -e "cd /strings/string[@id=\"AppName\"]\nset ${APP_NAME} ${APP_VERSION}.${GITCOUNT}\nsave" | xmllint --shell ${APP_FILE} | grep -v ">"
-    echo "Set version=${APP_VERSION}.${GITCOUNT}"
-    echo -e "cd /strings/string[@id=\"version\"]\nset ${APP_VERSION}.${GITCOUNT}\nsave" | xmllint --shell ${APP_FILE} | grep -v ">"
+
 fi;
+
+GITCOUNT=$(git rev-list --no-merges --count HEAD )
+echo "Set AppName=${APP_NAME} ${APP_VERSION}.${GITCOUNT}"
+echo -e "cd /strings/string[@id=\"AppName\"]\nset ${APP_NAME} ${APP_VERSION}.${GITCOUNT}\nsave" | xmllint --shell ${APP_FILE} | grep -v ">"
+echo "Set version=${APP_VERSION}.${GITCOUNT}"
+echo -e "cd /strings/string[@id=\"version\"]\nset ${APP_VERSION}.${GITCOUNT}\nsave" | xmllint --shell ${APP_FILE} | grep -v ">"
+
+
 
 #xmllint --xpath "/strings/string[@id='AppName']/text()" ${APP_FILE}
 #xmllint --xpath "/strings/string[@id='version']/text()" ${APP_FILE}
