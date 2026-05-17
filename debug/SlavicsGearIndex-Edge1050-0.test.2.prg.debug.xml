@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<debugInfo>
+    <manifest filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/manifest.xml"/>
+    <pcToLineNum>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="1" lineNum="8" parent="globals/SlavicsSimpleDataField" pc="268435457" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="1" lineNum="10" parent="globals/SlavicsSimpleDataField" pc="268435468" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="1" lineNum="22" parent="globals/SlavicsSimpleDataField" pc="268435480" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="1" lineNum="28" parent="globals/SlavicsSimpleDataField" pc="268435565" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="1" lineNum="36" parent="globals/SlavicsSimpleDataField" pc="268435638" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexApp.mc" id="2" lineNum="34" parent="globals" pc="268435679" symbol="getApp"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexApp.mc" id="2" lineNum="35" parent="globals" pc="268435689" symbol="getApp"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexApp.mc" id="3" lineNum="5" parent="globals/SlavicsGearIndexApp" pc="268435700" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/bin/gen/006-B4440-00/source/Rez.mcgen" id="4" lineNum="7" parent="globals/Rez" pc="268435712" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="5" lineNum="24" parent="globals/ColorMode" pc="268435732" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="5" lineNum="40" parent="globals/ColorMode" pc="268435892" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="5" lineNum="49" parent="globals/ColorMode" pc="268435980" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="5" lineNum="58" parent="globals/ColorMode" pc="268436067" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="5" lineNum="74" parent="globals/ColorMode" pc="268436223" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="6" lineNum="8" parent="globals/ColorMode/&lt;statics&gt;" pc="268436236" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="6" lineNum="10" parent="globals/ColorMode/&lt;statics&gt;" pc="268436248" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="7" lineNum="6" parent="globals/BatteryIcon" pc="268436261" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="8" lineNum="18" parent="globals/BatteryIcon/&lt;statics&gt;" pc="268436273" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="8" lineNum="19" parent="globals/BatteryIcon/&lt;statics&gt;" pc="268436285" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="8" lineNum="30" parent="globals/BatteryIcon/&lt;statics&gt;" pc="268436297" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexSimpleView.mc" id="9" lineNum="8" parent="globals/SlavicsGearIndexSimpleView" pc="268436310" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexSimpleView.mc" id="9" lineNum="9" parent="globals/SlavicsGearIndexSimpleView" pc="268436321" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="10" lineNum="10" parent="globals/SlavicsGearIndexView" pc="268436373" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="10" lineNum="13" parent="globals/SlavicsGearIndexView" pc="268436384" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="10" lineNum="14" parent="globals/SlavicsGearIndexView" pc="268436409" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="10" lineNum="15" parent="globals/SlavicsGearIndexView" pc="268436418" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="10" lineNum="16" parent="globals/SlavicsGearIndexView" pc="268436453" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="10" lineNum="23" parent="globals/SlavicsGearIndexView" pc="268436548" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="10" lineNum="28" parent="globals/SlavicsGearIndexView" pc="268436608" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="10" lineNum="153" parent="globals/SlavicsGearIndexView" pc="268436680" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/RearShifting.mc" id="11" lineNum="33" parent="globals/RearShifting" pc="268436755" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/RearShifting.mc" id="12" lineNum="16" parent="globals/RearShifting/&lt;statics&gt;" pc="268436807" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/RearShifting.mc" id="12" lineNum="18" parent="globals/RearShifting/&lt;statics&gt;" pc="268436819" symbol="&lt;init&gt;"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="13" lineNum="66" parent="globals/SlavicsSimpleDataField" pc="268436832" symbol="setTextValue"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="13" lineNum="68" parent="globals/SlavicsSimpleDataField" pc="268436834" symbol="setTextValue"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="14" lineNum="45" parent="globals/SlavicsSimpleDataField" pc="268436865" symbol="onLayout"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="14" lineNum="46" parent="globals/SlavicsSimpleDataField" pc="268436867" symbol="onLayout"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="14" lineNum="47" parent="globals/SlavicsSimpleDataField" pc="268436907" symbol="onLayout"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="14" lineNum="48" parent="globals/SlavicsSimpleDataField" pc="268436927" symbol="onLayout"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="14" lineNum="50" parent="globals/SlavicsSimpleDataField" pc="268436947" symbol="onLayout"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="14" lineNum="51" parent="globals/SlavicsSimpleDataField" pc="268436959" symbol="onLayout"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="14" lineNum="52" parent="globals/SlavicsSimpleDataField" pc="268436975" symbol="onLayout"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="14" lineNum="53" parent="globals/SlavicsSimpleDataField" pc="268436993" symbol="onLayout"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="14" lineNum="55" parent="globals/SlavicsSimpleDataField" pc="268437015" symbol="onLayout"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="14" lineNum="56" parent="globals/SlavicsSimpleDataField" pc="268437027" symbol="onLayout"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="14" lineNum="57" parent="globals/SlavicsSimpleDataField" pc="268437043" symbol="onLayout"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="14" lineNum="58" parent="globals/SlavicsSimpleDataField" pc="268437061" symbol="onLayout"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="16" lineNum="61" parent="globals/SlavicsSimpleDataField" pc="268437092" symbol="setTextLabel"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="16" lineNum="63" parent="globals/SlavicsSimpleDataField" pc="268437094" symbol="setTextLabel"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="17" lineNum="71" parent="globals/SlavicsSimpleDataField" pc="268437125" symbol="setColors"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="17" lineNum="72" parent="globals/SlavicsSimpleDataField" pc="268437127" symbol="setColors"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="17" lineNum="73" parent="globals/SlavicsSimpleDataField" pc="268437136" symbol="setColors"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="17" lineNum="74" parent="globals/SlavicsSimpleDataField" pc="268437164" symbol="setColors"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="18" lineNum="40" parent="globals/SlavicsSimpleDataField" pc="268437193" symbol="initialize"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="18" lineNum="41" parent="globals/SlavicsSimpleDataField" pc="268437195" symbol="initialize"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="18" lineNum="42" parent="globals/SlavicsSimpleDataField" pc="268437213" symbol="initialize"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="19" lineNum="86" parent="globals/SlavicsSimpleDataField" pc="268437226" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="19" lineNum="87" parent="globals/SlavicsSimpleDataField" pc="268437228" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="19" lineNum="88" parent="globals/SlavicsSimpleDataField" pc="268437246" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="19" lineNum="89" parent="globals/SlavicsSimpleDataField" pc="268437276" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="19" lineNum="90" parent="globals/SlavicsSimpleDataField" pc="268437284" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsSimpleDataField.mc" id="19" lineNum="91" parent="globals/SlavicsSimpleDataField" pc="268437300" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexApp.mc" id="21" lineNum="26" parent="globals/SlavicsGearIndexApp" pc="268437317" symbol="onSettingsChanged"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexApp.mc" id="21" lineNum="27" parent="globals/SlavicsGearIndexApp" pc="268437319" symbol="onSettingsChanged"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexApp.mc" id="21" lineNum="28" parent="globals/SlavicsGearIndexApp" pc="268437337" symbol="onSettingsChanged"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexApp.mc" id="21" lineNum="29" parent="globals/SlavicsGearIndexApp" pc="268437349" symbol="onSettingsChanged"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexApp.mc" id="22" lineNum="20" parent="globals/SlavicsGearIndexApp" pc="268437361" symbol="getInitialView"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexApp.mc" id="22" lineNum="21" parent="globals/SlavicsGearIndexApp" pc="268437363" symbol="getInitialView"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexApp.mc" id="22" lineNum="22" parent="globals/SlavicsGearIndexApp" pc="268437388" symbol="getInitialView"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexApp.mc" id="23" lineNum="7" parent="globals/SlavicsGearIndexApp" pc="268437401" symbol="initialize"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexApp.mc" id="23" lineNum="8" parent="globals/SlavicsGearIndexApp" pc="268437403" symbol="initialize"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="25" lineNum="79" parent="globals/ColorMode" pc="268437416" symbol="handleSettingUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="25" lineNum="80" parent="globals/ColorMode" pc="268437418" symbol="handleSettingUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="25" lineNum="81" parent="globals/ColorMode" pc="268437460" symbol="handleSettingUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="25" lineNum="82" parent="globals/ColorMode" pc="268437477" symbol="handleSettingUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="25" lineNum="85" parent="globals/ColorMode" pc="268437492" symbol="handleSettingUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="25" lineNum="88" parent="globals/ColorMode" pc="268437508" symbol="handleSettingUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="25" lineNum="91" parent="globals/ColorMode" pc="268437524" symbol="handleSettingUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="25" lineNum="94" parent="globals/ColorMode" pc="268437540" symbol="handleSettingUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="25" lineNum="83" parent="globals/ColorMode" pc="268437543" symbol="handleSettingUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="25" lineNum="84" parent="globals/ColorMode" pc="268437555" symbol="handleSettingUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="25" lineNum="86" parent="globals/ColorMode" pc="268437558" symbol="handleSettingUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="25" lineNum="87" parent="globals/ColorMode" pc="268437570" symbol="handleSettingUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="25" lineNum="89" parent="globals/ColorMode" pc="268437573" symbol="handleSettingUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="25" lineNum="90" parent="globals/ColorMode" pc="268437585" symbol="handleSettingUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="25" lineNum="92" parent="globals/ColorMode" pc="268437588" symbol="handleSettingUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="25" lineNum="93" parent="globals/ColorMode" pc="268437600" symbol="handleSettingUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="25" lineNum="95" parent="globals/ColorMode" pc="268437603" symbol="handleSettingUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="25" lineNum="96" parent="globals/ColorMode" pc="268437615" symbol="handleSettingUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="25" lineNum="98" parent="globals/ColorMode" pc="268437616" symbol="handleSettingUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="25" lineNum="99" parent="globals/ColorMode" pc="268437638" symbol="handleSettingUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="26" lineNum="105" parent="globals/ColorMode" pc="268437676" symbol="getFieldColor"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="26" lineNum="106" parent="globals/ColorMode" pc="268437678" symbol="getFieldColor"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="27" lineNum="102" parent="globals/ColorMode" pc="268437723" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="27" lineNum="103" parent="globals/ColorMode" pc="268437725" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="28" lineNum="108" parent="globals/ColorMode" pc="268437787" symbol="getColors"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="28" lineNum="109" parent="globals/ColorMode" pc="268437789" symbol="getColors"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="29" lineNum="75" parent="globals/ColorMode" pc="268437824" symbol="initialize"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/ColorMode.mc" id="29" lineNum="76" parent="globals/ColorMode" pc="268437826" symbol="initialize"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="30" lineNum="48" parent="globals/BatteryIcon" pc="268437845" symbol="getWidth"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="30" lineNum="49" parent="globals/BatteryIcon" pc="268437847" symbol="getWidth"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="31" lineNum="60" parent="globals/BatteryIcon" pc="268437880" symbol="draw"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="31" lineNum="63" parent="globals/BatteryIcon" pc="268437882" symbol="draw"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="31" lineNum="64" parent="globals/BatteryIcon" pc="268437911" symbol="draw"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="31" lineNum="65" parent="globals/BatteryIcon" pc="268437946" symbol="draw"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="31" lineNum="66" parent="globals/BatteryIcon" pc="268437975" symbol="draw"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="31" lineNum="69" parent="globals/BatteryIcon" pc="268438010" symbol="draw"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="31" lineNum="70" parent="globals/BatteryIcon" pc="268438033" symbol="draw"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="31" lineNum="71" parent="globals/BatteryIcon" pc="268438081" symbol="draw"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="31" lineNum="72" parent="globals/BatteryIcon" pc="268438089" symbol="draw"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="31" lineNum="73" parent="globals/BatteryIcon" pc="268438106" symbol="draw"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="32" lineNum="51" parent="globals/BatteryIcon" pc="268438142" symbol="setStatus"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="32" lineNum="52" parent="globals/BatteryIcon" pc="268438144" symbol="setStatus"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="33" lineNum="54" parent="globals/BatteryIcon" pc="268438154" symbol="setCharge"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="33" lineNum="55" parent="globals/BatteryIcon" pc="268438156" symbol="setCharge"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="34" lineNum="45" parent="globals/BatteryIcon" pc="268438166" symbol="getFont"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="34" lineNum="46" parent="globals/BatteryIcon" pc="268438168" symbol="getFont"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="35" lineNum="12" parent="globals/BatteryIcon" pc="268438174" symbol="initialize"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="35" lineNum="13" parent="globals/BatteryIcon" pc="268438176" symbol="initialize"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="35" lineNum="14" parent="globals/BatteryIcon" pc="268438208" symbol="initialize"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="35" lineNum="15" parent="globals/BatteryIcon" pc="268438240" symbol="initialize"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="36" lineNum="42" parent="globals/BatteryIcon" pc="268438257" symbol="setFont"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="36" lineNum="43" parent="globals/BatteryIcon" pc="268438259" symbol="setFont"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="37" lineNum="57" parent="globals/BatteryIcon" pc="268438269" symbol="setNightMode"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/BatteryIcon.mc" id="37" lineNum="58" parent="globals/BatteryIcon" pc="268438271" symbol="setNightMode"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexSimpleView.mc" id="38" lineNum="22" parent="globals/SlavicsGearIndexSimpleView" pc="268438281" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexSimpleView.mc" id="38" lineNum="23" parent="globals/SlavicsGearIndexSimpleView" pc="268438284" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexSimpleView.mc" id="38" lineNum="24" parent="globals/SlavicsGearIndexSimpleView" pc="268438297" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexSimpleView.mc" id="38" lineNum="25" parent="globals/SlavicsGearIndexSimpleView" pc="268438314" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexSimpleView.mc" id="38" lineNum="26" parent="globals/SlavicsGearIndexSimpleView" pc="268438321" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexSimpleView.mc" id="38" lineNum="29" parent="globals/SlavicsGearIndexSimpleView" pc="268438337" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexSimpleView.mc" id="38" lineNum="32" parent="globals/SlavicsGearIndexSimpleView" pc="268438353" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexSimpleView.mc" id="38" lineNum="27" parent="globals/SlavicsGearIndexSimpleView" pc="268438356" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexSimpleView.mc" id="38" lineNum="28" parent="globals/SlavicsGearIndexSimpleView" pc="268438423" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexSimpleView.mc" id="38" lineNum="30" parent="globals/SlavicsGearIndexSimpleView" pc="268438426" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexSimpleView.mc" id="38" lineNum="31" parent="globals/SlavicsGearIndexSimpleView" pc="268438438" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexSimpleView.mc" id="38" lineNum="33" parent="globals/SlavicsGearIndexSimpleView" pc="268438441" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexSimpleView.mc" id="38" lineNum="37" parent="globals/SlavicsGearIndexSimpleView" pc="268438466" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexSimpleView.mc" id="38" lineNum="38" parent="globals/SlavicsGearIndexSimpleView" pc="268438479" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexSimpleView.mc" id="38" lineNum="39" parent="globals/SlavicsGearIndexSimpleView" pc="268438485" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexSimpleView.mc" id="38" lineNum="40" parent="globals/SlavicsGearIndexSimpleView" pc="268438503" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexSimpleView.mc" id="38" lineNum="42" parent="globals/SlavicsGearIndexSimpleView" pc="268438525" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexSimpleView.mc" id="38" lineNum="46" parent="globals/SlavicsGearIndexSimpleView" pc="268438531" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexSimpleView.mc" id="39" lineNum="12" parent="globals/SlavicsGearIndexSimpleView" pc="268438537" symbol="initialize"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexSimpleView.mc" id="39" lineNum="13" parent="globals/SlavicsGearIndexSimpleView" pc="268438539" symbol="initialize"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexSimpleView.mc" id="39" lineNum="14" parent="globals/SlavicsGearIndexSimpleView" pc="268438551" symbol="initialize"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexSimpleView.mc" id="39" lineNum="15" parent="globals/SlavicsGearIndexSimpleView" pc="268438589" symbol="initialize"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="40" lineNum="56" parent="globals/SlavicsGearIndexView" pc="268438602" symbol="onLayout"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="40" lineNum="57" parent="globals/SlavicsGearIndexView" pc="268438604" symbol="onLayout"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="40" lineNum="58" parent="globals/SlavicsGearIndexView" pc="268438644" symbol="onLayout"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="40" lineNum="59" parent="globals/SlavicsGearIndexView" pc="268438660" symbol="onLayout"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="40" lineNum="60" parent="globals/SlavicsGearIndexView" pc="268438676" symbol="onLayout"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="40" lineNum="61" parent="globals/SlavicsGearIndexView" pc="268438692" symbol="onLayout"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="41" lineNum="74" parent="globals/SlavicsGearIndexView" pc="268438732" symbol="handleSettingUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="41" lineNum="75" parent="globals/SlavicsGearIndexView" pc="268438734" symbol="handleSettingUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="41" lineNum="76" parent="globals/SlavicsGearIndexView" pc="268438752" symbol="handleSettingUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="41" lineNum="77" parent="globals/SlavicsGearIndexView" pc="268438783" symbol="handleSettingUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="86" parent="globals/SlavicsGearIndexView" pc="268438796" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="87" parent="globals/SlavicsGearIndexView" pc="268438799" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="88" parent="globals/SlavicsGearIndexView" pc="268438815" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="89" parent="globals/SlavicsGearIndexView" pc="268438827" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="91" parent="globals/SlavicsGearIndexView" pc="268438852" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="93" parent="globals/SlavicsGearIndexView" pc="268438870" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="94" parent="globals/SlavicsGearIndexView" pc="268438883" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="95" parent="globals/SlavicsGearIndexView" pc="268438915" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="96" parent="globals/SlavicsGearIndexView" pc="268438921" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="97" parent="globals/SlavicsGearIndexView" pc="268438945" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="98" parent="globals/SlavicsGearIndexView" pc="268438961" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="99" parent="globals/SlavicsGearIndexView" pc="268438996" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="100" parent="globals/SlavicsGearIndexView" pc="268439029" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="102" parent="globals/SlavicsGearIndexView" pc="268439061" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="103" parent="globals/SlavicsGearIndexView" pc="268439086" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="104" parent="globals/SlavicsGearIndexView" pc="268439113" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="106" parent="globals/SlavicsGearIndexView" pc="268439130" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="107" parent="globals/SlavicsGearIndexView" pc="268439144" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="108" parent="globals/SlavicsGearIndexView" pc="268439163" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="111" parent="globals/SlavicsGearIndexView" pc="268439175" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="112" parent="globals/SlavicsGearIndexView" pc="268439194" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="113" parent="globals/SlavicsGearIndexView" pc="268439226" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="114" parent="globals/SlavicsGearIndexView" pc="268439240" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="116" parent="globals/SlavicsGearIndexView" pc="268439249" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="117" parent="globals/SlavicsGearIndexView" pc="268439269" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="118" parent="globals/SlavicsGearIndexView" pc="268439272" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="119" parent="globals/SlavicsGearIndexView" pc="268439274" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="122" parent="globals/SlavicsGearIndexView" pc="268439289" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="125" parent="globals/SlavicsGearIndexView" pc="268439305" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="120" parent="globals/SlavicsGearIndexView" pc="268439324" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="121" parent="globals/SlavicsGearIndexView" pc="268439332" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="123" parent="globals/SlavicsGearIndexView" pc="268439335" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="124" parent="globals/SlavicsGearIndexView" pc="268439343" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="126" parent="globals/SlavicsGearIndexView" pc="268439346" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="127" parent="globals/SlavicsGearIndexView" pc="268439354" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="129" parent="globals/SlavicsGearIndexView" pc="268439358" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="130" parent="globals/SlavicsGearIndexView" pc="268439398" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="131" parent="globals/SlavicsGearIndexView" pc="268439435" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="132" parent="globals/SlavicsGearIndexView" pc="268439471" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="133" parent="globals/SlavicsGearIndexView" pc="268439480" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="134" parent="globals/SlavicsGearIndexView" pc="268439495" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="138" parent="globals/SlavicsGearIndexView" pc="268439539" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="139" parent="globals/SlavicsGearIndexView" pc="268439549" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="140" parent="globals/SlavicsGearIndexView" pc="268439559" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="141" parent="globals/SlavicsGearIndexView" pc="268439583" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="143" parent="globals/SlavicsGearIndexView" pc="268439599" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="144" parent="globals/SlavicsGearIndexView" pc="268439608" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="145" parent="globals/SlavicsGearIndexView" pc="268439626" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="146" parent="globals/SlavicsGearIndexView" pc="268439641" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="42" lineNum="147" parent="globals/SlavicsGearIndexView" pc="268439661" symbol="compute"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="43" lineNum="41" parent="globals/SlavicsGearIndexView" pc="268439708" symbol="initialize"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="43" lineNum="42" parent="globals/SlavicsGearIndexView" pc="268439711" symbol="initialize"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="43" lineNum="43" parent="globals/SlavicsGearIndexView" pc="268439729" symbol="initialize"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="43" lineNum="44" parent="globals/SlavicsGearIndexView" pc="268439741" symbol="initialize"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="43" lineNum="45" parent="globals/SlavicsGearIndexView" pc="268439779" symbol="initialize"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="43" lineNum="46" parent="globals/SlavicsGearIndexView" pc="268439825" symbol="initialize"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="43" lineNum="47" parent="globals/SlavicsGearIndexView" pc="268439831" symbol="initialize"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="43" lineNum="49" parent="globals/SlavicsGearIndexView" pc="268439869" symbol="initialize"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="43" lineNum="50" parent="globals/SlavicsGearIndexView" pc="268439909" symbol="initialize"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="43" lineNum="51" parent="globals/SlavicsGearIndexView" pc="268439958" symbol="initialize"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="43" lineNum="52" parent="globals/SlavicsGearIndexView" pc="268440018" symbol="initialize"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="43" lineNum="53" parent="globals/SlavicsGearIndexView" pc="268440043" symbol="initialize"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="156" parent="globals/SlavicsGearIndexView" pc="268440051" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="157" parent="globals/SlavicsGearIndexView" pc="268440054" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="158" parent="globals/SlavicsGearIndexView" pc="268440072" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="159" parent="globals/SlavicsGearIndexView" pc="268440088" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="160" parent="globals/SlavicsGearIndexView" pc="268440097" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="161" parent="globals/SlavicsGearIndexView" pc="268440114" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="163" parent="globals/SlavicsGearIndexView" pc="268440136" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="165" parent="globals/SlavicsGearIndexView" pc="268440152" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="167" parent="globals/SlavicsGearIndexView" pc="268440168" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="168" parent="globals/SlavicsGearIndexView" pc="268440183" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="169" parent="globals/SlavicsGearIndexView" pc="268440222" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="170" parent="globals/SlavicsGearIndexView" pc="268440270" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="171" parent="globals/SlavicsGearIndexView" pc="268440299" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="172" parent="globals/SlavicsGearIndexView" pc="268440319" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="174" parent="globals/SlavicsGearIndexView" pc="268440329" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="176" parent="globals/SlavicsGearIndexView" pc="268440348" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="177" parent="globals/SlavicsGearIndexView" pc="268440361" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="178" parent="globals/SlavicsGearIndexView" pc="268440374" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="179" parent="globals/SlavicsGearIndexView" pc="268440402" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="181" parent="globals/SlavicsGearIndexView" pc="268440418" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="182" parent="globals/SlavicsGearIndexView" pc="268440448" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="187" parent="globals/SlavicsGearIndexView" pc="268440543" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="192" parent="globals/SlavicsGearIndexView" pc="268440584" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="194" parent="globals/SlavicsGearIndexView" pc="268440617" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="195" parent="globals/SlavicsGearIndexView" pc="268440637" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="196" parent="globals/SlavicsGearIndexView" pc="268440644" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="198" parent="globals/SlavicsGearIndexView" pc="268440663" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="200" parent="globals/SlavicsGearIndexView" pc="268440696" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="201" parent="globals/SlavicsGearIndexView" pc="268440786" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="202" parent="globals/SlavicsGearIndexView" pc="268440840" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="203" parent="globals/SlavicsGearIndexView" pc="268440856" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="204" parent="globals/SlavicsGearIndexView" pc="268440864" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="205" parent="globals/SlavicsGearIndexView" pc="268440932" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="206" parent="globals/SlavicsGearIndexView" pc="268440964" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/SlavicsGearIndexView.mc" id="44" lineNum="207" parent="globals/SlavicsGearIndexView" pc="268440983" symbol="onUpdate"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/RearShifting.mc" id="45" lineNum="36" parent="globals/RearShifting" pc="268441010" symbol="getDeviceState"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/RearShifting.mc" id="45" lineNum="37" parent="globals/RearShifting" pc="268441012" symbol="getDeviceState"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/RearShifting.mc" id="46" lineNum="56" parent="globals/RearShifting" pc="268441024" symbol="getRearDerailleurStatus"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/RearShifting.mc" id="46" lineNum="57" parent="globals/RearShifting" pc="268441026" symbol="getRearDerailleurStatus"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/RearShifting.mc" id="48" lineNum="114" parent="globals/RearShifting" pc="268441043" symbol="getBatteries"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/RearShifting.mc" id="48" lineNum="115" parent="globals/RearShifting" pc="268441046" symbol="getBatteries"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/RearShifting.mc" id="48" lineNum="116" parent="globals/RearShifting" pc="268441059" symbol="getBatteries"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/RearShifting.mc" id="48" lineNum="117" parent="globals/RearShifting" pc="268441063" symbol="getBatteries"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/RearShifting.mc" id="48" lineNum="118" parent="globals/RearShifting" pc="268441069" symbol="getBatteries"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/RearShifting.mc" id="48" lineNum="119" parent="globals/RearShifting" pc="268441086" symbol="getBatteries"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/RearShifting.mc" id="48" lineNum="120" parent="globals/RearShifting" pc="268441093" symbol="getBatteries"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/RearShifting.mc" id="48" lineNum="121" parent="globals/RearShifting" pc="268441110" symbol="getBatteries"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/RearShifting.mc" id="48" lineNum="122" parent="globals/RearShifting" pc="268441116" symbol="getBatteries"/>
+        <entry filename="/home/petr/Projekty/GarminApp/Applications/SlavicsGearIndex/source/RearShifting.mc" id="48" lineNum="131" parent="globals/RearShifting" pc="268441253" symbol="getBatteries"/>
+    </pcToLineNum>
+    <symbolTable>
+        <entry field="true" id="40" symbol="&lt;globals/BatteryIcon/&lt;&gt;charge&gt;"/>
+        <entry id="8388639" module="true" symbol="Graphics"/>
+        <entry field="true" id="8389346" symbol="text"/>
+        <entry id="37" symbol="BATTERY_NAME"/>
+        <entry id="83" symbol="night"/>
+        <entry field="true" id="59" symbol="&lt;globals/SlavicsGearIndexView/&lt;&gt;fails&gt;"/>
+        <entry id="8388632" method="true" symbol="&lt;init&gt;"/>
+        <entry field="true" id="36" symbol="&lt;globals/ColorMode/&lt;&gt;isNight&gt;"/>
+        <entry id="2" module="true" symbol="globals/BatteryIcon/&lt;statics&gt;"/>
+        <entry id="8389683" method="true" symbol="onSettingsChanged"/>
+        <entry id="47" method="true" symbol="setStatus"/>
+        <entry field="true" id="44" symbol="&lt;globals/BatteryIcon/&lt;&gt;night&gt;"/>
+        <entry id="13" object="true" symbol="SlavicsGearIndexApp"/>
+        <entry field="true" id="19" symbol="labelArea"/>
+        <entry field="true" id="20" symbol="labelLine"/>
+        <entry field="true" id="76" symbol="property_showfailure_title"/>
+        <entry field="true" id="75" symbol="property_nightMode_title"/>
+        <entry field="true" id="8388611" module="true" symbol="Toybox"/>
+        <entry field="true" id="28" symbol="&lt;globals/ColorMode/&lt;&gt;MODE_BLACKANDWHITE&gt;"/>
+        <entry field="true" id="8391372" symbol="invalidOutboardShiftCount"/>
+        <entry field="true" id="32" symbol="&lt;globals/ColorMode/&lt;&gt;colors&gt;"/>
+        <entry field="true" id="54" symbol="battIcon"/>
+        <entry field="true" id="73" symbol="AppName"/>
+        <entry id="8" module="true" symbol="globals/Rez/Strings"/>
+        <entry id="46" method="true" symbol="setNightMode"/>
+        <entry id="8388772" module="true" object="true" symbol="Fonts"/>
+        <entry id="8388631" module="true" symbol="Activity"/>
+        <entry field="true" id="70" symbol="BatteryLarge"/>
+        <entry field="true" id="8388947" method="true" symbol="value"/>
+        <entry id="8388648" module="true" symbol="WatchUi"/>
+        <entry id="49" symbol="&lt;globals/BatteryIcon/&lt;statics&gt;/&lt;&gt;BATCHAR&gt;"/>
+        <entry id="35" method="true" symbol="handleSettingUpdate"/>
+        <entry field="true" id="8389138" symbol="label"/>
+        <entry id="8389117" method="true" symbol="getWidth"/>
+        <entry id="5" module="true" symbol="globals/Rez"/>
+        <entry field="true" id="56" symbol="&lt;globals/SlavicsGearIndexView/&lt;&gt;colorMode&gt;"/>
+        <entry id="8389410" module="true" symbol="AntPlus"/>
+        <entry id="84" symbol="change"/>
+        <entry id="8389124" method="true" symbol="onUpdate"/>
+        <entry field="true" id="51" symbol="&lt;globals/SlavicsGearIndexSimpleView/&lt;&gt;name&gt;"/>
+        <entry field="true" id="72" symbol="BatterySmall"/>
+        <entry field="true" id="63" symbol="&lt;globals/SlavicsGearIndexView/&lt;&gt;unitTeeths&gt;"/>
+        <entry id="8388771" module="true" object="true" symbol="Drawables"/>
+        <entry id="8389348" symbol="font"/>
+        <entry field="true" id="8389526" symbol="batteryStatus"/>
+        <entry id="8389275" method="true" symbol="getApp"/>
+        <entry field="true" id="18" symbol="colors"/>
+        <entry id="8389850" symbol="count"/>
+        <entry id="8389122" method="true" symbol="onLayout"/>
+        <entry field="true" id="52" symbol="&lt;globals/SlavicsGearIndexView/&lt;&gt;INVALID_SHIFTS&gt;"/>
+        <entry field="true" id="8389063" symbol="identifier"/>
+        <entry id="23" method="true" symbol="setColors"/>
+        <entry id="8389349" symbol="justification"/>
+        <entry id="3" module="true" symbol="globals/ColorMode/&lt;statics&gt;"/>
+        <entry id="8389137" method="true" symbol="compute"/>
+        <entry id="11" object="true" symbol="ColorMode"/>
+        <entry field="true" id="48" symbol="&lt;globals/BatteryIcon/&lt;&gt;status&gt;"/>
+        <entry field="true" id="8389892" symbol="background"/>
+        <entry id="67" method="true" symbol="getRearDerailleurStatus"/>
+        <entry id="6" module="true" symbol="globals/Rez/Drawables"/>
+        <entry field="true" id="41" symbol="&lt;globals/BatteryIcon/&lt;&gt;fontBattery&gt;"/>
+        <entry id="8389479" method="true" symbol="getDeviceState"/>
+        <entry id="42" method="true" symbol="getFont"/>
+        <entry id="82" symbol="valueChange"/>
+        <entry id="33" method="true" symbol="getColors"/>
+        <entry id="81" symbol="valueEdge"/>
+        <entry field="true" id="22" symbol="rim"/>
+        <entry id="8388644" module="true" symbol="System"/>
+        <entry field="true" id="62" symbol="&lt;globals/SlavicsGearIndexView/&lt;&gt;teethsLabel&gt;"/>
+        <entry id="8388645" module="true" symbol="Time"/>
+        <entry id="8388769" module="true" object="true" symbol="Rez"/>
+        <entry id="17" symbol="FONTS"/>
+        <entry field="true" id="61" symbol="&lt;globals/SlavicsGearIndexView/&lt;&gt;rearShift&gt;"/>
+        <entry id="8388718" method="true" symbol="error"/>
+        <entry id="8388640" module="true" symbol="Lang"/>
+        <entry id="39" symbol="BATTERY_STATUS_COLOR"/>
+        <entry id="8389068" method="true" symbol="draw"/>
+        <entry field="true" id="69" symbol="LauncherIcon"/>
+        <entry field="true" id="74" symbol="property_colorMode_title"/>
+        <entry field="true" id="60" symbol="&lt;globals/SlavicsGearIndexView/&lt;&gt;lastIndex&gt;"/>
+        <entry id="8388610" symbol="statics"/>
+        <entry id="38" symbol="BATTERY_STATUSES"/>
+        <entry field="true" id="31" symbol="&lt;globals/ColorMode/&lt;&gt;MODE_PINK&gt;"/>
+        <entry id="8389350" module="true" symbol="globals"/>
+        <entry id="66" method="true" symbol="getBatteries"/>
+        <entry id="8388770" module="true" object="true" symbol="Strings"/>
+        <entry id="45" method="true" symbol="setCharge"/>
+        <entry field="true" id="30" symbol="&lt;globals/ColorMode/&lt;&gt;MODE_GREEN&gt;"/>
+        <entry field="true" id="77" symbol="property_showteeth_title"/>
+        <entry id="4" module="true" symbol="globals/RearShifting/&lt;statics&gt;"/>
+        <entry id="8388702" method="true" symbol="initialize"/>
+        <entry id="10" object="true" symbol="BatteryIcon"/>
+        <entry id="8389279" method="true" symbol="onStart"/>
+        <entry id="14" object="true" symbol="SlavicsGearIndexSimpleView"/>
+        <entry field="true" id="78" symbol="property_version_title"/>
+        <entry field="true" id="27" symbol="view"/>
+        <entry field="true" id="8388892" symbol="name"/>
+        <entry id="8388641" module="true" symbol="Math"/>
+        <entry field="true" id="80" symbol="version"/>
+        <entry id="8389280" method="true" symbol="getInitialView"/>
+        <entry field="true" id="8391371" symbol="invalidInboardShiftCount"/>
+        <entry id="8389281" method="true" symbol="onStop"/>
+        <entry id="15" object="true" symbol="SlavicsGearIndexView"/>
+        <entry field="true" id="26" symbol="valueArea"/>
+        <entry field="true" id="71" symbol="BatteryMedium"/>
+        <entry field="true" id="8389347" symbol="color"/>
+        <entry field="true" id="8388939" symbol="day"/>
+        <entry id="9" module="true" symbol="globals/SlavicsGearIndexView/&lt;statics&gt;"/>
+        <entry field="true" id="29" symbol="&lt;globals/ColorMode/&lt;&gt;MODE_BLUE&gt;"/>
+        <entry id="25" method="true" symbol="setTextValue"/>
+        <entry id="34" method="true" symbol="getFieldColor"/>
+        <entry id="16" object="true" symbol="SlavicsSimpleDataField"/>
+        <entry id="24" method="true" symbol="setTextLabel"/>
+        <entry id="21" method="true" symbol="&lt;globals/SlavicsSimpleDataField/&lt;&gt;onUpdateAfter&gt;"/>
+        <entry field="true" id="58" symbol="&lt;globals/SlavicsGearIndexView/&lt;&gt;failTime&gt;"/>
+        <entry field="true" id="43" symbol="&lt;globals/BatteryIcon/&lt;&gt;justify&gt;"/>
+        <entry field="true" id="79" symbol="unitTeeths"/>
+        <entry id="12" object="true" symbol="RearShifting"/>
+        <entry id="8389132" method="true" symbol="setFont"/>
+        <entry field="true" id="53" symbol="battFont"/>
+        <entry id="7" module="true" symbol="globals/Rez/Fonts"/>
+        <entry field="true" id="50" symbol="&lt;globals/SlavicsGearIndexSimpleView/&lt;&gt;bikeShift&gt;"/>
+        <entry field="true" id="68" symbol="&lt;globals/RearShifting/&lt;&gt;shiftDevice&gt;"/>
+        <entry id="8388635" module="true" symbol="Application"/>
+        <entry field="true" id="64" symbol="&lt;globals/SlavicsGearIndexView/&lt;&gt;versionTest&gt;"/>
+        <entry field="true" id="57" symbol="&lt;globals/SlavicsGearIndexView/&lt;&gt;failLabel&gt;"/>
+        <entry field="true" id="55" symbol="&lt;globals/SlavicsGearIndexView/&lt;&gt;batteries&gt;"/>
+        <entry field="true" id="8391373" symbol="shiftFailureCount"/>
+        <entry id="65" symbol="BATTERY_STATUS_TEXT"/>
+    </symbolTable>
+    <localVars>
+        <entry arg="true" endPc="268436864" name="text" stackId="1" startPc="268436832"/>
+        <entry arg="true" endPc="268437091" name="dc" stackId="1" startPc="268436865"/>
+        <entry arg="true" endPc="268437124" name="text" stackId="1" startPc="268437092"/>
+        <entry arg="true" endPc="268437192" name="colors" stackId="1" startPc="268437125"/>
+        <entry arg="true" endPc="268437316" name="dc" stackId="1" startPc="268437226"/>
+        <entry arg="true" endPc="268437722" name="field" stackId="1" startPc="268437676"/>
+        <entry arg="true" endPc="268437879" name="dc" stackId="1" startPc="268437845"/>
+        <entry arg="true" endPc="268438141" name="dc" stackId="1" startPc="268437880"/>
+        <entry arg="true" endPc="268438153" name="status" stackId="1" startPc="268438142"/>
+        <entry arg="true" endPc="268438165" name="charge" stackId="1" startPc="268438154"/>
+        <entry arg="true" endPc="268438256" name="params" stackId="1" startPc="268438174"/>
+        <entry arg="true" endPc="268438268" name="font" stackId="1" startPc="268438257"/>
+        <entry arg="true" endPc="268438280" name="night" stackId="1" startPc="268438269"/>
+        <entry arg="true" endPc="268438536" name="info" stackId="1" startPc="268438281"/>
+        <entry arg="true" endPc="268438731" name="dc" stackId="1" startPc="268438602"/>
+        <entry arg="true" endPc="268439707" name="info" stackId="1" startPc="268438796"/>
+        <entry endPc="268439706" name="rds" stackId="2" startPc="268438799"/>
+        <entry endPc="268439538" name="j" stackId="3" startPc="268439269"/>
+        <entry endPc="268439528" name="count" stackId="4" startPc="268439269"/>
+        <entry endPc="268440049" name="pos" stackId="1" startPc="268439711"/>
+        <entry arg="true" endPc="268441009" name="dc" stackId="1" startPc="268440051"/>
+        <entry endPc="268440573" name="bd" stackId="5" startPc="268440319"/>
+        <entry endPc="268441242" name="id" stackId="4" startPc="268441086"/>
+        <entry endPc="268441242" name="bs" stackId="5" startPc="268441086"/>
+    </localVars>
+    <deviceInfo deviceVersion="64e9a617e9472a32c43687e18cd12264b67a820e" partNumber="006-B4440-00"/>
+    <annotations>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="unitTeeths"/>
+        <annotationEntry annotation="release" class="SlavicsSimpleDataField" module="globals" symbol="onUpdateAfter"/>
+        <annotationEntry annotation="initialized" class="Drawables" module="globals/Rez" symbol="LauncherIcon"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="property_showfailure_title"/>
+        <annotationEntry annotation="initialized" class="Fonts" module="globals/Rez" symbol="BatteryMedium"/>
+        <annotationEntry annotation="release" class="RearShifting" module="globals" symbol="getBatteries"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="property_nightMode_title"/>
+        <annotationEntry annotation="initialized" class="Fonts" module="globals/Rez" symbol="BatterySmall"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="AppName"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="version"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="property_version_title"/>
+        <annotationEntry annotation="release" class="RearShifting" module="globals" symbol="getRearDerailleurStatus"/>
+        <annotationEntry annotation="initialized" class="Fonts" module="globals/Rez" symbol="BatteryLarge"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="property_colorMode_title"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="property_showteeth_title"/>
+        <annotationEntry annotation="release" class="RearShifting" module="globals" symbol="getDeviceState"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="label"/>
+    </annotations>
+    <dataEntryOffsetMappings>
+        <dataEntry label="globals" offset="94" parentId="" symbolId="globals" type="module"/>
+        <dataEntry label="globals/SlavicsSimpleDataField" offset="206" parentId="globals" symbolId="SlavicsSimpleDataField" type="class"/>
+        <dataEntry label="globals/SlavicsGearIndexApp" offset="358" parentId="globals" symbolId="SlavicsGearIndexApp" type="class"/>
+        <dataEntry label="globals/Rez" offset="447" parentId="globals" symbolId="Rez" type="module"/>
+        <dataEntry label="globals/ColorMode" offset="500" parentId="globals" symbolId="ColorMode" type="class"/>
+        <dataEntry label="globals/ColorMode/&lt;statics&gt;" offset="638" parentId="ColorMode" symbolId="&lt;statics&gt;" type="module"/>
+        <dataEntry label="globals/BatteryIcon" offset="687" parentId="globals" symbolId="BatteryIcon" type="class"/>
+        <dataEntry label="globals/BatteryIcon/&lt;statics&gt;" offset="843" parentId="BatteryIcon" symbolId="&lt;statics&gt;" type="module"/>
+        <dataEntry label="globals/SlavicsGearIndexSimpleView" offset="892" parentId="globals" symbolId="SlavicsGearIndexSimpleView" type="class"/>
+        <dataEntry label="globals/SlavicsGearIndexView" offset="963" parentId="globals" symbolId="SlavicsGearIndexView" type="class"/>
+        <dataEntry label="globals/SlavicsGearIndexView/&lt;statics&gt;" offset="1164" parentId="SlavicsGearIndexView" symbolId="&lt;statics&gt;" type="module"/>
+        <dataEntry label="globals/RearShifting" offset="1195" parentId="globals" symbolId="RearShifting" type="class"/>
+        <dataEntry label="globals/RearShifting/&lt;statics&gt;" offset="1279" parentId="RearShifting" symbolId="&lt;statics&gt;" type="module"/>
+        <dataEntry label="globals/Rez/Drawables" offset="1328" parentId="Rez" symbolId="Drawables" type="module"/>
+        <dataEntry label="globals/Rez/Fonts" offset="1363" parentId="Rez" symbolId="Fonts" type="module"/>
+        <dataEntry label="globals/Rez/Strings" offset="1416" parentId="Rez" symbolId="Strings" type="module"/>
+    </dataEntryOffsetMappings>
+    <functions>
+        <functionEntry accessMode="public" endPc="268435678" name="&lt;init&gt;" parent="SlavicsSimpleDataField" startPc="268435457">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435699" name="getApp" startPc="268435679">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435711" name="&lt;init&gt;" parent="SlavicsGearIndexApp" startPc="268435700">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435731" name="&lt;init&gt;" parent="Rez" startPc="268435712">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436235" name="&lt;init&gt;" parent="ColorMode" startPc="268435732">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436260" name="&lt;init&gt;" parent="globals/ColorMode" startPc="268436236">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436272" name="&lt;init&gt;" parent="BatteryIcon" startPc="268436261">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436309" name="&lt;init&gt;" parent="globals/BatteryIcon" startPc="268436273">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436372" name="&lt;init&gt;" parent="SlavicsGearIndexSimpleView" startPc="268436310">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436754" name="&lt;init&gt;" parent="SlavicsGearIndexView" startPc="268436373">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="globals/SlavicsGearIndexView">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436806" name="&lt;init&gt;" parent="RearShifting" startPc="268436755">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436831" name="&lt;init&gt;" parent="globals/RearShifting" startPc="268436807">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436864" name="setTextValue" parent="SlavicsSimpleDataField" startPc="268436832">
+            <param id="text"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437091" name="onLayout" parent="SlavicsSimpleDataField" startPc="268436865">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="private" name="&lt;globals/SlavicsSimpleDataField/&lt;&gt;onUpdateAfter&gt;" parent="SlavicsSimpleDataField">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437124" name="setTextLabel" parent="SlavicsSimpleDataField" startPc="268437092">
+            <param id="text"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437192" name="setColors" parent="SlavicsSimpleDataField" startPc="268437125">
+            <param id="colors"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437225" name="initialize" parent="SlavicsSimpleDataField" startPc="268437193">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437316" name="onUpdate" parent="SlavicsSimpleDataField" startPc="268437226">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="onStart" parent="SlavicsGearIndexApp">
+            <param id="state"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437360" name="onSettingsChanged" parent="SlavicsGearIndexApp" startPc="268437317">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437400" name="getInitialView" parent="SlavicsGearIndexApp" startPc="268437361">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437415" name="initialize" parent="SlavicsGearIndexApp" startPc="268437401">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="onStop" parent="SlavicsGearIndexApp">
+            <param id="state"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Drawables">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Fonts">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Strings">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437675" name="handleSettingUpdate" parent="ColorMode" startPc="268437416">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437722" name="getFieldColor" parent="ColorMode" startPc="268437676">
+            <param id="field"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437786" name="compute" parent="ColorMode" startPc="268437723">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437823" name="getColors" parent="ColorMode" startPc="268437787">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437844" name="initialize" parent="ColorMode" startPc="268437824">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437879" name="getWidth" parent="BatteryIcon" startPc="268437845">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438141" name="draw" parent="BatteryIcon" startPc="268437880">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438153" name="setStatus" parent="BatteryIcon" startPc="268438142">
+            <param id="status"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438165" name="setCharge" parent="BatteryIcon" startPc="268438154">
+            <param id="charge"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438173" name="getFont" parent="BatteryIcon" startPc="268438166">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438256" name="initialize" parent="BatteryIcon" startPc="268438174">
+            <param id="params"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438268" name="setFont" parent="BatteryIcon" startPc="268438257">
+            <param id="font"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438280" name="setNightMode" parent="BatteryIcon" startPc="268438269">
+            <param id="night"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438536" name="compute" parent="SlavicsGearIndexSimpleView" startPc="268438281">
+            <param id="info"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438601" name="initialize" parent="SlavicsGearIndexSimpleView" startPc="268438537">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438731" name="onLayout" parent="SlavicsGearIndexView" startPc="268438602">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438795" name="handleSettingUpdate" parent="SlavicsGearIndexView" startPc="268438732">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439707" name="compute" parent="SlavicsGearIndexView" startPc="268438796">
+            <param id="info"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268440050" name="initialize" parent="SlavicsGearIndexView" startPc="268439708">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441009" name="onUpdate" parent="SlavicsGearIndexView" startPc="268440051">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441023" name="getDeviceState" parent="RearShifting" startPc="268441010">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441042" name="getRearDerailleurStatus" parent="RearShifting" startPc="268441024">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="initialize" parent="RearShifting">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441255" name="getBatteries" parent="RearShifting" startPc="268441043">
+            <documentation/>
+        </functionEntry>
+    </functions>
+</debugInfo>
