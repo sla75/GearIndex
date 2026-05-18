@@ -23,6 +23,9 @@ git commit -a -m 'Create new footer [issue 53]'
 git push --set-upstream origin iss5
 ```
 
+## Create local branch from existing remote
+git checkout -b <new_branch_name> --track <remote_name>/<remote_branch_name>
+
 ## Merge
 ```
 git checkout master
