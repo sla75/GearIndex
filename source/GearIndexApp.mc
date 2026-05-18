@@ -2,7 +2,7 @@ import Toybox.Application;
 import Toybox.Lang;
 import Toybox.WatchUi;
 
-class SlavicsGearIndexApp extends Application.AppBase {
+class GearIndexApp extends Application.AppBase {
 
     function initialize() {
         AppBase.initialize();
@@ -15,22 +15,22 @@ class SlavicsGearIndexApp extends Application.AppBase {
     // onStop() is called when your application is exiting
     function onStop(state as Dictionary?) as Void {
     }
-    var view=null as SlavicsGearIndexView;
+    var view=null as GearIndexView;
     // Return the initial view of your application here
     function getInitialView() as [Views] or [Views, InputDelegates] {
-        view=new SlavicsGearIndexView();
+        view=new GearIndexView();
         return [ view ];
         //return [ new SlavicsGearRearSimpleView() ];
     }
 
     function onSettingsChanged() { // triggered by settings change in GCM
-        System.println("SlavicsGearIndexApp.onSettingsChanged()");
+        System.println("GearIndexApp.onSettingsChanged()");
         view.handleSettingUpdate();
         WatchUi.requestUpdate();   // update the view to reflect changes
     }
 
 }
 
-function getApp() as SlavicsGearIndexApp {
-    return Application.getApp() as SlavicsGearIndexApp;
+function getApp() as GearIndexApp {
+    return Application.getApp() as GearIndexApp;
 }

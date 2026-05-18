@@ -7,7 +7,7 @@ import Toybox.Math;
 import Toybox.System;
 import Toybox.WatchUi;
 
-class SlavicsGearIndexView extends SlavicsSimpleDataField {
+class GearIndexView extends SlavicsSimpleDataField {
 
     public static const BATTERY_STATUS_TEXT = ["0","New","Good","Ok","Low","Crit.","Unkn.","Inv.","Cnt"] as Array<String>;
     private var rearShift=new RearShifting() as RearShifting;
