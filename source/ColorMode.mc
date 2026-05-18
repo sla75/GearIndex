@@ -4,7 +4,9 @@ import Toybox.Graphics;
 import Toybox.Lang;
 
 class ColorMode {
-
+    enum {
+        COLOR_VDK_BLUE=0x313152,
+    }
     public static const BATTERY_STATUS_COLOR = [0,Graphics.COLOR_DK_GREEN,Graphics.COLOR_DK_GREEN,Graphics.COLOR_DK_GREEN,Graphics.COLOR_ORANGE,Graphics.COLOR_RED,0,Graphics.COLOR_DK_RED,Graphics.COLOR_LT_GRAY] as Array<ColorType>;
     public static const BATTERY_NAME={0x01=>"FD",0x02=>"RD",0x03=>"LS",0x04=>"RS"} as Dictionary<Number,String>;
     public static const BATTERY_STATUSES =[AntPlus.BATT_STATUS_CNT,
@@ -23,8 +25,8 @@ class ColorMode {
 
     private const MODE_BLACKANDWHITE={:day=>{
                 :background=>Graphics.COLOR_WHITE,
-                :label=>0x313152,
-                :value=>0x313152,
+                :label=>COLOR_VDK_BLUE,
+                :value=>COLOR_VDK_BLUE,
                 :valueEdge=>Graphics.COLOR_DK_RED,
                 :valueChange=>Graphics.COLOR_LT_GRAY,
                 :error=>Graphics.COLOR_DK_RED,
