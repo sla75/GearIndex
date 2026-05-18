@@ -1,6 +1,6 @@
 # Title
 *Maximum 50 Characters*
-SlavicsGearIndex
+GearIndex
 
 # Description
 *Maximum 4000 Characters*
