@@ -35,7 +35,7 @@ APP_ID="c4755d9c-e9e1-4924-b458-04e708ce8888" # DEVELOP
 if [[ ${BRANCH} == "main" ]]; then
     # Main count of commits without merges
     APP_ID="c4755d9c-e9e1-4924-b458-04e708ce0001" # PRODUCTION
-
+    GITCOUNT=$(git rev-list --count --first-parent main..${BRANCH})
 else
    
     git status manifest.xml | grep manifest.xml
@@ -48,14 +48,12 @@ else
     fi
     [[ ${BRANCH} == "test" ]] && APP_ID="c4755d9c-e9e1-4924-b458-04e708ce9999" # TEST
     APP_VERSION=${APP_VERSION}.${BRANCH}
+    GITCOUNT=$(git rev-list --count HEAD)
 fi;
 
 echo "  Write Application@id=${APP_ID} on ${BRANCH}"
 echo -e "setns iq=http://www.garmin.com/xml/connectiq\ncd //iq:manifest/iq:application/@id\nset ${APP_ID}\nsave\nbye" | xmllint --shell manifest.xml | grep -v ">" 
 
-
-
-GITCOUNT=$(git rev-list --count --first-parent main..${BRANCH})
 echo "Set AppName=${APP_NAME} ${APP_VERSION}.${GITCOUNT}"
 echo -e "cd /strings/string[@id=\"AppName\"]\nset ${APP_NAME} ${APP_VERSION}.${GITCOUNT}\nsave" | xmllint --shell ${APP_FILE} | grep -v ">"
 echo "Set version=${APP_VERSION}.${GITCOUNT}"
