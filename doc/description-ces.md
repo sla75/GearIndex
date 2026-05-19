@@ -4,7 +4,7 @@ GearIndex
 
 # Description
 *Maximum 4000 Characters*
-Zobrazení aktuálního zařazeného pastorku pouze na zadní přehazovačce. Index přehazovačky se bere z univerzálně z AntPlus (Shimano Di2, SRAM AXS,...).
+Zobrazení aktuálního zařazeného pastorku pouze na zadní přehazovačce. Index přehazovačky se bere z univerzálně z AntPlus, primárně zkoušeno na SRAM AXS, jiná zařízení Shimano Di2, ... by měla být také podporována.
 Aplikace je nezávislá na počtu pastorků. Zobrazení počtu zubů na pastorku je volitelné v Nastavení aplikace.
 Při změně řazení na jiný pastorek je barva šedivá. Krajní pastorky jsou zobrazeny tmavou červenou barvou.
 

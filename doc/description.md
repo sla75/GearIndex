@@ -4,7 +4,7 @@ GearIndex
 
 # Description
 *Maximum 4000 Characters*
-Display of the currently engaged sprocket only on the rear derailleur. The derailleur index is taken universally from AntPlus (Shimano Di2, SRAM AXS,...).
+Display of the currently engaged sprocket only on the rear derailleur. The derailleur index is taken universally from AntPlus, primarily tested on SRAM AXS, other Shimano Di2,... devices should also be supported.
 The application is independent of the number of sprockets. The display of the number of teeth on the sprocket is optional in the application settings.
 When changing gears to another sprocket, the color is gray. The outer sprockets are displayed in dark red.
 
