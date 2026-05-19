@@ -35,7 +35,7 @@ APP_ID="c4755d9c-e9e1-4924-b458-04e708ce8888" # DEVELOP
 if [[ ${BRANCH} == "main" ]]; then
     # Main count of commits without merges
     APP_ID="c4755d9c-e9e1-4924-b458-04e708ce0001" # PRODUCTION
-    GITCOUNT=$(git rev-list --count --first-parent main..${BRANCH})
+    GITCOUNT=$(git rev-list --count HEAD)
 else
    
     git status manifest.xml | grep manifest.xml
@@ -48,7 +48,7 @@ else
     fi
     [[ ${BRANCH} == "test" ]] && APP_ID="c4755d9c-e9e1-4924-b458-04e708ce9999" # TEST
     APP_VERSION=${APP_VERSION}.${BRANCH}
-    GITCOUNT=$(git rev-list --count HEAD)
+    GITCOUNT=$(git rev-list --count --first-parent main..${BRANCH})
 fi;
 
 echo "  Write Application@id=${APP_ID} on ${BRANCH}"
