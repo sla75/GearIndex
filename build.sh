@@ -47,7 +47,7 @@ else
     fi
     [[ ${BRANCH} == "test" ]] && APP_ID="c4755d9c-e9e1-4924-b458-04e708ce9999" # TEST
     APP_VERSION=${APP_VERSION}.${BRANCH}
-
+    APP_NAME="${APP_NAME}Test"
 fi;
 
 GITCOUNT=$(git rev-list --count HEAD)

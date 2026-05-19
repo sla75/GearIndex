@@ -39,7 +39,7 @@ class GearIndexView extends SlavicsSimpleDataField {
     private var colorMode as ColorMode;
 
     function initialize() {
-        System.println("SlavicsGearIndexView.initialize()");
+        System.println("GearIndexView.initialize()");
         SlavicsSimpleDataField.initialize();
         unitTeeths=Application.loadResource(Rez.Strings.unitTeeths);
         var pos=Application.loadResource(Rez.Strings.AppName).find("Test") as Number or Null;
@@ -54,7 +54,7 @@ class GearIndexView extends SlavicsSimpleDataField {
     }
 
     function onLayout(dc as Dc) as Void {
-        System.println("SlavicsGearIndexView.onLayout() "+dc.getWidth()+"x"+dc.getHeight());
+        System.println("GearIndexView.onLayout() "+dc.getWidth()+"x"+dc.getHeight());
         SlavicsSimpleDataField.onLayout(dc);
         teethsLabel.locX=self.rim;
         teethsLabel.locY=self.labelLine;
@@ -72,7 +72,7 @@ class GearIndexView extends SlavicsSimpleDataField {
         /***/
     }
     public function handleSettingUpdate() as Void {
-        System.println("SlavicsGearIndexView.onSettingsChanged()");
+        System.println("GearIndexView.onSettingsChanged()");
         teethsLabel.setVisible(Properties.getValue("property_showteeth") as Boolean);
         colorMode.handleSettingUpdate();
     }
@@ -151,10 +151,10 @@ class GearIndexView extends SlavicsSimpleDataField {
 
     }
     var battIcon=new BatteryIcon({:font=>WatchUi.loadResource(Rez.Fonts.BatteryMedium),:justification=>Graphics.TEXT_JUSTIFY_RIGHT});
-    var battFont=Graphics.FONT_TINY;
+    var battFont=Graphics.FONT_XTINY;
 
     public function onUpdate(dc as Dc) as Void {
-        System.println("SlavicsGearIndexView.onUpdate()");
+        System.println("GearIndexView.onUpdate()");
         SlavicsSimpleDataField.onUpdate(dc);
         if(versionTest!=null){
             dc.setColor(Graphics.COLOR_YELLOW,Graphics.COLOR_TRANSPARENT);
