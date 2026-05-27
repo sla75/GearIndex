@@ -2,6 +2,7 @@
 
     <properties>
         <property id="property_version" type="string">0.0.0</property>
+        <property id="property_fitFileSaving" type="boolean">true</property>
         <property id="property_showteeth" type="boolean">true</property>
         <property id="property_nightMode" type="boolean">false</property>
         <property id="property_colorMode" type="number">0</property>
@@ -11,6 +12,9 @@
     <settings>
         <setting propertyKey="@Properties.property_version" title="@Strings.property_version_title">
             <settingConfig type="alphaNumeric" readonly="true"/>
+        </setting>
+        <setting propertyKey="@Properties.property_fitFileSaving" title="@Strings.property_fitFileSaving_title">
+            <settingConfig type="boolean" required="true" />
         </setting>
         <setting propertyKey="@Properties.property_showteeth" title="@Strings.property_showteeth_title">
             <settingConfig type="boolean" required="true" />

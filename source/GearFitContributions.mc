@@ -1,4 +1,5 @@
 import Toybox.AntPlus;
+import Toybox.Application;
 import Toybox.FitContributor;
 import Toybox.Lang;
 import Toybox.WatchUi;
@@ -22,6 +23,7 @@ class GearFitContributions {
     }
 
     function initialize(dataField as WatchUi.DataField) {
+        Properties.setValue("property_fitFileSaving",Properties.getValue("property_fitFileSaving")==null?true:Properties.getValue("property_fitFileSaving") as Boolean);
         totalShiftsRF = dataField.createField("FIT_RD_TOTALSHIFTS_ID", FIT_RD_TOTALSHIFTS_ID, FitContributor.DATA_TYPE_UINT8, {
             :mesgType=>FitContributor.MESG_TYPE_SESSION});
 
@@ -44,16 +46,19 @@ class GearFitContributions {
         if(mTimerRunning!=RUNNING) {
             return;
         }
-        
-        var ratio=fdSprocket/rdSprocket.toFloat() as Float;
-        gearRatioRF.setData(ratio);
-        System.println("GearFitContributions.setDerailleurs ratio="+ratio.format("%.2f"));
+        if(Properties.getValue("property_fitFileSaving") as Boolean){
+            var ratio=fdSprocket/rdSprocket.toFloat() as Float;
+            gearRatioRF.setData(ratio);
+            System.println("GearFitContributions.setDerailleurs ratio="+ratio.format("%.2f"));
+        }
     }
     private function setSprocket(currentSprocket as Number) as Void {
         if(mTimerRunning!=PAUSE && lastSprocket!=currentSprocket){
             if(lastSprocket>0){
                 totalShifts++;
-                totalShiftsRF.setData(totalShifts);
+                if(Properties.getValue("property_fitFileSaving") as Boolean){
+                    totalShiftsRF.setData(totalShifts);
+                }
                 System.println("GearFitContributions.setSprocket shifts="+totalShifts);
             }
             lastSprocket=currentSprocket;
