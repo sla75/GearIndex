@@ -30,4 +30,31 @@
             <settingConfig type="boolean" required="true" />
         </setting>
     </settings>
+    <fitContributions>
+        <fitField id="0" 
+			displayInActivitySummary="true" 
+			sortOrder = "1" 
+			dataLabel="@Strings.RD_totalshifts_label"
+            unitLabel="" 
+  	    />
+		<fitField id="1" 
+			displayInChart="true" 
+			sortOrder = "0" 
+			precision="2"
+			chartTitle="@Strings.RD_gearratio_title" 
+			dataLabel="@Strings.RD_gearratio_label"
+            unitLabel="" 
+			fillColor="#AA0000"
+		/>
+		<!--fitField id="1" 
+			displayInChart="true"
+			sortOrder = "1" 
+			precision="0"
+			chartTitle="@Strings.RD_status_title" 
+			dataLabel="@Strings.RD_status_label"
+            unitLabel="@Strings.RD_status_unit" 
+			fillColor="#FF0000"
+			/-->
+		
+	</fitContributions>
 </resources>

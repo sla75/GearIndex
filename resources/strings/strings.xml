@@ -10,4 +10,11 @@
     <string id="property_nightMode_title">Reverse night mode</string>
     <string id="property_colorMode_title">List of color modes</string>
     <string id="property_showfailure_title">Show derailleur errors</string>
+
+    <string id="RD_totalshifts_label" translatable="false">Total Shifts</string>
+    <!--string id="RD_totalshifts_unit" translatable="false"></string-->
+    <string id="RD_gearratio_title" translatable="false">Gear Ratio Graph</string>
+    <string id="RD_gearratio_label" translatable="false">Ratio</string>
+    <!--string id="RD_gear_unit" translatable="false">Status</string-->
+
 </strings>

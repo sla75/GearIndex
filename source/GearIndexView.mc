@@ -37,10 +37,12 @@ class GearIndexView extends SlavicsSimpleDataField {
     private var versionTest=null as String;
     private var lastIndex=-1 as Number;
     private var colorMode as ColorMode;
+    private var mFCB as GearFitContributions;
 
     function initialize() {
         System.println("GearIndexView.initialize()");
         SlavicsSimpleDataField.initialize();
+        mFCB = new GearFitContributions(self);
         unitTeeths=Application.loadResource(Rez.Strings.unitTeeths);
         var pos=Application.loadResource(Rez.Strings.AppName).find("Test") as Number or Null;
         if(pos!=null){
@@ -94,6 +96,8 @@ class GearIndexView extends SlavicsSimpleDataField {
         teethsLabel.setColor(colorMode.getFieldColor(:label));
         if(rds!=null){
                 if(rds.gearIndex!=null&&rds.gearIndex!=AntPlus.REAR_GEAR_INVALID){
+                    if(rearShift.getFrontDerailleurStatus()!=null)
+                    mFCB.setDerailleurs(rearShift.getFrontDerailleurStatus().gearIndex,rds.gearIndex);
                     if(rds.gearIndex!=lastIndex){
                         valueArea.setColor(colorMode.getFieldColor(:valueChange));
                     } else if(rds.gearIndex==0||rds.gearIndex==rds.gearMax-1){
@@ -210,6 +214,30 @@ class GearIndexView extends SlavicsSimpleDataField {
 
         }
 
+    }
+    function onTimerReset() {
+        System.println("GearIndexView.onTimerReset");
+    	mFCB.onTimerReset();
+    }
+    
+    function onTimerPause() {
+        System.println("GearIndexView.onTimerPause");
+    	mFCB.onTimerPause();
+    }
+    
+    function onTimerResume() {
+        System.println("GearIndexView.onTimerResume");
+    	mFCB.onTimerResume();
+    }
+    
+    function onTimerStart() {
+        System.println("GearIndexView.onTimerStart");
+    	mFCB.onTimerStart();
+    }
+    
+    function onTimerStop() {
+        System.println("GearIndexView.onTimerStop");
+    	mFCB.onTimerStop();
     }
 }
 /***
