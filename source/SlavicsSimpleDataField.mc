@@ -84,7 +84,7 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
     // once a second when the data field is visible.
     
     public function onUpdate(dc as Dc) as Void {
-        System.println("SlavicsSimpleDataField.onUpdate()");
+        //System.println("SlavicsSimpleDataField.onUpdate()");
         dc.setColor(Graphics.COLOR_TRANSPARENT,colors.get(:background));
         dc.clear();
         valueArea.draw(dc);

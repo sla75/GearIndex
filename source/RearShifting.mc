@@ -53,6 +53,42 @@ class RearShifting {
     }
 
     (:release)
+    public function getFrontDerailleurStatus() as AntPlus.DerailleurStatus {
+        return shiftDevice.getShiftingStatus().frontDerailleur;
+    }
+
+    (:debug)
+    public function getFrontDerailleurStatus() as AntPlus.DerailleurStatus {
+        var ss=shiftDevice.getShiftingStatus() as AntPlus.ShiftingStatus;
+        if(ss==null||ss.rearDerailleur.gearIndex==AntPlus.REAR_GEAR_INVALID){
+            
+            var frontDerailleur=new DerailleurStatus();
+            if(System.getClockTime().sec==26){
+                frontDerailleur.gearIndex=AntPlus.REAR_GEAR_INVALID;
+                frontDerailleur.gearMax=AntPlus.MAX_GEARS_INVALID;
+                frontDerailleur.gearSize=0;
+                frontDerailleur.invalidInboardShiftCount=0;
+                frontDerailleur.invalidOutboardShiftCount=0;
+                frontDerailleur.shiftFailureCount=0;
+            } else {
+                frontDerailleur.gearIndex=System.getClockTime().sec/15%2;
+                frontDerailleur.gearMax=40;
+                frontDerailleur.gearSize=frontDerailleur.gearIndex==0?32:40;
+                frontDerailleur.invalidInboardShiftCount=frontDerailleur.invalidInboardShiftCount==null?0:frontDerailleur.invalidInboardShiftCount;
+                frontDerailleur.invalidOutboardShiftCount=frontDerailleur.invalidOutboardShiftCount==null?0:frontDerailleur.invalidOutboardShiftCount;
+                frontDerailleur.shiftFailureCount=frontDerailleur.shiftFailureCount==null?0:frontDerailleur.shiftFailureCount;
+                frontDerailleur.invalidInboardShiftCount+=Math.rand()%50==1?1:0;
+                frontDerailleur.invalidOutboardShiftCount+=Math.rand()%50==1?1:0;
+                frontDerailleur.shiftFailureCount+=(Math.rand()%20==1?1:0);
+            }
+
+            return frontDerailleur;
+        }
+
+        return ss.frontDerailleur;
+    }
+
+    (:release)
     public function getRearDerailleurStatus() as AntPlus.DerailleurStatus {
         return shiftDevice.getShiftingStatus().rearDerailleur;
     }

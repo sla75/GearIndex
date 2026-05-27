@@ -35,7 +35,7 @@
 			displayInActivitySummary="true" 
 			sortOrder = "1" 
 			dataLabel="@Strings.RD_totalshifts_label"
-            unitLabel="" 
+            unitLabel="@Strings.RD_totalshifts_unit" 
   	    />
 		<fitField id="1" 
 			displayInChart="true" 
@@ -43,7 +43,7 @@
 			precision="2"
 			chartTitle="@Strings.RD_gearratio_title" 
 			dataLabel="@Strings.RD_gearratio_label"
-            unitLabel="" 
+            unitLabel="@Strings.RD_gearratio_unit" 
 			fillColor="#AA0000"
 		/>
 		<!--fitField id="1" 

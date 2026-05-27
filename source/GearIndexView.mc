@@ -25,6 +25,11 @@ class GearIndexView extends SlavicsSimpleDataField {
             :font=>Graphics.FONT_SMALL,
             :justification=>Graphics.TEXT_JUSTIFY_LEFT,
         });
+    private var totalShiftsLabel=new Text({
+            :color=>Graphics.COLOR_DK_GRAY,
+            :font=>Graphics.FONT_SMALL,
+            :justification=>Graphics.TEXT_JUSTIFY_RIGHT,
+        });
     private var failLabel=new Text({
             :text=>"fail",
             :color=>Graphics.COLOR_DK_RED,
@@ -37,12 +42,12 @@ class GearIndexView extends SlavicsSimpleDataField {
     private var versionTest=null as String;
     private var lastIndex=-1 as Number;
     private var colorMode as ColorMode;
-    private var mFCB as GearFitContributions;
+    private var gearFIT as GearFitContributions;
 
     function initialize() {
         System.println("GearIndexView.initialize()");
         SlavicsSimpleDataField.initialize();
-        mFCB = new GearFitContributions(self);
+        gearFIT = new GearFitContributions(self);
         unitTeeths=Application.loadResource(Rez.Strings.unitTeeths);
         var pos=Application.loadResource(Rez.Strings.AppName).find("Test") as Number or Null;
         if(pos!=null){
@@ -60,6 +65,8 @@ class GearIndexView extends SlavicsSimpleDataField {
         SlavicsSimpleDataField.onLayout(dc);
         teethsLabel.locX=self.rim;
         teethsLabel.locY=self.labelLine;
+        totalShiftsLabel.locX=dc.getWidth()-self.rim;
+        totalShiftsLabel.locY=self.labelLine;
         failLabel.locY=dc.getHeight()-Graphics.getFontAscent(Graphics.FONT_SMALL)-rim;
         /***
         System.println("PartNumber: "+System.getDeviceSettings().partNumber);
@@ -94,12 +101,15 @@ class GearIndexView extends SlavicsSimpleDataField {
 
         var rds=rearShift.getRearDerailleurStatus() as AntPlus.DerailleurStatus;
         teethsLabel.setColor(colorMode.getFieldColor(:label));
+        totalShiftsLabel.setColor(colorMode.getFieldColor(:label));
         if(rds!=null){
                 if(rds.gearIndex!=null&&rds.gearIndex!=AntPlus.REAR_GEAR_INVALID){
-                    if(rearShift.getFrontDerailleurStatus()!=null)
-                    mFCB.setDerailleurs(rearShift.getFrontDerailleurStatus().gearIndex,rds.gearIndex);
+                    if(rearShift.getFrontDerailleurStatus()!=null){
+                        gearFIT.setDerailleurs(rearShift.getFrontDerailleurStatus().gearSize,rds.gearSize);
+                    }
                     if(rds.gearIndex!=lastIndex){
                         valueArea.setColor(colorMode.getFieldColor(:valueChange));
+                        totalShiftsLabel.setText(gearFIT.getTotalShifts().toString()+" sh");
                     } else if(rds.gearIndex==0||rds.gearIndex==rds.gearMax-1){
                         valueArea.setColor(colorMode.getFieldColor(:valueEdge));
                     }
@@ -135,17 +145,17 @@ class GearIndexView extends SlavicsSimpleDataField {
                 fails.get(INVALID_SHIFTS[j]).put(:change,true);
                 failTime=FAIL_TIME_COUNTER;
                 failLabel.setVisible(true);
-                System.println("FAIL start fail["+j+"]="+rds.shiftFailureCount);
+                //System.println("FAIL start fail["+j+"]="+rds.shiftFailureCount);
             }
         }
 
         if(failTime>=0){
             if(failTime>0){
-                System.println("FAIL countDown failTime="+failTime);
+                //System.println("FAIL countDown failTime="+failTime);
                 failTime--;
             } else {
                 failTime=-1;
-                System.println("FAIL end");
+                //System.println("FAIL end");
                 failLabel.setVisible(false);
                 for(var j=0;j<INVALID_SHIFTS.size();j++){
                     fails.get(INVALID_SHIFTS[j]).put(:change,false);
@@ -164,7 +174,9 @@ class GearIndexView extends SlavicsSimpleDataField {
             dc.setColor(Graphics.COLOR_YELLOW,Graphics.COLOR_TRANSPARENT);
             dc.drawText(1,1,Graphics.FONT_XTINY,versionTest,Graphics.TEXT_JUSTIFY_LEFT);
         }
+
         teethsLabel.draw(dc);
+        totalShiftsLabel.draw(dc);
         
         if(batteries.size()>0){
             // Draw batteries
@@ -217,27 +229,27 @@ class GearIndexView extends SlavicsSimpleDataField {
     }
     function onTimerReset() {
         System.println("GearIndexView.onTimerReset");
-    	mFCB.onTimerReset();
+    	gearFIT.onTimerReset();
     }
     
     function onTimerPause() {
         System.println("GearIndexView.onTimerPause");
-    	mFCB.onTimerPause();
+    	gearFIT.onTimerPause();
     }
     
     function onTimerResume() {
         System.println("GearIndexView.onTimerResume");
-    	mFCB.onTimerResume();
+    	gearFIT.onTimerResume();
     }
     
     function onTimerStart() {
         System.println("GearIndexView.onTimerStart");
-    	mFCB.onTimerStart();
+    	gearFIT.onTimerStart();
     }
     
     function onTimerStop() {
         System.println("GearIndexView.onTimerStop");
-    	mFCB.onTimerStop();
+    	gearFIT.onTimerStop();
     }
 }
 /***
