@@ -1,15 +1,9 @@
 import Toybox.Activity;
 import Toybox.AntPlus;
 import Toybox.Lang;
-import Toybox.Test;
 
 class GearStat {
 
-    enum Name {
-        DISTANCE0,
-        TIME0,
-        POWER0
-    }
 
     enum PreferedMeasure {
         DEFAULT,
@@ -17,12 +11,10 @@ class GearStat {
         POWER
     }
 
-    
-
     private var lastDistance=0 as Float;
     private var lastTime=0 as Number;
     private var prefered as PreferedMeasure;
-    private var BYPOWER=[] as Array<StatNums>;
+    private var BYPOWER=[] as Array<SprocketStats>;
 
     public function initialize(preferedMeasure as PreferedMeasure) {
         self.prefered=preferedMeasure;
@@ -30,7 +22,7 @@ class GearStat {
     
     public function compute(info as Activity.Info) {
         if(info==null || info.frontDerailleurSize==null || info.rearDerailleurSize==null){
-            setLast(info);
+            //setLast(info);
             return;
         }
         if(info.timerState==Activity.TIMER_STATE_ON){
@@ -58,39 +50,60 @@ class GearStat {
 
 }
 
-class Stats {
-    typedef StatNum as {
-        :suma as Numeric,
-        :count as Number,
-        :avg as Numeric,
-    };
-    var value as StatNum;
-    public function initialize() {
+public class SprocketStats {
+    
+    class Stat {
+        var sum=0 as Numeric;
+        var count=0 as Numeric;
+    }
+
+    private var name as String;
+    private var unit as String;
+    private var gears as Array<Stat>;
+
+    public function initialize(gearSize as Number, name as String, unit as String) {
+        self.name=name;
+        self.unit=unit;
+        gears=new[gearSize] as Array<Stat>;
         reset();
     }
-    public function reset(){
-        value={:suma=>0, :count=>0, :vag=>0} as StatNum;
-    }
-    public function add(number as Numeric){
-        value.put(:suma,value.get(:suma)+number);
-        value.put(:count,value.get(:count)+1);
-    }
-    public function getAvg() as Double {
-        return value.get(:suma)/value.get(:count).toDouble();
-    }
-    public function getCount() as Number {
-        return value.get(:count);
-    }
-}
 
-class GearStatTest {
-    (:test)
-    function aTestOfAssert(logger) {
-        logger.debug("This tests the assert() function.");
-        Test.assert(true);
-        logger.debug("Test.assert(true) didn't throw an Exception which is a very good thing.");
-        Test.assert(false);
-        logger.error("We should not be executing this statement.");
-        return true;
+    public function add(sprocket as Number,value as Numeric) as Void {
+        gears[sprocket].sum+=value;
+        gears[sprocket].count+=1;
+    }
+
+    public function addDiff(sprocket as Number,value as Numeric, range as Numeric) as Void {
+        gears[sprocket].sum+=value*range;
+        gears[sprocket].count+=range;
+    }
+
+    public function getSum(sprocket as Number) as Numeric{
+        return gears[sprocket].sum;
+    }
+    public function getCount(sprocket as Number) as Numeric{
+        return gears[sprocket].count;
+    }
+    public function getAvg(sprocket as Number) as Numeric{
+        return getCount(sprocket)>0?getSum(sprocket)/getCount(sprocket).toDouble():0;
+    }
+    public function getName() as String{
+        return self.name;
+    }
+    public function getUnit() as String{
+        return self.unit;
+    }
+    public function size() as Number{
+        return gears.size();
+    }
+    public function reset() as Void {
+        gears=new[gears.size()] as Array<Stat>;
+        for(var i=0;i<gears.size();i++){
+            gears[i]=new Stat();
+        }
+    }
+
+    public function toString() as String {
+        return "SprocketStats["+size()+"]: "+getName()+" "+getUnit();
     }
 }
