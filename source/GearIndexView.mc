@@ -43,7 +43,7 @@ class GearIndexView extends SlavicsSimpleDataField {
     private var lastIndex=-1 as Number;
     private var colorMode as ColorMode;
     private var gearFIT as GearFitContributions;
-    private var gearStat=new GearStat(GearStat.DEFAULT);
+    private var gearStat=new GearStat(GearStat.POWER);
 
     function initialize() {
         System.println("GearIndexView.initialize()");
@@ -252,6 +252,7 @@ class GearIndexView extends SlavicsSimpleDataField {
     function onTimerStop() {
         System.println("GearIndexView.onTimerStop");
     	gearFIT.onTimerStop();
+        gearStat.print();
     }
 }
 /***

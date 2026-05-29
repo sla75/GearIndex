@@ -14,7 +14,7 @@ class GearStat {
     private var lastDistance=0 as Float;
     private var lastTimerTime=0 as Number;
     private var prefered as PreferedMeasure;
-    private var BYPOWER=[] as Array<SprocketStats>;
+    private var stats={:power=>null,:time=>null,:distance=>null} as Dictionary<Symbol,SprocketStats>;
 
     public function initialize(preferedMeasure as PreferedMeasure) {
         self.prefered=preferedMeasure;
@@ -40,17 +40,25 @@ class GearStat {
         computeTeeth(info);
     }
     private  function computeTeeth(info as Activity.Info) {
-        System.println("GearStat.compute() timeState="+info.timerState+" "+info.timerTime);
         if(info==null || info.frontDerailleurSize==null || info.rearDerailleurSize==null){
             return;
         }
-        if(info.timerState==Activity.TIMER_STATE_ON){
+        if(info.timerState==Activity.TIMER_STATE_ON&&info.elapsedDistance!=null){
+            
+            System.println("GearStat.compute() elapsedDistance="+info.elapsedDistance+"-"+lastDistance);
             var diffDistance=info.elapsedDistance-lastDistance;
             var diffTime=info.timerTime-lastTimerTime;
             if(prefered==POWER&&info.currentPower!=null){
                 if(info.currentPower>0&&info.rearDerailleurSize!=0&&info.rearDerailleurSize!=AntPlus.FRONT_GEAR_INVALID){
+                    var powerStats=stats.get(:power) as SprocketStats;
+                    if(stats.get(:power)==null){
+                        powerStats=new SprocketStats(info.rearDerailleurMax,"Power at Teeth","p/t");
+                    }
                     System.println("GearStat.compute() POWER");
-                    System.println("GearStat.compute() PowerOnTeeths="+(info.currentPower/info.rearDerailleurSize.toDouble())+"W/t");
+                    var pot=info.currentPower/info.rearDerailleurSize.toDouble();
+                    System.println("GearStat.compute() Sprocket "+info.rearDerailleurIndex+" PowerOnTeeths="+pot+"W/t "+diffTime+"ms");
+                    powerStats.add(info.rearDerailleurIndex,pot);
+                    stats.put(:power,powerStats);
                     // TODO Compute power/teeth
                     // TODO Compute time on sprocket
                     // TODO Compute distance on sprocket
@@ -75,6 +83,11 @@ class GearStat {
         lastTimerTime=info.timerTime;
     }
 
+    public function print() as Void {
+        System.println("GearStat.print");
+        stats.get(:power).print();
+    }
+
 }
 
 public class SprocketStats {
@@ -82,16 +95,19 @@ public class SprocketStats {
     class Stat {
         var sum=0 as Numeric;
         var count=0 as Numeric;
+        function toString() as String {
+            return "Avg="+(count==0?0:sum/count.toDouble()+" ("+sum+"/"+count+")");
+        }
     }
 
     private var name as String;
     private var unit as String;
     private var gears as Array<Stat>;
 
-    public function initialize(gearSize as Number, name as String, unit as String) {
+    public function initialize(gearMaxSize as Number, name as String, unit as String) {
         self.name=name;
         self.unit=unit;
-        gears=new[gearSize] as Array<Stat>;
+        gears=new[gearMaxSize] as Array<Stat>;
         reset();
     }
 
@@ -132,5 +148,12 @@ public class SprocketStats {
 
     public function toString() as String {
         return "SprocketStats["+size()+"]: "+getName()+" "+getUnit();
+    }
+
+    public function print() as Void {
+        System.println("SprocketStats["+size()+"]: "+getName()+" "+getUnit());
+        for(var i=0;i<gears.size();i++){
+            System.println(i+". Sprocket "+gears[i].toString());
+        }
     }
 }
