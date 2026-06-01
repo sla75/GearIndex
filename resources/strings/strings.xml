@@ -13,8 +13,13 @@
 
     <string id="RD_totalshifts_label">Rear Derailleur Shifts</string>
     <string id="RD_totalshifts_unit"> </string>
+
     <string id="RD_gearratio_title">Gear Ratio</string>
     <string id="RD_gearratio_label">Ratio</string>
     <string id="RD_gearratio_unit"> </string>
+
+    <string id="RD_gearindex_title">Gear Index</string>
+    <string id="RD_gearindex_label">Index</string>
+    <string id="RD_gearindex_unit"> </string>
 
 </strings>
