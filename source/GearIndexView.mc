@@ -44,6 +44,11 @@ class GearIndexView extends SlavicsSimpleDataField {
     private var colorMode as ColorMode;
     private var gearFIT as GearFitContributions;
     private var gearStat=new GearStat(GearStat.POWER);
+    private var screen=null as Screen;
+
+    enum Screen {
+        FULL,FIELD
+    }
 
     function initialize() {
         System.println("GearIndexView.initialize()");
@@ -69,6 +74,18 @@ class GearIndexView extends SlavicsSimpleDataField {
         totalShiftsLabel.locX=dc.getWidth()-self.rim;
         totalShiftsLabel.locY=self.labelLine;
         failLabel.locY=dc.getHeight()-Graphics.getFontAscent(Graphics.FONT_SMALL)-rim;
+        if(dc.getHeight()==System.getDeviceSettings().screenHeight){
+            screen=FULL;
+            labelArea.height=dc.getHeight()*0.15f;
+
+            valueArea.locX=rim;
+            valueArea.locY=labelArea.height;
+            valueArea.width=dc.getWidth()-2*rim;
+            valueArea.height=dc.getHeight()-labelArea.height-rim;
+            valueArea.setJustification(Graphics.TEXT_JUSTIFY_RIGHT);
+        } else {
+            screen=FIELD;
+        }
         /***
         System.println("PartNumber: "+System.getDeviceSettings().partNumber);
         System.println("Screen: "+dc.getWidth()+"x"+dc.getHeight());
@@ -170,9 +187,20 @@ class GearIndexView extends SlavicsSimpleDataField {
     }
     var battIcon=new BatteryIcon({:font=>WatchUi.loadResource(Rez.Fonts.BatteryMedium),:justification=>Graphics.TEXT_JUSTIFY_RIGHT});
     var battFont=Graphics.FONT_XTINY;
-
     public function onUpdate(dc as Dc) as Void {
-        System.println("GearIndexView.onUpdate()");
+        if(screen==FIELD){
+            onUpdateField(dc);
+        } else {
+            onUpdateFullScreen(dc);
+        }
+    }
+    public function onUpdateFullScreen(dc as Dc) as Void {
+        System.println("GearIndexView.onUpdateFullScreen()");
+        SlavicsSimpleDataField.onUpdate(dc);
+        gearStat.draw(dc,valueArea.locX,valueArea.locY,valueArea.width,valueArea.height);
+    }
+    public function onUpdateField(dc as Dc) as Void {
+        System.println("GearIndexView.onUpdateField()");
         SlavicsSimpleDataField.onUpdate(dc);
         if(versionTest!=null){
             dc.setColor(Graphics.COLOR_YELLOW,Graphics.COLOR_TRANSPARENT);
