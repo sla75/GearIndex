@@ -108,6 +108,9 @@ class RearShifting {
                 rearDerailleur.shiftFailureCount=0;
             } else {
                 rearDerailleur.gearIndex=System.getClockTime().sec/3%DEBUG_TEETHS.size();
+                if(rearDerailleur.gearIndex==3){
+                    rearDerailleur.gearIndex=5;
+                }
                 rearDerailleur.gearMax=DEBUG_TEETHS.size();
                 rearDerailleur.gearSize=DEBUG_TEETHS[rearDerailleur.gearIndex];
                 rearDerailleur.invalidInboardShiftCount=rearDerailleur.invalidInboardShiftCount==null?0:rearDerailleur.invalidInboardShiftCount;
