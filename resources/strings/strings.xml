@@ -12,10 +12,15 @@
     <string id="property_colorMode_title">List of color modes</string>
     <string id="property_showfailure_title">Show derailleur errors</string>
 
-    <string id="RD_totalshifts_label" translatable="false">Total Shifts</string>
-    <string id="RD_totalshifts_unit" translatable="false">.</string>
-    <string id="RD_gearratio_title" translatable="false">Gear Ratio Graph</string>
-    <string id="RD_gearratio_label" translatable="false">Ratio</string>
-    <string id="RD_gearratio_unit" translatable="false">.</string>
+    <string id="RD_totalshifts_label">Rear Derailleur Shifts</string>
+    <string id="RD_totalshifts_unit"> </string>
+
+    <string id="RD_gearratio_title">Gear Ratio</string>
+    <string id="RD_gearratio_label">Ratio</string>
+    <string id="RD_gearratio_unit"> </string>
+
+    <string id="RD_gearindex_title">Gear Index</string>
+    <string id="RD_gearindex_label">Index</string>
+    <string id="RD_gearindex_unit"> </string>
 
 </strings>
