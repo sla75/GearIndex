@@ -2,6 +2,7 @@
 
     <properties>
         <property id="property_version" type="string">0.0.0</property>
+        <property id="property_fitFileSaving" type="boolean">true</property>
         <property id="property_showteeth" type="boolean">true</property>
         <property id="property_nightMode" type="boolean">false</property>
         <property id="property_colorMode" type="number">0</property>
@@ -11,6 +12,9 @@
     <settings>
         <setting propertyKey="@Properties.property_version" title="@Strings.property_version_title">
             <settingConfig type="alphaNumeric" readonly="true"/>
+        </setting>
+        <setting propertyKey="@Properties.property_fitFileSaving" title="@Strings.property_fitFileSaving_title">
+            <settingConfig type="boolean" required="true" />
         </setting>
         <setting propertyKey="@Properties.property_showteeth" title="@Strings.property_showteeth_title">
             <settingConfig type="boolean" required="true" />
@@ -33,18 +37,27 @@
     <fitContributions>
         <fitField id="0" 
 			displayInActivitySummary="true" 
-			sortOrder = "1" 
+			sortOrder = "0" 
 			dataLabel="@Strings.RD_totalshifts_label"
             unitLabel="@Strings.RD_totalshifts_unit" 
   	    />
 		<fitField id="1" 
 			displayInChart="true" 
-			sortOrder = "0" 
+			sortOrder = "1" 
 			precision="2"
 			chartTitle="@Strings.RD_gearratio_title" 
 			dataLabel="@Strings.RD_gearratio_label"
             unitLabel="@Strings.RD_gearratio_unit" 
 			fillColor="#AA0000"
+		/>
+        <fitField id="2" 
+			displayInChart="true" 
+			sortOrder = "2" 
+			precision="0"
+			chartTitle="@Strings.RD_gearindex_title" 
+			dataLabel="@Strings.RD_gearindex_label"
+            unitLabel="@Strings.RD_gearindex_unit" 
+			fillColor="#FF8C00"
 		/>
 		<!--fitField id="1" 
 			displayInChart="true"

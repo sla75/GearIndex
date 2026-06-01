@@ -106,12 +106,14 @@ class GearIndexView extends SlavicsSimpleDataField {
         totalShiftsLabel.setColor(colorMode.getFieldColor(:label));
         if(rds!=null){
                 if(rds.gearIndex!=null&&rds.gearIndex!=AntPlus.REAR_GEAR_INVALID){
+                    gearFIT.setIndex(rds.gearIndex);
                     if(rearShift.getFrontDerailleurStatus()!=null){
                         gearFIT.setDerailleurs(rearShift.getFrontDerailleurStatus().gearSize,rds.gearSize);
                     }
                     if(rds.gearIndex!=lastIndex){
+                        gearFIT.changeIndex(rds.gearIndex-lastIndex);
                         valueArea.setColor(colorMode.getFieldColor(:valueChange));
-                        totalShiftsLabel.setText(gearFIT.getTotalShifts().toString()+" sh");
+                        totalShiftsLabel.setText(gearFIT.getTotalShifts().toString()+"x");
                     } else if(rds.gearIndex==0||rds.gearIndex==rds.gearMax-1){
                         valueArea.setColor(colorMode.getFieldColor(:valueEdge));
                     }
