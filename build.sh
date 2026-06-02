@@ -28,8 +28,10 @@ PROJECT_FOLDER=${PWD}
 
 # Branch name
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
+GITCOUNT=$(git rev-list --count HEAD)
+GITCOUNT=$(git log "${APP_VERSION}.0"..HEAD | wc -l)
 
-echo "Branch ${BRANCH} ${SYSTEM}"
+echo "Branch ${BRANCH} ${SYSTEM} v. ${APP_VERSION}"
 APP_ID="c4755d9c-e9e1-4924-b458-04e708ce8888" # DEVELOP
 
 if [[ ${BRANCH} == "main" ]]; then
@@ -49,9 +51,6 @@ else
     APP_VERSION=${APP_VERSION}.${BRANCH}
     APP_NAME="${APP_NAME}Test"
 fi;
-
-GITCOUNT=$(git rev-list --count HEAD)
-GITCOUNT=$(git log "${APP_VERSION}.0"..HEAD | wc -l)
 
 echo "  Write Application@id=${APP_ID} on ${BRANCH} on version ${APP_VERSION}"
 echo -e "setns iq=http://www.garmin.com/xml/connectiq\ncd //iq:manifest/iq:application/@id\nset ${APP_ID}\nsave\nbye" | xmllint --shell manifest.xml | grep -v ">" 
