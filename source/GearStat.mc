@@ -2,21 +2,22 @@ import Toybox.Activity;
 import Toybox.AntPlus;
 import Toybox.Graphics;
 import Toybox.Lang;
+import Toybox.Time;
 
 class GearStat {
 
 
     enum PreferedMeasure {
-        DEFAULT,
+        AUTO,
         CADENCE,
         POWER
     }
 
-    private var lastDistance=0 as Float;
+    private var lastDistance=null as Float;
     private var lastTimerTime=0 as Number;
     private var prefered as PreferedMeasure;
     private var currentIndex=null as Number;
-    private var stats={:power=>null,:time=>null,:distance=>null} as Dictionary<Symbol,SprocketStats>;
+    private var stats={} as Dictionary<Symbol,SprocketStats>;
 
     public function initialize(preferedMeasure as PreferedMeasure) {
         self.prefered=preferedMeasure;
@@ -30,100 +31,112 @@ class GearStat {
         info.rearDerailleurSize=DEBUG_TEETHS[info.rearDerailleurIndex];
         info.currentPower=50+Math.rand()%300;
         info.currentCadence=50+Math.rand()%70;
+        info.elapsedDistance=10*(System.getClockTime().hour*360000+System.getClockTime().min*6000+System.getClockTime().sec*100+Math.rand()%100)/10f;
         if(System.getClockTime().sec%20==3){
             info.currentPower=null;
             info.currentCadence=null;
+            System.println("GearStat.compute() DEBUG Power, Cadence set NULL");
         }
         System.println("GearStat.compute() DEBUG Derailleur"+info.frontDerailleurSize+"/"+info.rearDerailleurSize+"["+info.rearDerailleurIndex+"] cadence="+info.currentCadence+" power="+info.currentPower);
-        computePowerOnSprocket(info);
+        computeGraph(info);
     }
     (:release)
     public function compute(info as Activity.Info) {
-        computePowerOnSprocket(info);
+        computeGraph(info);
     }
-    private  function computePowerOnSprocket(info as Activity.Info) {
+    private  function computeGraph(info as Activity.Info) {
         if(info==null || info.frontDerailleurSize==null || info.rearDerailleurSize==null){
             currentIndex=null;
             return;
         }
-        if(info.timerState==Activity.TIMER_STATE_ON&&info.elapsedDistance!=null){
+        var elapsedDistance=info.elapsedDistance==null?0f:info.elapsedDistance;
+        if(lastDistance==null){
+            lastDistance=elapsedDistance;
+        }
+        System.println("GearStat.computeGraph() timerState="+info.timerState+" distance="+elapsedDistance+" / "+lastDistance);
+        var diffDistance=elapsedDistance-lastDistance;
+        System.println("GearStat.computeGraph() timerState="+info.timerState+"     diff="+diffDistance);
+        if(lastTimerTime==Activity.TIMER_STATE_OFF&&info.timerState==Activity.TIMER_STATE_ON){
+            System.println("GearStat.computeGraph() START");
+            stats={} as Dictionary<Symbol,SprocketStats>;
+            lastDistance=elapsedDistance;
+        } else if((info.timerState==Activity.TIMER_STATE_ON||info.timerState==Activity.TIMER_STATE_OFF)&&diffDistance!=0){
             
-            System.println("GearStat.compute() elapsedDistance="+info.elapsedDistance+"-"+lastDistance);
-            var diffDistance=info.elapsedDistance-lastDistance;
-            var diffTime=info.timerTime-lastTimerTime;
-            if(prefered==POWER&&info.currentPower!=null){
+            System.println("GearStat.computeGraph() PLAY elapsedDistance="+info.elapsedDistance+"-"+lastDistance);
+
+            var distanceStats=stats.get(:distance) as SprocketStats;
+            if(stats.get(:distance)==null){
+                distanceStats=new SprocketStats(info.rearDerailleurMax,"Distance on Gear","m",SprocketStats.TYPE_SUM,Graphics.COLOR_BLUE);
+            }
+
+            if((prefered==POWER||prefered==AUTO)&&info.currentPower!=null){
                 if(info.currentPower>0&&info.rearDerailleurSize!=0&&info.rearDerailleurSize!=AntPlus.FRONT_GEAR_INVALID){
                     var powerStats=stats.get(:power) as SprocketStats;
                     if(stats.get(:power)==null){
-                        powerStats=new SprocketStats(info.rearDerailleurMax,"Power on Sprocket","W",Graphics.COLOR_DK_RED);
+                        powerStats=new SprocketStats(info.rearDerailleurMax,"Power on Gear","W",SprocketStats.TYPE_AVG,Graphics.COLOR_DK_RED);
                     }
-                    System.println("GearStat.compute() Sprocket "+info.rearDerailleurIndex+" PowerOnSprocket="+info.currentPower+"W "+diffTime+"ms");
+                    var powerTeeth=stats.get(:powerTeeths) as SprocketStats;
+                    if(stats.get(:powerTeeths)==null){
+                        powerTeeth=new SprocketStats(info.rearDerailleurMax,"Power at Teeths","W/t",SprocketStats.TYPE_AVG,Graphics.COLOR_DK_GREEN);
+                    }        
+                    System.println("GearStat.computeGraph() by POWER Sprocket "+info.rearDerailleurIndex+" on Power="+info.currentPower+"W and Distance="+diffDistance+"m");
                     currentIndex=info.rearDerailleurIndex;
-                    powerStats.addDiff(info.rearDerailleurIndex,info.currentPower,diffTime);
+                    powerStats.addDiff(info.rearDerailleurIndex,info.currentPower,diffDistance);
                     stats.put(:power,powerStats);
 
-                    var distanceStats=stats.get(:distance) as SprocketStats;
-                    if(stats.get(:distance)==null){
-                        distanceStats=new SprocketStats(info.rearDerailleurMax,"Distance on Sprocket","m",Graphics.COLOR_BLUE);
-                    }
-                    System.println("GearStat.compute() Sprocket "+info.rearDerailleurIndex+" Distance="+diffDistance+"m");
-                    distanceStats.addDiff(info.rearDerailleurIndex,1,diffDistance);
+                    powerTeeth.addDiff(info.rearDerailleurIndex,info.currentPower/info.rearDerailleurSize,diffDistance);
+                    stats.put(:powerTeeths,powerTeeth);
+
+                    distanceStats.add(info.rearDerailleurIndex,diffDistance);
                     stats.put(:distance,distanceStats);
-                    // TODO Compute power/sprocket
-                    // TODO Compute time on sprocket
-                    // TODO Compute distance on sprocket
                 }
                 lastTimerTime=info.timerTime;
-            }else if(prefered==CADENCE&&info.currentCadence!=null){
+            }else if((prefered==CADENCE||prefered==AUTO)&&info.currentCadence!=null){
                 if(info.currentCadence>0){
-                    System.println("GearStat.compute() CADENCE");
-                    // TODO Compute time on sprocket
-                    // TODO Compute distance on sprocket
+                    System.println("GearStat.computeGraph() by CADENCE "+info.currentCadence+" on Distance="+diffDistance+"m");
+                    distanceStats.addDiff(info.rearDerailleurIndex,1,diffDistance);
+                    stats.put(:distance,distanceStats);
                 }
             } else {
-                System.println("GearStat.compute() DEFAULT");
-                // TODO Compute time on sprocket
-                // TODO Compute distance on sprocket
+                System.println("GearStat.computeGraph() by DEFAULT "+info.currentCadence+" on Distance="+diffDistance+"m");
+                distanceStats.addDiff(info.rearDerailleurIndex,1,diffDistance);
+                stats.put(:distance,distanceStats);
             }
-            setLast(info);
-            stats.get(:power).print();
+            lastDistance=elapsedDistance;
+        } else if(lastTimerTime==Activity.TIMER_STATE_PAUSED){
+            System.println("GearStat.computeGraph() PAUSE");
+            lastDistance=elapsedDistance;
+        } else if(lastTimerTime==Activity.TIMER_STATE_STOPPED&&info.timerState==Activity.TIMER_STATE_OFF){
+            System.println("GearStat.computeGraph() RESET");
+            stats={} as Dictionary<Symbol,SprocketStats>;
+            lastDistance=elapsedDistance;
         }
+        lastTimerTime=info.timerState;
     }
     private function reset() as Void {
         stats={} as Dictionary<Symbol,SprocketStats>;
     }
-    private function setLast(info as Activity.Info){
-        System.println("GearStat.compute setLast");
-        lastDistance=info.elapsedDistance;
-        lastTimerTime=info.timerTime;
-    }
 
     public function print() as Void {
         System.println("GearStat.print");
-        stats.get(:power).print();
+        //stats.get(:power).print();
     }
     public function draw(dc as Dc, locX as Number, locY as Number, width as Number, height as Number) as Void{
         //dc.setColor(Graphics.COLOR_YELLOW,Graphics.COLOR_TRANSPARENT);
         //dc.drawRectangle(locX,locY,width,height);
-        var ss=null;
-        switch(System.getClockTime().sec/50){
-            case 0:
-                System.println("Draw :power");
-                ss=stats.get(:power) as SprocketStats;
-                break;
-            default:
-            System.println("Draw :distance");
-                ss=stats.get(:distance) as SprocketStats;
-        }
-        if(ss==null){
+        if(stats.size()==0){
+            dc.setColor(Graphics.COLOR_LT_GRAY,Graphics.COLOR_TRANSPARENT);
+            dc.drawText(locX+width/2,locY+height/2,Graphics.FONT_SMALL,"No Data",Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
             return;
         }
-        
-        var max=ss.getAvg(0);var maxI=0;
+        var ss=(stats.values() as Array)[System.getClockTime().sec/(60/stats.size())];
+        ss.print();
+        var max=ss.getValue(0);
+        //var maxI=0;
         for(var i=1;i<ss.size();i++){
-            if(max<ss.getAvg(i)){
-                maxI=i;
-                max=ss.getAvg(i);
+            if(max<ss.getValue(i)){
+                //maxI=i;
+                max=ss.getValue(i);
             }
         }
         if(max!=0){
@@ -135,15 +148,21 @@ class GearStat {
             var y=locY+(height/2)-(h*ss.size()/2)-(space*(ss.size()-1)/2);
             dc.setPenWidth(2);
             for(var i=0;i<ss.size();i++){
-                var avg=ss.getAvg(i);
-                if(avg!=0){
+                var value=ss.getValue(i);
+                if(value!=0){
+                    var textValue="" as String;
+                    if(value>950){
+                        textValue=(value/1000f).format("%0.2f")+"k"+ss.getUnit();
+                    } else {
+                        textValue=value.format("%d")+""+ss.getUnit();
+                    }
                     if(i==currentIndex){
                         dc.setColor(Graphics.COLOR_ORANGE,Graphics.COLOR_TRANSPARENT);
                     } else {
                         dc.setColor(ss.getColor(),Graphics.COLOR_TRANSPARENT);
                     }
-                    dc.fillRoundedRectangle(locX,y,ks*avg,h,h/6);    
-                    dc.drawText(locX+width,y+hf+(h+space)/2,Graphics.FONT_SMALL,avg.toNumber()+ss.getUnit(),Graphics.TEXT_JUSTIFY_RIGHT|Graphics.TEXT_JUSTIFY_VCENTER);
+                    dc.fillRoundedRectangle(locX,y,ks*value,h,h/6);    
+                    dc.drawText(locX+width,y+hf+(h+space)/2,Graphics.FONT_SMALL,textValue,Graphics.TEXT_JUSTIFY_RIGHT|Graphics.TEXT_JUSTIFY_VCENTER);
                     
                     dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_TRANSPARENT);
                     dc.drawText(hf+locX+1,y+hf+(h+space)/2+1,Graphics.FONT_SMALL,(i+1),Graphics.TEXT_JUSTIFY_LEFT|Graphics.TEXT_JUSTIFY_VCENTER);
@@ -151,15 +170,17 @@ class GearStat {
                     dc.drawText(hf+locX,y+hf+(h+space)/2,Graphics.FONT_SMALL,(i+1),Graphics.TEXT_JUSTIFY_LEFT|Graphics.TEXT_JUSTIFY_VCENTER);
 
                     dc.setColor(Graphics.COLOR_LT_GRAY,Graphics.COLOR_TRANSPARENT);
-                    dc.drawRoundedRectangle(locX,y,ks*avg,h,h/6);
+                    dc.drawRoundedRectangle(locX,y,ks*value,h,h/6);
                 }
                 y+=h+space;
             }
         }
-        dc.setColor(Graphics.COLOR_DK_GRAY,Graphics.COLOR_TRANSPARENT);
-        dc.drawText(locX+width/2+1,locY+height/2+1,Graphics.FONT_SMALL,ss.getName(),Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-        dc.setColor(Graphics.COLOR_LT_GRAY,Graphics.COLOR_TRANSPARENT);
-        dc.drawText(locX+width/2,locY+height/2,Graphics.FONT_SMALL,ss.getName(),Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+        //dc.setColor(Graphics.COLOR_LT_GRAY,Graphics.COLOR_TRANSPARENT);
+        //dc.drawText(locX-1,locY-1,Graphics.FONT_SMALL,ss.getName(),Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+        //dc.setColor(Graphics.COLOR_DK_GRAY,Graphics.COLOR_TRANSPARENT);
+        //dc.drawText(locX+1,locY+1,Graphics.FONT_SMALL,ss.getName(),Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_TRANSPARENT);
+        dc.drawText(locX,locY,Graphics.FONT_SMALL,ss.getName(),Graphics.TEXT_JUSTIFY_LEFT);
     }
 }
 
@@ -173,37 +194,42 @@ public class SprocketStats {
         }
     }
 
+    enum Type_Value {
+        TYPE_AVG,TYPE_SUM,TYPE_COUNT
+    }
+    private var type as Type_Value;
     private var name as String;
     private var unit as String;
     private var gears as Array<Stat>;
     private var color as Graphics.ColorType;
 
-    public function initialize(gearMaxSize as Number, name as String, unit as String, color as Graphics.ColorType) {
+    public function initialize(gearMaxSize as Number, name as String, unit as String, type as Type_Value, color as Graphics.ColorType) {
+        self.type=type;
+        self.color=color;
         self.name=name;
         self.unit=unit;
-        self.color=color;
         gears=new[gearMaxSize] as Array<Stat>;
         reset();
     }
 
-    public function add(sprocket as Number,value as Numeric) as Void {
-        gears[sprocket].sum+=value;
-        gears[sprocket].count+=1;
+    public function add(gearIndex as Number,value as Numeric) as Void {
+        gears[gearIndex].sum+=value;
+        gears[gearIndex].count+=1;
     }
 
-    public function addDiff(sprocket as Number,value as Numeric, range as Numeric) as Void {
-        gears[sprocket].sum+=value*range;
-        gears[sprocket].count+=range;
+    public function addDiff(gearIndex as Number,value as Numeric, range as Numeric) as Void {
+        gears[gearIndex].sum+=value*range;
+        gears[gearIndex].count+=range;
     }
 
-    public function getSum(sprocket as Number) as Numeric{
-        return gears[sprocket].sum;
+    public function getSum(gearIndex as Number) as Numeric{
+        return gears[gearIndex].sum;
     }
-    public function getCount(sprocket as Number) as Numeric{
-        return gears[sprocket].count;
+    public function getCount(gearIndex as Number) as Numeric{
+        return gears[gearIndex].count;
     }
-    public function getAvg(sprocket as Number) as Numeric{
-        return getCount(sprocket)>0?getSum(sprocket)/getCount(sprocket).toDouble():0;
+    public function getAvg(gearIndex as Number) as Numeric{
+        return getCount(gearIndex)>0?getSum(gearIndex)/getCount(gearIndex).toDouble():0;
     }
     public function getName() as String{
         return self.name;
@@ -213,6 +239,21 @@ public class SprocketStats {
     }
     public function size() as Number{
         return gears.size();
+    }
+    public function setColor(color as Graphics.ColorType) as Void{
+        self.color=color;
+    }
+    public function getValue(gearIndex as Number) as Numeric{
+        switch(type){
+            case TYPE_AVG:
+                return getAvg(gearIndex);
+            case TYPE_SUM:
+                return gears[gearIndex].sum;
+            case TYPE_COUNT:
+                return gears[gearIndex].count;
+            default:
+                return 0;
+        }
     }
     public function getColor() as Number{
         return color;
@@ -231,7 +272,7 @@ public class SprocketStats {
     public function print() as Void {
         System.println("SprocketStats["+size()+"]: "+getName());
         for(var i=0;i<gears.size();i++){
-            System.println(i+". Sprocket "+getAvg(i)+getUnit());
+            System.println(i+". Sprocket "+getValue(i)+getUnit());
         }
     }
 }
