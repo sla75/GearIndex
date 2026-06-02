@@ -110,22 +110,22 @@ echo -e "########################################\n"
 xmllint --xpath "//strings/string[@id='AppName']/text()" ${APP_FILE}
 xmllint --xpath "//strings/string[@id='version']/text()" ${APP_FILE}
 
-git checkout -b "${APP_VERSION}.${GITCOUNT}"
-git add .
-git commit "Build ${APP_VERSION}.${GITCOUNT}"
-git checkout ${BRANCH}
+#git checkout -b "${APP_VERSION}.${GITCOUNT}"
+#git add .
+#git commit "Build ${APP_VERSION}.${GITCOUNT}"
+#git checkout ${BRANCH}
 
-if [[ ${BRANCH}=="main" || ${BRANCH}=="test" ]]; then
-    echo "Poslat do GITHUBu."
-fi;
+#if [[ ${BRANCH}=="main" || ${BRANCH}=="test" ]]; then
+#    echo "Poslat do GITHUBu."
+#fi;
 
 echo "RESTORE Application@id=${APP_ID} in manifest.xml and ${APP_FILE}"
 git restore --staged manifest.xml ${APP_FILE}
 git restore manifest.xml ${APP_FILE}
 
-git status
-git add .
-git commit -m "Build ${APP_VERSION}.${GITCOUNT}"
+#git status
+#git add .
+#git commit -m "Build ${APP_VERSION}.${GITCOUNT}"
 
 # TODO check restore
 grep "iq:application id" manifest.xml
