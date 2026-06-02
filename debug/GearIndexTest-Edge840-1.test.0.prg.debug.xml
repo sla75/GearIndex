@@ -1,0 +1,1257 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<debugInfo>
+    <manifest filename="/home/slavic01/Dokumenty/Garmin/GearIndex/manifest.xml"/>
+    <pcToLineNum>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexApp.mc" id="1" lineNum="34" parent="globals" pc="268435457" symbol="getApp"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexApp.mc" id="1" lineNum="35" parent="globals" pc="268435467" symbol="getApp"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleView.mc" id="2" lineNum="8" parent="globals/SlavicsSimpleView" pc="268435478" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleView.mc" id="2" lineNum="9" parent="globals/SlavicsSimpleView" pc="268435489" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexApp.mc" id="3" lineNum="5" parent="globals/GearIndexApp" pc="268435541" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/bin/gen/006-B4062-00/source/Rez.mcgen" id="4" lineNum="7" parent="globals/Rez" pc="268435553" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="5" lineNum="26" parent="globals/ColorMode" pc="268435573" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="5" lineNum="42" parent="globals/ColorMode" pc="268435733" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="5" lineNum="51" parent="globals/ColorMode" pc="268435821" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="5" lineNum="60" parent="globals/ColorMode" pc="268435908" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="5" lineNum="76" parent="globals/ColorMode" pc="268436064" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="6" lineNum="10" parent="globals/ColorMode/&lt;statics&gt;" pc="268436077" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="6" lineNum="12" parent="globals/ColorMode/&lt;statics&gt;" pc="268436089" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="7" lineNum="8" parent="globals/SlavicsSimpleDataField" pc="268436102" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="7" lineNum="10" parent="globals/SlavicsSimpleDataField" pc="268436113" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="7" lineNum="22" parent="globals/SlavicsSimpleDataField" pc="268436125" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="7" lineNum="28" parent="globals/SlavicsSimpleDataField" pc="268436210" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="7" lineNum="36" parent="globals/SlavicsSimpleDataField" pc="268436283" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="8" lineNum="10" parent="globals/GearIndexView" pc="268436324" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="8" lineNum="13" parent="globals/GearIndexView" pc="268436335" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="8" lineNum="14" parent="globals/GearIndexView" pc="268436360" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="8" lineNum="15" parent="globals/GearIndexView" pc="268436369" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="8" lineNum="16" parent="globals/GearIndexView" pc="268436404" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="8" lineNum="23" parent="globals/GearIndexView" pc="268436499" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="8" lineNum="28" parent="globals/GearIndexView" pc="268436559" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="8" lineNum="33" parent="globals/GearIndexView" pc="268436618" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="8" lineNum="46" parent="globals/GearIndexView" pc="268436690" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="8" lineNum="188" parent="globals/GearIndexView" pc="268436717" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="9" lineNum="6" parent="globals/BatteryIcon" pc="268436792" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="10" lineNum="18" parent="globals/BatteryIcon/&lt;statics&gt;" pc="268436804" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="10" lineNum="19" parent="globals/BatteryIcon/&lt;statics&gt;" pc="268436816" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="10" lineNum="30" parent="globals/BatteryIcon/&lt;statics&gt;" pc="268436828" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/RearShifting.mc" id="11" lineNum="33" parent="globals/RearShifting" pc="268436841" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/RearShifting.mc" id="12" lineNum="16" parent="globals/RearShifting/&lt;statics&gt;" pc="268436893" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/RearShifting.mc" id="12" lineNum="18" parent="globals/RearShifting/&lt;statics&gt;" pc="268436905" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/AlertMessage.mc" id="13" lineNum="20" parent="globals/AlertMessage" pc="268436918" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/AlertMessage.mc" id="13" lineNum="25" parent="globals/AlertMessage" pc="268436929" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/AlertMessage.mc" id="13" lineNum="26" parent="globals/AlertMessage" pc="268436967" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="14" lineNum="20" parent="globals/GearStat" pc="268436989" symbol="&lt;init&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleView.mc" id="15" lineNum="22" parent="globals/SlavicsSimpleView" pc="268436999" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleView.mc" id="15" lineNum="23" parent="globals/SlavicsSimpleView" pc="268437002" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleView.mc" id="15" lineNum="24" parent="globals/SlavicsSimpleView" pc="268437015" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleView.mc" id="15" lineNum="25" parent="globals/SlavicsSimpleView" pc="268437032" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleView.mc" id="15" lineNum="26" parent="globals/SlavicsSimpleView" pc="268437039" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleView.mc" id="15" lineNum="29" parent="globals/SlavicsSimpleView" pc="268437055" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleView.mc" id="15" lineNum="32" parent="globals/SlavicsSimpleView" pc="268437071" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleView.mc" id="15" lineNum="27" parent="globals/SlavicsSimpleView" pc="268437074" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleView.mc" id="15" lineNum="28" parent="globals/SlavicsSimpleView" pc="268437141" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleView.mc" id="15" lineNum="30" parent="globals/SlavicsSimpleView" pc="268437144" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleView.mc" id="15" lineNum="31" parent="globals/SlavicsSimpleView" pc="268437156" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleView.mc" id="15" lineNum="33" parent="globals/SlavicsSimpleView" pc="268437159" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleView.mc" id="15" lineNum="37" parent="globals/SlavicsSimpleView" pc="268437184" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleView.mc" id="15" lineNum="38" parent="globals/SlavicsSimpleView" pc="268437197" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleView.mc" id="15" lineNum="39" parent="globals/SlavicsSimpleView" pc="268437203" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleView.mc" id="15" lineNum="40" parent="globals/SlavicsSimpleView" pc="268437221" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleView.mc" id="15" lineNum="42" parent="globals/SlavicsSimpleView" pc="268437243" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleView.mc" id="15" lineNum="46" parent="globals/SlavicsSimpleView" pc="268437249" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleView.mc" id="16" lineNum="12" parent="globals/SlavicsSimpleView" pc="268437255" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleView.mc" id="16" lineNum="13" parent="globals/SlavicsSimpleView" pc="268437257" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleView.mc" id="16" lineNum="14" parent="globals/SlavicsSimpleView" pc="268437269" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleView.mc" id="16" lineNum="15" parent="globals/SlavicsSimpleView" pc="268437307" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexApp.mc" id="18" lineNum="26" parent="globals/GearIndexApp" pc="268437320" symbol="onSettingsChanged"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexApp.mc" id="18" lineNum="27" parent="globals/GearIndexApp" pc="268437322" symbol="onSettingsChanged"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexApp.mc" id="18" lineNum="28" parent="globals/GearIndexApp" pc="268437340" symbol="onSettingsChanged"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexApp.mc" id="18" lineNum="29" parent="globals/GearIndexApp" pc="268437352" symbol="onSettingsChanged"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexApp.mc" id="19" lineNum="20" parent="globals/GearIndexApp" pc="268437364" symbol="getInitialView"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexApp.mc" id="19" lineNum="21" parent="globals/GearIndexApp" pc="268437366" symbol="getInitialView"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexApp.mc" id="19" lineNum="22" parent="globals/GearIndexApp" pc="268437391" symbol="getInitialView"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexApp.mc" id="20" lineNum="7" parent="globals/GearIndexApp" pc="268437404" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexApp.mc" id="20" lineNum="8" parent="globals/GearIndexApp" pc="268437406" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="22" lineNum="81" parent="globals/ColorMode" pc="268437419" symbol="handleSettingUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="22" lineNum="82" parent="globals/ColorMode" pc="268437421" symbol="handleSettingUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="22" lineNum="83" parent="globals/ColorMode" pc="268437463" symbol="handleSettingUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="22" lineNum="84" parent="globals/ColorMode" pc="268437480" symbol="handleSettingUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="22" lineNum="87" parent="globals/ColorMode" pc="268437495" symbol="handleSettingUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="22" lineNum="90" parent="globals/ColorMode" pc="268437511" symbol="handleSettingUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="22" lineNum="93" parent="globals/ColorMode" pc="268437527" symbol="handleSettingUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="22" lineNum="96" parent="globals/ColorMode" pc="268437543" symbol="handleSettingUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="22" lineNum="85" parent="globals/ColorMode" pc="268437546" symbol="handleSettingUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="22" lineNum="86" parent="globals/ColorMode" pc="268437558" symbol="handleSettingUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="22" lineNum="88" parent="globals/ColorMode" pc="268437561" symbol="handleSettingUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="22" lineNum="89" parent="globals/ColorMode" pc="268437573" symbol="handleSettingUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="22" lineNum="91" parent="globals/ColorMode" pc="268437576" symbol="handleSettingUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="22" lineNum="92" parent="globals/ColorMode" pc="268437588" symbol="handleSettingUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="22" lineNum="94" parent="globals/ColorMode" pc="268437591" symbol="handleSettingUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="22" lineNum="95" parent="globals/ColorMode" pc="268437603" symbol="handleSettingUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="22" lineNum="97" parent="globals/ColorMode" pc="268437606" symbol="handleSettingUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="22" lineNum="98" parent="globals/ColorMode" pc="268437618" symbol="handleSettingUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="22" lineNum="100" parent="globals/ColorMode" pc="268437619" symbol="handleSettingUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="22" lineNum="101" parent="globals/ColorMode" pc="268437641" symbol="handleSettingUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="23" lineNum="107" parent="globals/ColorMode" pc="268437679" symbol="getFieldColor"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="23" lineNum="108" parent="globals/ColorMode" pc="268437681" symbol="getFieldColor"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="24" lineNum="104" parent="globals/ColorMode" pc="268437726" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="24" lineNum="105" parent="globals/ColorMode" pc="268437728" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="25" lineNum="110" parent="globals/ColorMode" pc="268437790" symbol="getColors"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="25" lineNum="111" parent="globals/ColorMode" pc="268437792" symbol="getColors"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="26" lineNum="77" parent="globals/ColorMode" pc="268437827" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/ColorMode.mc" id="26" lineNum="78" parent="globals/ColorMode" pc="268437829" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="27" lineNum="215" parent="globals/SprocketStats" pc="268437848" symbol="add"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="27" lineNum="216" parent="globals/SprocketStats" pc="268437850" symbol="add"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="27" lineNum="217" parent="globals/SprocketStats" pc="268437872" symbol="add"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="28" lineNum="234" parent="globals/SprocketStats" pc="268437895" symbol="getName"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="28" lineNum="235" parent="globals/SprocketStats" pc="268437897" symbol="getName"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="29" lineNum="220" parent="globals/SprocketStats" pc="268437903" symbol="addDiff"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="29" lineNum="221" parent="globals/SprocketStats" pc="268437905" symbol="addDiff"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="29" lineNum="222" parent="globals/SprocketStats" pc="268437930" symbol="addDiff"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="30" lineNum="258" parent="globals/SprocketStats" pc="268437953" symbol="getColor"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="30" lineNum="259" parent="globals/SprocketStats" pc="268437955" symbol="getColor"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="31" lineNum="246" parent="globals/SprocketStats" pc="268437961" symbol="getValue"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="31" lineNum="247" parent="globals/SprocketStats" pc="268437963" symbol="getValue"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="31" lineNum="248" parent="globals/SprocketStats" pc="268437968" symbol="getValue"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="31" lineNum="250" parent="globals/SprocketStats" pc="268437983" symbol="getValue"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="31" lineNum="252" parent="globals/SprocketStats" pc="268437999" symbol="getValue"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="31" lineNum="254" parent="globals/SprocketStats" pc="268438015" symbol="getValue"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="31" lineNum="249" parent="globals/SprocketStats" pc="268438018" symbol="getValue"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="31" lineNum="251" parent="globals/SprocketStats" pc="268438029" symbol="getValue"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="31" lineNum="253" parent="globals/SprocketStats" pc="268438043" symbol="getValue"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="31" lineNum="255" parent="globals/SprocketStats" pc="268438057" symbol="getValue"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="32" lineNum="272" parent="globals/SprocketStats" pc="268438061" symbol="print"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="32" lineNum="273" parent="globals/SprocketStats" pc="268438064" symbol="print"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="32" lineNum="274" parent="globals/SprocketStats" pc="268438102" symbol="print"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="32" lineNum="275" parent="globals/SprocketStats" pc="268438122" symbol="print"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="33" lineNum="243" parent="globals/SprocketStats" pc="268438172" symbol="setColor"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="33" lineNum="244" parent="globals/SprocketStats" pc="268438174" symbol="setColor"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="34" lineNum="231" parent="globals/SprocketStats" pc="268438184" symbol="getAvg"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="34" lineNum="232" parent="globals/SprocketStats" pc="268438186" symbol="getAvg"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="35" lineNum="240" parent="globals/SprocketStats" pc="268438233" symbol="size"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="35" lineNum="241" parent="globals/SprocketStats" pc="268438235" symbol="size"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="36" lineNum="261" parent="globals/SprocketStats" pc="268438247" symbol="reset"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="36" lineNum="262" parent="globals/SprocketStats" pc="268438250" symbol="reset"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="36" lineNum="263" parent="globals/SprocketStats" pc="268438269" symbol="reset"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="36" lineNum="264" parent="globals/SprocketStats" pc="268438289" symbol="reset"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="37" lineNum="268" parent="globals/SprocketStats" pc="268438326" symbol="toString"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="37" lineNum="269" parent="globals/SprocketStats" pc="268438328" symbol="toString"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="38" lineNum="206" parent="globals/SprocketStats" pc="268438367" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="38" lineNum="207" parent="globals/SprocketStats" pc="268438369" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="38" lineNum="208" parent="globals/SprocketStats" pc="268438378" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="38" lineNum="209" parent="globals/SprocketStats" pc="268438387" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="38" lineNum="210" parent="globals/SprocketStats" pc="268438396" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="38" lineNum="211" parent="globals/SprocketStats" pc="268438405" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="38" lineNum="212" parent="globals/SprocketStats" pc="268438415" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="39" lineNum="237" parent="globals/SprocketStats" pc="268438423" symbol="getUnit"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="39" lineNum="238" parent="globals/SprocketStats" pc="268438425" symbol="getUnit"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="40" lineNum="225" parent="globals/SprocketStats" pc="268438431" symbol="getSum"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="40" lineNum="226" parent="globals/SprocketStats" pc="268438433" symbol="getSum"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="41" lineNum="228" parent="globals/SprocketStats" pc="268438447" symbol="getCount"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="41" lineNum="229" parent="globals/SprocketStats" pc="268438449" symbol="getCount"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="42" lineNum="68" parent="globals/SlavicsSimpleDataField" pc="268438463" symbol="setTextValue"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="42" lineNum="70" parent="globals/SlavicsSimpleDataField" pc="268438465" symbol="setTextValue"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="43" lineNum="45" parent="globals/SlavicsSimpleDataField" pc="268438496" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="43" lineNum="46" parent="globals/SlavicsSimpleDataField" pc="268438498" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="43" lineNum="47" parent="globals/SlavicsSimpleDataField" pc="268438538" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="43" lineNum="48" parent="globals/SlavicsSimpleDataField" pc="268438558" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="43" lineNum="50" parent="globals/SlavicsSimpleDataField" pc="268438578" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="43" lineNum="51" parent="globals/SlavicsSimpleDataField" pc="268438590" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="43" lineNum="52" parent="globals/SlavicsSimpleDataField" pc="268438606" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="43" lineNum="53" parent="globals/SlavicsSimpleDataField" pc="268438624" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="43" lineNum="54" parent="globals/SlavicsSimpleDataField" pc="268438646" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="43" lineNum="56" parent="globals/SlavicsSimpleDataField" pc="268438662" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="43" lineNum="57" parent="globals/SlavicsSimpleDataField" pc="268438674" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="43" lineNum="58" parent="globals/SlavicsSimpleDataField" pc="268438690" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="43" lineNum="59" parent="globals/SlavicsSimpleDataField" pc="268438708" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="43" lineNum="60" parent="globals/SlavicsSimpleDataField" pc="268438738" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="45" lineNum="63" parent="globals/SlavicsSimpleDataField" pc="268438755" symbol="setTextLabel"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="45" lineNum="65" parent="globals/SlavicsSimpleDataField" pc="268438757" symbol="setTextLabel"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="46" lineNum="73" parent="globals/SlavicsSimpleDataField" pc="268438788" symbol="setColors"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="46" lineNum="74" parent="globals/SlavicsSimpleDataField" pc="268438790" symbol="setColors"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="46" lineNum="75" parent="globals/SlavicsSimpleDataField" pc="268438799" symbol="setColors"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="46" lineNum="76" parent="globals/SlavicsSimpleDataField" pc="268438827" symbol="setColors"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="47" lineNum="40" parent="globals/SlavicsSimpleDataField" pc="268438856" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="47" lineNum="41" parent="globals/SlavicsSimpleDataField" pc="268438858" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="47" lineNum="42" parent="globals/SlavicsSimpleDataField" pc="268438876" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="48" lineNum="88" parent="globals/SlavicsSimpleDataField" pc="268438889" symbol="onUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="48" lineNum="90" parent="globals/SlavicsSimpleDataField" pc="268438891" symbol="onUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="48" lineNum="91" parent="globals/SlavicsSimpleDataField" pc="268438921" symbol="onUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="48" lineNum="92" parent="globals/SlavicsSimpleDataField" pc="268438929" symbol="onUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/SlavicsSimpleDataField.mc" id="48" lineNum="93" parent="globals/SlavicsSimpleDataField" pc="268438945" symbol="onUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="113" parent="globals/GearIndexView" pc="268438962" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="114" parent="globals/GearIndexView" pc="268438965" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="115" parent="globals/GearIndexView" pc="268438981" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="116" parent="globals/GearIndexView" pc="268438997" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="117" parent="globals/GearIndexView" pc="268439009" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="119" parent="globals/GearIndexView" pc="268439034" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="121" parent="globals/GearIndexView" pc="268439052" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="122" parent="globals/GearIndexView" pc="268439065" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="123" parent="globals/GearIndexView" pc="268439097" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="124" parent="globals/GearIndexView" pc="268439129" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="125" parent="globals/GearIndexView" pc="268439135" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="126" parent="globals/GearIndexView" pc="268439159" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="127" parent="globals/GearIndexView" pc="268439180" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="128" parent="globals/GearIndexView" pc="268439195" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="130" parent="globals/GearIndexView" pc="268439232" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="131" parent="globals/GearIndexView" pc="268439248" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="132" parent="globals/GearIndexView" pc="268439275" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="133" parent="globals/GearIndexView" pc="268439307" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="134" parent="globals/GearIndexView" pc="268439347" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="135" parent="globals/GearIndexView" pc="268439380" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="137" parent="globals/GearIndexView" pc="268439412" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="138" parent="globals/GearIndexView" pc="268439437" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="139" parent="globals/GearIndexView" pc="268439464" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="141" parent="globals/GearIndexView" pc="268439481" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="142" parent="globals/GearIndexView" pc="268439495" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="143" parent="globals/GearIndexView" pc="268439514" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="146" parent="globals/GearIndexView" pc="268439526" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="147" parent="globals/GearIndexView" pc="268439545" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="148" parent="globals/GearIndexView" pc="268439577" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="149" parent="globals/GearIndexView" pc="268439591" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="151" parent="globals/GearIndexView" pc="268439600" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="152" parent="globals/GearIndexView" pc="268439620" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="153" parent="globals/GearIndexView" pc="268439623" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="154" parent="globals/GearIndexView" pc="268439625" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="157" parent="globals/GearIndexView" pc="268439640" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="160" parent="globals/GearIndexView" pc="268439656" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="155" parent="globals/GearIndexView" pc="268439675" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="156" parent="globals/GearIndexView" pc="268439683" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="158" parent="globals/GearIndexView" pc="268439686" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="159" parent="globals/GearIndexView" pc="268439694" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="161" parent="globals/GearIndexView" pc="268439697" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="162" parent="globals/GearIndexView" pc="268439705" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="164" parent="globals/GearIndexView" pc="268439709" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="165" parent="globals/GearIndexView" pc="268439749" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="166" parent="globals/GearIndexView" pc="268439786" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="167" parent="globals/GearIndexView" pc="268439822" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="168" parent="globals/GearIndexView" pc="268439831" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="173" parent="globals/GearIndexView" pc="268439856" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="174" parent="globals/GearIndexView" pc="268439866" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="176" parent="globals/GearIndexView" pc="268439876" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="178" parent="globals/GearIndexView" pc="268439892" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="180" parent="globals/GearIndexView" pc="268439901" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="181" parent="globals/GearIndexView" pc="268439916" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="49" lineNum="182" parent="globals/GearIndexView" pc="268439936" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="50" lineNum="282" parent="globals/GearIndexView" pc="268439983" symbol="onTimerStop"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="50" lineNum="283" parent="globals/GearIndexView" pc="268439985" symbol="onTimerStop"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="50" lineNum="284" parent="globals/GearIndexView" pc="268440003" symbol="onTimerStop"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="50" lineNum="285" parent="globals/GearIndexView" pc="268440015" symbol="onTimerStop"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="51" lineNum="69" parent="globals/GearIndexView" pc="268440028" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="51" lineNum="70" parent="globals/GearIndexView" pc="268440030" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="51" lineNum="71" parent="globals/GearIndexView" pc="268440070" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="51" lineNum="72" parent="globals/GearIndexView" pc="268440086" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="51" lineNum="73" parent="globals/GearIndexView" pc="268440102" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="51" lineNum="74" parent="globals/GearIndexView" pc="268440118" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="51" lineNum="75" parent="globals/GearIndexView" pc="268440142" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="51" lineNum="76" parent="globals/GearIndexView" pc="268440158" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="51" lineNum="77" parent="globals/GearIndexView" pc="268440197" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="51" lineNum="78" parent="globals/GearIndexView" pc="268440223" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="51" lineNum="79" parent="globals/GearIndexView" pc="268440231" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="51" lineNum="81" parent="globals/GearIndexView" pc="268440255" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="51" lineNum="82" parent="globals/GearIndexView" pc="268440271" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="51" lineNum="83" parent="globals/GearIndexView" pc="268440292" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="51" lineNum="84" parent="globals/GearIndexView" pc="268440319" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="51" lineNum="85" parent="globals/GearIndexView" pc="268440354" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="51" lineNum="87" parent="globals/GearIndexView" pc="268440370" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="52" lineNum="277" parent="globals/GearIndexView" pc="268440380" symbol="onTimerStart"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="52" lineNum="278" parent="globals/GearIndexView" pc="268440382" symbol="onTimerStart"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="52" lineNum="279" parent="globals/GearIndexView" pc="268440400" symbol="onTimerStart"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="202" parent="globals/GearIndexView" pc="268440413" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="203" parent="globals/GearIndexView" pc="268440416" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="204" parent="globals/GearIndexView" pc="268440434" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="205" parent="globals/GearIndexView" pc="268440450" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="206" parent="globals/GearIndexView" pc="268440459" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="207" parent="globals/GearIndexView" pc="268440476" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="210" parent="globals/GearIndexView" pc="268440498" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="211" parent="globals/GearIndexView" pc="268440514" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="213" parent="globals/GearIndexView" pc="268440530" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="215" parent="globals/GearIndexView" pc="268440546" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="216" parent="globals/GearIndexView" pc="268440561" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="217" parent="globals/GearIndexView" pc="268440600" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="218" parent="globals/GearIndexView" pc="268440648" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="219" parent="globals/GearIndexView" pc="268440677" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="220" parent="globals/GearIndexView" pc="268440697" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="222" parent="globals/GearIndexView" pc="268440707" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="224" parent="globals/GearIndexView" pc="268440726" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="225" parent="globals/GearIndexView" pc="268440739" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="226" parent="globals/GearIndexView" pc="268440752" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="227" parent="globals/GearIndexView" pc="268440780" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="229" parent="globals/GearIndexView" pc="268440796" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="230" parent="globals/GearIndexView" pc="268440826" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="235" parent="globals/GearIndexView" pc="268440921" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="240" parent="globals/GearIndexView" pc="268440962" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="242" parent="globals/GearIndexView" pc="268440995" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="243" parent="globals/GearIndexView" pc="268441015" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="244" parent="globals/GearIndexView" pc="268441022" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="246" parent="globals/GearIndexView" pc="268441041" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="248" parent="globals/GearIndexView" pc="268441074" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="249" parent="globals/GearIndexView" pc="268441164" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="250" parent="globals/GearIndexView" pc="268441218" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="251" parent="globals/GearIndexView" pc="268441234" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="252" parent="globals/GearIndexView" pc="268441242" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="253" parent="globals/GearIndexView" pc="268441310" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="254" parent="globals/GearIndexView" pc="268441342" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="53" lineNum="255" parent="globals/GearIndexView" pc="268441361" symbol="onUpdateField"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="54" lineNum="101" parent="globals/GearIndexView" pc="268441388" symbol="handleSettingUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="54" lineNum="102" parent="globals/GearIndexView" pc="268441390" symbol="handleSettingUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="54" lineNum="103" parent="globals/GearIndexView" pc="268441408" symbol="handleSettingUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="54" lineNum="104" parent="globals/GearIndexView" pc="268441439" symbol="handleSettingUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="55" lineNum="262" parent="globals/GearIndexView" pc="268441452" symbol="onTimerReset"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="55" lineNum="263" parent="globals/GearIndexView" pc="268441454" symbol="onTimerReset"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="55" lineNum="264" parent="globals/GearIndexView" pc="268441472" symbol="onTimerReset"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="56" lineNum="197" parent="globals/GearIndexView" pc="268441485" symbol="onUpdateFullScreen"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="56" lineNum="198" parent="globals/GearIndexView" pc="268441487" symbol="onUpdateFullScreen"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="56" lineNum="199" parent="globals/GearIndexView" pc="268441505" symbol="onUpdateFullScreen"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="56" lineNum="200" parent="globals/GearIndexView" pc="268441521" symbol="onUpdateFullScreen"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="57" lineNum="272" parent="globals/GearIndexView" pc="268441578" symbol="onTimerResume"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="57" lineNum="273" parent="globals/GearIndexView" pc="268441580" symbol="onTimerResume"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="57" lineNum="274" parent="globals/GearIndexView" pc="268441598" symbol="onTimerResume"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="58" lineNum="267" parent="globals/GearIndexView" pc="268441611" symbol="onTimerPause"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="58" lineNum="268" parent="globals/GearIndexView" pc="268441613" symbol="onTimerPause"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="58" lineNum="269" parent="globals/GearIndexView" pc="268441631" symbol="onTimerPause"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="59" lineNum="53" parent="globals/GearIndexView" pc="268441644" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="59" lineNum="54" parent="globals/GearIndexView" pc="268441647" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="59" lineNum="55" parent="globals/GearIndexView" pc="268441665" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="59" lineNum="56" parent="globals/GearIndexView" pc="268441677" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="59" lineNum="57" parent="globals/GearIndexView" pc="268441703" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="59" lineNum="58" parent="globals/GearIndexView" pc="268441741" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="59" lineNum="59" parent="globals/GearIndexView" pc="268441787" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="59" lineNum="60" parent="globals/GearIndexView" pc="268441793" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="59" lineNum="62" parent="globals/GearIndexView" pc="268441831" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="59" lineNum="63" parent="globals/GearIndexView" pc="268441871" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="59" lineNum="64" parent="globals/GearIndexView" pc="268441920" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="59" lineNum="65" parent="globals/GearIndexView" pc="268441980" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="59" lineNum="66" parent="globals/GearIndexView" pc="268442005" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="60" lineNum="190" parent="globals/GearIndexView" pc="268442013" symbol="onUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="60" lineNum="191" parent="globals/GearIndexView" pc="268442015" symbol="onUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="60" lineNum="192" parent="globals/GearIndexView" pc="268442026" symbol="onUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearIndexView.mc" id="60" lineNum="194" parent="globals/GearIndexView" pc="268442038" symbol="onUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="62" lineNum="97" parent="globals/GearFitContributions" pc="268442050" symbol="onTimerStart"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="62" lineNum="98" parent="globals/GearFitContributions" pc="268442052" symbol="onTimerStart"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="62" lineNum="99" parent="globals/GearFitContributions" pc="268442062" symbol="onTimerStart"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="62" lineNum="100" parent="globals/GearFitContributions" pc="268442070" symbol="onTimerStart"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="62" lineNum="102" parent="globals/GearFitContributions" pc="268442100" symbol="onTimerStart"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="62" lineNum="103" parent="globals/GearFitContributions" pc="268442109" symbol="onTimerStart"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="63" lineNum="69" parent="globals/GearFitContributions" pc="268442146" symbol="changeIndex"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="63" lineNum="70" parent="globals/GearFitContributions" pc="268442148" symbol="changeIndex"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="63" lineNum="71" parent="globals/GearFitContributions" pc="268442159" symbol="changeIndex"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="63" lineNum="72" parent="globals/GearFitContributions" pc="268442188" symbol="changeIndex"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="63" lineNum="73" parent="globals/GearFitContributions" pc="268442207" symbol="changeIndex"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="64" lineNum="77" parent="globals/GearFitContributions" pc="268442232" symbol="getTotalShifts"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="64" lineNum="78" parent="globals/GearFitContributions" pc="268442234" symbol="getTotalShifts"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="65" lineNum="81" parent="globals/GearFitContributions" pc="268442240" symbol="onTimerReset"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="65" lineNum="82" parent="globals/GearFitContributions" pc="268442242" symbol="onTimerReset"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="65" lineNum="83" parent="globals/GearFitContributions" pc="268442250" symbol="onTimerReset"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="65" lineNum="84" parent="globals/GearFitContributions" pc="268442258" symbol="onTimerReset"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="66" lineNum="92" parent="globals/GearFitContributions" pc="268442295" symbol="onTimerResume"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="66" lineNum="93" parent="globals/GearFitContributions" pc="268442297" symbol="onTimerResume"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="66" lineNum="94" parent="globals/GearFitContributions" pc="268442306" symbol="onTimerResume"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="67" lineNum="57" parent="globals/GearFitContributions" pc="268442343" symbol="setIndex"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="67" lineNum="58" parent="globals/GearFitContributions" pc="268442345" symbol="setIndex"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="67" lineNum="59" parent="globals/GearFitContributions" pc="268442359" symbol="setIndex"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="67" lineNum="60" parent="globals/GearFitContributions" pc="268442380" symbol="setIndex"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="67" lineNum="62" parent="globals/GearFitContributions" pc="268442381" symbol="setIndex"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="67" lineNum="63" parent="globals/GearFitContributions" pc="268442392" symbol="setIndex"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="67" lineNum="65" parent="globals/GearFitContributions" pc="268442393" symbol="setIndex"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="67" lineNum="66" parent="globals/GearFitContributions" pc="268442412" symbol="setIndex"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="68" lineNum="38" parent="globals/GearFitContributions" pc="268442434" symbol="setDerailleurs"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="68" lineNum="39" parent="globals/GearFitContributions" pc="268442437" symbol="setDerailleurs"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="68" lineNum="40" parent="globals/GearFitContributions" pc="268442458" symbol="setDerailleurs"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="68" lineNum="41" parent="globals/GearFitContributions" pc="268442479" symbol="setDerailleurs"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="68" lineNum="44" parent="globals/GearFitContributions" pc="268442480" symbol="setDerailleurs"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="68" lineNum="45" parent="globals/GearFitContributions" pc="268442501" symbol="setDerailleurs"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="68" lineNum="46" parent="globals/GearFitContributions" pc="268442522" symbol="setDerailleurs"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="68" lineNum="49" parent="globals/GearFitContributions" pc="268442523" symbol="setDerailleurs"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="68" lineNum="50" parent="globals/GearFitContributions" pc="268442534" symbol="setDerailleurs"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="68" lineNum="52" parent="globals/GearFitContributions" pc="268442535" symbol="setDerailleurs"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="68" lineNum="53" parent="globals/GearFitContributions" pc="268442547" symbol="setDerailleurs"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="68" lineNum="54" parent="globals/GearFitContributions" pc="268442563" symbol="setDerailleurs"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="69" lineNum="87" parent="globals/GearFitContributions" pc="268442597" symbol="onTimerPause"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="69" lineNum="88" parent="globals/GearFitContributions" pc="268442599" symbol="onTimerPause"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="69" lineNum="89" parent="globals/GearFitContributions" pc="268442608" symbol="onTimerPause"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="70" lineNum="26" parent="globals/GearFitContributions" pc="268442645" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="70" lineNum="27" parent="globals/GearFitContributions" pc="268442647" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="70" lineNum="28" parent="globals/GearFitContributions" pc="268442707" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="70" lineNum="31" parent="globals/GearFitContributions" pc="268442744" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="70" lineNum="34" parent="globals/GearFitContributions" pc="268442790" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="71" lineNum="106" parent="globals/GearFitContributions" pc="268442829" symbol="onTimerStop"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="71" lineNum="107" parent="globals/GearFitContributions" pc="268442831" symbol="onTimerStop"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearFitContributions.mc" id="71" lineNum="108" parent="globals/GearFitContributions" pc="268442840" symbol="onTimerStop"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="72" lineNum="48" parent="globals/BatteryIcon" pc="268442877" symbol="getWidth"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="72" lineNum="49" parent="globals/BatteryIcon" pc="268442879" symbol="getWidth"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="73" lineNum="60" parent="globals/BatteryIcon" pc="268442912" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="73" lineNum="63" parent="globals/BatteryIcon" pc="268442914" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="73" lineNum="64" parent="globals/BatteryIcon" pc="268442943" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="73" lineNum="65" parent="globals/BatteryIcon" pc="268442978" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="73" lineNum="66" parent="globals/BatteryIcon" pc="268443007" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="73" lineNum="69" parent="globals/BatteryIcon" pc="268443042" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="73" lineNum="70" parent="globals/BatteryIcon" pc="268443065" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="73" lineNum="71" parent="globals/BatteryIcon" pc="268443113" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="73" lineNum="72" parent="globals/BatteryIcon" pc="268443121" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="73" lineNum="73" parent="globals/BatteryIcon" pc="268443138" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="74" lineNum="51" parent="globals/BatteryIcon" pc="268443174" symbol="setStatus"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="74" lineNum="52" parent="globals/BatteryIcon" pc="268443176" symbol="setStatus"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="75" lineNum="54" parent="globals/BatteryIcon" pc="268443186" symbol="setCharge"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="75" lineNum="55" parent="globals/BatteryIcon" pc="268443188" symbol="setCharge"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="76" lineNum="45" parent="globals/BatteryIcon" pc="268443198" symbol="getFont"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="76" lineNum="46" parent="globals/BatteryIcon" pc="268443200" symbol="getFont"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="77" lineNum="12" parent="globals/BatteryIcon" pc="268443206" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="77" lineNum="13" parent="globals/BatteryIcon" pc="268443208" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="77" lineNum="14" parent="globals/BatteryIcon" pc="268443240" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="77" lineNum="15" parent="globals/BatteryIcon" pc="268443272" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="78" lineNum="42" parent="globals/BatteryIcon" pc="268443289" symbol="setFont"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="78" lineNum="43" parent="globals/BatteryIcon" pc="268443291" symbol="setFont"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="79" lineNum="57" parent="globals/BatteryIcon" pc="268443301" symbol="setNightMode"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/BatteryIcon.mc" id="79" lineNum="58" parent="globals/BatteryIcon" pc="268443303" symbol="setNightMode"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/RearShifting.mc" id="80" lineNum="36" parent="globals/RearShifting" pc="268443313" symbol="getDeviceState"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/RearShifting.mc" id="80" lineNum="37" parent="globals/RearShifting" pc="268443315" symbol="getDeviceState"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/RearShifting.mc" id="81" lineNum="92" parent="globals/RearShifting" pc="268443327" symbol="getRearDerailleurStatus"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/RearShifting.mc" id="81" lineNum="93" parent="globals/RearShifting" pc="268443329" symbol="getRearDerailleurStatus"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/RearShifting.mc" id="82" lineNum="56" parent="globals/RearShifting" pc="268443346" symbol="getFrontDerailleurStatus"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/RearShifting.mc" id="82" lineNum="57" parent="globals/RearShifting" pc="268443348" symbol="getFrontDerailleurStatus"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/RearShifting.mc" id="84" lineNum="153" parent="globals/RearShifting" pc="268443365" symbol="getBatteries"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/RearShifting.mc" id="84" lineNum="154" parent="globals/RearShifting" pc="268443368" symbol="getBatteries"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/RearShifting.mc" id="84" lineNum="155" parent="globals/RearShifting" pc="268443381" symbol="getBatteries"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/RearShifting.mc" id="84" lineNum="156" parent="globals/RearShifting" pc="268443385" symbol="getBatteries"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/RearShifting.mc" id="84" lineNum="157" parent="globals/RearShifting" pc="268443391" symbol="getBatteries"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/RearShifting.mc" id="84" lineNum="158" parent="globals/RearShifting" pc="268443408" symbol="getBatteries"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/RearShifting.mc" id="84" lineNum="159" parent="globals/RearShifting" pc="268443415" symbol="getBatteries"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/RearShifting.mc" id="84" lineNum="160" parent="globals/RearShifting" pc="268443432" symbol="getBatteries"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/RearShifting.mc" id="84" lineNum="161" parent="globals/RearShifting" pc="268443438" symbol="getBatteries"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/RearShifting.mc" id="84" lineNum="170" parent="globals/RearShifting" pc="268443575" symbol="getBatteries"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/AlertMessage.mc" id="85" lineNum="36" parent="globals/AlertMessage" pc="268443578" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/AlertMessage.mc" id="85" lineNum="37" parent="globals/AlertMessage" pc="268443580" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/AlertMessage.mc" id="85" lineNum="38" parent="globals/AlertMessage" pc="268443597" symbol="onLayout"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/AlertMessage.mc" id="86" lineNum="31" parent="globals/AlertMessage" pc="268443615" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/AlertMessage.mc" id="86" lineNum="32" parent="globals/AlertMessage" pc="268443617" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/AlertMessage.mc" id="86" lineNum="33" parent="globals/AlertMessage" pc="268443629" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/AlertMessage.mc" id="87" lineNum="41" parent="globals/AlertMessage" pc="268443639" symbol="onUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/AlertMessage.mc" id="87" lineNum="43" parent="globals/AlertMessage" pc="268443642" symbol="onUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/AlertMessage.mc" id="87" lineNum="45" parent="globals/AlertMessage" pc="268443652" symbol="onUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/AlertMessage.mc" id="87" lineNum="46" parent="globals/AlertMessage" pc="268443670" symbol="onUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/AlertMessage.mc" id="87" lineNum="49" parent="globals/AlertMessage" pc="268443688" symbol="onUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/AlertMessage.mc" id="87" lineNum="50" parent="globals/AlertMessage" pc="268443716" symbol="onUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/AlertMessage.mc" id="87" lineNum="52" parent="globals/AlertMessage" pc="268443732" symbol="onUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/AlertMessage.mc" id="87" lineNum="53" parent="globals/AlertMessage" pc="268443745" symbol="onUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/AlertMessage.mc" id="87" lineNum="56" parent="globals/AlertMessage" pc="268443758" symbol="onUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/AlertMessage.mc" id="87" lineNum="57" parent="globals/AlertMessage" pc="268443775" symbol="onUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/AlertMessage.mc" id="87" lineNum="60" parent="globals/AlertMessage" pc="268443798" symbol="onUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/AlertMessage.mc" id="87" lineNum="61" parent="globals/AlertMessage" pc="268443815" symbol="onUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/AlertMessage.mc" id="87" lineNum="62" parent="globals/AlertMessage" pc="268443827" symbol="onUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/AlertMessage.mc" id="87" lineNum="65" parent="globals/AlertMessage" pc="268443871" symbol="onUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/AlertMessage.mc" id="87" lineNum="69" parent="globals/AlertMessage" pc="268443909" symbol="onUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/AlertMessage.mc" id="87" lineNum="70" parent="globals/AlertMessage" pc="268443926" symbol="onUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/AlertMessage.mc" id="87" lineNum="73" parent="globals/AlertMessage" pc="268443961" symbol="onUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/AlertMessage.mc" id="87" lineNum="74" parent="globals/AlertMessage" pc="268443976" symbol="onUpdate"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="88" lineNum="44" parent="globals/GearStat" pc="268443992" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="88" lineNum="45" parent="globals/GearStat" pc="268443994" symbol="compute"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="47" parent="globals/GearStat" pc="268444006" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="48" parent="globals/GearStat" pc="268444009" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="49" parent="globals/GearStat" pc="268444037" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="50" parent="globals/GearStat" pc="268444045" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="52" parent="globals/GearStat" pc="268444046" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="53" parent="globals/GearStat" pc="268444068" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="54" parent="globals/GearStat" pc="268444077" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="56" parent="globals/GearStat" pc="268444086" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="57" parent="globals/GearStat" pc="268444132" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="58" parent="globals/GearStat" pc="268444142" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="59" parent="globals/GearStat" pc="268444176" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="60" parent="globals/GearStat" pc="268444198" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="61" parent="globals/GearStat" pc="268444216" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="62" parent="globals/GearStat" pc="268444225" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="63" parent="globals/GearStat" pc="268444237" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="65" parent="globals/GearStat" pc="268444267" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="67" parent="globals/GearStat" pc="268444304" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="68" parent="globals/GearStat" pc="268444324" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="69" parent="globals/GearStat" pc="268444346" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="72" parent="globals/GearStat" pc="268444388" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="73" parent="globals/GearStat" pc="268444419" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="74" parent="globals/GearStat" pc="268444453" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="75" parent="globals/GearStat" pc="268444473" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="76" parent="globals/GearStat" pc="268444495" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="78" parent="globals/GearStat" pc="268444537" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="79" parent="globals/GearStat" pc="268444557" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="80" parent="globals/GearStat" pc="268444579" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="82" parent="globals/GearStat" pc="268444620" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="83" parent="globals/GearStat" pc="268444673" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="84" parent="globals/GearStat" pc="268444686" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="85" parent="globals/GearStat" pc="268444710" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="87" parent="globals/GearStat" pc="268444731" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="88" parent="globals/GearStat" pc="268444762" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="90" parent="globals/GearStat" pc="268444783" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="91" parent="globals/GearStat" pc="268444801" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="93" parent="globals/GearStat" pc="268444822" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="94" parent="globals/GearStat" pc="268444838" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="95" parent="globals/GearStat" pc="268444869" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="96" parent="globals/GearStat" pc="268444880" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="97" parent="globals/GearStat" pc="268444920" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="98" parent="globals/GearStat" pc="268444940" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="101" parent="globals/GearStat" pc="268444964" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="102" parent="globals/GearStat" pc="268445004" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="103" parent="globals/GearStat" pc="268445024" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="105" parent="globals/GearStat" pc="268445045" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="106" parent="globals/GearStat" pc="268445057" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="107" parent="globals/GearStat" pc="268445068" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="108" parent="globals/GearStat" pc="268445086" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="109" parent="globals/GearStat" pc="268445098" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="110" parent="globals/GearStat" pc="268445120" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="111" parent="globals/GearStat" pc="268445138" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="112" parent="globals/GearStat" pc="268445147" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="89" lineNum="114" parent="globals/GearStat" pc="268445156" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="90" lineNum="120" parent="globals/GearStat" pc="268445170" symbol="print"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="90" lineNum="121" parent="globals/GearStat" pc="268445172" symbol="print"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="91" lineNum="116" parent="globals/GearStat" pc="268445191" symbol="&lt;globals/GearStat/&lt;&gt;reset&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="91" lineNum="117" parent="globals/GearStat" pc="268445193" symbol="&lt;globals/GearStat/&lt;&gt;reset&gt;"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="92" lineNum="22" parent="globals/GearStat" pc="268445203" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="92" lineNum="23" parent="globals/GearStat" pc="268445205" symbol="initialize"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="124" parent="globals/GearStat" pc="268445215" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="127" parent="globals/GearStat" pc="268445218" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="128" parent="globals/GearStat" pc="268445234" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="129" parent="globals/GearStat" pc="268445251" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="130" parent="globals/GearStat" pc="268445286" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="132" parent="globals/GearStat" pc="268445287" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="133" parent="globals/GearStat" pc="268445331" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="134" parent="globals/GearStat" pc="268445339" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="136" parent="globals/GearStat" pc="268445351" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="137" parent="globals/GearStat" pc="268445368" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="139" parent="globals/GearStat" pc="268445385" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="142" parent="globals/GearStat" pc="268445408" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="143" parent="globals/GearStat" pc="268445415" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="144" parent="globals/GearStat" pc="268445433" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="146" parent="globals/GearStat" pc="268445437" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="147" parent="globals/GearStat" pc="268445453" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="148" parent="globals/GearStat" pc="268445472" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="149" parent="globals/GearStat" pc="268445513" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="150" parent="globals/GearStat" pc="268445525" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="151" parent="globals/GearStat" pc="268445541" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="152" parent="globals/GearStat" pc="268445554" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="153" parent="globals/GearStat" pc="268445561" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="154" parent="globals/GearStat" pc="268445568" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="155" parent="globals/GearStat" pc="268445577" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="157" parent="globals/GearStat" pc="268445617" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="159" parent="globals/GearStat" pc="268445647" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="160" parent="globals/GearStat" pc="268445658" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="162" parent="globals/GearStat" pc="268445678" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="164" parent="globals/GearStat" pc="268445697" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="165" parent="globals/GearStat" pc="268445723" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="167" parent="globals/GearStat" pc="268445758" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="168" parent="globals/GearStat" pc="268445771" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="169" parent="globals/GearStat" pc="268445815" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="170" parent="globals/GearStat" pc="268445832" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="172" parent="globals/GearStat" pc="268445870" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="173" parent="globals/GearStat" pc="268445887" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="175" parent="globals/GearStat" pc="268445913" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="182" parent="globals/GearStat" pc="268445933" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="93" lineNum="183" parent="globals/GearStat" pc="268445946" symbol="draw"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="94" lineNum="192" parent="globals/SprocketStats/Stat" pc="268445972" symbol="toString"/>
+        <entry filename="/home/slavic01/Dokumenty/Garmin/GearIndex/source/GearStat.mc" id="94" lineNum="193" parent="globals/SprocketStats/Stat" pc="268445974" symbol="toString"/>
+    </pcToLineNum>
+    <symbolTable>
+        <entry field="true" id="88" symbol="&lt;globals/BatteryIcon/&lt;&gt;charge&gt;"/>
+        <entry id="8388639" module="true" symbol="Graphics"/>
+        <entry id="45" method="true" symbol="getUnit"/>
+        <entry field="true" id="111" symbol="&lt;globals/GearStat/&lt;&gt;lastTimerTime&gt;"/>
+        <entry field="true" id="8389346" symbol="text"/>
+        <entry id="141" symbol="powerTeeths"/>
+        <entry id="34" symbol="BATTERY_NAME"/>
+        <entry id="139" symbol="night"/>
+        <entry id="13" object="true" symbol="GearFitContributions"/>
+        <entry id="8388632" method="true" symbol="&lt;init&gt;"/>
+        <entry field="true" id="33" symbol="&lt;globals/ColorMode/&lt;&gt;isNight&gt;"/>
+        <entry field="true" id="63" symbol="&lt;globals/GearIndexView/&lt;&gt;colorMode&gt;"/>
+        <entry id="2" module="true" symbol="globals/BatteryIcon/&lt;statics&gt;"/>
+        <entry field="true" id="110" symbol="&lt;globals/GearStat/&lt;&gt;lastDistance&gt;"/>
+        <entry id="8389683" method="true" symbol="onSettingsChanged"/>
+        <entry id="95" method="true" symbol="setStatus"/>
+        <entry field="true" id="67" symbol="&lt;globals/GearIndexView/&lt;&gt;gearFIT&gt;"/>
+        <entry field="true" id="23" symbol="&lt;globals/SlavicsSimpleView/&lt;&gt;name&gt;"/>
+        <entry field="true" id="127" symbol="RD_totalshifts_unit"/>
+        <entry field="true" id="92" symbol="&lt;globals/BatteryIcon/&lt;&gt;night&gt;"/>
+        <entry field="true" id="51" symbol="labelArea"/>
+        <entry id="8389748" method="true" symbol="onTimerStop"/>
+        <entry field="true" id="52" symbol="labelLine"/>
+        <entry field="true" id="131" symbol="property_showfailure_title"/>
+        <entry field="true" id="130" symbol="property_nightMode_title"/>
+        <entry field="true" id="40" symbol="&lt;globals/SprocketStats/&lt;&gt;gears&gt;"/>
+        <entry field="true" id="105" symbol="&lt;globals/AlertMessage/&lt;&gt;h2&gt;"/>
+        <entry field="true" id="66" symbol="&lt;globals/GearIndexView/&lt;&gt;fails&gt;"/>
+        <entry id="8389629" method="true" symbol="getValue"/>
+        <entry id="4" module="true" symbol="globals/GearIndexView/&lt;statics&gt;"/>
+        <entry field="true" id="8388611" module="true" symbol="Toybox"/>
+        <entry id="99" method="true" symbol="getFrontDerailleurStatus"/>
+        <entry field="true" id="25" symbol="&lt;globals/ColorMode/&lt;&gt;MODE_BLACKANDWHITE&gt;"/>
+        <entry field="true" id="8391372" symbol="invalidOutboardShiftCount"/>
+        <entry field="true" id="29" symbol="&lt;globals/ColorMode/&lt;&gt;colors&gt;"/>
+        <entry id="8388649" module="true" object="true" symbol="Test"/>
+        <entry field="true" id="8388782" method="true" symbol="size"/>
+        <entry id="8392382" method="true" symbol="reset"/>
+        <entry id="8389747" method="true" symbol="onTimerStart"/>
+        <entry field="true" id="61" symbol="battIcon"/>
+        <entry field="true" id="119" symbol="AppName"/>
+        <entry id="8389749" method="true" symbol="onTimerPause"/>
+        <entry id="9" module="true" symbol="globals/Rez/Strings"/>
+        <entry id="94" method="true" symbol="setNightMode"/>
+        <entry id="8388772" module="true" object="true" symbol="Fonts"/>
+        <entry field="true" id="74" symbol="&lt;globals/GearIndexView/&lt;&gt;teethsLabel&gt;"/>
+        <entry id="8388631" module="true" symbol="Activity"/>
+        <entry field="true" id="116" symbol="BatteryLarge"/>
+        <entry id="8388942" method="true" symbol="add"/>
+        <entry field="true" id="104" symbol="&lt;globals/AlertMessage/&lt;&gt;alertText&gt;"/>
+        <entry field="true" id="8388947" method="true" symbol="value"/>
+        <entry id="113" method="true" symbol="&lt;globals/GearStat/&lt;&gt;reset&gt;"/>
+        <entry id="8388648" module="true" symbol="WatchUi"/>
+        <entry field="true" id="81" symbol="&lt;globals/GearFitContributions/&lt;&gt;gearRatioRF&gt;"/>
+        <entry id="97" symbol="&lt;globals/BatteryIcon/&lt;statics&gt;/&lt;&gt;BATCHAR&gt;"/>
+        <entry id="32" method="true" symbol="handleSettingUpdate"/>
+        <entry field="true" id="8389138" symbol="label"/>
+        <entry field="true" id="46" symbol="&lt;globals/SprocketStats/&lt;&gt;name&gt;"/>
+        <entry id="8389117" method="true" symbol="getWidth"/>
+        <entry id="6" module="true" symbol="globals/Rez"/>
+        <entry field="true" id="103" symbol="&lt;globals/AlertMessage/&lt;&gt;TEXT_LABEL&gt;"/>
+        <entry id="43" method="true" symbol="getCount"/>
+        <entry field="true" id="124" symbol="RD_gearratio_title"/>
+        <entry id="8389410" module="true" symbol="AntPlus"/>
+        <entry id="79" method="true" symbol="changeIndex"/>
+        <entry id="140" symbol="change"/>
+        <entry id="8389124" method="true" symbol="onUpdate"/>
+        <entry field="true" id="125" symbol="RD_gearratio_unit"/>
+        <entry field="true" id="118" symbol="BatterySmall"/>
+        <entry id="41" method="true" symbol="getAvg"/>
+        <entry id="8388712" method="true" symbol="print"/>
+        <entry field="true" id="80" symbol="&lt;globals/GearFitContributions/&lt;&gt;gearIndexRF&gt;"/>
+        <entry field="true" id="136" symbol="sum"/>
+        <entry id="8388771" module="true" object="true" symbol="Drawables"/>
+        <entry id="8389348" symbol="font"/>
+        <entry field="true" id="8389526" symbol="batteryStatus"/>
+        <entry field="true" id="75" symbol="&lt;globals/GearIndexView/&lt;&gt;totalShiftsLabel&gt;"/>
+        <entry field="true" id="72" symbol="&lt;globals/GearIndexView/&lt;&gt;rearShift&gt;"/>
+        <entry id="8388783" method="true" symbol="toString"/>
+        <entry id="8389275" method="true" symbol="getApp"/>
+        <entry field="true" id="129" symbol="property_fitFileSaving_title"/>
+        <entry id="10" object="true" symbol="AlertMessage"/>
+        <entry id="8391275" object="true" symbol="ToneProfile"/>
+        <entry field="true" id="83" symbol="&lt;globals/GearFitContributions/&lt;&gt;mTimerRunning&gt;"/>
+        <entry field="true" id="50" symbol="colors"/>
+        <entry field="true" id="69" symbol="&lt;globals/GearIndexView/&lt;&gt;lastIndex&gt;"/>
+        <entry field="true" id="8389850" symbol="count"/>
+        <entry id="8389122" method="true" symbol="onLayout"/>
+        <entry field="true" id="47" symbol="&lt;globals/SprocketStats/&lt;&gt;type&gt;"/>
+        <entry field="true" id="8389063" symbol="identifier"/>
+        <entry id="55" method="true" symbol="setColors"/>
+        <entry id="8389349" symbol="justification"/>
+        <entry field="true" id="48" symbol="&lt;globals/SprocketStats/&lt;&gt;unit&gt;"/>
+        <entry id="3" module="true" symbol="globals/ColorMode/&lt;statics&gt;"/>
+        <entry id="8389137" method="true" symbol="compute"/>
+        <entry id="8389936" symbol="nativeNum"/>
+        <entry field="true" id="87" symbol="&lt;globals/GearFitContributions/&lt;&gt;totalShiftsRF&gt;"/>
+        <entry field="true" id="22" symbol="&lt;globals/SlavicsSimpleView/&lt;&gt;bikeShift&gt;"/>
+        <entry field="true" id="73" symbol="&lt;globals/GearIndexView/&lt;&gt;screen&gt;"/>
+        <entry field="true" id="86" symbol="&lt;globals/GearFitContributions/&lt;&gt;totalShifts&gt;"/>
+        <entry id="12" object="true" symbol="ColorMode"/>
+        <entry id="71" method="true" symbol="onUpdateFullScreen"/>
+        <entry id="8389131" method="true" symbol="setColor"/>
+        <entry field="true" id="96" symbol="&lt;globals/BatteryIcon/&lt;&gt;status&gt;"/>
+        <entry field="true" id="122" symbol="RD_gearindex_unit"/>
+        <entry field="true" id="8389892" symbol="background"/>
+        <entry id="108" method="true" symbol="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;"/>
+        <entry field="true" id="8388911" symbol="distance"/>
+        <entry id="38" method="true" symbol="addDiff"/>
+        <entry id="100" method="true" symbol="getRearDerailleurStatus"/>
+        <entry id="7" module="true" symbol="globals/Rez/Drawables"/>
+        <entry id="82" method="true" symbol="getTotalShifts"/>
+        <entry field="true" id="89" symbol="&lt;globals/BatteryIcon/&lt;&gt;fontBattery&gt;"/>
+        <entry id="8389479" method="true" symbol="getDeviceState"/>
+        <entry id="90" method="true" symbol="getFont"/>
+        <entry id="44" method="true" symbol="getSum"/>
+        <entry id="8389752" method="true" symbol="onTimerReset"/>
+        <entry field="true" id="121" symbol="RD_gearindex_title"/>
+        <entry id="138" symbol="valueChange"/>
+        <entry field="true" id="109" symbol="&lt;globals/GearStat/&lt;&gt;currentIndex&gt;"/>
+        <entry id="30" method="true" symbol="getColors"/>
+        <entry field="true" id="76" symbol="&lt;globals/GearIndexView/&lt;&gt;unitTeeths&gt;"/>
+        <entry field="true" id="112" symbol="&lt;globals/GearStat/&lt;&gt;prefered&gt;"/>
+        <entry id="137" symbol="valueEdge"/>
+        <entry field="true" id="54" symbol="rim"/>
+        <entry id="8388644" module="true" symbol="System"/>
+        <entry field="true" id="77" symbol="&lt;globals/GearIndexView/&lt;&gt;versionTest&gt;"/>
+        <entry id="85" method="true" symbol="setIndex"/>
+        <entry id="8388645" module="true" symbol="Time"/>
+        <entry id="8388769" module="true" object="true" symbol="Rez"/>
+        <entry id="49" symbol="FONTS"/>
+        <entry id="8388718" method="true" symbol="error"/>
+        <entry id="8388640" module="true" symbol="Lang"/>
+        <entry id="21" object="true" symbol="SprocketStatsTest"/>
+        <entry field="true" id="123" symbol="RD_gearratio_label"/>
+        <entry id="36" symbol="BATTERY_STATUS_COLOR"/>
+        <entry id="8389068" method="true" symbol="draw"/>
+        <entry field="true" id="115" symbol="LauncherIcon"/>
+        <entry field="true" id="128" symbol="property_colorMode_title"/>
+        <entry id="8388610" symbol="statics"/>
+        <entry id="15" object="true" symbol="GearIndexView"/>
+        <entry field="true" id="64" symbol="&lt;globals/GearIndexView/&lt;&gt;failLabel&gt;"/>
+        <entry field="true" id="62" symbol="&lt;globals/GearIndexView/&lt;&gt;batteries&gt;"/>
+        <entry id="35" symbol="BATTERY_STATUSES"/>
+        <entry field="true" id="28" symbol="&lt;globals/ColorMode/&lt;&gt;MODE_PINK&gt;"/>
+        <entry id="8389350" module="true" symbol="globals"/>
+        <entry id="42" method="true" symbol="getColor"/>
+        <entry id="98" method="true" symbol="getBatteries"/>
+        <entry field="true" id="39" symbol="&lt;globals/SprocketStats/&lt;&gt;color&gt;"/>
+        <entry field="true" id="114" symbol="&lt;globals/GearStat/&lt;&gt;stats&gt;"/>
+        <entry id="8388770" module="true" object="true" symbol="Strings"/>
+        <entry id="93" method="true" symbol="setCharge"/>
+        <entry field="true" id="27" symbol="&lt;globals/ColorMode/&lt;&gt;MODE_GREEN&gt;"/>
+        <entry field="true" id="132" symbol="property_showteeth_title"/>
+        <entry id="5" module="true" symbol="globals/RearShifting/&lt;statics&gt;"/>
+        <entry id="8388702" method="true" symbol="initialize"/>
+        <entry id="11" object="true" symbol="BatteryIcon"/>
+        <entry id="8389279" method="true" symbol="onStart"/>
+        <entry id="8389780" module="true" symbol="FitContributor"/>
+        <entry field="true" id="8388961" symbol="power"/>
+        <entry field="true" id="133" symbol="property_version_title"/>
+        <entry field="true" id="24" symbol="view"/>
+        <entry field="true" id="65" symbol="&lt;globals/GearIndexView/&lt;&gt;failTime&gt;"/>
+        <entry field="true" id="8388892" symbol="name"/>
+        <entry id="8388641" module="true" symbol="Math"/>
+        <entry field="true" id="135" symbol="version"/>
+        <entry id="37" object="true" symbol="Stat"/>
+        <entry id="8389280" method="true" symbol="getInitialView"/>
+        <entry field="true" id="8391371" symbol="invalidInboardShiftCount"/>
+        <entry id="8389281" method="true" symbol="onStop"/>
+        <entry field="true" id="68" symbol="&lt;globals/GearIndexView/&lt;&gt;gearStat&gt;"/>
+        <entry field="true" id="58" symbol="valueArea"/>
+        <entry id="8389847" symbol="mesgType"/>
+        <entry field="true" id="117" symbol="BatteryMedium"/>
+        <entry field="true" id="8389347" symbol="color"/>
+        <entry field="true" id="106" symbol="&lt;globals/AlertMessage/&lt;&gt;w2&gt;"/>
+        <entry field="true" id="8388939" symbol="day"/>
+        <entry field="true" id="26" symbol="&lt;globals/ColorMode/&lt;&gt;MODE_BLUE&gt;"/>
+        <entry id="57" method="true" symbol="setTextValue"/>
+        <entry id="31" method="true" symbol="getFieldColor"/>
+        <entry id="107" symbol="&lt;globals/GearStat/&lt;&gt;DEBUG_TEETHS&gt;"/>
+        <entry field="true" id="59" symbol="&lt;globals/GearIndexView/&lt;&gt;INVALID_SHIFTS&gt;"/>
+        <entry id="16" object="true" symbol="GearStat"/>
+        <entry id="18" object="true" symbol="SlavicsSimpleDataField"/>
+        <entry id="56" method="true" symbol="setTextLabel"/>
+        <entry id="53" method="true" symbol="&lt;globals/SlavicsSimpleDataField/&lt;&gt;onUpdateAfter&gt;"/>
+        <entry field="true" id="126" symbol="RD_totalshifts_label"/>
+        <entry field="true" id="91" symbol="&lt;globals/BatteryIcon/&lt;&gt;justify&gt;"/>
+        <entry field="true" id="134" symbol="unitTeeths"/>
+        <entry id="8388636" module="true" symbol="Attention"/>
+        <entry id="84" method="true" symbol="setDerailleurs"/>
+        <entry id="8389750" method="true" symbol="onTimerResume"/>
+        <entry id="17" object="true" symbol="RearShifting"/>
+        <entry id="8389132" method="true" symbol="setFont"/>
+        <entry id="19" object="true" symbol="SlavicsSimpleView"/>
+        <entry field="true" id="60" symbol="battFont"/>
+        <entry id="8" module="true" symbol="globals/Rez/Fonts"/>
+        <entry field="true" id="120" symbol="RD_gearindex_label"/>
+        <entry id="14" object="true" symbol="GearIndexApp"/>
+        <entry id="70" method="true" symbol="onUpdateField"/>
+        <entry field="true" id="101" symbol="&lt;globals/RearShifting/&lt;&gt;shiftDevice&gt;"/>
+        <entry id="8389962" method="true" symbol="getName"/>
+        <entry id="8388635" module="true" symbol="Application"/>
+        <entry field="true" id="102" symbol="&lt;globals/AlertMessage/&lt;&gt;RADIUS&gt;"/>
+        <entry field="true" id="8391373" symbol="shiftFailureCount"/>
+        <entry id="78" symbol="BATTERY_STATUS_TEXT"/>
+        <entry id="20" object="true" symbol="SprocketStats"/>
+    </symbolTable>
+    <localVars>
+        <entry arg="true" endPc="268437254" name="info" stackId="1" startPc="268436999"/>
+        <entry arg="true" endPc="268437725" name="field" stackId="1" startPc="268437679"/>
+        <entry arg="true" endPc="268437894" name="gearIndex" stackId="1" startPc="268437848"/>
+        <entry arg="true" endPc="268437894" name="value" stackId="2" startPc="268437848"/>
+        <entry arg="true" endPc="268437952" name="gearIndex" stackId="1" startPc="268437903"/>
+        <entry arg="true" endPc="268437952" name="value" stackId="2" startPc="268437903"/>
+        <entry arg="true" endPc="268437952" name="range" stackId="3" startPc="268437903"/>
+        <entry arg="true" endPc="268438060" name="gearIndex" stackId="1" startPc="268437961"/>
+        <entry endPc="268438170" name="i" stackId="1" startPc="268438122"/>
+        <entry arg="true" endPc="268438183" name="color" stackId="1" startPc="268438172"/>
+        <entry arg="true" endPc="268438232" name="gearIndex" stackId="1" startPc="268438184"/>
+        <entry endPc="268438324" name="i" stackId="1" startPc="268438289"/>
+        <entry arg="true" endPc="268438422" name="gearMaxSize" stackId="1" startPc="268438367"/>
+        <entry arg="true" endPc="268438422" name="name" stackId="2" startPc="268438367"/>
+        <entry arg="true" endPc="268438422" name="unit" stackId="3" startPc="268438367"/>
+        <entry arg="true" endPc="268438422" name="type" stackId="4" startPc="268438367"/>
+        <entry arg="true" endPc="268438422" name="color" stackId="5" startPc="268438367"/>
+        <entry arg="true" endPc="268438446" name="gearIndex" stackId="1" startPc="268438431"/>
+        <entry arg="true" endPc="268438462" name="gearIndex" stackId="1" startPc="268438447"/>
+        <entry arg="true" endPc="268438495" name="text" stackId="1" startPc="268438463"/>
+        <entry arg="true" endPc="268438754" name="dc" stackId="1" startPc="268438496"/>
+        <entry arg="true" endPc="268438787" name="text" stackId="1" startPc="268438755"/>
+        <entry arg="true" endPc="268438855" name="colors" stackId="1" startPc="268438788"/>
+        <entry arg="true" endPc="268438961" name="dc" stackId="1" startPc="268438889"/>
+        <entry arg="true" endPc="268439982" name="info" stackId="1" startPc="268438962"/>
+        <entry endPc="268439981" name="rds" stackId="2" startPc="268438965"/>
+        <entry endPc="268439855" name="j" stackId="3" startPc="268439620"/>
+        <entry endPc="268439845" name="count" stackId="4" startPc="268439620"/>
+        <entry arg="true" endPc="268440379" name="dc" stackId="1" startPc="268440028"/>
+        <entry arg="true" endPc="268441387" name="dc" stackId="1" startPc="268440413"/>
+        <entry endPc="268440951" name="bd" stackId="5" startPc="268440697"/>
+        <entry arg="true" endPc="268441577" name="dc" stackId="1" startPc="268441485"/>
+        <entry endPc="268442011" name="pos" stackId="1" startPc="268441647"/>
+        <entry arg="true" endPc="268442049" name="dc" stackId="1" startPc="268442013"/>
+        <entry arg="true" endPc="268442231" name="change" stackId="1" startPc="268442146"/>
+        <entry arg="true" endPc="268442433" name="index" stackId="1" startPc="268442343"/>
+        <entry arg="true" endPc="268442596" name="fdSprocket" stackId="1" startPc="268442434"/>
+        <entry arg="true" endPc="268442596" name="rdSprocket" stackId="2" startPc="268442434"/>
+        <entry endPc="268442595" name="ratio" stackId="3" startPc="268442437"/>
+        <entry arg="true" endPc="268442828" name="dataField" stackId="1" startPc="268442645"/>
+        <entry arg="true" endPc="268442911" name="dc" stackId="1" startPc="268442877"/>
+        <entry arg="true" endPc="268443173" name="dc" stackId="1" startPc="268442912"/>
+        <entry arg="true" endPc="268443185" name="status" stackId="1" startPc="268443174"/>
+        <entry arg="true" endPc="268443197" name="charge" stackId="1" startPc="268443186"/>
+        <entry arg="true" endPc="268443288" name="params" stackId="1" startPc="268443206"/>
+        <entry arg="true" endPc="268443300" name="font" stackId="1" startPc="268443289"/>
+        <entry arg="true" endPc="268443312" name="night" stackId="1" startPc="268443301"/>
+        <entry endPc="268443564" name="id" stackId="4" startPc="268443408"/>
+        <entry endPc="268443564" name="bs" stackId="5" startPc="268443408"/>
+        <entry arg="true" endPc="268443614" name="dc" stackId="1" startPc="268443578"/>
+        <entry arg="true" endPc="268443638" name="message" stackId="1" startPc="268443615"/>
+        <entry arg="true" endPc="268443991" name="dc" stackId="1" startPc="268443639"/>
+        <entry endPc="268443990" name="fdsc2" stackId="2" startPc="268443642"/>
+        <entry endPc="268443990" name="sizeLabel" stackId="3" startPc="268443642"/>
+        <entry endPc="268443990" name="sizeText" stackId="4" startPc="268443642"/>
+        <entry endPc="268443990" name="wt" stackId="5" startPc="268443642"/>
+        <entry endPc="268443990" name="ht" stackId="6" startPc="268443642"/>
+        <entry endPc="268443990" name="tx" stackId="7" startPc="268443642"/>
+        <entry endPc="268443990" name="ty" stackId="8" startPc="268443642"/>
+        <entry arg="true" endPc="268444005" name="info" stackId="1" startPc="268443992"/>
+        <entry arg="true" endPc="268445169" name="info" stackId="1" startPc="268444006"/>
+        <entry endPc="268445168" name="elapsedDistance" stackId="2" startPc="268444009"/>
+        <entry endPc="268445168" name="diffDistance" stackId="3" startPc="268444009"/>
+        <entry endPc="268445053" name="distanceStats" stackId="4" startPc="268444267"/>
+        <entry endPc="268444821" name="powerStats" stackId="5" startPc="268444453"/>
+        <entry endPc="268444821" name="powerTeeth" stackId="6" startPc="268444453"/>
+        <entry arg="true" endPc="268445214" name="preferedMeasure" stackId="1" startPc="268445203"/>
+        <entry arg="true" endPc="268445971" name="dc" stackId="1" startPc="268445215"/>
+        <entry arg="true" endPc="268445971" name="locX" stackId="2" startPc="268445215"/>
+        <entry arg="true" endPc="268445971" name="locY" stackId="3" startPc="268445215"/>
+        <entry arg="true" endPc="268445971" name="width" stackId="4" startPc="268445215"/>
+        <entry arg="true" endPc="268445971" name="height" stackId="5" startPc="268445215"/>
+        <entry endPc="268445970" name="ss" stackId="6" startPc="268445218"/>
+        <entry endPc="268445970" name="max" stackId="7" startPc="268445218"/>
+        <entry endPc="268445407" name="i" stackId="8" startPc="268445368"/>
+        <entry endPc="268445922" name="value" stackId="15" startPc="268445541"/>
+        <entry endPc="268445912" name="textValue" stackId="16" startPc="268445561"/>
+    </localVars>
+    <deviceInfo deviceVersion="5c7ae9cf907f88c116a91dc4ffd75be9b5b7d2e9" partNumber="006-B4062-00"/>
+    <annotations>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="unitTeeths"/>
+        <annotationEntry annotation="release" class="SlavicsSimpleDataField" module="globals" symbol="onUpdateAfter"/>
+        <annotationEntry annotation="initialized" class="Drawables" module="globals/Rez" symbol="LauncherIcon"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="property_showfailure_title"/>
+        <annotationEntry annotation="initialized" class="Fonts" module="globals/Rez" symbol="BatteryMedium"/>
+        <annotationEntry annotation="release" class="RearShifting" module="globals" symbol="getBatteries"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="property_nightMode_title"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="RD_gearindex_label"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="RD_gearindex_unit"/>
+        <annotationEntry annotation="initialized" class="Fonts" module="globals/Rez" symbol="BatterySmall"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="AppName"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="RD_totalshifts_unit"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="property_version_title"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="RD_gearratio_label"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="RD_totalshifts_label"/>
+        <annotationEntry annotation="release" class="RearShifting" module="globals" symbol="getRearDerailleurStatus"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="property_fitFileSaving_title"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="RD_gearratio_title"/>
+        <annotationEntry annotation="release" class="GearStat" module="globals" symbol="compute"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="RD_gearindex_title"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="version"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="RD_gearratio_unit"/>
+        <annotationEntry annotation="initialized" class="Fonts" module="globals/Rez" symbol="BatteryLarge"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="property_colorMode_title"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="property_showteeth_title"/>
+        <annotationEntry annotation="release" class="RearShifting" module="globals" symbol="getDeviceState"/>
+        <annotationEntry annotation="release" class="RearShifting" module="globals" symbol="getFrontDerailleurStatus"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="label"/>
+    </annotations>
+    <dataEntryOffsetMappings>
+        <dataEntry label="globals" offset="94" parentId="" symbolId="globals" type="module"/>
+        <dataEntry label="globals/SlavicsSimpleView" offset="251" parentId="globals" symbolId="SlavicsSimpleView" type="class"/>
+        <dataEntry label="globals/GearIndexApp" offset="322" parentId="globals" symbolId="GearIndexApp" type="class"/>
+        <dataEntry label="globals/Rez" offset="411" parentId="globals" symbolId="Rez" type="module"/>
+        <dataEntry label="globals/ColorMode" offset="464" parentId="globals" symbolId="ColorMode" type="class"/>
+        <dataEntry label="globals/ColorMode/&lt;statics&gt;" offset="602" parentId="ColorMode" symbolId="&lt;statics&gt;" type="module"/>
+        <dataEntry label="globals/SprocketStats" offset="651" parentId="globals" symbolId="SprocketStats" type="class"/>
+        <dataEntry label="globals/SlavicsSimpleDataField" offset="875" parentId="globals" symbolId="SlavicsSimpleDataField" type="class"/>
+        <dataEntry label="globals/GearIndexView" offset="1027" parentId="globals" symbolId="GearIndexView" type="class"/>
+        <dataEntry label="globals/GearIndexView/&lt;statics&gt;" offset="1327" parentId="GearIndexView" symbolId="&lt;statics&gt;" type="module"/>
+        <dataEntry label="globals/SprocketStatsTest" offset="1358" parentId="globals" symbolId="SprocketStatsTest" type="class"/>
+        <dataEntry label="globals/GearFitContributions" offset="1402" parentId="globals" symbolId="GearFitContributions" type="class"/>
+        <dataEntry label="globals/BatteryIcon" offset="1572" parentId="globals" symbolId="BatteryIcon" type="class"/>
+        <dataEntry label="globals/BatteryIcon/&lt;statics&gt;" offset="1728" parentId="BatteryIcon" symbolId="&lt;statics&gt;" type="module"/>
+        <dataEntry label="globals/RearShifting" offset="1777" parentId="globals" symbolId="RearShifting" type="class"/>
+        <dataEntry label="globals/RearShifting/&lt;statics&gt;" offset="1870" parentId="RearShifting" symbolId="&lt;statics&gt;" type="module"/>
+        <dataEntry label="globals/AlertMessage" offset="1919" parentId="globals" symbolId="AlertMessage" type="class"/>
+        <dataEntry label="globals/GearStat" offset="2026" parentId="globals" symbolId="GearStat" type="class"/>
+        <dataEntry label="globals/Rez/Drawables" offset="2169" parentId="Rez" symbolId="Drawables" type="module"/>
+        <dataEntry label="globals/Rez/Fonts" offset="2204" parentId="Rez" symbolId="Fonts" type="module"/>
+        <dataEntry label="globals/Rez/Strings" offset="2257" parentId="Rez" symbolId="Strings" type="module"/>
+        <dataEntry label="globals/SprocketStats/Stat" offset="2445" parentId="SprocketStats" symbolId="Stat" type="class"/>
+    </dataEntryOffsetMappings>
+    <functions>
+        <functionEntry accessMode="public" endPc="268435477" name="getApp" startPc="268435457">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435540" name="&lt;init&gt;" parent="SlavicsSimpleView" startPc="268435478">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435552" name="&lt;init&gt;" parent="GearIndexApp" startPc="268435541">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435572" name="&lt;init&gt;" parent="Rez" startPc="268435553">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436076" name="&lt;init&gt;" parent="ColorMode" startPc="268435573">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436101" name="&lt;init&gt;" parent="globals/ColorMode" startPc="268436077">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="SprocketStats">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436323" name="&lt;init&gt;" parent="SlavicsSimpleDataField" startPc="268436102">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436791" name="&lt;init&gt;" parent="GearIndexView" startPc="268436324">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="globals/GearIndexView">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="SprocketStatsTest">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="GearFitContributions">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436803" name="&lt;init&gt;" parent="BatteryIcon" startPc="268436792">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436840" name="&lt;init&gt;" parent="globals/BatteryIcon" startPc="268436804">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436892" name="&lt;init&gt;" parent="RearShifting" startPc="268436841">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436917" name="&lt;init&gt;" parent="globals/RearShifting" startPc="268436893">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436988" name="&lt;init&gt;" parent="AlertMessage" startPc="268436918">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436998" name="&lt;init&gt;" parent="GearStat" startPc="268436989">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437254" name="compute" parent="SlavicsSimpleView" startPc="268436999">
+            <param id="info"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437319" name="initialize" parent="SlavicsSimpleView" startPc="268437255">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="onStart" parent="GearIndexApp">
+            <param id="state"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437363" name="onSettingsChanged" parent="GearIndexApp" startPc="268437320">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437403" name="getInitialView" parent="GearIndexApp" startPc="268437364">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437418" name="initialize" parent="GearIndexApp" startPc="268437404">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="onStop" parent="GearIndexApp">
+            <param id="state"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Drawables">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Fonts">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Strings">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437678" name="handleSettingUpdate" parent="ColorMode" startPc="268437419">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437725" name="getFieldColor" parent="ColorMode" startPc="268437679">
+            <param id="field"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437789" name="compute" parent="ColorMode" startPc="268437726">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437826" name="getColors" parent="ColorMode" startPc="268437790">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437847" name="initialize" parent="ColorMode" startPc="268437827">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437894" name="add" parent="SprocketStats" startPc="268437848">
+            <param id="gearIndex"/>
+            <param id="value"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437902" name="getName" parent="SprocketStats" startPc="268437895">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437952" name="addDiff" parent="SprocketStats" startPc="268437903">
+            <param id="gearIndex"/>
+            <param id="value"/>
+            <param id="range"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437960" name="getColor" parent="SprocketStats" startPc="268437953">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438060" name="getValue" parent="SprocketStats" startPc="268437961">
+            <param id="gearIndex"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438171" name="print" parent="SprocketStats" startPc="268438061">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Stat">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438183" name="setColor" parent="SprocketStats" startPc="268438172">
+            <param id="color"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438232" name="getAvg" parent="SprocketStats" startPc="268438184">
+            <param id="gearIndex"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438246" name="size" parent="SprocketStats" startPc="268438233">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438325" name="reset" parent="SprocketStats" startPc="268438247">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438366" name="toString" parent="SprocketStats" startPc="268438326">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438422" name="initialize" parent="SprocketStats" startPc="268438367">
+            <param id="gearMaxSize"/>
+            <param id="name"/>
+            <param id="unit"/>
+            <param id="type"/>
+            <param id="color"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438430" name="getUnit" parent="SprocketStats" startPc="268438423">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438446" name="getSum" parent="SprocketStats" startPc="268438431">
+            <param id="gearIndex"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438462" name="getCount" parent="SprocketStats" startPc="268438447">
+            <param id="gearIndex"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438495" name="setTextValue" parent="SlavicsSimpleDataField" startPc="268438463">
+            <param id="text"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438754" name="onLayout" parent="SlavicsSimpleDataField" startPc="268438496">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="private" name="&lt;globals/SlavicsSimpleDataField/&lt;&gt;onUpdateAfter&gt;" parent="SlavicsSimpleDataField">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438787" name="setTextLabel" parent="SlavicsSimpleDataField" startPc="268438755">
+            <param id="text"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438855" name="setColors" parent="SlavicsSimpleDataField" startPc="268438788">
+            <param id="colors"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438888" name="initialize" parent="SlavicsSimpleDataField" startPc="268438856">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438961" name="onUpdate" parent="SlavicsSimpleDataField" startPc="268438889">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439982" name="compute" parent="GearIndexView" startPc="268438962">
+            <param id="info"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268440027" name="onTimerStop" parent="GearIndexView" startPc="268439983">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268440379" name="onLayout" parent="GearIndexView" startPc="268440028">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268440412" name="onTimerStart" parent="GearIndexView" startPc="268440380">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441387" name="onUpdateField" parent="GearIndexView" startPc="268440413">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441451" name="handleSettingUpdate" parent="GearIndexView" startPc="268441388">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441484" name="onTimerReset" parent="GearIndexView" startPc="268441452">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441577" name="onUpdateFullScreen" parent="GearIndexView" startPc="268441485">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441610" name="onTimerResume" parent="GearIndexView" startPc="268441578">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441643" name="onTimerPause" parent="GearIndexView" startPc="268441611">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442012" name="initialize" parent="GearIndexView" startPc="268441644">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442049" name="onUpdate" parent="GearIndexView" startPc="268442013">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="initialize" parent="SprocketStatsTest">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442145" name="onTimerStart" parent="GearFitContributions" startPc="268442050">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442231" name="changeIndex" parent="GearFitContributions" startPc="268442146">
+            <param id="change"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442239" name="getTotalShifts" parent="GearFitContributions" startPc="268442232">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442294" name="onTimerReset" parent="GearFitContributions" startPc="268442240">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442342" name="onTimerResume" parent="GearFitContributions" startPc="268442295">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442433" name="setIndex" parent="GearFitContributions" startPc="268442343">
+            <param id="index"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442596" name="setDerailleurs" parent="GearFitContributions" startPc="268442434">
+            <param id="fdSprocket"/>
+            <param id="rdSprocket"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442644" name="onTimerPause" parent="GearFitContributions" startPc="268442597">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442828" name="initialize" parent="GearFitContributions" startPc="268442645">
+            <param id="dataField"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442876" name="onTimerStop" parent="GearFitContributions" startPc="268442829">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442911" name="getWidth" parent="BatteryIcon" startPc="268442877">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268443173" name="draw" parent="BatteryIcon" startPc="268442912">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268443185" name="setStatus" parent="BatteryIcon" startPc="268443174">
+            <param id="status"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268443197" name="setCharge" parent="BatteryIcon" startPc="268443186">
+            <param id="charge"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268443205" name="getFont" parent="BatteryIcon" startPc="268443198">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268443288" name="initialize" parent="BatteryIcon" startPc="268443206">
+            <param id="params"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268443300" name="setFont" parent="BatteryIcon" startPc="268443289">
+            <param id="font"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268443312" name="setNightMode" parent="BatteryIcon" startPc="268443301">
+            <param id="night"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268443326" name="getDeviceState" parent="RearShifting" startPc="268443313">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268443345" name="getRearDerailleurStatus" parent="RearShifting" startPc="268443327">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268443364" name="getFrontDerailleurStatus" parent="RearShifting" startPc="268443346">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="initialize" parent="RearShifting">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268443577" name="getBatteries" parent="RearShifting" startPc="268443365">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268443614" name="onLayout" parent="AlertMessage" startPc="268443578">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268443638" name="initialize" parent="AlertMessage" startPc="268443615">
+            <param id="message"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268443991" name="onUpdate" parent="AlertMessage" startPc="268443639">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268444005" name="compute" parent="GearStat" startPc="268443992">
+            <param id="info"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="private" endPc="268445169" name="&lt;globals/GearStat/&lt;&gt;computeGraph&gt;" parent="GearStat" startPc="268444006">
+            <param id="info"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268445190" name="print" parent="GearStat" startPc="268445170">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="private" endPc="268445202" name="&lt;globals/GearStat/&lt;&gt;reset&gt;" parent="GearStat" startPc="268445191">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268445214" name="initialize" parent="GearStat" startPc="268445203">
+            <param id="preferedMeasure"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268445971" name="draw" parent="GearStat" startPc="268445215">
+            <param id="dc"/>
+            <param id="locX"/>
+            <param id="locY"/>
+            <param id="width"/>
+            <param id="height"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268446041" name="toString" parent="Stat" startPc="268445972">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="initialize" parent="Stat">
+            <documentation/>
+        </functionEntry>
+    </functions>
+</debugInfo>

@@ -51,8 +51,9 @@ else
 fi;
 
 GITCOUNT=$(git rev-list --count HEAD)
+GITCOUNT=$(git log "${APP_VERSION}.0"..HEAD | wc -l)
 
-echo "  Write Application@id=${APP_ID} on ${BRANCH}"
+echo "  Write Application@id=${APP_ID} on ${BRANCH} on version ${APP_VERSION}"
 echo -e "setns iq=http://www.garmin.com/xml/connectiq\ncd //iq:manifest/iq:application/@id\nset ${APP_ID}\nsave\nbye" | xmllint --shell manifest.xml | grep -v ">" 
 
 echo "Set AppName=${APP_NAME} ${APP_VERSION}.${GITCOUNT}"
