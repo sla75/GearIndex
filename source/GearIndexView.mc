@@ -341,7 +341,7 @@ class GearIndexView extends SlavicsSimpleDataField {
             }
         }
 
-        if(Properties.getValue("property_showfailure") as Boolean && failLabel.isVisible){
+        if(Properties.getValue("property_showFailure") as Boolean && failLabel.isVisible){
             
             for(var j=0;j<INVALID_SHIFTS.size();j++){
                 if(j==0){
