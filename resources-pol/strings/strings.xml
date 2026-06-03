@@ -6,5 +6,5 @@
     <string id="property_showTeeth_title">Pokaż rozmiar zębatki</string>
     <string id="property_nightMode_title">Odwróć tryb nocny</string>
     <string id="property_colorMode_title">Lista trybów kolorów</string>
-    <string id="property_showFailure_title">Pokaż błędy przerzutki</string>
+    <!--string id="property_showFailure_title">Pokaż błędy przerzutki</string-->
 </strings>

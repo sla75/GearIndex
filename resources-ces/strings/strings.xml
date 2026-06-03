@@ -6,12 +6,12 @@
     <string id="property_showTeeth_title">Zobrazit velikost pastorku</string>
     <string id="property_nightMode_title">Inverzní noční mód</string>
     <string id="property_colorMode_title">Barevný režim</string>
-    <string id="property_showFailure_title">Zobrazit chyby přehazovačky</string>
+    <string id="property_numberOfShifts_title">Zobrazit počet přeřazení</string>
 
     <string id="RD_totalShifts_label">Rear Derailleur Shifts</string>
     <string id="RD_totalShifts_unit"> </string>
-    <string id="RD_gearRatio_title">Gear Ratio</string>
-    <string id="RD_gearRatio_label">Ratio</string>
+    <string id="RD_gearRatio_title">Poměr zařazení</string>
+    <string id="RD_gearRatio_label">Poměr</string>
     <string id="RD_gearRatio_unit"> </string>
 
     <string id="RD_gearIndex_title">Gear Index</string>

@@ -6,5 +6,5 @@
     <string id="property_showTeeth_title">Lánckerék méretének megjelenítése</string>
     <string id="property_nightMode_title">Éjszakai mód fordított váltása</string>
     <string id="property_colorMode_title">Színmódok listája</string>
-    <string id="property_showFailure_title">Váltóhibák megjelenítése</string>
+    <!--string id="property_showFailure_title">Váltóhibák megjelenítése</string-->
 </strings>

@@ -6,6 +6,6 @@
     <string id="property_showTeeth_title">Mostra la dimensione del pignone</string>
     <string id="property_nightMode_title">Nverti la modalità notturna</string>
     <string id="property_colorMode_title">Elenco delle modalità colore</string>
-    <string id="property_showFailure_title">Mostra gli errori del deragliatore</string>
+    <!--string id="property_showFailure_title">Mostra gli errori del deragliatore</string-->
 
 </strings>

@@ -13,12 +13,14 @@ class GearIndexView extends SlavicsSimpleDataField {
     private var rearShift=new RearShifting() as RearShifting;
     private var batteries=[] as Array<RearShifting.BatteryData>;
     private const INVALID_SHIFTS=[:shiftFailureCount,:invalidInboardShiftCount,:invalidOutboardShiftCount] as Array<Symbol>;
+    private const RD_totalShifts_unit=Application.loadResource(Rez.Strings.RD_totalShifts_unit);
+    /***
     private var fails={
             INVALID_SHIFTS[0]=>{:count=>0,:change=>false},
             INVALID_SHIFTS[1]=>{:count=>0,:change=>false},
             INVALID_SHIFTS[2]=>{:count=>0,:change=>false},
         } as Dictionary<Symbol,Dictionary<Symbol,Object>>;
-    
+    /***/
     
     private var teethsLabel=new Text({
             :color=>Graphics.COLOR_DK_GRAY,
@@ -28,16 +30,17 @@ class GearIndexView extends SlavicsSimpleDataField {
     private var totalShiftsLabel=new Text({
             :color=>Graphics.COLOR_DK_GRAY,
             :font=>Graphics.FONT_SMALL,
-            :justification=>Graphics.TEXT_JUSTIFY_RIGHT,
+            :justification=>Graphics.TEXT_JUSTIFY_LEFT,
         });
+        /***
     private var failLabel=new Text({
             :text=>"fail",
             :color=>Graphics.COLOR_DK_RED,
             :font=>Graphics.FONT_SMALL,
             :justification=>Graphics.TEXT_JUSTIFY_LEFT,
-        });
-    private const FAIL_TIME_COUNTER=10 as Number;
-    private var failTime=FAIL_TIME_COUNTER as Number;
+        });/***/
+    private const TOTAL_SHIFTS_TIME_COUNTER=10 as Number;
+    private var totalShiftsTime=TOTAL_SHIFTS_TIME_COUNTER as Number;
     private var unitTeeths as String;
     private var versionTest=null as String;
     private var lastIndex=-1 as Number;
@@ -65,6 +68,7 @@ class GearIndexView extends SlavicsSimpleDataField {
         Properties.setValue("property_version",Application.loadResource(Rez.Strings.version));
         Properties.setValue("property_showTeeth",Properties.getValue("property_showTeeth")==null?true:Properties.getValue("property_showTeeth") as Boolean);
         Properties.setValue("property_debugMode",Properties.getValue("property_debugMode")==null?true:Properties.getValue("property_debugMode") as Boolean);
+        Properties.setValue("property_numberOfShifts",Properties.getValue("property_numberOfShifts")==null?true:Properties.getValue("property_numberOfShifts") as Boolean);
         colorMode=new ColorMode();
         handleSettingUpdate();
     }
@@ -74,9 +78,8 @@ class GearIndexView extends SlavicsSimpleDataField {
         SlavicsSimpleDataField.onLayout(dc);
         teethsLabel.locX=self.rim;
         teethsLabel.locY=self.labelLine;
-        totalShiftsLabel.locX=dc.getWidth()-self.rim;
-        totalShiftsLabel.locY=self.labelLine;
-        failLabel.locY=dc.getHeight()-Graphics.getFontAscent(Graphics.FONT_SMALL)-rim;
+        totalShiftsLabel.locX=self.rim;
+        totalShiftsLabel.locY=dc.getHeight()-Graphics.getFontAscent(Graphics.FONT_SMALL)-rim;
         if(dc.getHeight()==System.getDeviceSettings().screenHeight){
             screen=FULL;
             labelArea.setJustification(Graphics.TEXT_JUSTIFY_RIGHT);
@@ -105,7 +108,13 @@ class GearIndexView extends SlavicsSimpleDataField {
     public function handleSettingUpdate() as Void {
         System.println("GearIndexView.onSettingsChanged()");
         teethsLabel.setVisible(Properties.getValue("property_showTeeth") as Boolean);
-        teethsLabel.setVisible(Properties.getValue("property_showFailure") as Boolean);
+        if(Properties.getValue("property_numberOfShifts") as Boolean){
+            totalShiftsLabel.setColor(colorMode.getFieldColor(:label));
+            totalShiftsLabel.setVisible(true);
+            totalShiftsTime=TOTAL_SHIFTS_TIME_COUNTER;
+        } else {
+            totalShiftsLabel.setVisible(false);
+        }
         propDebugMode=Properties.getValue("property_debugMode") as Boolean;
         colorMode.handleSettingUpdate();
     }
@@ -126,7 +135,6 @@ class GearIndexView extends SlavicsSimpleDataField {
 
         var rds=rearShift.getRearDerailleurStatus() as AntPlus.DerailleurStatus;
         teethsLabel.setColor(colorMode.getFieldColor(:label));
-        totalShiftsLabel.setColor(colorMode.getFieldColor(:label));
         if(rds!=null){
                 if(rds.gearIndex!=null&&rds.gearIndex!=AntPlus.REAR_GEAR_INVALID){
                     gearFIT.setIndex(rds.gearIndex);
@@ -136,7 +144,12 @@ class GearIndexView extends SlavicsSimpleDataField {
                     if(rds.gearIndex!=lastIndex){
                         gearFIT.changeIndex(rds.gearIndex-lastIndex);
                         valueArea.setColor(colorMode.getFieldColor(:valueChange));
-                        totalShiftsLabel.setText(gearFIT.getTotalShifts().toString()+"x");
+                        totalShiftsLabel.setText(gearFIT.getTotalShifts().toString()+RD_totalShifts_unit);
+                        if(Properties.getValue("property_numberOfShifts") as Boolean){
+                            totalShiftsLabel.setColor(colorMode.getFieldColor(:label));
+                            totalShiftsTime=TOTAL_SHIFTS_TIME_COUNTER;
+                            totalShiftsLabel.setVisible(true);
+                        }
                     } else if(rds.gearIndex==0||rds.gearIndex==rds.gearMax-1){
                         valueArea.setColor(colorMode.getFieldColor(:valueEdge));
                     }
@@ -154,39 +167,13 @@ class GearIndexView extends SlavicsSimpleDataField {
             setTextValue("xx");
             lastIndex=-2;
         }
-        for(var j=0;j<INVALID_SHIFTS.size();j++){
-            var count=0;
-            switch(j){
-                case 0:
-                    count=rds.shiftFailureCount;
-                    break;
-                case 1:
-                    count=rds.invalidInboardShiftCount;
-                    break;
-                case 2:
-                    count=rds.invalidOutboardShiftCount;
-                    break;
-            }
-            if(fails.get(INVALID_SHIFTS[j]).get(:count)!=count){
-                fails.get(INVALID_SHIFTS[j]).put(:count,count);
-                fails.get(INVALID_SHIFTS[j]).put(:change,true);
-                failTime=FAIL_TIME_COUNTER;
-                failLabel.setVisible(true);
-                //System.println("FAIL start fail["+j+"]="+rds.shiftFailureCount);
-            }
-        }
 
-        if(failTime>=0){
-            if(failTime>0){
-                //System.println("FAIL countDown failTime="+failTime);
-                failTime--;
+        if(totalShiftsTime>=0){
+            if(totalShiftsTime>0){
+                totalShiftsTime--;
             } else {
-                failTime=-1;
-                //System.println("FAIL end");
-                failLabel.setVisible(false);
-                for(var j=0;j<INVALID_SHIFTS.size();j++){
-                    fails.get(INVALID_SHIFTS[j]).put(:change,false);
-                }
+                totalShiftsTime=-1;
+                totalShiftsLabel.setVisible(false);
             }
         }
         if(propDebugMode){
@@ -335,34 +322,13 @@ class GearIndexView extends SlavicsSimpleDataField {
                         bLocX-battIcon.getWidth(dc)-2,
                         bLocY+(Graphics.getFontHeight(battIcon.getFont())-Graphics.getFontHeight(battFont)),
                         battFont,bd.get(:name),Graphics.TEXT_JUSTIFY_RIGHT);
-                    
+
                     bLocY-=Graphics.getFontHeight(battIcon.getFont())+3;
                 }
             }
         }
-
-        if(Properties.getValue("property_showFailure") as Boolean && failLabel.isVisible){
-            
-            for(var j=0;j<INVALID_SHIFTS.size();j++){
-                if(j==0){
-                    failLabel.locX=rim;
-                } else {
-                    failLabel.locX+=dc.getTextWidthInPixels("/",Graphics.FONT_SMALL);
-                }
-                failLabel.setColor(fails.get(INVALID_SHIFTS[j]).get(:change)?colorMode.getFieldColor(:error):colorMode.getFieldColor(:label));
-                failLabel.setText(fails.get(INVALID_SHIFTS[j]).get(:count).toString());
-                failLabel.draw(dc);
-                if(j<2){
-                    failLabel.locX+=dc.getTextWidthInPixels(fails.get(INVALID_SHIFTS[j]).get(:count).toString(),Graphics.FONT_SMALL);
-                    failLabel.setColor(colorMode.getFieldColor(:label));
-                    failLabel.setText("/");
-                    failLabel.draw(dc);
-                }
-            }
-
-        }
-
     }
+
     function onTimerReset() {
         System.println("GearIndexView.onTimerReset");
     	gearFIT.onTimerReset();
