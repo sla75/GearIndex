@@ -7,9 +7,9 @@ class RearShifting {
     typedef BatteryData as {
             :identifier as Number,
             :name as String,
-            :batteryStatus as Number,
-            :batteryVoltage as Float,
-            :operatingTime as Number,
+            :batteryStatus as Number or Null,
+            :batteryVoltage as Float or Null,
+            :operatingTime as Number or Null,
             :color as Graphics.ColorType,
         };
 
@@ -142,7 +142,9 @@ class RearShifting {
                         :identifier=>id,
                         :name=>BATTERY_NAME.hasKey(id)?BATTERY_NAME.get(id):id.format("%X"),
                         :batteryStatus=>bs.batteryStatus==null?AntPlus.BATT_STATUS_INVALID:bs.batteryStatus,
-                        :color=>BATTERY_STATUS_COLOR[bs.batteryStatus]
+                        :color=>BATTERY_STATUS_COLOR[bs.batteryStatus],
+                        :batteryVoltage=>bs.batteryVoltage,
+                        :operatingTime=>bs.operatingTime
                     });
             }
         }
@@ -162,11 +164,34 @@ class RearShifting {
                         :identifier=>id,
                         :name=>BATTERY_NAME.hasKey(id)?BATTERY_NAME.get(id):id.format("%X"),
                         :batteryStatus=>bs.batteryStatus==null?AntPlus.BATT_STATUS_INVALID:bs.batteryStatus,
-                        :color=>BATTERY_STATUS_COLOR[bs.batteryStatus]
+                        :color=>BATTERY_STATUS_COLOR[bs.batteryStatus],
+                        :batteryVoltage=>bs.batteryVoltage,
+                        :operatingTime=>bs.operatingTime
                     });
                 }
             }
         }
         return batteries;
+    }
+
+    public static function getBatteryStatusString(status as BatteryStatusValue or Null) as String {
+        switch(status){
+            case 1:
+                return "NEW";
+            case 2:
+                return "GOOD";
+            case 3:
+                return "OK";
+            case 4:
+                return "LOW";
+            case 5:
+                return "CRITICAL";
+            case 7:
+                return "INVALID";
+            case 8:
+                return "CNT";
+            default:
+                return "unknown";
+        }
     }
 }

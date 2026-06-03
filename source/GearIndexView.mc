@@ -79,6 +79,7 @@ class GearIndexView extends SlavicsSimpleDataField {
         failLabel.locY=dc.getHeight()-Graphics.getFontAscent(Graphics.FONT_SMALL)-rim;
         if(dc.getHeight()==System.getDeviceSettings().screenHeight){
             screen=FULL;
+            labelArea.setJustification(Graphics.TEXT_JUSTIFY_RIGHT);
             labelArea.height=dc.getHeight()*0.15f;
 
             valueArea.locX=rim;
@@ -190,6 +191,68 @@ class GearIndexView extends SlavicsSimpleDataField {
         }
         if(propDebugMode){
             debugData=[] as Array<Dictionary>;
+            switch(info.timerState){
+                case 0:
+                    debugData.add({:label=>"info.timerState",:value=>"OFF[0]"});
+                    break;
+                case 1:
+                    debugData.add({:label=>"info.timerState",:value=>"STOPPED[1]"});
+                    break;
+                case 2:
+                    debugData.add({:label=>"info.timerState",:value=>"PAUSED[2]"});
+                    break;
+                case 3:
+                    debugData.add({:label=>"info.timerState",:value=>"ON[3]"});
+                    break;
+                default:
+                    debugData.add({:label=>"info.timerState",:value=>"unknown["+info.timerState+"]"});
+            }
+            debugData.add({:label=>"info.currentSpeed",:value=>info.currentSpeed});
+            debugData.add({:label=>"info.currentCadence",:value=>info.currentCadence});
+            debugData.add({:label=>"info.currentPower",:value=>info.currentPower});
+            debugData.add({:break=>true});
+            /***
+            debugData.add({:label=>"info.distanceToDestination",:value=>info.distanceToDestination});
+            debugData.add({:label=>"info.elapsedDistance",:value=>info.elapsedDistance});
+            debugData.add({:label=>"info.nameOfNextPoint",:value=>info.nameOfNextPoint});
+            debugData.add({:label=>"info.distanceToNextPoint",:value=>info.distanceToNextPoint});
+            /***/
+            
+            debugData.add({:label=>"info.frontDerailleurIndex",:value=>info.frontDerailleurIndex});
+            debugData.add({:label=>"info.frontDerailleurMax",:value=>info.frontDerailleurMax});
+            debugData.add({:label=>"info.frontDerailleurSize",:value=>info.frontDerailleurSize});
+            debugData.add({:label=>"info.rearDerailleurIndex",:value=>info.rearDerailleurIndex});
+            debugData.add({:label=>"info.rearDerailleurMax",:value=>info.rearDerailleurMax});
+            debugData.add({:label=>"info.rearDerailleurSize",:value=>info.rearDerailleurSize});
+            debugData.add({:break=>true});
+
+            if(rearShift.getFrontDerailleurStatus()!=null){
+                debugData.add({:label=>"FDS.gearIndex",:value=>rearShift.getFrontDerailleurStatus().gearIndex});
+                debugData.add({:label=>"FDS.gearMax",:value=>rearShift.getFrontDerailleurStatus().gearMax});
+                debugData.add({:label=>"FDS.gearSize",:value=>rearShift.getFrontDerailleurStatus().gearSize});
+            } else {
+                debugData.add({:label=>"FrontDerailleurStatus",:value=>null});
+            }
+            debugData.add({:break=>true});
+            if(rearShift.getRearDerailleurStatus()!=null){
+                debugData.add({:label=>"RDS.gearIndex",:value=>rearShift.getRearDerailleurStatus().gearIndex});
+                debugData.add({:label=>"RDS.gearMax",:value=>rearShift.getRearDerailleurStatus().gearMax});
+                debugData.add({:label=>"RDS.gearSize",:value=>rearShift.getRearDerailleurStatus().gearSize});
+                debugData.add({:label=>"RDS.invalidInboardShiftCount",:value=>rearShift.getRearDerailleurStatus().invalidInboardShiftCount});
+                debugData.add({:label=>"RDS.invalidOutboardShiftCount",:value=>rearShift.getRearDerailleurStatus().invalidOutboardShiftCount});
+                debugData.add({:label=>"RDS.shiftFailureCount",:value=>rearShift.getRearDerailleurStatus().shiftFailureCount});
+                if(rearShift.getBatteries().size()>0){
+                    debugData.add({:break=>true});
+                    for(var j=0;j<rearShift.getBatteries().size();j++){
+                        var batt=(rearShift.getBatteries() as Array)[j];
+                        debugData.add({:label=>"RDS."+batt.get(:identifier)+".batteryStatus",:value=>RearShifting.getBatteryStatusString(batt.get(:batteryStatus))+"["+batt.get(:batteryStatus)+"]"});
+                        debugData.add({:label=>"RDS."+batt.get(:identifier)+".batteryVoltage",:value=>batt.get(:batteryVoltage)});
+                        debugData.add({:label=>"RDS."+batt.get(:identifier)+".operatingTime",:value=>batt.get(:operatingTime)});
+                    }
+                }
+            } else {
+                debugData.add({:label=>"RearDerailleurStatus",:value=>null});
+            }
         }
 
     }
@@ -213,7 +276,31 @@ class GearIndexView extends SlavicsSimpleDataField {
     }
     public function onUpdateDebugMode(dc as Dc) as Void {
         System.println("GearIndexView.onUpdateDebugMode()");
-        // TODO show DebugData
+        var yLine=1;
+        for(var i=0;i<debugData.size();i++){
+            var dict=(debugData as Array)[i] as Dictionary;
+            if(dict.get(:break)!=null){
+                dc.setPenWidth(2);
+                dc.setColor(Graphics.COLOR_DK_GRAY,Graphics.COLOR_TRANSPARENT);
+                dc.drawLine(2,yLine+1,dc.getWidth()-2,yLine+1);
+                //yLine+=Graphics.getFontDescent(Graphics.FONT_TINY);
+                yLine+=3;
+                continue;
+            }
+            var label=dict.get(:label)+": ";
+            var td=dc.getTextDimensions(label,Graphics.FONT_TINY);
+            dc.setColor(Graphics.COLOR_DK_GRAY,Graphics.COLOR_TRANSPARENT);
+            dc.drawText(1,yLine,Graphics.FONT_TINY,label,Graphics.TEXT_JUSTIFY_LEFT);
+            var value=dict.get(:value);
+            if(value==null){
+                dc.setColor(Graphics.COLOR_LT_GRAY,Graphics.COLOR_TRANSPARENT);
+                value="<null>";
+            } else {
+                dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_TRANSPARENT);
+            }
+            dc.drawText(1+td[0],yLine,Graphics.FONT_TINY,value,Graphics.TEXT_JUSTIFY_LEFT);
+            yLine+=td[1];
+        }
         
     }
     public function onUpdateField(dc as Dc) as Void {
