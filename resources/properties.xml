@@ -3,10 +3,11 @@
     <properties>
         <property id="property_version" type="string">0.0.0</property>
         <property id="property_fitFileSaving" type="boolean">true</property>
-        <property id="property_showteeth" type="boolean">true</property>
+        <property id="property_showTeeth" type="boolean">true</property>
         <property id="property_nightMode" type="boolean">false</property>
         <property id="property_colorMode" type="number">0</property>
-        <property id="property_showfailure" type="boolean">true</property>
+        <property id="property_showFailure" type="boolean">true</property>
+        <property id="property_debugMode" type="boolean">true</property>
     </properties>
 
     <settings>
@@ -16,7 +17,7 @@
         <setting propertyKey="@Properties.property_fitFileSaving" title="@Strings.property_fitFileSaving_title">
             <settingConfig type="boolean" required="true" />
         </setting>
-        <setting propertyKey="@Properties.property_showteeth" title="@Strings.property_showteeth_title">
+        <setting propertyKey="@Properties.property_showTeeth" title="@Strings.property_showTeeth_title">
             <settingConfig type="boolean" required="true" />
         </setting>
         <setting propertyKey="@Properties.property_nightMode" title="@Strings.property_nightMode_title">
@@ -30,44 +31,11 @@
                 <listEntry value="3">Pink</listEntry>
             </settingConfig>
         </setting>
-        <setting propertyKey="@Properties.property_showfailure" title="@Strings.property_showfailure_title">
+        <setting propertyKey="@Properties.property_showFailure" title="@Strings.property_showFailure_title">
+            <settingConfig type="boolean" required="true" />
+        </setting>
+        <setting propertyKey="@Properties.property_debugMode" title="@Strings.property_debugMode_title">
             <settingConfig type="boolean" required="true" />
         </setting>
     </settings>
-    <fitContributions>
-        <fitField id="0" 
-			displayInActivitySummary="true" 
-			sortOrder = "0" 
-			dataLabel="@Strings.RD_totalshifts_label"
-            unitLabel="@Strings.RD_totalshifts_unit" 
-  	    />
-		<fitField id="1" 
-			displayInChart="true" 
-			sortOrder = "1" 
-			precision="2"
-			chartTitle="@Strings.RD_gearratio_title" 
-			dataLabel="@Strings.RD_gearratio_label"
-            unitLabel="@Strings.RD_gearratio_unit" 
-			fillColor="#AA0000"
-		/>
-        <fitField id="2" 
-			displayInChart="true" 
-			sortOrder = "2" 
-			precision="0"
-			chartTitle="@Strings.RD_gearindex_title" 
-			dataLabel="@Strings.RD_gearindex_label"
-            unitLabel="@Strings.RD_gearindex_unit" 
-			fillColor="#FF8C00"
-		/>
-		<!--fitField id="1" 
-			displayInChart="true"
-			sortOrder = "1" 
-			precision="0"
-			chartTitle="@Strings.RD_status_title" 
-			dataLabel="@Strings.RD_status_label"
-            unitLabel="@Strings.RD_status_unit" 
-			fillColor="#FF0000"
-			/-->
-		
-	</fitContributions>
 </resources>

@@ -3,18 +3,18 @@
     <string id="unitTeeths">z</string>
 
     <string id="property_version_title">Verze</string>
-    <string id="property_showteeth_title">Zobrazit velikost pastorku</string>
+    <string id="property_showTeeth_title">Zobrazit velikost pastorku</string>
     <string id="property_nightMode_title">Inverzní noční mód</string>
     <string id="property_colorMode_title">Barevný režim</string>
-    <string id="property_showfailure_title">Zobrazit chyby přehazovačky</string>
+    <string id="property_showFailure_title">Zobrazit chyby přehazovačky</string>
 
-    <string id="RD_totalshifts_label">Rear Derailleur Shifts</string>
-    <string id="RD_totalshifts_unit"> </string>
-    <string id="RD_gearratio_title">Gear Ratio</string>
-    <string id="RD_gearratio_label">Ratio</string>
-    <string id="RD_gearratio_unit"> </string>
+    <string id="RD_totalShifts_label">Rear Derailleur Shifts</string>
+    <string id="RD_totalShifts_unit"> </string>
+    <string id="RD_gearRatio_title">Gear Ratio</string>
+    <string id="RD_gearRatio_label">Ratio</string>
+    <string id="RD_gearRatio_unit"> </string>
 
-    <string id="RD_gearratio_title">Gear Index</string>
-    <string id="RD_gearratio_label">Index</string>
-    <string id="RD_gearratio_unit"> </string>
+    <string id="RD_gearIndex_title">Gear Index</string>
+    <string id="RD_gearIndex_label">Index</string>
+    <string id="RD_gearIndex_unit"> </string>
 </strings>

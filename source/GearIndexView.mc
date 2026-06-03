@@ -42,9 +42,11 @@ class GearIndexView extends SlavicsSimpleDataField {
     private var versionTest=null as String;
     private var lastIndex=-1 as Number;
     private var colorMode as ColorMode;
+    private var propDebugMode=false as Boolean;
     private var gearFIT as GearFitContributions;
     private var gearStat=new GearStat(GearStat.POWER);
     private var screen=null as Screen;
+    private var debugData=[] as Array<Dictionary>;
 
     enum Screen {
         FULL,FIELD
@@ -61,7 +63,8 @@ class GearIndexView extends SlavicsSimpleDataField {
         }
         self.setTextLabel(Application.loadResource(Rez.Strings.label));
         Properties.setValue("property_version",Application.loadResource(Rez.Strings.version));
-        Properties.setValue("property_showteeth",Properties.getValue("property_showteeth")==null?true:Properties.getValue("property_showteeth") as Boolean);
+        Properties.setValue("property_showTeeth",Properties.getValue("property_showTeeth")==null?true:Properties.getValue("property_showTeeth") as Boolean);
+        Properties.setValue("property_debugMode",Properties.getValue("property_debugMode")==null?true:Properties.getValue("property_debugMode") as Boolean);
         colorMode=new ColorMode();
         handleSettingUpdate();
     }
@@ -100,7 +103,9 @@ class GearIndexView extends SlavicsSimpleDataField {
     }
     public function handleSettingUpdate() as Void {
         System.println("GearIndexView.onSettingsChanged()");
-        teethsLabel.setVisible(Properties.getValue("property_showteeth") as Boolean);
+        teethsLabel.setVisible(Properties.getValue("property_showTeeth") as Boolean);
+        teethsLabel.setVisible(Properties.getValue("property_showFailure") as Boolean);
+        propDebugMode=Properties.getValue("property_debugMode") as Boolean;
         colorMode.handleSettingUpdate();
     }
     /***
@@ -183,25 +188,37 @@ class GearIndexView extends SlavicsSimpleDataField {
                 }
             }
         }
+        if(propDebugMode){
+            debugData=[] as Array<Dictionary>;
+        }
 
     }
     var battIcon=new BatteryIcon({:font=>WatchUi.loadResource(Rez.Fonts.BatteryMedium),:justification=>Graphics.TEXT_JUSTIFY_RIGHT});
     var battFont=Graphics.FONT_XTINY;
     public function onUpdate(dc as Dc) as Void {
+        SlavicsSimpleDataField.onUpdate(dc);
         if(screen==FIELD){
             onUpdateField(dc);
         } else {
-            onUpdateFullScreen(dc);
+            if(!propDebugMode){
+                onUpdateFullScreen(dc);
+            } else {
+                onUpdateDebugMode(dc);
+            }
         }
     }
     public function onUpdateFullScreen(dc as Dc) as Void {
         System.println("GearIndexView.onUpdateFullScreen()");
-        SlavicsSimpleDataField.onUpdate(dc);
         gearStat.draw(dc,valueArea.locX,valueArea.locY,valueArea.width,valueArea.height);
+    }
+    public function onUpdateDebugMode(dc as Dc) as Void {
+        System.println("GearIndexView.onUpdateDebugMode()");
+        // TODO show DebugData
+        
     }
     public function onUpdateField(dc as Dc) as Void {
         System.println("GearIndexView.onUpdateField()");
-        SlavicsSimpleDataField.onUpdate(dc);
+        
         if(versionTest!=null){
             dc.setColor(Graphics.COLOR_YELLOW,Graphics.COLOR_TRANSPARENT);
             dc.drawText(1,1,Graphics.FONT_XTINY,versionTest,Graphics.TEXT_JUSTIFY_LEFT);

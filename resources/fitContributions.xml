@@ -1,0 +1,35 @@
+<fitContributions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+        <fitField id="0" 
+			displayInActivitySummary="true" 
+			sortOrder = "0" 
+			dataLabel="@Strings.RD_totalShifts_label"
+            unitLabel="@Strings.RD_totalShifts_unit" 
+  	    />
+		<fitField id="1" 
+			displayInChart="true" 
+			sortOrder = "1" 
+			precision="2"
+			chartTitle="@Strings.RD_gearRatio_title" 
+			dataLabel="@Strings.RD_gearRatio_label"
+            unitLabel="@Strings.RD_gearRatio_unit" 
+			fillColor="#AA0000"
+		/>
+        <fitField id="2" 
+			displayInChart="true" 
+			sortOrder = "2" 
+			precision="0"
+			chartTitle="@Strings.RD_gearIndex_title" 
+			dataLabel="@Strings.RD_gearIndex_label"
+            unitLabel="@Strings.RD_gearIndex_unit" 
+			fillColor="#FF8C00"
+		/>
+		<!--fitField id="1" 
+			displayInChart="true"
+			sortOrder = "1" 
+			precision="0"
+			chartTitle="@Strings.RD_status_title" 
+			dataLabel="@Strings.RD_status_label"
+            unitLabel="@Strings.RD_status_unit" 
+			fillColor="#FF0000"
+			/-->
+</fitContributions>
