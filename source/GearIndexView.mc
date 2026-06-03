@@ -125,6 +125,7 @@ class GearIndexView extends SlavicsSimpleDataField {
         self.setTextLabel(label);
     }
     /***/
+    private var invalidBoardShiftCount=0 as Number;
     function compute(info as Activity.Info) as Void {
         SlavicsSimpleDataField.compute(info);
         gearStat.compute(info);
@@ -150,6 +151,13 @@ class GearIndexView extends SlavicsSimpleDataField {
                             totalShiftsTime=TOTAL_SHIFTS_TIME_COUNTER;
                             totalShiftsLabel.setVisible(true);
                         }
+                        if (Attention has :playTone) {
+                            if(rds.gearIndex==rds.gearMax-1){
+                                Attention.playTone(Attention.TONE_ALERT_HI);
+                            } else if (rds.gearIndex==0) {
+                                Attention.playTone(Attention.TONE_ALERT_LO);
+                            }
+                        }
                     } else if(rds.gearIndex==0||rds.gearIndex==rds.gearMax-1){
                         valueArea.setColor(colorMode.getFieldColor(:valueEdge));
                     }
@@ -161,6 +169,21 @@ class GearIndexView extends SlavicsSimpleDataField {
                     teethsLabel.setText("");
                     lastIndex=-1;
                 }
+
+                if(invalidBoardShiftCount!=(rds.invalidInboardShiftCount+rds.invalidOutboardShiftCount)){
+                    invalidBoardShiftCount=rds.invalidInboardShiftCount+rds.invalidOutboardShiftCount;
+                    if (Attention has :playTone) {
+                        if(rds.gearIndex==rds.gearMax-1){
+                            Attention.playTone(Attention.TONE_ALERT_HI);
+                        } else if (rds.gearIndex==0) {
+                            Attention.playTone(Attention.TONE_ALERT_LO);
+                        }
+                    }
+                }
+
+
+
+
         } else {
             teethsLabel.setText("");
             valueArea.setColor(colorMode.getFieldColor(:error));
