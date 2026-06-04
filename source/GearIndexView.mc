@@ -46,10 +46,11 @@ class GearIndexView extends SlavicsSimpleDataField {
     private var lastIndex=-1 as Number;
     private var colorMode as ColorMode;
     private var propDebugMode=false as Boolean;
-    private var gearFIT as GearFitContributions;
+    private var gearFIT as GearFitContributions or Null;
     private var gearStat=new GearStat(GearStat.POWER);
     private var screen=null as Screen;
     private var debugData=[] as Array<Dictionary>;
+    private var totalShiftsNum=0 as Number;
 
     enum Screen {
         FULL,FIELD
@@ -58,7 +59,8 @@ class GearIndexView extends SlavicsSimpleDataField {
     function initialize() {
         System.println("GearIndexView.initialize()");
         SlavicsSimpleDataField.initialize();
-        gearFIT = new GearFitContributions(self);
+        Properties.setValue("property_fitFileSaving",Properties.getValue("property_fitFileSaving")==null?true:Properties.getValue("property_fitFileSaving") as Boolean);
+        gearFIT = Properties.getValue("property_fitFileSaving")?new GearFitContributions(self):null;
         unitTeeths=Application.loadResource(Rez.Strings.unitTeeths);
         var pos=Application.loadResource(Rez.Strings.AppName).find("Test") as Number or Null;
         if(pos!=null){
@@ -67,7 +69,7 @@ class GearIndexView extends SlavicsSimpleDataField {
         self.setTextLabel(Application.loadResource(Rez.Strings.label));
         Properties.setValue("property_version",Application.loadResource(Rez.Strings.version));
         Properties.setValue("property_showTeeth",Properties.getValue("property_showTeeth")==null?true:Properties.getValue("property_showTeeth") as Boolean);
-        Properties.setValue("property_debugMode",Properties.getValue("property_debugMode")==null?true:Properties.getValue("property_debugMode") as Boolean);
+        Properties.setValue("property_debugMode",Properties.getValue("property_debugMode")==null?false:Properties.getValue("property_debugMode") as Boolean);
         Properties.setValue("property_numberOfShifts",Properties.getValue("property_numberOfShifts")==null?true:Properties.getValue("property_numberOfShifts") as Boolean);
         colorMode=new ColorMode();
         handleSettingUpdate();
@@ -116,6 +118,12 @@ class GearIndexView extends SlavicsSimpleDataField {
             totalShiftsLabel.setVisible(false);
         }
         propDebugMode=Properties.getValue("property_debugMode") as Boolean;
+        if(Properties.getValue("property_fitFileSaving")){
+            gearFIT = gearFIT==null?new GearFitContributions(self):gearFIT;
+        } else {
+            gearFIT=null;
+        }
+        
         colorMode.handleSettingUpdate();
     }
     /***
@@ -138,14 +146,22 @@ class GearIndexView extends SlavicsSimpleDataField {
         teethsLabel.setColor(colorMode.getFieldColor(:label));
         if(rds!=null){
                 if(rds.gearIndex!=null&&rds.gearIndex!=AntPlus.REAR_GEAR_INVALID){
-                    gearFIT.setIndex(rds.gearIndex);
-                    if(rearShift.getFrontDerailleurStatus()!=null){
-                        gearFIT.setDerailleurs(rearShift.getFrontDerailleurStatus().gearSize,rds.gearSize);
+                    if(gearFIT!=null){
+                        gearFIT.setIndex(rds.gearIndex);
+                        if(rearShift.getFrontDerailleurStatus()!=null){
+                            gearFIT.setDerailleurs(rearShift.getFrontDerailleurStatus().gearSize,rds.gearSize);
+                        }
                     }
                     if(rds.gearIndex!=lastIndex){
-                        gearFIT.changeIndex(rds.gearIndex-lastIndex);
                         valueArea.setColor(colorMode.getFieldColor(:valueChange));
-                        totalShiftsLabel.setText(gearFIT.getTotalShifts().toString()+RD_totalShifts_unit);
+                        totalShiftsNum+=rds.gearIndex-lastIndex;
+                        if(gearFIT!=null){
+                            gearFIT.changeIndex(rds.gearIndex-lastIndex);
+                            totalShiftsLabel.setText(gearFIT.getTotalShifts().toString()+RD_totalShifts_unit);
+                        } else {
+                            totalShiftsLabel.setText(totalShiftsNum);
+                        }
+                        
                         if(Properties.getValue("property_numberOfShifts") as Boolean){
                             totalShiftsLabel.setColor(colorMode.getFieldColor(:label));
                             totalShiftsTime=TOTAL_SHIFTS_TIME_COUNTER;
@@ -180,9 +196,6 @@ class GearIndexView extends SlavicsSimpleDataField {
                         }
                     }
                 }
-
-
-
 
         } else {
             teethsLabel.setText("");
@@ -237,16 +250,16 @@ class GearIndexView extends SlavicsSimpleDataField {
             debugData.add({:break=>true});
 
             if(rearShift.getFrontDerailleurStatus()!=null){
-                debugData.add({:label=>"FDS.gearIndex",:value=>rearShift.getFrontDerailleurStatus().gearIndex});
-                debugData.add({:label=>"FDS.gearMax",:value=>rearShift.getFrontDerailleurStatus().gearMax});
+                debugData.add({:label=>"FDS.gearIndex",:value=>checkGearError(rearShift.getFrontDerailleurStatus().gearIndex,AntPlus.FRONT_GEAR_INVALID)});
+                debugData.add({:label=>"FDS.gearMax",:value=>checkGearError(rearShift.getFrontDerailleurStatus().gearMax,AntPlus.MAX_GEARS_INVALID)});
                 debugData.add({:label=>"FDS.gearSize",:value=>rearShift.getFrontDerailleurStatus().gearSize});
             } else {
                 debugData.add({:label=>"FrontDerailleurStatus",:value=>null});
             }
             debugData.add({:break=>true});
             if(rearShift.getRearDerailleurStatus()!=null){
-                debugData.add({:label=>"RDS.gearIndex",:value=>rearShift.getRearDerailleurStatus().gearIndex});
-                debugData.add({:label=>"RDS.gearMax",:value=>rearShift.getRearDerailleurStatus().gearMax});
+                debugData.add({:label=>"RDS.gearIndex",:value=>checkGearError(rearShift.getRearDerailleurStatus().gearIndex,AntPlus.REAR_GEAR_INVALID)});
+                debugData.add({:label=>"RDS.gearMax",:value=>checkGearError(rearShift.getRearDerailleurStatus().gearMax,AntPlus.MAX_GEARS_INVALID)});
                 debugData.add({:label=>"RDS.gearSize",:value=>rearShift.getRearDerailleurStatus().gearSize});
                 debugData.add({:label=>"RDS.invalidInboardShiftCount",:value=>rearShift.getRearDerailleurStatus().invalidInboardShiftCount});
                 debugData.add({:label=>"RDS.invalidOutboardShiftCount",:value=>rearShift.getRearDerailleurStatus().invalidOutboardShiftCount});
@@ -265,6 +278,14 @@ class GearIndexView extends SlavicsSimpleDataField {
             }
         }
 
+    }
+    private function checkGearError(gear as Number or Null,checkGear as Number or Null) as String {
+        if(gear==null){
+            return "<null>";
+        } else if(gear==checkGear){
+            return "Invalid["+gear+"]";
+        }
+        return gear.toString();
     }
     var battIcon=new BatteryIcon({:font=>WatchUi.loadResource(Rez.Fonts.BatteryMedium),:justification=>Graphics.TEXT_JUSTIFY_RIGHT});
     var battFont=Graphics.FONT_XTINY;
@@ -354,28 +375,39 @@ class GearIndexView extends SlavicsSimpleDataField {
 
     function onTimerReset() {
         System.println("GearIndexView.onTimerReset");
-    	gearFIT.onTimerReset();
+        totalShiftsNum=0;
+    	if(gearFIT!=null){
+            gearFIT.onTimerReset();
+        }
     }
     
     function onTimerPause() {
         System.println("GearIndexView.onTimerPause");
-    	gearFIT.onTimerPause();
+        if(gearFIT!=null){
+    	    gearFIT.onTimerPause();
+        }
     }
     
     function onTimerResume() {
         System.println("GearIndexView.onTimerResume");
-    	gearFIT.onTimerResume();
+        if(gearFIT!=null){
+    	    gearFIT.onTimerResume();
+        }
     }
     
     function onTimerStart() {
         System.println("GearIndexView.onTimerStart");
-    	gearFIT.onTimerStart();
+        if(gearFIT!=null){
+    	    gearFIT.onTimerStart();
+        }
     }
     
     function onTimerStop() {
         System.println("GearIndexView.onTimerStop");
-    	gearFIT.onTimerStop();
-        gearStat.print();
+        if(gearFIT!=null){
+    	    gearFIT.onTimerStop();
+            gearStat.print();
+        }
     }
 }
 /***
