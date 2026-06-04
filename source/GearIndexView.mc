@@ -12,7 +12,7 @@ class GearIndexView extends SlavicsSimpleDataField {
     public static const BATTERY_STATUS_TEXT = ["0","New","Good","Ok","Low","Crit.","Unkn.","Inv.","Cnt"] as Array<String>;
     private var rearShift=new RearShifting() as RearShifting;
     private var batteries=[] as Array<RearShifting.BatteryData>;
-    private const INVALID_SHIFTS=[:shiftFailureCount,:invalidInboardShiftCount,:invalidOutboardShiftCount] as Array<Symbol>;
+    //private const INVALID_SHIFTS=[:shiftFailureCount,:invalidInboardShiftCount,:invalidOutboardShiftCount] as Array<Symbol>;
     private const RD_totalShifts_unit=Application.loadResource(Rez.Strings.RD_totalShifts_unit);
     /***
     private var fails={
@@ -22,16 +22,7 @@ class GearIndexView extends SlavicsSimpleDataField {
         } as Dictionary<Symbol,Dictionary<Symbol,Object>>;
     /***/
     
-    private var teethsLabel=new Text({
-            :color=>Graphics.COLOR_DK_GRAY,
-            :font=>Graphics.FONT_SMALL,
-            :justification=>Graphics.TEXT_JUSTIFY_LEFT,
-        });
-    private var totalShiftsLabel=new Text({
-            :color=>Graphics.COLOR_DK_GRAY,
-            :font=>Graphics.FONT_SMALL,
-            :justification=>Graphics.TEXT_JUSTIFY_LEFT,
-        });
+    
         /***
     private var failLabel=new Text({
             :text=>"fail",
@@ -78,10 +69,6 @@ class GearIndexView extends SlavicsSimpleDataField {
     function onLayout(dc as Dc) as Void {
         System.println("GearIndexView.onLayout() "+dc.getWidth()+"x"+dc.getHeight());
         SlavicsSimpleDataField.onLayout(dc);
-        teethsLabel.locX=self.rim;
-        teethsLabel.locY=self.labelLine;
-        totalShiftsLabel.locX=self.rim;
-        totalShiftsLabel.locY=dc.getHeight()-Graphics.getFontAscent(Graphics.FONT_SMALL)-rim;
         if(dc.getHeight()==System.getDeviceSettings().screenHeight){
             screen=FULL;
             labelArea.setJustification(Graphics.TEXT_JUSTIFY_RIGHT);
@@ -92,8 +79,15 @@ class GearIndexView extends SlavicsSimpleDataField {
             valueArea.width=dc.getWidth()-2*rim;
             valueArea.height=dc.getHeight()-labelArea.height-rim;
             valueArea.setJustification(Graphics.TEXT_JUSTIFY_RIGHT);
+
+            topLeftLabel.setVisible(false);
+            topLeftLabel.locY=labelArea.height;
+
+            bottomLeftLabel.setVisible(false);
         } else {
             screen=FIELD;
+            topLeftLabel.setVisible(Properties.getValue("property_showTeeth") as Boolean);
+            bottomLeftLabel.setVisible(Properties.getValue("property_numberOfShifts") as Boolean);
         }
         /***
         System.println("PartNumber: "+System.getDeviceSettings().partNumber);
@@ -109,13 +103,10 @@ class GearIndexView extends SlavicsSimpleDataField {
     }
     public function handleSettingUpdate() as Void {
         System.println("GearIndexView.onSettingsChanged()");
-        teethsLabel.setVisible(Properties.getValue("property_showTeeth") as Boolean);
+        topLeftLabel.setVisible(Properties.getValue("property_showTeeth") as Boolean);
+        bottomLeftLabel.setVisible(Properties.getValue("property_numberOfShifts") as Boolean);
         if(Properties.getValue("property_numberOfShifts") as Boolean){
-            totalShiftsLabel.setColor(colorMode.getFieldColor(:label));
-            totalShiftsLabel.setVisible(true);
             totalShiftsTime=TOTAL_SHIFTS_TIME_COUNTER;
-        } else {
-            totalShiftsLabel.setVisible(false);
         }
         propDebugMode=Properties.getValue("property_debugMode") as Boolean;
         if(Properties.getValue("property_fitFileSaving")){
@@ -143,7 +134,7 @@ class GearIndexView extends SlavicsSimpleDataField {
         batteries=rearShift.getBatteries() as Array<RearShifting.BatteryData>;
 
         var rds=rearShift.getRearDerailleurStatus() as AntPlus.DerailleurStatus;
-        teethsLabel.setColor(colorMode.getFieldColor(:label));
+
         if(rds!=null){
                 if(rds.gearIndex!=null&&rds.gearIndex!=AntPlus.REAR_GEAR_INVALID){
                     if(gearFIT!=null){
@@ -157,15 +148,15 @@ class GearIndexView extends SlavicsSimpleDataField {
                         totalShiftsNum+=rds.gearIndex-lastIndex;
                         if(gearFIT!=null){
                             gearFIT.changeIndex(rds.gearIndex-lastIndex);
-                            totalShiftsLabel.setText(gearFIT.getTotalShifts().toString()+RD_totalShifts_unit);
+                            bottomLeftLabel.setText(gearFIT.getTotalShifts().toString()+RD_totalShifts_unit);
                         } else {
-                            totalShiftsLabel.setText(totalShiftsNum);
+                            bottomLeftLabel.setText(totalShiftsNum);
                         }
-                        
+
                         if(Properties.getValue("property_numberOfShifts") as Boolean){
-                            totalShiftsLabel.setColor(colorMode.getFieldColor(:label));
+                            bottomLeftLabel.setColor(colorMode.getFieldColor(:label));
                             totalShiftsTime=TOTAL_SHIFTS_TIME_COUNTER;
-                            totalShiftsLabel.setVisible(true);
+                            bottomLeftLabel.setVisible(true);
                         }
                         if (Attention has :playTone) {
                             if(rds.gearIndex==rds.gearMax-1){
@@ -178,11 +169,11 @@ class GearIndexView extends SlavicsSimpleDataField {
                         valueArea.setColor(colorMode.getFieldColor(:valueEdge));
                     }
                     setTextValue((rds.gearIndex+1).toString());
-                    teethsLabel.setText(rds.gearSize+unitTeeths);
+                    topLeftLabel.setText(rds.gearSize+unitTeeths);
                     lastIndex=rds.gearIndex;
                 } else {
                     setTextValue("--");
-                    teethsLabel.setText("");
+                    topLeftLabel.setText("");
                     lastIndex=-1;
                 }
 
@@ -198,7 +189,7 @@ class GearIndexView extends SlavicsSimpleDataField {
                 }
 
         } else {
-            teethsLabel.setText("");
+            topLeftLabel.setText("");
             valueArea.setColor(colorMode.getFieldColor(:error));
             setTextValue("xx");
             lastIndex=-2;
@@ -209,7 +200,7 @@ class GearIndexView extends SlavicsSimpleDataField {
                 totalShiftsTime--;
             } else {
                 totalShiftsTime=-1;
-                totalShiftsLabel.setVisible(false);
+                bottomLeftLabel.setVisible(false);
             }
         }
         if(propDebugMode){
@@ -342,9 +333,6 @@ class GearIndexView extends SlavicsSimpleDataField {
             dc.drawText(1,1,Graphics.FONT_XTINY,versionTest,Graphics.TEXT_JUSTIFY_LEFT);
         }
 
-        teethsLabel.draw(dc);
-        totalShiftsLabel.draw(dc);
-        
         if(batteries.size()>0){
             // Draw batteries
             var bLocX=dc.getWidth()-rim;

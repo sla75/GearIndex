@@ -31,6 +31,18 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
             :font=>FONTS,
             :justification => Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER,
         }) as TextArea;
+
+    protected var topLeftLabel=new Text({
+            :color=>Graphics.COLOR_DK_GRAY,
+            :font=>Graphics.FONT_SMALL,
+            :justification=>Graphics.TEXT_JUSTIFY_LEFT,
+        });
+    protected var bottomLeftLabel=new Text({
+            :color=>Graphics.COLOR_DK_GRAY,
+            :font=>Graphics.FONT_SMALL,
+            :justification=>Graphics.TEXT_JUSTIFY_LEFT,
+        });
+    
     public var rim=0 as Number;
     public var labelLine=0 as Number;
     public var colors={:background=>Graphics.COLOR_WHITE,:label=>Graphics.COLOR_DK_GRAY,:value=>Graphics.COLOR_BLACK} as Dictionary<Symbol,Graphics.ColorValue>;
@@ -58,6 +70,14 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
         valueArea.width=dc.getWidth();
         valueArea.height=dc.getHeight()-labelLine*0.667f;
         valueArea.setJustification(Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+
+        topLeftLabel.locX=self.rim;
+        topLeftLabel.locY=self.labelLine;
+        topLeftLabel.setJustification(Graphics.TEXT_JUSTIFY_LEFT);
+
+        bottomLeftLabel.locX=self.rim;
+        bottomLeftLabel.locY=dc.getHeight()-self.rim-Graphics.getFontAscent(Graphics.FONT_SMALL);
+        bottomLeftLabel.setJustification(Graphics.TEXT_JUSTIFY_LEFT);
     }
 
     public function setTextLabel(text as String or Null){
@@ -74,6 +94,9 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
         self.colors=colors;
         valueArea.setColor(colors.get(:value));
         labelArea.setColor(colors.get(:label));
+
+        topLeftLabel.setColor(colors.get(:label));
+        bottomLeftLabel.setColor(colors.get(:label));
     }
     /***
     public function compute(info as Activity.Info) as Void {
@@ -91,6 +114,8 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
         dc.clear();
         valueArea.draw(dc);
         labelArea.draw(dc);
+        topLeftLabel.draw(dc);
+        bottomLeftLabel.draw(dc);
         onUpdateAfter(dc);
     }
     (:release)
