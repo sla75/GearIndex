@@ -22,11 +22,7 @@ class GearIndexView extends SlavicsSimpleDataField {
         } as Dictionary<Symbol,Dictionary<Symbol,Object>>;
     /***/
     
-    private var totalShiftsLabel=new Text({
-            :color=>Graphics.COLOR_DK_GRAY,
-            :font=>Graphics.FONT_SMALL,
-            :justification=>Graphics.TEXT_JUSTIFY_LEFT,
-        });
+    
         /***
     private var failLabel=new Text({
             :text=>"fail",
@@ -71,8 +67,6 @@ class GearIndexView extends SlavicsSimpleDataField {
     function onLayout(dc as Dc) as Void {
         System.println("GearIndexView.onLayout() "+dc.getWidth()+"x"+dc.getHeight());
         SlavicsSimpleDataField.onLayout(dc);
-        totalShiftsLabel.locX=self.rim;
-        totalShiftsLabel.locY=dc.getHeight()-Graphics.getFontAscent(Graphics.FONT_SMALL)-rim;
         if(dc.getHeight()==System.getDeviceSettings().screenHeight){
             screen=FULL;
             labelArea.setJustification(Graphics.TEXT_JUSTIFY_RIGHT);
@@ -86,9 +80,12 @@ class GearIndexView extends SlavicsSimpleDataField {
 
             topLeftLabel.setVisible(false);
             topLeftLabel.locY=labelArea.height;
+
+            bottomLeftLabel.setVisible(false);
         } else {
             screen=FIELD;
             topLeftLabel.setVisible(Properties.getValue("property_showTeeth") as Boolean);
+            bottomLeftLabel.setVisible(Properties.getValue("property_numberOfShifts") as Boolean);
         }
         /***
         System.println("PartNumber: "+System.getDeviceSettings().partNumber);
@@ -105,12 +102,9 @@ class GearIndexView extends SlavicsSimpleDataField {
     public function handleSettingUpdate() as Void {
         System.println("GearIndexView.onSettingsChanged()");
         topLeftLabel.setVisible(Properties.getValue("property_showTeeth") as Boolean);
+        bottomLeftLabel.setVisible(Properties.getValue("property_numberOfShifts") as Boolean);
         if(Properties.getValue("property_numberOfShifts") as Boolean){
-            totalShiftsLabel.setColor(colorMode.getFieldColor(:label));
-            totalShiftsLabel.setVisible(true);
             totalShiftsTime=TOTAL_SHIFTS_TIME_COUNTER;
-        } else {
-            totalShiftsLabel.setVisible(false);
         }
         propDebugMode=Properties.getValue("property_debugMode") as Boolean;
         colorMode.handleSettingUpdate();
@@ -142,11 +136,11 @@ class GearIndexView extends SlavicsSimpleDataField {
                     if(rds.gearIndex!=lastIndex){
                         gearFIT.changeIndex(rds.gearIndex-lastIndex);
                         valueArea.setColor(colorMode.getFieldColor(:valueChange));
-                        totalShiftsLabel.setText(gearFIT.getTotalShifts().toString()+RD_totalShifts_unit);
+                        bottomLeftLabel.setText(gearFIT.getTotalShifts().toString()+RD_totalShifts_unit);
                         if(Properties.getValue("property_numberOfShifts") as Boolean){
-                            totalShiftsLabel.setColor(colorMode.getFieldColor(:label));
+                            bottomLeftLabel.setColor(colorMode.getFieldColor(:label));
                             totalShiftsTime=TOTAL_SHIFTS_TIME_COUNTER;
-                            totalShiftsLabel.setVisible(true);
+                            bottomLeftLabel.setVisible(true);
                         }
                         if (Attention has :playTone) {
                             if(rds.gearIndex==rds.gearMax-1){
@@ -193,7 +187,7 @@ class GearIndexView extends SlavicsSimpleDataField {
                 totalShiftsTime--;
             } else {
                 totalShiftsTime=-1;
-                totalShiftsLabel.setVisible(false);
+                bottomLeftLabel.setVisible(false);
             }
         }
         if(propDebugMode){
@@ -318,8 +312,6 @@ class GearIndexView extends SlavicsSimpleDataField {
             dc.drawText(1,1,Graphics.FONT_XTINY,versionTest,Graphics.TEXT_JUSTIFY_LEFT);
         }
 
-        totalShiftsLabel.draw(dc);
-        
         if(batteries.size()>0){
             // Draw batteries
             var bLocX=dc.getWidth()-rim;

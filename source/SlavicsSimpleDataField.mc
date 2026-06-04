@@ -31,7 +31,13 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
             :font=>FONTS,
             :justification => Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER,
         }) as TextArea;
+
     protected var topLeftLabel=new Text({
+            :color=>Graphics.COLOR_DK_GRAY,
+            :font=>Graphics.FONT_SMALL,
+            :justification=>Graphics.TEXT_JUSTIFY_LEFT,
+        });
+    protected var bottomLeftLabel=new Text({
             :color=>Graphics.COLOR_DK_GRAY,
             :font=>Graphics.FONT_SMALL,
             :justification=>Graphics.TEXT_JUSTIFY_LEFT,
@@ -68,6 +74,10 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
         topLeftLabel.locX=self.rim;
         topLeftLabel.locY=self.labelLine;
         topLeftLabel.setJustification(Graphics.TEXT_JUSTIFY_LEFT);
+
+        bottomLeftLabel.locX=self.rim;
+        bottomLeftLabel.locY=dc.getHeight()-self.rim-Graphics.getFontAscent(Graphics.FONT_SMALL);
+        bottomLeftLabel.setJustification(Graphics.TEXT_JUSTIFY_LEFT);
     }
 
     public function setTextLabel(text as String or Null){
@@ -86,6 +96,7 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
         labelArea.setColor(colors.get(:label));
 
         topLeftLabel.setColor(colors.get(:label));
+        bottomLeftLabel.setColor(colors.get(:label));
     }
     /***
     public function compute(info as Activity.Info) as Void {
@@ -104,6 +115,7 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
         valueArea.draw(dc);
         labelArea.draw(dc);
         topLeftLabel.draw(dc);
+        bottomLeftLabel.draw(dc);
         onUpdateAfter(dc);
     }
     (:release)
