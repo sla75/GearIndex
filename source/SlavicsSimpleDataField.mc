@@ -49,7 +49,7 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
 
         labelArea.locX=rim;
         labelArea.locY=rim;
-        labelArea.width=dc.getWidth()-rim;
+        labelArea.width=dc.getWidth()-2*rim;
         labelArea.height=labelLine*1.333f;
         labelArea.setJustification(Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 
