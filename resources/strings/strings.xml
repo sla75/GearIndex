@@ -14,14 +14,21 @@
     <string id="property_debugMode_title">Debug Mode</string>
 
     <string id="RD_totalShifts_label">Rear Derailleur Shifts</string>
-    <string id="RD_totalShifts_unit">x</string>
+    <string id="RD_totalShifts_unit" translatable="false">x</string>
 
-    <string id="RD_gearRatio_title">Gear Ratio</string>
+    <string id="RD_gearRatio_title">Gear</string>
     <string id="RD_gearRatio_label">Ratio</string>
-    <string id="RD_gearRatio_unit"> </string>
+    <string id="RD_gearRatio_unit" translatable="false"> </string>
 
-    <string id="RD_gearIndex_title">Gear Index</string>
+    <string id="RD_gearIndex_title">Gear</string>
     <string id="RD_gearIndex_label">Index</string>
-    <string id="RD_gearIndex_unit"> </string>
+    <string id="RD_gearIndex_unit" translatable="false"> </string>
 
+    <string id="RD_batteryStatus_title">Battery Rear Derailleur</string>
+    <string id="RD_batteryStatus_label">Index</string>
+    <string id="RD_batteryStatus_unit" translatable="false"> </string>
+
+    <string id="RD_batteryVoltage_title">Battery Rear Derailleur</string>
+    <string id="RD_batteryVoltage_label">Voltage</string>
+    <string id="RD_batteryVoltage_unit" translatable="false">V</string>
 </strings>

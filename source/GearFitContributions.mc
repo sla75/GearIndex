@@ -6,16 +6,20 @@ import Toybox.WatchUi;
 
 class GearFitContributions {
 
-    private var totalShiftsRF as FitContributor.Field;
-    private var gearRatioRF as FitContributor.Field;
-    private var gearIndexRF as FitContributor.Field;
-    
+    private var field_TotalShifts as FitContributor.Field;
+    private var field_GearRatio as FitContributor.Field;
+    private var field_GearIndex as FitContributor.Field;
+    private var field_RdBatteryStatus as FitContributor.Field;
+    private var field_RdBatteryVoltage as FitContributor.Field;
+
 	private var mTimerRunning = STOP as ActivityTimer;
     private var totalShifts=0 as Number;
 
     private const FIT_RD_TOTALSHIFTS_ID = 0;
     private const FIT_RD_GEARRATIO_ID = 1;
     private const FIT_RD_GEARINDEX_ID = 2;
+    private const FIT_RD_BATTERYSTATUS_ID = 3;
+    private const FIT_RD_BATTERYVOLTAGE_ID = 4;
 
     enum ActivityTimer {
         STOP,
@@ -25,14 +29,18 @@ class GearFitContributions {
 
     function initialize(dataField as WatchUi.DataField) {
         Properties.setValue("property_fitFileSaving",Properties.getValue("property_fitFileSaving")==null?true:Properties.getValue("property_fitFileSaving") as Boolean);
-        totalShiftsRF = dataField.createField("FIT_RD_TOTALSHIFTS_ID", FIT_RD_TOTALSHIFTS_ID, FitContributor.DATA_TYPE_UINT8, {
+        field_TotalShifts = dataField.createField("FIT_RD_TOTALSHIFTS_ID", FIT_RD_TOTALSHIFTS_ID, FitContributor.DATA_TYPE_UINT8, {
             :mesgType=>FitContributor.MESG_TYPE_SESSION});
-
-        gearRatioRF = dataField.createField("FIT_RD_GEARRATIO_ID", FIT_RD_GEARRATIO_ID, FitContributor.DATA_TYPE_FLOAT, {
-            :mesgType=>FitContributor.MESG_TYPE_RECORD, :nativeNum => 23 });
-        
-        gearIndexRF = dataField.createField("FIT_RD_GEARINDEX_ID", FIT_RD_GEARINDEX_ID, FitContributor.DATA_TYPE_UINT8, {
+        field_GearRatio = dataField.createField("FIT_RD_GEARRATIO_ID", FIT_RD_GEARRATIO_ID, FitContributor.DATA_TYPE_FLOAT, {
             :mesgType=>FitContributor.MESG_TYPE_RECORD});
+        field_GearIndex = dataField.createField("FIT_RD_GEARINDEX_ID", FIT_RD_GEARINDEX_ID, FitContributor.DATA_TYPE_UINT8, {
+            :mesgType=>FitContributor.MESG_TYPE_RECORD});
+
+        field_RdBatteryStatus = dataField.createField("FIT_RD_BATTERYSTATUS_ID", FIT_RD_BATTERYSTATUS_ID, FitContributor.DATA_TYPE_UINT8, {
+            :mesgType=>FitContributor.MESG_TYPE_RECORD});
+        field_RdBatteryVoltage = dataField.createField("FIT_RD_BATTERYVOLTAGE_ID", FIT_RD_BATTERYVOLTAGE_ID, FitContributor.DATA_TYPE_FLOAT, {
+            :mesgType=>FitContributor.MESG_TYPE_RECORD});
+     
     }
 
     function setDerailleurs(fdSprocket as Number or Null,rdSprocket as Number or Null) as Void {
@@ -50,7 +58,7 @@ class GearFitContributions {
             return;
         }
         var ratio=fdSprocket/rdSprocket.toFloat() as Float;
-        gearRatioRF.setData(ratio);
+        field_GearRatio.setData(ratio);
         System.println("GearFitContributions.setDerailleurs ratio="+ratio.format("%.2f"));
     }
 
@@ -62,15 +70,28 @@ class GearFitContributions {
         if(mTimerRunning!=RUNNING) {
             return;
         }
-        gearIndexRF.setData(index+1);
+        field_GearIndex.setData(index+1);
         System.println("GearFitContributions.setIndex index="+index);
     }
 
     public function changeIndex(change as Number) as Void {
         if(mTimerRunning!=PAUSE){
             totalShifts+=change>0?change:-change;
-            totalShiftsRF.setData(totalShifts);
+            field_TotalShifts.setData(totalShifts);
             System.println("GearFitContributions.onChange totalShifts="+totalShifts);
+        }
+    }
+
+    public function addRdBatteryStatus(batteryStatus as AntPlus.BatteryStatusValue or Null) as Void {
+        System.println("GearFitContributions.addRdBatteryStatus "+batteryStatus);
+        if(batteryStatus!=null){
+            field_RdBatteryStatus.setData(batteryStatus);
+        }
+    }
+    public function addRdBatteryVoltage(batteryVoltage as Float or Null) as Void {
+        System.println("GearFitContributions.addRdBatteryVoltage "+batteryVoltage);
+        if(batteryVoltage!=null){
+            field_RdBatteryVoltage.setData(batteryVoltage);
         }
     }
 

@@ -132,6 +132,15 @@ class GearIndexView extends SlavicsSimpleDataField {
         SlavicsSimpleDataField.setColors(colorMode.getColors());
 
         batteries=rearShift.getBatteries() as Array<RearShifting.BatteryData>;
+        if(gearFIT!=null){
+            for(var i=0;i<batteries.size();i++){
+                if(i==0x02){ // RD Battery
+                    var rdBat=batteries[i] as Dictionary;
+                    gearFIT.addRdBatteryStatus(rdBat.get(:status));
+                    gearFIT.addRdBatteryVoltage(rdBat.get(:voltage));
+                }
+            }
+        }
 
         var rds=rearShift.getRearDerailleurStatus() as AntPlus.DerailleurStatus;
 
