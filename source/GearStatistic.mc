@@ -4,7 +4,7 @@ import Toybox.Graphics;
 import Toybox.Lang;
 import Toybox.Time;
 
-class GearStat {
+class GearStatistic {
 
 
     enum PreferedMeasure {
@@ -18,9 +18,11 @@ class GearStat {
     private var prefered as PreferedMeasure;
     private var currentIndex=null as Number;
     private var stats={} as Dictionary<Symbol,SprocketStats>;
+    private var colorMode as ColorMode;
 
-    public function initialize(preferedMeasure as PreferedMeasure) {
+    public function initialize(preferedMeasure as PreferedMeasure, colorMode as ColorMode) {
         self.prefered=preferedMeasure;
+        self.colorMode=colorMode;
     }
     private const DEBUG_TEETHS = [51, 45, 39, 33, 28, 24, 21, 18, 16, 14, 12, 10] as Array<Number>;
     (:debug)
@@ -151,26 +153,68 @@ class GearStat {
                 var value=ss.getValue(i);
                 if(value!=0){
                     var textValue="" as String;
-                    if(value>950){
+                    if(value>9950){
+                        textValue=(value/1000f).format("%0.1f")+"k"+ss.getUnit();
+                    } else if(value>950){
                         textValue=(value/1000f).format("%0.2f")+"k"+ss.getUnit();
                     } else {
                         textValue=value.format("%d")+""+ss.getUnit();
                     }
-                    if(i==currentIndex){
-                        dc.setColor(Graphics.COLOR_ORANGE,Graphics.COLOR_TRANSPARENT);
+
+                    var indexBarColor=Graphics.COLOR_PINK;
+                    var nonIndexBarColor=Graphics.COLOR_PINK;
+                    var indexValueColor=Graphics.COLOR_PINK;
+                    var nonIndexValueColor=Graphics.COLOR_PINK;
+                    if (!colorMode.isNight) {
+                        if (ss.getColor()==colorMode.getFieldColor(:background)) {
+                            System.println("GearStatistic.draw DAY eq Background");
+                            indexBarColor=Graphics.COLOR_WHITE;
+                            nonIndexBarColor=Graphics.COLOR_BLACK;
+                            indexValueColor=ss.getColor();
+                            nonIndexValueColor=Graphics.COLOR_WHITE;
+                        } else {
+                            System.println("GearStatistic.draw DAY neq Background");
+                            indexBarColor=colorMode.getFieldColor(:value);
+                            nonIndexBarColor=ss.getColor();
+                            indexValueColor=colorMode.getFieldColor(:background);
+                            nonIndexValueColor=colorMode.getFieldColor(:background);
+                        }
                     } else {
-                        dc.setColor(ss.getColor(),Graphics.COLOR_TRANSPARENT);
+                        if (ss.getColor()==colorMode.getFieldColor(:background)) {
+                            System.println("GearStatistic.draw NIGHT eq Background");
+                            indexBarColor=Graphics.COLOR_WHITE;
+                            nonIndexBarColor=ss.getColor();
+                            indexValueColor=ss.getColor();
+                            nonIndexValueColor=Graphics.COLOR_WHITE;
+                        } else {
+                            System.println("GearStatistic.draw NIGHT neq Background");
+                            indexBarColor=colorMode.getFieldColor(:value);
+                            nonIndexBarColor=ss.getColor();
+                            indexValueColor=colorMode.getFieldColor(:background);
+                            nonIndexValueColor=colorMode.getFieldColor(:background);
+                        }
                     }
-                    dc.fillRoundedRectangle(locX,y,ks*value,h,h/6);    
-                    dc.drawText(locX+width,y+hf+(h+space)/2,Graphics.FONT_SMALL,textValue,Graphics.TEXT_JUSTIFY_RIGHT|Graphics.TEXT_JUSTIFY_VCENTER);
-                    
-                    dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_TRANSPARENT);
-                    dc.drawText(hf+locX+1,y+hf+(h+space)/2+1,Graphics.FONT_SMALL,(i+1),Graphics.TEXT_JUSTIFY_LEFT|Graphics.TEXT_JUSTIFY_VCENTER);
-                    dc.setColor(Graphics.COLOR_WHITE,Graphics.COLOR_TRANSPARENT);
+
+                    // Value bar
+                    dc.setColor(i==currentIndex?indexBarColor:nonIndexBarColor,Graphics.COLOR_TRANSPARENT);
+                    dc.fillRoundedRectangle(locX,y,ks*value,h,h/6);
+
+                    // Outline
+                    dc.setColor(colorMode.getFieldColor(:valueChange),Graphics.COLOR_TRANSPARENT);
+                    dc.drawRoundedRectangle(locX,y,ks*value,h,h/6);
                     dc.drawText(hf+locX,y+hf+(h+space)/2,Graphics.FONT_SMALL,(i+1),Graphics.TEXT_JUSTIFY_LEFT|Graphics.TEXT_JUSTIFY_VCENTER);
 
-                    dc.setColor(Graphics.COLOR_LT_GRAY,Graphics.COLOR_TRANSPARENT);
-                    dc.drawRoundedRectangle(locX,y,ks*value,h,h/6);
+                    // Right value    
+                    dc.setColor(i==currentIndex?indexBarColor:nonIndexBarColor,Graphics.COLOR_TRANSPARENT);
+                    dc.drawText(locX+width+1,y+hf+(h+space)/2+1,Graphics.FONT_SMALL,textValue,Graphics.TEXT_JUSTIFY_RIGHT|Graphics.TEXT_JUSTIFY_VCENTER);
+                    dc.setColor(i!=currentIndex?indexBarColor:nonIndexBarColor,Graphics.COLOR_TRANSPARENT);
+                    dc.drawText(locX+width,y+hf+(h+space)/2,Graphics.FONT_SMALL,textValue,Graphics.TEXT_JUSTIFY_RIGHT|Graphics.TEXT_JUSTIFY_VCENTER);
+                    
+                    // Left value
+                    dc.setColor(i!=currentIndex?indexBarColor:nonIndexBarColor,Graphics.COLOR_TRANSPARENT);
+                    dc.drawText(hf+locX+1,y+hf+(h+space)/2+1,Graphics.FONT_SMALL,(i+1),Graphics.TEXT_JUSTIFY_LEFT|Graphics.TEXT_JUSTIFY_VCENTER);
+                    dc.setColor(i==currentIndex?indexValueColor:nonIndexValueColor,Graphics.COLOR_TRANSPARENT);
+                    dc.drawText(hf+locX,y+hf+(h+space)/2,Graphics.FONT_SMALL,(i+1),Graphics.TEXT_JUSTIFY_LEFT|Graphics.TEXT_JUSTIFY_VCENTER);
                 }
                 y+=h+space;
             }
@@ -179,8 +223,8 @@ class GearStat {
         //dc.drawText(locX-1,locY-1,Graphics.FONT_SMALL,ss.getName(),Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
         //dc.setColor(Graphics.COLOR_DK_GRAY,Graphics.COLOR_TRANSPARENT);
         //dc.drawText(locX+1,locY+1,Graphics.FONT_SMALL,ss.getName(),Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-        dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_TRANSPARENT);
-        dc.drawText(locX,locY,Graphics.FONT_SMALL,ss.getName(),Graphics.TEXT_JUSTIFY_LEFT);
+        dc.setColor(colorMode.getFieldColor(:label),Graphics.COLOR_TRANSPARENT);
+        dc.drawText(locX,locY-Graphics.getFontHeight(Graphics.FONT_SMALL)*1.1,Graphics.FONT_SMALL,ss.getName(),Graphics.TEXT_JUSTIFY_LEFT);
     }
 }
 

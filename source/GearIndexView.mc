@@ -9,7 +9,7 @@ import Toybox.WatchUi;
 
 class GearIndexView extends SlavicsSimpleDataField {
 
-    public static const BATTERY_STATUS_TEXT = ["0","New","Good","Ok","Low","Crit.","Unkn.","Inv.","Cnt"] as Array<String>;
+    public static const xBATTERY_STATUS_TEXT = ["0","New","Good","Ok","Low","Crit.","Unkn.","Inv.","Cnt"] as Array<String>;
     private var rearShift=new RearShifting() as RearShifting;
     private var batteries=[] as Array<RearShifting.BatteryData>;
     //private const INVALID_SHIFTS=[:shiftFailureCount,:invalidInboardShiftCount,:invalidOutboardShiftCount] as Array<Symbol>;
@@ -38,7 +38,7 @@ class GearIndexView extends SlavicsSimpleDataField {
     private var colorMode as ColorMode;
     private var propDebugMode=false as Boolean;
     private var gearFIT as GearFitContributions or Null;
-    private var gearStat=new GearStat(GearStat.POWER);
+    private var gearStatistic as GearStatistic;
     private var screen=null as Screen;
     private var debugData=[] as Array<Dictionary>;
     private var totalShiftsNum=0 as Number;
@@ -63,6 +63,7 @@ class GearIndexView extends SlavicsSimpleDataField {
         Properties.setValue("property_debugMode",Properties.getValue("property_debugMode")==null?false:Properties.getValue("property_debugMode") as Boolean);
         Properties.setValue("property_numberOfShifts",Properties.getValue("property_numberOfShifts")==null?true:Properties.getValue("property_numberOfShifts") as Boolean);
         colorMode=new ColorMode();
+        gearStatistic=new GearStatistic(GearStatistic.POWER,colorMode);
         handleSettingUpdate();
     }
 
@@ -127,7 +128,7 @@ class GearIndexView extends SlavicsSimpleDataField {
     private var invalidBoardShiftCount=0 as Number;
     function compute(info as Activity.Info) as Void {
         SlavicsSimpleDataField.compute(info);
-        gearStat.compute(info);
+        gearStatistic.compute(info);
         colorMode.compute();
         SlavicsSimpleDataField.setColors(colorMode.getColors());
 
@@ -143,51 +144,34 @@ class GearIndexView extends SlavicsSimpleDataField {
         }
 
         var rds=rearShift.getRearDerailleurStatus() as AntPlus.DerailleurStatus;
-
+        topLeftLabel.setColor(colorMode.getFieldColor(:label));
         if(rds!=null){
-                if(rds.gearIndex!=null&&rds.gearIndex!=AntPlus.REAR_GEAR_INVALID){
-                    if(gearFIT!=null){
-                        gearFIT.setIndex(rds.gearIndex);
-                        if(rearShift.getFrontDerailleurStatus()!=null){
-                            gearFIT.setDerailleurs(rearShift.getFrontDerailleurStatus().gearSize,rds.gearSize);
-                        }
-                    }
-                    if(rds.gearIndex!=lastIndex){
-                        valueArea.setColor(colorMode.getFieldColor(:valueChange));
-                        totalShiftsNum+=rds.gearIndex-lastIndex;
-                        if(gearFIT!=null){
-                            gearFIT.changeIndex(rds.gearIndex-lastIndex);
-                            bottomLeftLabel.setText(gearFIT.getTotalShifts().toString()+RD_totalShifts_unit);
-                        } else {
-                            bottomLeftLabel.setText(totalShiftsNum);
-                        }
-
-                        if(Properties.getValue("property_numberOfShifts") as Boolean){
-                            bottomLeftLabel.setColor(colorMode.getFieldColor(:label));
-                            totalShiftsTime=TOTAL_SHIFTS_TIME_COUNTER;
-                            bottomLeftLabel.setVisible(true);
-                        }
-                        if (Attention has :playTone) {
-                            if(rds.gearIndex==rds.gearMax-1){
-                                Attention.playTone(Attention.TONE_ALERT_HI);
-                            } else if (rds.gearIndex==0) {
-                                Attention.playTone(Attention.TONE_ALERT_LO);
-                            }
-                        }
-                    } else if(rds.gearIndex==0||rds.gearIndex==rds.gearMax-1){
-                        valueArea.setColor(colorMode.getFieldColor(:valueEdge));
-                    }
-                    setTextValue((rds.gearIndex+1).toString());
-                    topLeftLabel.setText(rds.gearSize+unitTeeths);
+            if(rds.gearIndex!=null&&rds.gearIndex!=AntPlus.REAR_GEAR_INVALID){
+                if(lastIndex<0){
                     lastIndex=rds.gearIndex;
-                } else {
-                    setTextValue("--");
-                    topLeftLabel.setText("");
-                    lastIndex=-1;
                 }
+                if(gearFIT!=null){
+                    gearFIT.setIndex(rds.gearIndex);
+                    if(rearShift.getFrontDerailleurStatus()!=null){
+                        gearFIT.setDerailleurs(rearShift.getFrontDerailleurStatus().gearSize,rds.gearSize);
+                    }
+                }
+                if(rds.gearIndex!=lastIndex){
+                    valueArea.setColor(colorMode.getFieldColor(:valueChange));
+                    totalShiftsNum+=rds.gearIndex>lastIndex?rds.gearIndex-lastIndex:lastIndex-rds.gearIndex;
+                    if(gearFIT!=null){
+                        gearFIT.changeIndex(rds.gearIndex-lastIndex);
+                        bottomLeftLabel.setText(gearFIT.getTotalShifts().toString()+RD_totalShifts_unit);
+                    } else {
+                        System.println("GearIndex.compute() totalShiftsNum="+totalShiftsNum);
+                        bottomLeftLabel.setText(totalShiftsNum.toString());
+                    }
 
-                if(invalidBoardShiftCount!=(rds.invalidInboardShiftCount+rds.invalidOutboardShiftCount)){
-                    invalidBoardShiftCount=rds.invalidInboardShiftCount+rds.invalidOutboardShiftCount;
+                    if(Properties.getValue("property_numberOfShifts") as Boolean){
+                        bottomLeftLabel.setColor(colorMode.getFieldColor(:label));
+                        totalShiftsTime=TOTAL_SHIFTS_TIME_COUNTER;
+                        bottomLeftLabel.setVisible(true);
+                    }
                     if (Attention has :playTone) {
                         if(rds.gearIndex==rds.gearMax-1){
                             Attention.playTone(Attention.TONE_ALERT_HI);
@@ -195,8 +179,28 @@ class GearIndexView extends SlavicsSimpleDataField {
                             Attention.playTone(Attention.TONE_ALERT_LO);
                         }
                     }
+                } else if(rds.gearIndex==0||rds.gearIndex==rds.gearMax-1){
+                    valueArea.setColor(colorMode.getFieldColor(:valueEdge));
                 }
+                setTextValue((rds.gearIndex+1).toString());
+                topLeftLabel.setText(rds.gearSize+unitTeeths);
+                lastIndex=rds.gearIndex;
+            } else {
+                setTextValue("--");
+                topLeftLabel.setText("");
+                lastIndex=-1;
+            }
 
+            if(invalidBoardShiftCount!=(rds.invalidInboardShiftCount+rds.invalidOutboardShiftCount)){
+                invalidBoardShiftCount=rds.invalidInboardShiftCount+rds.invalidOutboardShiftCount;
+                if (Attention has :playTone) {
+                    if(rds.gearIndex==rds.gearMax-1){
+                        Attention.playTone(Attention.TONE_ALERT_HI);
+                    } else if (rds.gearIndex==0) {
+                        Attention.playTone(Attention.TONE_ALERT_LO);
+                    }
+                }
+            }
         } else {
             topLeftLabel.setText("");
             valueArea.setColor(colorMode.getFieldColor(:error));
@@ -303,7 +307,7 @@ class GearIndexView extends SlavicsSimpleDataField {
     }
     public function onUpdateFullScreen(dc as Dc) as Void {
         System.println("GearIndexView.onUpdateFullScreen()");
-        gearStat.draw(dc,valueArea.locX,valueArea.locY,valueArea.width,valueArea.height);
+        gearStatistic.draw(dc,valueArea.locX,valueArea.locY,valueArea.width,valueArea.height);
     }
     public function onUpdateDebugMode(dc as Dc) as Void {
         System.println("GearIndexView.onUpdateDebugMode()");
@@ -312,7 +316,7 @@ class GearIndexView extends SlavicsSimpleDataField {
             var dict=(debugData as Array)[i] as Dictionary;
             if(dict.get(:break)!=null){
                 dc.setPenWidth(2);
-                dc.setColor(Graphics.COLOR_DK_GRAY,Graphics.COLOR_TRANSPARENT);
+                dc.setColor(colorMode.getFieldColor(:label),Graphics.COLOR_TRANSPARENT);
                 dc.drawLine(2,yLine+1,dc.getWidth()-2,yLine+1);
                 //yLine+=Graphics.getFontDescent(Graphics.FONT_TINY);
                 yLine+=3;
@@ -320,14 +324,14 @@ class GearIndexView extends SlavicsSimpleDataField {
             }
             var label=dict.get(:label)+": ";
             var td=dc.getTextDimensions(label,Graphics.FONT_TINY);
-            dc.setColor(Graphics.COLOR_DK_GRAY,Graphics.COLOR_TRANSPARENT);
+            dc.setColor(colorMode.getFieldColor(:label),Graphics.COLOR_TRANSPARENT);
             dc.drawText(1,yLine,Graphics.FONT_TINY,label,Graphics.TEXT_JUSTIFY_LEFT);
             var value=dict.get(:value);
             if(value==null){
-                dc.setColor(Graphics.COLOR_LT_GRAY,Graphics.COLOR_TRANSPARENT);
+                //dc.setColor(colorMode.getFieldColor(:label),Graphics.COLOR_TRANSPARENT);
                 value="<null>";
             } else {
-                dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_TRANSPARENT);
+                dc.setColor(colorMode.getFieldColor(:value),Graphics.COLOR_TRANSPARENT);
             }
             dc.drawText(1+td[0],yLine,Graphics.FONT_TINY,value,Graphics.TEXT_JUSTIFY_LEFT);
             yLine+=td[1];
@@ -403,7 +407,7 @@ class GearIndexView extends SlavicsSimpleDataField {
         System.println("GearIndexView.onTimerStop");
         if(gearFIT!=null){
     	    gearFIT.onTimerStop();
-            gearStat.print();
+            gearStatistic.print();
         }
     }
 }
