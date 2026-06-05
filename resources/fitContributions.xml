@@ -25,7 +25,7 @@
 		/>
 		<fitField id="3" 
 			displayInChart="true" 
-			sortOrder = "2" 
+			sortOrder = "4" 
 			precision="0"
 			chartTitle="@Strings.RD_batteryStatus_title" 
 			dataLabel="@Strings.RD_batteryStatus_label"
@@ -34,7 +34,7 @@
 		/>
 		<fitField id="4" 
 			displayInChart="true" 
-			sortOrder = "1" 
+			sortOrder = "3" 
 			precision="2"
 			chartTitle="@Strings.RD_batteryVoltage_title" 
 			dataLabel="@Strings.RD_batteryVoltage_label"

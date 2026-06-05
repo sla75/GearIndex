@@ -4,7 +4,7 @@ import Toybox.Graphics;
 import Toybox.Lang;
 import Toybox.Time;
 
-class GearStat {
+class GearStatistic {
 
 
     enum PreferedMeasure {

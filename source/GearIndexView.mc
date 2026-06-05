@@ -38,7 +38,7 @@ class GearIndexView extends SlavicsSimpleDataField {
     private var colorMode as ColorMode;
     private var propDebugMode=false as Boolean;
     private var gearFIT as GearFitContributions or Null;
-    private var gearStat=new GearStat(GearStat.POWER);
+    private var gearStatistic=new GearStatistic(GearStatistic.POWER);
     private var screen=null as Screen;
     private var debugData=[] as Array<Dictionary>;
     private var totalShiftsNum=0 as Number;
@@ -127,7 +127,7 @@ class GearIndexView extends SlavicsSimpleDataField {
     private var invalidBoardShiftCount=0 as Number;
     function compute(info as Activity.Info) as Void {
         SlavicsSimpleDataField.compute(info);
-        gearStat.compute(info);
+        gearStatistic.compute(info);
         colorMode.compute();
         SlavicsSimpleDataField.setColors(colorMode.getColors());
 
@@ -303,7 +303,7 @@ class GearIndexView extends SlavicsSimpleDataField {
     }
     public function onUpdateFullScreen(dc as Dc) as Void {
         System.println("GearIndexView.onUpdateFullScreen()");
-        gearStat.draw(dc,valueArea.locX,valueArea.locY,valueArea.width,valueArea.height);
+        gearStatistic.draw(dc,valueArea.locX,valueArea.locY,valueArea.width,valueArea.height);
     }
     public function onUpdateDebugMode(dc as Dc) as Void {
         System.println("GearIndexView.onUpdateDebugMode()");
@@ -312,7 +312,7 @@ class GearIndexView extends SlavicsSimpleDataField {
             var dict=(debugData as Array)[i] as Dictionary;
             if(dict.get(:break)!=null){
                 dc.setPenWidth(2);
-                dc.setColor(Graphics.COLOR_DK_GRAY,Graphics.COLOR_TRANSPARENT);
+                dc.setColor(colorMode.getFieldColor(:label),Graphics.COLOR_TRANSPARENT);
                 dc.drawLine(2,yLine+1,dc.getWidth()-2,yLine+1);
                 //yLine+=Graphics.getFontDescent(Graphics.FONT_TINY);
                 yLine+=3;
@@ -320,14 +320,14 @@ class GearIndexView extends SlavicsSimpleDataField {
             }
             var label=dict.get(:label)+": ";
             var td=dc.getTextDimensions(label,Graphics.FONT_TINY);
-            dc.setColor(Graphics.COLOR_DK_GRAY,Graphics.COLOR_TRANSPARENT);
+            dc.setColor(colorMode.getFieldColor(:label),Graphics.COLOR_TRANSPARENT);
             dc.drawText(1,yLine,Graphics.FONT_TINY,label,Graphics.TEXT_JUSTIFY_LEFT);
             var value=dict.get(:value);
             if(value==null){
-                dc.setColor(Graphics.COLOR_LT_GRAY,Graphics.COLOR_TRANSPARENT);
+                //dc.setColor(colorMode.getFieldColor(:label),Graphics.COLOR_TRANSPARENT);
                 value="<null>";
             } else {
-                dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_TRANSPARENT);
+                dc.setColor(colorMode.getFieldColor(:value),Graphics.COLOR_TRANSPARENT);
             }
             dc.drawText(1+td[0],yLine,Graphics.FONT_TINY,value,Graphics.TEXT_JUSTIFY_LEFT);
             yLine+=td[1];
@@ -403,7 +403,7 @@ class GearIndexView extends SlavicsSimpleDataField {
         System.println("GearIndexView.onTimerStop");
         if(gearFIT!=null){
     	    gearFIT.onTimerStop();
-            gearStat.print();
+            gearStatistic.print();
         }
     }
 }

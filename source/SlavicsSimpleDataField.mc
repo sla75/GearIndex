@@ -128,11 +128,11 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
         //valueArea.draw(dc);
         //labelArea.draw(dc);
 
-        dc.setColor(Graphics.COLOR_LT_GRAY,Graphics.COLOR_TRANSPARENT);
+        dc.setColor(Graphics.COLOR_YELLOW,Graphics.COLOR_TRANSPARENT);
         dc.drawRectangle(labelArea.locX,labelArea.locY,labelArea.width,labelArea.height);
         dc.drawLine(labelArea.locX,labelArea.locY+labelArea.height/2,labelArea.locX+labelArea.width,labelArea.locY+labelArea.height/2);
 
-        dc.setColor(Graphics.COLOR_DK_GRAY,Graphics.COLOR_TRANSPARENT);
+        dc.setColor(Graphics.COLOR_ORANGE,Graphics.COLOR_TRANSPARENT);
         dc.drawRectangle(valueArea.locX,valueArea.locY,valueArea.width,valueArea.height);
         dc.drawLine(valueArea.locX,valueArea.locY+valueArea.height/2,valueArea.locX+valueArea.width,valueArea.locY+valueArea.height/2);
     }
