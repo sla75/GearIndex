@@ -11,7 +11,7 @@
     <string id="property_nightMode_title">Reverse night mode</string>
     <string id="property_colorMode_title">List of color modes</string>
     <string id="property_numberOfShifts_title">Show number of shifts</string>
-    <string id="property_debugMode_title">Debug Mode</string>
+    <string id="property_debugMode_title">Debug Fullscreen Mode</string>
 
     <string id="RD_totalShifts_label">Rear Derailleur Shifts</string>
     <string id="RD_totalShifts_unit" translatable="false">x</string>

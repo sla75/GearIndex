@@ -21,7 +21,7 @@ class ColorMode {
 
             ] as Array<BatteryStatusValue>;
     
-    private var isNight=false as Boolean;
+    public var isNight=false as Boolean;
 
     private const MODE_BLACKANDWHITE={:day=>{
                 :background=>Graphics.COLOR_WHITE,
@@ -107,7 +107,11 @@ class ColorMode {
     public function getFieldColor(field as Symbol) as Graphics.ColorValue {
         return colors.get(isNight?:night::day).get(field) as Graphics.ColorValue;
     }
+    public function getNightFieldColor(field as Symbol) as Graphics.ColorValue {
+        return colors.get(:night).get(field) as Graphics.ColorValue;
+    }
     public function getColors() as Dictionary<Symbol,Graphics.ColorValue> {
         return colors.get(isNight?:night::day) as Dictionary<Symbol,Graphics.ColorValue>;
     }
+
 }
