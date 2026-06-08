@@ -9,9 +9,9 @@ import Toybox.WatchUi;
 
 class GearIndexView extends SlavicsSimpleDataField {
 
-    public static const xBATTERY_STATUS_TEXT = ["0","New","Good","Ok","Low","Crit.","Unkn.","Inv.","Cnt"] as Array<String>;
-    private var rearShift=new RearShifting() as RearShifting;
-    private var batteries=[] as Array<RearShifting.BatteryData>;
+    private var derailleur=new Derailleur() as Derailleur;
+    private var batteries=[] as Array<Device.BatteryData>;
+
     //private const INVALID_SHIFTS=[:shiftFailureCount,:invalidInboardShiftCount,:invalidOutboardShiftCount] as Array<Symbol>;
     private const RD_totalShifts_unit=Application.loadResource(Rez.Strings.RD_totalShifts_unit);
     /***
@@ -132,28 +132,52 @@ class GearIndexView extends SlavicsSimpleDataField {
         colorMode.compute();
         SlavicsSimpleDataField.setColors(colorMode.getColors());
 
-        batteries=rearShift.getBatteries() as Array<RearShifting.BatteryData>;
-        if(gearFIT!=null){
-            for(var i=0;i<batteries.size();i++){
-                if(i==0x02){ // RD Battery
-                    var rdBat=batteries[i] as Dictionary;
-                    gearFIT.addRdBatteryStatus(rdBat.get(:status));
-                    gearFIT.addRdBatteryVoltage(rdBat.get(:voltage));
-                }
-            }
-        }
 
-        var rds=rearShift.getRearDerailleurStatus() as AntPlus.DerailleurStatus;
-        topLeftLabel.setColor(colorMode.getFieldColor(:label));
+        batteries=derailleur.getBatteries() as Array<Device.BatteryData>;
+        var rds=derailleur.getRearStatus() as AntPlus.DerailleurStatus;
+
         if(rds!=null){
-            if(rds.gearIndex!=null&&rds.gearIndex!=AntPlus.REAR_GEAR_INVALID){
-                if(lastIndex<0){
+            if(lastIndex<0){
+                if(rds.gearIndex!=null&&rds.gearIndex!=AntPlus.REAR_GEAR_INVALID){
+                    if(gearFIT!=null){
+                        gearFIT.setIndex(rds.gearIndex);
+                        if(derailleur.getFrontStatus()!=null){
+                            gearFIT.setDerailleurs(derailleur.getFrontStatus().gearSize,rds.gearSize);
+                        }
+                    }
+                    if(rds.gearIndex!=lastIndex){
+                        valueArea.setColor(colorMode.getFieldColor(:valueChange));
+                        totalShiftsNum+=rds.gearIndex-lastIndex;
+                        if(gearFIT!=null){
+                            gearFIT.changeIndex(rds.gearIndex-lastIndex);
+                            bottomLeftLabel.setText(gearFIT.getTotalShifts().toString()+RD_totalShifts_unit);
+                        } else {
+                            bottomLeftLabel.setText(totalShiftsNum);
+                        }
+
+                        if(Properties.getValue("property_numberOfShifts") as Boolean){
+                            bottomLeftLabel.setColor(colorMode.getFieldColor(:label));
+                            totalShiftsTime=TOTAL_SHIFTS_TIME_COUNTER;
+                            bottomLeftLabel.setVisible(true);
+                        }
+                        if (Attention has :playTone) {
+                            if(rds.gearIndex==rds.gearMax-1){
+                                Attention.playTone(Attention.TONE_ALERT_HI);
+                            } else if (rds.gearIndex==0) {
+                                Attention.playTone(Attention.TONE_ALERT_LO);
+                            }
+                        }
+                    } else if(rds.gearIndex==0||rds.gearIndex==rds.gearMax-1){
+                        valueArea.setColor(colorMode.getFieldColor(:valueEdge));
+                    }
+                    setTextValue((rds.gearIndex+1).toString());
+                    topLeftLabel.setText(rds.gearSize+unitTeeths);
                     lastIndex=rds.gearIndex;
                 }
                 if(gearFIT!=null){
                     gearFIT.setIndex(rds.gearIndex);
-                    if(rearShift.getFrontDerailleurStatus()!=null){
-                        gearFIT.setDerailleurs(rearShift.getFrontDerailleurStatus().gearSize,rds.gearSize);
+                    if(derailleur.getFrontStatus()!=null){
+                        gearFIT.setDerailleurs(derailleur.getFrontStatus().gearSize,rds.gearSize);
                     }
                 }
                 if(rds.gearIndex!=lastIndex){
@@ -253,27 +277,27 @@ class GearIndexView extends SlavicsSimpleDataField {
             debugData.add({:label=>"info.rearDerailleurSize",:value=>info.rearDerailleurSize});
             debugData.add({:break=>true});
 
-            if(rearShift.getFrontDerailleurStatus()!=null){
-                debugData.add({:label=>"FDS.gearIndex",:value=>checkGearError(rearShift.getFrontDerailleurStatus().gearIndex,AntPlus.FRONT_GEAR_INVALID)});
-                debugData.add({:label=>"FDS.gearMax",:value=>checkGearError(rearShift.getFrontDerailleurStatus().gearMax,AntPlus.MAX_GEARS_INVALID)});
-                debugData.add({:label=>"FDS.gearSize",:value=>rearShift.getFrontDerailleurStatus().gearSize});
+            if(derailleur.getFrontStatus()!=null){
+                debugData.add({:label=>"FDS.gearIndex",:value=>checkGearError(derailleur.getFrontStatus().gearIndex,AntPlus.FRONT_GEAR_INVALID)});
+                debugData.add({:label=>"FDS.gearMax",:value=>checkGearError(derailleur.getFrontStatus().gearMax,AntPlus.MAX_GEARS_INVALID)});
+                debugData.add({:label=>"FDS.gearSize",:value=>derailleur.getFrontStatus().gearSize});
             } else {
                 debugData.add({:label=>"FrontDerailleurStatus",:value=>null});
             }
             debugData.add({:break=>true});
-            if(rearShift.getRearDerailleurStatus()!=null){
-                debugData.add({:label=>"RDS.gearIndex",:value=>checkGearError(rearShift.getRearDerailleurStatus().gearIndex,AntPlus.REAR_GEAR_INVALID)});
-                debugData.add({:label=>"RDS.gearMax",:value=>checkGearError(rearShift.getRearDerailleurStatus().gearMax,AntPlus.MAX_GEARS_INVALID)});
-                debugData.add({:label=>"RDS.gearSize",:value=>rearShift.getRearDerailleurStatus().gearSize});
-                debugData.add({:label=>"RDS.invalidInboardShiftCount",:value=>rearShift.getRearDerailleurStatus().invalidInboardShiftCount});
-                debugData.add({:label=>"RDS.invalidOutboardShiftCount",:value=>rearShift.getRearDerailleurStatus().invalidOutboardShiftCount});
-                debugData.add({:label=>"RDS.shiftFailureCount",:value=>rearShift.getRearDerailleurStatus().shiftFailureCount});
-                if(rearShift.getBatteries().size()>0){
+            if(derailleur.getRearStatus()!=null){
+                debugData.add({:label=>"RDS.gearIndex",:value=>checkGearError(derailleur.getRearStatus().gearIndex,AntPlus.REAR_GEAR_INVALID)});
+                debugData.add({:label=>"RDS.gearMax",:value=>checkGearError(derailleur.getRearStatus().gearMax,AntPlus.MAX_GEARS_INVALID)});
+                debugData.add({:label=>"RDS.gearSize",:value=>derailleur.getRearStatus().gearSize});
+                debugData.add({:label=>"RDS.invalidInboardShiftCount",:value=>derailleur.getRearStatus().invalidInboardShiftCount});
+                debugData.add({:label=>"RDS.invalidOutboardShiftCount",:value=>derailleur.getRearStatus().invalidOutboardShiftCount});
+                debugData.add({:label=>"RDS.shiftFailureCount",:value=>derailleur.getRearStatus().shiftFailureCount});
+                if(derailleur.getBatteries().size()>0){
                     debugData.add({:break=>true});
-                    for(var j=0;j<rearShift.getBatteries().size();j++){
-                        var batt=(rearShift.getBatteries() as Array)[j];
-                        debugData.add({:label=>"RDS."+batt.get(:identifier)+".batteryStatus",:value=>RearShifting.getBatteryStatusString(batt.get(:batteryStatus))+"["+batt.get(:batteryStatus)+"]"});
-                        debugData.add({:label=>"RDS."+batt.get(:identifier)+".batteryVoltage",:value=>batt.get(:batteryVoltage)});
+                    for(var j=0;j<derailleur.getBatteries().size();j++){
+                        var batt=(derailleur.getBatteries() as Array)[j];
+                        debugData.add({:label=>"RDS."+batt.get(:identifier)+".status",:value=>batt.get(:status)==null?null:Derailleur.getBatteryStatusString(batt.get(:status))+"["+batt.get(:status)+"]"});
+                        debugData.add({:label=>"RDS."+batt.get(:identifier)+".voltage",:value=>batt.get(:voltage)});
                         debugData.add({:label=>"RDS."+batt.get(:identifier)+".operatingTime",:value=>batt.get(:operatingTime)});
                     }
                 }
@@ -353,20 +377,20 @@ class GearIndexView extends SlavicsSimpleDataField {
             battIcon.locY=dc.getHeight()-rim-Graphics.getFontAscent(battIcon.getFont());
             battIcon.setNightMode(System.getDeviceSettings().isNightModeEnabled);
             for(var i=0;i<batteries.size();i++){
-                var bd=(batteries as Array<RearShifting.BatteryData>)[i] as RearShifting.BatteryData;
+                var bd=(batteries as Array<Device.BatteryData>)[i] as Device.BatteryData;
                 // Vertically
-                if(bd.get(:batteryStatus)>0) {
+                if(bd.get(:status)!=null&&bd.get(:status)>0) {
 
                     battIcon.locX=bLocX;
                     battIcon.locY=bLocY;
-                    battIcon.setStatus(bd.get(:batteryStatus));
+                    battIcon.setStatus(bd.get(:status));
                     battIcon.draw(dc);
 
                     dc.setColor(colorMode.getFieldColor(:label),Graphics.COLOR_TRANSPARENT);
                     dc.drawText(
                         bLocX-battIcon.getWidth(dc)-2,
                         bLocY+(Graphics.getFontHeight(battIcon.getFont())-Graphics.getFontHeight(battFont)),
-                        battFont,bd.get(:name),Graphics.TEXT_JUSTIFY_RIGHT);
+                        battFont,Derailleur.getBatteryName(bd.get(:name)),Graphics.TEXT_JUSTIFY_RIGHT);
 
                     bLocY-=Graphics.getFontHeight(battIcon.getFont())+3;
                 }
