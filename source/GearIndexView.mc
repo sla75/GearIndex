@@ -128,7 +128,12 @@ class GearIndexView extends SlavicsSimpleDataField {
     private var invalidBoardShiftCount=0 as Number;
     function compute(info as Activity.Info) as Void {
         SlavicsSimpleDataField.compute(info);
+<<<<<<< HEAD
         gearStatistic.compute(info);
+=======
+        derailleur.compute(info);
+        gearStat.compute(info);
+>>>>>>> fbd52e3 (Unification of test data)
         colorMode.compute();
         SlavicsSimpleDataField.setColors(colorMode.getColors());
 

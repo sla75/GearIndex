@@ -24,22 +24,8 @@ class GearStatistic {
         self.prefered=preferedMeasure;
         self.colorMode=colorMode;
     }
-    private const DEBUG_TEETHS = [51, 45, 39, 33, 28, 24, 21, 18, 16, 14, 12, 10] as Array<Number>;
     (:debug)
     public function compute(info as Activity.Info) {
-        info.frontDerailleurSize=32;
-        info.rearDerailleurIndex=System.getClockTime().sec/3%DEBUG_TEETHS.size();
-        info.rearDerailleurMax=DEBUG_TEETHS.size();
-        info.rearDerailleurSize=DEBUG_TEETHS[info.rearDerailleurIndex];
-        info.currentPower=50+Math.rand()%300;
-        info.currentCadence=50+Math.rand()%70;
-        info.elapsedDistance=10*(System.getClockTime().hour*360000+System.getClockTime().min*6000+System.getClockTime().sec*100+Math.rand()%100)/10f;
-        if(System.getClockTime().sec%20==3){
-            info.currentPower=null;
-            info.currentCadence=null;
-            System.println("GearStat.compute() DEBUG Power, Cadence set NULL");
-        }
-        System.println("GearStat.compute() DEBUG Derailleur"+info.frontDerailleurSize+"/"+info.rearDerailleurSize+"["+info.rearDerailleurIndex+"] cadence="+info.currentCadence+" power="+info.currentPower);
         computeGraph(info);
     }
     (:release)
