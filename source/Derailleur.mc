@@ -8,6 +8,9 @@ class Derailleur extends Device {
     (:debug)
     private const DEBUG_TEETHS = [51, 45, 39, 33, 28, 24, 21, 18, 16, 14, 12, 10] as Array<Number>;
 
+    (:debug)
+    private const DEBUG_INDEX = [6,8,10,12,12,12,11,10,9,8,7,6,5,4,3,2,1,1,1,3,5,7,9,11,12,12,12] as Array<Number>;
+
     private var shiftDevice=new AntPlus.Shifting(new AntPlus.ShiftingListener()) as AntPlus.Shifting;
     public static const BATTERY_NAME={0x01=>"FD",0x02=>"RD",0x03=>"LS",0x04=>"RS"} as Dictionary<Number,String>;
 
@@ -44,10 +47,8 @@ class Derailleur extends Device {
             rearDerailleur.invalidOutboardShiftCount=0;
             rearDerailleur.shiftFailureCount=0;
         } else {
-            rearDerailleur.gearIndex=System.getClockTime().sec/3%DEBUG_TEETHS.size();
-            if(rearDerailleur.gearIndex==3){
-                rearDerailleur.gearIndex=5;
-            }
+            var sec=System.getClockTime().min*60+System.getClockTime().sec;
+            rearDerailleur.gearIndex=DEBUG_INDEX[sec%DEBUG_INDEX.size()];
             rearDerailleur.gearMax=DEBUG_TEETHS.size();
             rearDerailleur.gearSize=DEBUG_TEETHS[rearDerailleur.gearIndex];
             rearDerailleur.invalidInboardShiftCount=rearDerailleur.invalidInboardShiftCount==null?0:rearDerailleur.invalidInboardShiftCount;
