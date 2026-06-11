@@ -9,7 +9,7 @@ class Derailleur extends Device {
     private const DEBUG_TEETHS = [51, 45, 39, 33, 28, 24, 21, 18, 16, 14, 12, 10] as Array<Number>;
 
     (:debug)
-    private const DEBUG_INDEX = [6,8,10,12,12,12,11,10,9,8,7,6,5,4,3,2,1,1,1,3,5,7,9,11,12,12,12] as Array<Number>;
+    private const DEBUG_INDEX = [5,7,9,11,11,11,10,9,8,7,6,5,4,3,2,1,0,0,0,2,3,4,9,11,11,11,8] as Array<Number>;
 
     private var shiftDevice=new AntPlus.Shifting(new AntPlus.ShiftingListener()) as AntPlus.Shifting;
     public static const BATTERY_NAME={0x01=>"FD",0x02=>"RD",0x03=>"LS",0x04=>"RS"} as Dictionary<Number,String>;
@@ -47,15 +47,20 @@ class Derailleur extends Device {
             rearDerailleur.invalidOutboardShiftCount=0;
             rearDerailleur.shiftFailureCount=0;
         } else {
-            var sec=System.getClockTime().min*60+System.getClockTime().sec;
-            rearDerailleur.gearIndex=DEBUG_INDEX[sec%DEBUG_INDEX.size()];
+            var index=(System.getClockTime().min*60+System.getClockTime().sec)%DEBUG_INDEX.size();
+            rearDerailleur.gearIndex=DEBUG_INDEX[index];
             rearDerailleur.gearMax=DEBUG_TEETHS.size();
             rearDerailleur.gearSize=DEBUG_TEETHS[rearDerailleur.gearIndex];
             rearDerailleur.invalidInboardShiftCount=rearDerailleur.invalidInboardShiftCount==null?0:rearDerailleur.invalidInboardShiftCount;
             rearDerailleur.invalidOutboardShiftCount=rearDerailleur.invalidOutboardShiftCount==null?0:rearDerailleur.invalidOutboardShiftCount;
             rearDerailleur.shiftFailureCount=rearDerailleur.shiftFailureCount==null?0:rearDerailleur.shiftFailureCount;
-            rearDerailleur.invalidInboardShiftCount+=Math.rand()%50==1?1:0;
-            rearDerailleur.invalidOutboardShiftCount+=Math.rand()%50==1?1:0;
+            if(index>0&&rearDerailleur.gearIndex==DEBUG_INDEX[index-1]){
+                if(index==0){
+                    rearDerailleur.invalidInboardShiftCount++;
+                } else {
+                    rearDerailleur.invalidOutboardShiftCount++;
+                }
+            }
             rearDerailleur.shiftFailureCount+=(Math.rand()%20==1?1:0);
         }
         info.frontDerailleurIndex=frontDerailleur.gearIndex==null?null:frontDerailleur.gearIndex+1;
@@ -64,6 +69,7 @@ class Derailleur extends Device {
         info.rearDerailleurIndex=rearDerailleur.gearIndex==null?null:rearDerailleur.gearIndex+1;
         info.rearDerailleurMax=rearDerailleur.gearMax;
         info.rearDerailleurSize=rearDerailleur.gearSize;
+        System.println("Derailleur.compute() index="+rearDerailleur.gearIndex+" size="+rearDerailleur.gearSize+" invalid="+rearDerailleur.invalidInboardShiftCount+"/"+rearDerailleur.invalidOutboardShiftCount);
     }
     (:release)
     function compute(info as Activity.Info){

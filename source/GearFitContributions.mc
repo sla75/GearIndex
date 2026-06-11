@@ -6,18 +6,18 @@ import Toybox.WatchUi;
 
 class GearFitContributions {
 
-    private var field_TotalShifts as FitContributor.Field;
-    private var field_GearRatio as FitContributor.Field;
-    private var field_GearIndex as FitContributor.Field;
-    private var field_RdBatteryStatus as FitContributor.Field;
-    private var field_RdBatteryVoltage as FitContributor.Field;
+    private var field_TotalShifts=null as FitContributor.Field;
+    private var field_GearRatio=null as FitContributor.Field;
+    private var field_RdBatteryStatus=null as FitContributor.Field;
+    private var field_RdBatteryVoltage=null as FitContributor.Field;
 
 	private var mTimerRunning = STOP as ActivityTimer;
     private var totalShifts=0 as Number;
+    private var dataField as WatchUi.DataField;
+    private var saveFitFile=false as Boolean;
 
     private const FIT_RD_TOTALSHIFTS_ID = 0;
     private const FIT_RD_GEARRATIO_ID = 1;
-    private const FIT_RD_GEARINDEX_ID = 2;
     private const FIT_RD_BATTERYSTATUS_ID = 3;
     private const FIT_RD_BATTERYVOLTAGE_ID = 4;
 
@@ -28,22 +28,28 @@ class GearFitContributions {
     }
 
     function initialize(dataField as WatchUi.DataField) {
-        Properties.setValue("property_fitFileSaving",Properties.getValue("property_fitFileSaving")==null?true:Properties.getValue("property_fitFileSaving") as Boolean);
-        field_TotalShifts = dataField.createField("FIT_RD_TOTALSHIFTS_ID", FIT_RD_TOTALSHIFTS_ID, FitContributor.DATA_TYPE_UINT8, {
-            :mesgType=>FitContributor.MESG_TYPE_SESSION});
-        field_GearRatio = dataField.createField("FIT_RD_GEARRATIO_ID", FIT_RD_GEARRATIO_ID, FitContributor.DATA_TYPE_FLOAT, {
-            :mesgType=>FitContributor.MESG_TYPE_RECORD});
-        field_GearIndex = dataField.createField("FIT_RD_GEARINDEX_ID", FIT_RD_GEARINDEX_ID, FitContributor.DATA_TYPE_UINT8, {
-            :mesgType=>FitContributor.MESG_TYPE_RECORD});
+        self.dataField=dataField;
+    }
 
-        field_RdBatteryStatus = dataField.createField("FIT_RD_BATTERYSTATUS_ID", FIT_RD_BATTERYSTATUS_ID, FitContributor.DATA_TYPE_UINT8, {
-            :mesgType=>FitContributor.MESG_TYPE_RECORD});
-        field_RdBatteryVoltage = dataField.createField("FIT_RD_BATTERYVOLTAGE_ID", FIT_RD_BATTERYVOLTAGE_ID, FitContributor.DATA_TYPE_FLOAT, {
-            :mesgType=>FitContributor.MESG_TYPE_RECORD});
-     
+    function handleSettingUpdate(saveFitFile as Boolean) as Void {
+        self.saveFitFile=saveFitFile;
+        System.println("GearFitContributions.handleSettingUpdate saveFile="+saveFitFile+" object="+(field_TotalShifts==null?"null":"Exists"));
+        if(saveFitFile&&field_TotalShifts==null) {
+            field_TotalShifts = dataField.createField("FIT_RD_TOTALSHIFTS_ID", FIT_RD_TOTALSHIFTS_ID, FitContributor.DATA_TYPE_UINT8, {
+                :mesgType=>FitContributor.MESG_TYPE_SESSION});
+            field_GearRatio = dataField.createField("FIT_RD_GEARRATIO_ID", FIT_RD_GEARRATIO_ID, FitContributor.DATA_TYPE_FLOAT, {
+                :mesgType=>FitContributor.MESG_TYPE_RECORD});
+            field_RdBatteryStatus = dataField.createField("FIT_RD_BATTERYSTATUS_ID", FIT_RD_BATTERYSTATUS_ID, FitContributor.DATA_TYPE_UINT8, {
+                :mesgType=>FitContributor.MESG_TYPE_RECORD});
+            field_RdBatteryVoltage = dataField.createField("FIT_RD_BATTERYVOLTAGE_ID", FIT_RD_BATTERYVOLTAGE_ID, FitContributor.DATA_TYPE_FLOAT, {
+                :mesgType=>FitContributor.MESG_TYPE_RECORD});
+        }
     }
 
     function setDerailleurs(fdSprocket as Number or Null,rdSprocket as Number or Null) as Void {
+        if(saveFitFile){
+            return;
+        }
         if(rdSprocket==null || rdSprocket==AntPlus.REAR_GEAR_INVALID || rdSprocket==0){
             System.println("GearFitContributions.setDerailleurs rdSprocket="+rdSprocket);
             return;
@@ -62,40 +68,30 @@ class GearFitContributions {
         System.println("GearFitContributions.setDerailleurs ratio="+ratio.format("%.2f"));
     }
 
-    function setIndex(index as Number or Null) as Void {
-        if(index==null || index==AntPlus.REAR_GEAR_INVALID){
-            System.println("GearFitContributions.setIndex BAD index="+index);
-            return;
-        }
-        if(mTimerRunning!=RUNNING) {
-            return;
-        }
-        field_GearIndex.setData(index+1);
-        System.println("GearFitContributions.setIndex index="+index);
-    }
-
     public function changeIndex(change as Number) as Void {
         if(mTimerRunning!=PAUSE){
             totalShifts+=change>0?change:-change;
-            field_TotalShifts.setData(totalShifts);
-            System.println("GearFitContributions.onChange totalShifts="+totalShifts);
+            if(saveFitFile){
+                field_TotalShifts.setData(totalShifts);
+            }
+            System.println("GearFitContributions.onChange totalShifts="+totalShifts+" save("+saveFitFile+")");
         }
     }
 
     public function addRdBatteryStatus(batteryStatus as AntPlus.BatteryStatusValue or Null) as Void {
-        System.println("GearFitContributions.addRdBatteryStatus "+batteryStatus);
-        if(batteryStatus!=null){
+        System.println("GearFitContributions.addRdBatteryStatus "+batteryStatus+" save("+saveFitFile+")");
+        if(saveFitFile&&batteryStatus!=null){
             field_RdBatteryStatus.setData(batteryStatus);
         }
     }
     public function addRdBatteryVoltage(batteryVoltage as Float or Null) as Void {
-        System.println("GearFitContributions.addRdBatteryVoltage "+batteryVoltage);
-        if(batteryVoltage!=null){
+        System.println("GearFitContributions.addRdBatteryVoltage "+batteryVoltage+" save("+saveFitFile+")");
+        if(saveFitFile&&batteryVoltage!=null){
             field_RdBatteryVoltage.setData(batteryVoltage);
         }
     }
 
-    function getTotalShifts(){
+    function getTotalShifts() as Number{
         return totalShifts;
     }
 
