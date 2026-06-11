@@ -20,9 +20,9 @@
     <string id="RD_gearRatio_label">Ratio</string>
     <string id="RD_gearRatio_unit" translatable="false"> </string>
 
-    <string id="RD_gearIndex_title">Gear</string>
+    <!--string id="RD_gearIndex_title">Gear</string>
     <string id="RD_gearIndex_label">Index</string>
-    <string id="RD_gearIndex_unit" translatable="false"> </string>
+    <string id="RD_gearIndex_unit" translatable="false"> </string-->
 
     <string id="RD_batteryStatus_title">Battery Rear Derailleur</string>
     <string id="RD_batteryStatus_label">Index</string>
