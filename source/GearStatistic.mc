@@ -54,25 +54,25 @@ class GearStatistic {
 
             var distanceStats=stats.get(:distance) as SprocketStats;
             if(stats.get(:distance)==null){
-                distanceStats=new SprocketStats(info.rearDerailleurMax,"Distance on Gear","m",SprocketStats.TYPE_SUM,Graphics.COLOR_BLUE);
+                distanceStats=new SprocketStats(info.rearDerailleurMax,"Distance on Gear","m",SprocketStats.TYPE_SUM);
             }
 
             if((prefered==POWER||prefered==AUTO)&&info.currentPower!=null){
                 if(info.currentPower>0&&info.rearDerailleurSize!=0&&info.rearDerailleurSize!=AntPlus.FRONT_GEAR_INVALID){
                     var powerStats=stats.get(:power) as SprocketStats;
                     if(stats.get(:power)==null){
-                        powerStats=new SprocketStats(info.rearDerailleurMax,"Power on Gear","W",SprocketStats.TYPE_AVG,Graphics.COLOR_DK_RED);
+                        powerStats=new SprocketStats(info.rearDerailleurMax,"Power on Gear","W",SprocketStats.TYPE_AVG);
                     }
                     var powerTeeth=stats.get(:powerTeeths) as SprocketStats;
                     if(stats.get(:powerTeeths)==null){
-                        powerTeeth=new SprocketStats(info.rearDerailleurMax,"Power at Teeths","W/t",SprocketStats.TYPE_AVG,Graphics.COLOR_DK_GREEN);
+                        powerTeeth=new SprocketStats(info.rearDerailleurMax,"Power at Teeths","W/t",SprocketStats.TYPE_AVG);
                     }        
                     System.println("GearStat.computeGraph() by POWER Sprocket "+info.rearDerailleurIndex+" on Power="+info.currentPower+"W and Distance="+diffDistance+"m");
                     currentIndex=info.rearDerailleurIndex;
                     powerStats.addDiff(info.rearDerailleurIndex,info.currentPower,diffDistance);
                     stats.put(:power,powerStats);
 
-                    powerTeeth.addDiff(info.rearDerailleurIndex,info.currentPower/info.rearDerailleurSize,diffDistance);
+                    powerTeeth.addDiff(info.rearDerailleurIndex,info.currentPower/info.rearDerailleurSize/2,diffDistance);
                     stats.put(:powerTeeths,powerTeeth);
 
                     distanceStats.add(info.rearDerailleurIndex,diffDistance);
@@ -137,6 +137,7 @@ class GearStatistic {
             dc.setPenWidth(2);
             for(var i=0;i<ss.size();i++){
                 var value=ss.getValue(i);
+                var li=i+1;
                 if(value!=0){
                     var textValue="" as String;
                     if(value>9950){
@@ -147,10 +148,16 @@ class GearStatistic {
                         textValue=value.format("%d")+""+ss.getUnit();
                     }
 
-                    var indexBarColor=Graphics.COLOR_PINK;
-                    var nonIndexBarColor=Graphics.COLOR_PINK;
-                    var indexValueColor=Graphics.COLOR_PINK;
-                    var nonIndexValueColor=Graphics.COLOR_PINK;
+                    var indexBarColor=Graphics.COLOR_ORANGE;
+                    var nonIndexBarColor=colorMode.getFieldColor(:value);
+                    var indexLabelColor=colorMode.getFieldColor(:background);
+                    var indexValueColor=indexBarColor;
+                    var nonIndexValueColor=colorMode.getFieldColor(:value);
+                    if (indexBarColor==colorMode.getFieldColor(:background)) {
+                        indexBarColor=Graphics.COLOR_DK_BLUE;
+                        indexLabelColor=Graphics.COLOR_WHITE;
+                    }
+                    /***
                     if (!colorMode.isNight) {
                         if (ss.getColor()==colorMode.getFieldColor(:background)) {
                             System.println("GearStatistic.draw DAY eq Background");
@@ -180,27 +187,29 @@ class GearStatistic {
                             nonIndexValueColor=colorMode.getFieldColor(:background);
                         }
                     }
-
-                    // Value bar
-                    dc.setColor(i==currentIndex?indexBarColor:nonIndexBarColor,Graphics.COLOR_TRANSPARENT);
+                    /***/
+                    // Bar color
+                    dc.setColor(li==currentIndex?indexBarColor:nonIndexBarColor,Graphics.COLOR_TRANSPARENT);
                     dc.fillRoundedRectangle(locX,y,ks*value,h,h/6);
 
                     // Outline
-                    dc.setColor(colorMode.getFieldColor(:valueChange),Graphics.COLOR_TRANSPARENT);
+                    dc.setColor(nonIndexBarColor,Graphics.COLOR_TRANSPARENT);
                     dc.drawRoundedRectangle(locX,y,ks*value,h,h/6);
-                    dc.drawText(hf+locX,y+hf+(h+space)/2,Graphics.FONT_SMALL,(i+1),Graphics.TEXT_JUSTIFY_LEFT|Graphics.TEXT_JUSTIFY_VCENTER);
+                    dc.drawText(hf+locX,y+hf+(h+space)/2,Graphics.FONT_SMALL,li,Graphics.TEXT_JUSTIFY_LEFT|Graphics.TEXT_JUSTIFY_VCENTER);
 
-                    // Right value    
-                    dc.setColor(i==currentIndex?indexBarColor:nonIndexBarColor,Graphics.COLOR_TRANSPARENT);
-                    dc.drawText(locX+width+1,y+hf+(h+space)/2+1,Graphics.FONT_SMALL,textValue,Graphics.TEXT_JUSTIFY_RIGHT|Graphics.TEXT_JUSTIFY_VCENTER);
-                    dc.setColor(i!=currentIndex?indexBarColor:nonIndexBarColor,Graphics.COLOR_TRANSPARENT);
+                    // Left value
+                    //dc.setColor(i!=currentIndex?indexBarColor:nonIndexBarColor,Graphics.COLOR_TRANSPARENT);
+                    //dc.drawText(hf+locX+1,y+hf+(h+space)/2+1,Graphics.FONT_SMALL,(i+1),Graphics.TEXT_JUSTIFY_LEFT|Graphics.TEXT_JUSTIFY_VCENTER);
+                    dc.setColor(indexLabelColor,Graphics.COLOR_TRANSPARENT);
+                    dc.drawText(hf+locX,y+hf+(h+space)/2,Graphics.FONT_SMALL,li,Graphics.TEXT_JUSTIFY_LEFT|Graphics.TEXT_JUSTIFY_VCENTER);
+
+                    // Right label    
+                    //dc.setColor(i==currentIndex?indexBarColor:nonIndexBarColor,Graphics.COLOR_TRANSPARENT);
+                    //dc.drawText(locX+width+1,y+hf+(h+space)/2+1,Graphics.FONT_SMALL,textValue,Graphics.TEXT_JUSTIFY_RIGHT|Graphics.TEXT_JUSTIFY_VCENTER);
+                    dc.setColor(li==currentIndex?indexValueColor:nonIndexValueColor,Graphics.COLOR_TRANSPARENT);                    
                     dc.drawText(locX+width,y+hf+(h+space)/2,Graphics.FONT_SMALL,textValue,Graphics.TEXT_JUSTIFY_RIGHT|Graphics.TEXT_JUSTIFY_VCENTER);
                     
-                    // Left value
-                    dc.setColor(i!=currentIndex?indexBarColor:nonIndexBarColor,Graphics.COLOR_TRANSPARENT);
-                    dc.drawText(hf+locX+1,y+hf+(h+space)/2+1,Graphics.FONT_SMALL,(i+1),Graphics.TEXT_JUSTIFY_LEFT|Graphics.TEXT_JUSTIFY_VCENTER);
-                    dc.setColor(i==currentIndex?indexValueColor:nonIndexValueColor,Graphics.COLOR_TRANSPARENT);
-                    dc.drawText(hf+locX,y+hf+(h+space)/2,Graphics.FONT_SMALL,(i+1),Graphics.TEXT_JUSTIFY_LEFT|Graphics.TEXT_JUSTIFY_VCENTER);
+                    
                 }
                 y+=h+space;
             }
@@ -231,25 +240,23 @@ public class SprocketStats {
     private var name as String;
     private var unit as String;
     private var gears as Array<Stat>;
-    private var color as Graphics.ColorType;
 
-    public function initialize(gearMaxSize as Number, name as String, unit as String, type as Type_Value, color as Graphics.ColorType) {
+    public function initialize(gearMaxSize as Number, name as String, unit as String, type as Type_Value) {
         self.type=type;
-        self.color=color;
         self.name=name;
         self.unit=unit;
         gears=new[gearMaxSize] as Array<Stat>;
         reset();
     }
 
-    public function add(gearIndex as Number,value as Numeric) as Void {
-        gears[gearIndex].sum+=value;
-        gears[gearIndex].count+=1;
+    public function add(infoGearIndex as Number,value as Numeric) as Void {
+        gears[infoGearIndex-1].sum+=value;
+        gears[infoGearIndex-1].count+=1;
     }
 
-    public function addDiff(gearIndex as Number,value as Numeric, range as Numeric) as Void {
-        gears[gearIndex].sum+=value*range;
-        gears[gearIndex].count+=range;
+    public function addDiff(infoGearIndex as Number,value as Numeric, range as Numeric) as Void {
+        gears[infoGearIndex-1].sum+=value*range;
+        gears[infoGearIndex-1].count+=range;
     }
 
     public function getSum(gearIndex as Number) as Numeric{
@@ -270,9 +277,7 @@ public class SprocketStats {
     public function size() as Number{
         return gears.size();
     }
-    public function setColor(color as Graphics.ColorType) as Void{
-        self.color=color;
-    }
+    
     public function getValue(gearIndex as Number) as Numeric{
         switch(type){
             case TYPE_AVG:
@@ -285,9 +290,7 @@ public class SprocketStats {
                 return 0;
         }
     }
-    public function getColor() as Number{
-        return color;
-    }
+    
     public function reset() as Void {
         gears=new[gears.size()] as Array<Stat>;
         for(var i=0;i<gears.size();i++){

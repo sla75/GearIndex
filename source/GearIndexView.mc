@@ -44,7 +44,7 @@ class GearIndexView extends SlavicsSimpleDataField {
     private var versionTest=null as String;
     private var lastIndex=-1 as Number;
     private var colorMode as ColorMode;
-    private var propDebugMode=false as Boolean;
+    private var debugMode=false as Boolean;
     private var gearFIT as GearFitContributions or Null;
     private var gearStatistic as GearStatistic;
     private var screen=null as Screen;
@@ -67,12 +67,12 @@ class GearIndexView extends SlavicsSimpleDataField {
         self.setTextLabel(Application.loadResource(Rez.Strings.label));
         Properties.setValue(PROPERTY_VERSION,Application.loadResource(Rez.Strings.version));
         Properties.setValue(PROPERTY_SHOWTEETH,Properties.getValue(PROPERTY_SHOWTEETH)==null?true:Properties.getValue(PROPERTY_SHOWTEETH) as Boolean);
-        Properties.setValue(PROPERTY_DEBUGMODE,Properties.getValue(PROPERTY_DEBUGMODE)==null?false:Properties.getValue(PROPERTY_DEBUGMODE) as Boolean);
+        Properties.setValue(PROPERTY_DEBUGMODE,Properties.getValue(PROPERTY_DEBUGMODE)==null?debugMode:Properties.getValue(PROPERTY_DEBUGMODE) as Boolean);
         Properties.setValue(PROPERTY_NUMBEROFSHIFTS,Properties.getValue(PROPERTY_NUMBEROFSHIFTS)==null?true:Properties.getValue(PROPERTY_NUMBEROFSHIFTS) as Boolean);
         Properties.setValue(PROPERTY_FITFILESAVING,Properties.getValue(PROPERTY_FITFILESAVING)==null?true:Properties.getValue(PROPERTY_FITFILESAVING) as Boolean);
         colorMode=new ColorMode();
         gearStatistic=new GearStatistic(GearStatistic.POWER,colorMode);
-        handleSettingUpdate();
+        onSettingsChanged();
     }
 
     function onLayout(dc as Dc) as Void {
@@ -110,16 +110,16 @@ class GearIndexView extends SlavicsSimpleDataField {
         System.println("|FONT_LARGE|"+Graphics.getFontHeight(Graphics.FONT_LARGE)+"|"+Graphics.getFontAscent(Graphics.FONT_LARGE)+"|"+Graphics.getFontDescent(Graphics.FONT_LARGE)+"|");
         /***/
     }
-    public function handleSettingUpdate() as Void {
+    public function onSettingsChanged() as Void {
         System.println("GearIndexView.onSettingsChanged()");
         topLeftLabel.setVisible(Properties.getValue(PROPERTY_SHOWTEETH) as Boolean);
         bottomLeftLabel.setVisible(Properties.getValue(PROPERTY_NUMBEROFSHIFTS) as Boolean);
         if(Properties.getValue(PROPERTY_NUMBEROFSHIFTS) as Boolean){
             totalShiftsTime=TOTAL_SHIFTS_TIME_COUNTER;
         }
-        propDebugMode=Properties.getValue(PROPERTY_DEBUGMODE) as Boolean;
+        debugMode=Properties.getValue(PROPERTY_DEBUGMODE) as Boolean;
         gearFIT.handleSettingUpdate(Properties.getValue(PROPERTY_FITFILESAVING) as Boolean);
-     
+        System.println("GearIndexView.onSettingsChanged() debugMode="+debugMode);
         colorMode.handleSettingUpdate();
     }
     /***
@@ -212,7 +212,7 @@ class GearIndexView extends SlavicsSimpleDataField {
                 bottomLeftLabel.setVisible(false);
             }
         }
-        if(propDebugMode){
+        if(debugMode){
             debugData=[] as Array<Dictionary>;
             switch(info.timerState){
                 case 0:
@@ -294,10 +294,10 @@ class GearIndexView extends SlavicsSimpleDataField {
         if(screen==FIELD){
             onUpdateField(dc);
         } else {
-            if(!propDebugMode){
-                onUpdateFullScreen(dc);
-            } else {
+            if(debugMode){
                 onUpdateDebugMode(dc);
+            } else {
+                onUpdateFullScreen(dc);                
             }
         }
         if(alertMessage!=null){
@@ -313,7 +313,7 @@ class GearIndexView extends SlavicsSimpleDataField {
     }
     public function onUpdateFullScreen(dc as Dc) as Void {
         System.println("GearIndexView.onUpdateFullScreen()");
-        gearStatistic.draw(dc,valueArea.locX,valueArea.locY,valueArea.width,valueArea.height);
+        gearStatistic.draw(dc,valueArea.locX,valueArea.locY+Graphics.getFontHeight(Graphics.FONT_NUMBER_THAI_HOT)/2,valueArea.width,valueArea.height);
     }
     public function onUpdateDebugMode(dc as Dc) as Void {
         System.println("GearIndexView.onUpdateDebugMode()");
