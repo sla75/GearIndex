@@ -6,7 +6,7 @@ import Toybox.Test;
 class SprocketStatsTest {
     (:test)
     function sprocketStatsTest(logger) {
-        var ss=new SprocketStats(12,"Power on Gear","W",SprocketStats.TYPE_AVG,Graphics.COLOR_DK_RED);
+        var ss=new SprocketStats(12,"Power on Gear","W",SprocketStats.TYPE_AVG);
         logger.debug(ss);
         Test.assertEqual(ss.toString(),"SprocketStats[2]: SprocketStatsTest T");
         logger.debug(ss.getAvg(0));

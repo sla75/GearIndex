@@ -3,9 +3,9 @@ import Toybox.AntPlus;
 import Toybox.Graphics;
 import Toybox.Lang;
 import Toybox.Time;
+import LogMonkey;
 
 class GearStatistic {
-
 
     enum PreferedMeasure {
         AUTO,
@@ -41,16 +41,17 @@ class GearStatistic {
         if(lastDistance==null){
             lastDistance=elapsedDistance;
         }
-        System.println("GearStat.computeGraph() timerState="+info.timerState+" distance="+elapsedDistance+" / "+lastDistance);
+        LogMonkey.Debug.logMessage("GearStat.computeGraph()","timerState="+info.timerState+" distance="+elapsedDistance+" / "+lastDistance);
         var diffDistance=elapsedDistance-lastDistance;
-        System.println("GearStat.computeGraph() timerState="+info.timerState+"     diff="+diffDistance);
+        var ts=["TIMER_STATE_OFF","TIMER_STATE_STOPPED","TIMER_STATE_PAUSED","TIMER_STATE_ON"] as Array<String>;
+        LogMonkey.Debug.logMessage("GearStat.computeGraph()","timerState["+info.timerState+"]="+ts[info.timerState]+" diffDistance="+diffDistance);
         if(lastTimerTime==Activity.TIMER_STATE_OFF&&info.timerState==Activity.TIMER_STATE_ON){
-            System.println("GearStat.computeGraph() START");
+            LogMonkey.Debug.logMessage("GearStat.computeGraph()","START");
             stats={} as Dictionary<Symbol,SprocketStats>;
             lastDistance=elapsedDistance;
         } else if((info.timerState==Activity.TIMER_STATE_ON||info.timerState==Activity.TIMER_STATE_OFF)&&diffDistance!=0){
             
-            System.println("GearStat.computeGraph() PLAY elapsedDistance="+info.elapsedDistance+"-"+lastDistance);
+            LogMonkey.Debug.logMessage("GearStat.computeGraph()","PLAY elapsedDistance="+info.elapsedDistance+"-"+lastDistance);
 
             var distanceStats=stats.get(:distance) as SprocketStats;
             if(stats.get(:distance)==null){
@@ -63,17 +64,10 @@ class GearStatistic {
                     if(stats.get(:power)==null){
                         powerStats=new SprocketStats(info.rearDerailleurMax,"Power on Gear","W",SprocketStats.TYPE_AVG);
                     }
-                    var powerTeeth=stats.get(:powerTeeths) as SprocketStats;
-                    if(stats.get(:powerTeeths)==null){
-                        powerTeeth=new SprocketStats(info.rearDerailleurMax,"Power at Teeths","W/t",SprocketStats.TYPE_AVG);
-                    }        
-                    System.println("GearStat.computeGraph() by POWER Sprocket "+info.rearDerailleurIndex+" on Power="+info.currentPower+"W and Distance="+diffDistance+"m");
+                    LogMonkey.Debug.logMessage("GearStat.computeGraph()","by POWER Sprocket "+info.rearDerailleurIndex+" on Power="+info.currentPower+"W and Distance="+diffDistance+"m");
                     currentIndex=info.rearDerailleurIndex;
                     powerStats.addDiff(info.rearDerailleurIndex,info.currentPower,diffDistance);
                     stats.put(:power,powerStats);
-
-                    powerTeeth.addDiff(info.rearDerailleurIndex,info.currentPower/info.rearDerailleurSize/2,diffDistance);
-                    stats.put(:powerTeeths,powerTeeth);
 
                     distanceStats.add(info.rearDerailleurIndex,diffDistance);
                     stats.put(:distance,distanceStats);
@@ -81,21 +75,21 @@ class GearStatistic {
                 lastTimerTime=info.timerTime;
             }else if((prefered==CADENCE||prefered==AUTO)&&info.currentCadence!=null){
                 if(info.currentCadence>0){
-                    System.println("GearStat.computeGraph() by CADENCE "+info.currentCadence+" on Distance="+diffDistance+"m");
+                    LogMonkey.Debug.logMessage("GearStat.computeGraph()","by CADENCE "+info.currentCadence+" on Distance="+diffDistance+"m");
                     distanceStats.addDiff(info.rearDerailleurIndex,1,diffDistance);
                     stats.put(:distance,distanceStats);
                 }
             } else {
-                System.println("GearStat.computeGraph() by DEFAULT "+info.currentCadence+" on Distance="+diffDistance+"m");
+                LogMonkey.Debug.logMessage("GearStat.computeGraph()","by DEFAULT "+info.currentCadence+" on Distance="+diffDistance+"m");
                 distanceStats.addDiff(info.rearDerailleurIndex,1,diffDistance);
                 stats.put(:distance,distanceStats);
             }
             lastDistance=elapsedDistance;
         } else if(lastTimerTime==Activity.TIMER_STATE_PAUSED){
-            System.println("GearStat.computeGraph() PAUSE");
+            LogMonkey.Debug.logMessage("GearStat.computeGraph()","PAUSE");
             lastDistance=elapsedDistance;
         } else if(lastTimerTime==Activity.TIMER_STATE_STOPPED&&info.timerState==Activity.TIMER_STATE_OFF){
-            System.println("GearStat.computeGraph() RESET");
+            LogMonkey.Debug.logMessage("GearStat.computeGraph()","RESET");
             stats={} as Dictionary<Symbol,SprocketStats>;
             lastDistance=elapsedDistance;
         }
@@ -105,10 +99,6 @@ class GearStatistic {
         stats={} as Dictionary<Symbol,SprocketStats>;
     }
 
-    public function print() as Void {
-        System.println("GearStat.print");
-        //stats.get(:power).print();
-    }
     public function draw(dc as Dc, locX as Number, locY as Number, width as Number, height as Number) as Void{
         //dc.setColor(Graphics.COLOR_YELLOW,Graphics.COLOR_TRANSPARENT);
         //dc.drawRectangle(locX,locY,width,height);
@@ -303,9 +293,9 @@ public class SprocketStats {
     }
 
     public function print() as Void {
-        System.println("SprocketStats["+size()+"]: "+getName());
+        LogMonkey.Debug.logMessage("SprocketStats.print()","Name: "+getName()+"["+size()+"]");
         for(var i=0;i<gears.size();i++){
-            System.println(i+". Sprocket "+getValue(i)+getUnit());
+            LogMonkey.Debug.logMessage("\tSprocket "+i,getValue(i)+" "+getUnit());
         }
     }
 }

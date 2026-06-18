@@ -1,3 +1,4 @@
+import Toybox.Lang;
 import Toybox.Time;
 import Toybox.System;
 
@@ -18,27 +19,27 @@ module LogMonkey {
     (:debug)
     class Logger {
 
-        private var mLogLevel;
+        private var mLogLevel as String;
         private var mLogStream;
 
         //! Creates a new Logger object.
         //! @param logLevel [Toybox::Lang::String] The log level value to log messages through this class to
         //! @param logStream [Toybox::Lang::Object] An object which defines a println(message) function
-        function initialize(logLevel, logStream) {
+        function initialize(logLevel as String, logStream) {
             mLogLevel = logLevel;
             mLogStream = logStream;
         }
 
         // The string formats to use when printing log messages
-        private static var FORMAT_VARIABLE = "$1$=($2$) $3$";
-        private static var FORMAT_LOG_MESSAGE = "[$1$] {$2$} $3$: $4$";
-        private static var FORMAT_TIMESTAMP = "$4$:$5$:$6$"; // YYYY-MM-DD HH:MM:SS
+        private static var FORMAT_VARIABLE = "$1$=($2$) $3$" as String;
+        private static var FORMAT_LOG_MESSAGE = "$1$ [$2$] $3$: $4$" as String;
+        private static var FORMAT_TIMESTAMP = "$1$:$2$:$3$" as String; // HH:MM:SS
 
         //! Forms a log message based on the given values.
         //! @param tag [Toybox::Lang::String] The tag to apply to the log message
         //! @param message [Toybox::Lang::String] The message to log
         //! @return [Toybox::Lang::String] A log message matching the format specified by FORMAT_TIMESTAMP
-        private function formLogMessage(tag, message) {
+        private function formLogMessage(tag as String, message as String) as String {
             // Get a timestamp from the system
             var currentTime = Time.Gregorian.info(Time.now(), Time.FORMAT_SHORT);
             var timestamp = Lang.format(FORMAT_TIMESTAMP, [
@@ -54,7 +55,7 @@ module LogMonkey {
         //! Handles the printing of a log message to the log file
         //! @param tag [Toybox::Lang::String] The tag to apply to the log message
         //! @param message [Toybox::Lang::String] The message to log
-        private function log(tag, message) {
+        private function log(tag as String, message as String) as Void {
             // Print the log message
             mLogStream.println(formLogMessage(tag, message));
         }
@@ -64,7 +65,7 @@ module LogMonkey {
         //! given variable isn't a type defined there then "Object" will be returned.
         //! @param variable [Toybox::Lang::Object] The variable to get the type of
         //! @return [Toybox::Lang::String] The name of the type of the given variable
-        private function getVariableType(variable) {
+        private function getVariableType(variable) as String {
             // If the given value is null we can't switch on it so perform
             // a null check here. The return value should just be "null".
             if (variable == null) {
@@ -108,15 +109,16 @@ module LogMonkey {
         //! Log the given message under the given tag
         //! @param tag [Toybox::Lang::String] The tag to apply to the log message
         //! @param message [Toybox::Lang::String] The message to log
-        function logMessage(tag, message) {
+        function logMessage(tag as String, message as String) as Void {
             log(tag, message);
         }
 
         //! Log the given Exception under the given tag
         //! @param tag [Toybox::Lang::String] The tag to apply to the log message
         //! @param exception [Toybox::Lang::Exception] The Exception to log
-        function logException(tag, exception) {
+        function logException(tag as String, exception as Exception) as Void {
             log(tag, exception.getErrorMessage());
+            exception.printStackTrace();
             //TODO: Iteratre through stacktrace.
         }
 
@@ -124,11 +126,11 @@ module LogMonkey {
         //! @param tag [Toybox::Lang::String] The tag to apply to the log message
         //! @param variableName [Toybox::Lang::String] The name of the variable being logged
         //! @param variable [Toybox::Lang::Object] The variable to log
-        function logVariable(tag, variableName, variable) {
+        function logVariable(tag, variableName, variable) as Void {
             var type = getVariableType(variable);
             var value;
             if (variable == null) {
-                value = "null";
+                value = "<null>";
             } else {
                 value = variable.toString();
             }
@@ -139,16 +141,16 @@ module LogMonkey {
     (:release)
     class Logger {
 
-        function initialize(logLevel, logStream) {
+        function initialize(logLevel as String, logStream) {
         }
 
-        function logMessage(tag, message) {
+        function logMessage(tag as String, message as String) as Void {
         }
 
-        function logException(tag, exception) {
+        function logException(tag as String, exception as Exception) as Void {
         }
 
-        function logVariable(tag, variableName, variable) {
+        function logVariable(tag, variableName, variable) as Void {
         }
 
     }
