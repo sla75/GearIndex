@@ -100,9 +100,7 @@ if [[ ${BRANCH}=="main" || ${BRANCH}=="test" ]]; then
         --package-app --release --warn
     echo -e "Generated bin/${APP_NAME}-${APP_VERSION}.${GITCOUNT}.iq"
 fi;
-git restore --staged ${APP_FILE}
-git restore ${APP_FILE}
-exit 0
+
 declare -a devices=("edge840" "edge1050")
 
 if [[ -n "${1}" ]]; then
@@ -118,7 +116,8 @@ for device in "${devices[@]}"; do
     find bin/ -type f -name "${APP_NAME}-${device^}-*" -print -exec rm {} \;
     [[ -e "${PWD}/barrels.jungle" ]] && JUNGLEPATHS="${JUNGLEPATHS};${PWD}/barrels.jungle"
     echo_and_exec "${SDK}"bin/monkeyc \
-        --private-key "${DEV_KEY}" --jungles "${JUNGLEPATHS}" \
+        --private-key "${DEV_KEY}" \
+        --jungles "monkey${BRANCH%%Main}.jungle;resources.jungle" \
         --device ${device} --output "bin/${APP_NAME}-${device^}-${APP_VERSION}.${GITCOUNT}.prg" \
         --warn --typecheck 1 --release
     # --debug-log-output logs/monkeyc.zip --debug-log-level 3 
@@ -133,16 +132,7 @@ echo -e "########################################\n"
 xmllint --xpath "//strings/string[@id='AppName']/text()" ${APP_FILE}
 xmllint --xpath "//strings/string[@id='version']/text()" ${APP_FILE}
 
-#git checkout -b "${APP_VERSION}.${GITCOUNT}"
-#git add .
-#git commit "Build ${APP_VERSION}.${GITCOUNT}"
-#git checkout ${BRANCH}
-
-#if [[ ${BRANCH}=="main" || ${BRANCH}=="test" ]]; then
-#    echo "Poslat do GITHUBu."
-#fi;
-
-echo "RESTORE Application@id=${APP_ID} in manifest.xml and ${APP_FILE}"
+echo "RESTORE Application@id=${APP_ID} in and ${APP_FILE}"
 git restore --staged ${APP_FILE}
 git restore ${APP_FILE}
 
@@ -151,6 +141,5 @@ git restore ${APP_FILE}
 #git commit -m "Build ${APP_VERSION}.${GITCOUNT}"
 
 # TODO check restore
-grep "iq:application id" manifest.xml
 grep AppName ${APP_FILE}
 grep version ${APP_FILE}
