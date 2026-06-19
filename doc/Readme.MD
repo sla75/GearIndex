@@ -4,6 +4,9 @@
 # Publish Garmin App
 https://developer.garmin.com/connect-iq/core-topics/publishing-to-the-store/
 
+# Convert HEX
+https://www.rapidtables.com/convert/number/hex-to-decimal.html
+
 # GIT Branching
 https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
 

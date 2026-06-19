@@ -79,7 +79,7 @@ class Device {
     public function getBatteries() as Array<BatteryData> {
         var ids=device.getComponentIdentifiers() as Array<Number> or Null;
         var batteries=[] as Array<BatteryData>;
-        if(ids!=null){
+        if(ids==null){
             ids=[null] as Array<Number> or Null;
         }
         for(var i=0;i<ids.size();i++){
