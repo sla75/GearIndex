@@ -3,6 +3,7 @@ import Toybox.Application;
 import Toybox.FitContributor;
 import Toybox.Lang;
 import Toybox.WatchUi;
+import LogMonkey;
 
 class GearFitContributions {
 
@@ -33,7 +34,7 @@ class GearFitContributions {
 
     function handleSettingUpdate(saveFitFile as Boolean) as Void {
         self.saveFitFile=saveFitFile;
-        System.println("GearFitContributions.handleSettingUpdate saveFile="+saveFitFile+" object="+(field_TotalShifts==null?"null":"Exists"));
+        LogMonkey.Debug.logMessage("GearFitContributions.handleSettingUpdate()","saveFile="+saveFitFile+" object="+(field_TotalShifts==null?"null":"Exists"));
         if(saveFitFile&&field_TotalShifts==null) {
             field_TotalShifts = dataField.createField("FIT_RD_TOTALSHIFTS_ID", FIT_RD_TOTALSHIFTS_ID, FitContributor.DATA_TYPE_UINT8, {
                 :mesgType=>FitContributor.MESG_TYPE_SESSION});
@@ -50,22 +51,21 @@ class GearFitContributions {
         if(saveFitFile){
             return;
         }
+        if(fdSprocket==null || fdSprocket==AntPlus.FRONT_GEAR_INVALID || fdSprocket==0){
+            LogMonkey.Debug.logVariable("GearFitContributions.setDerailleurs","fdSprocket",fdSprocket);
+            return;
+        }
         if(rdSprocket==null || rdSprocket==AntPlus.REAR_GEAR_INVALID || rdSprocket==0){
-            System.println("GearFitContributions.setDerailleurs rdSprocket="+rdSprocket);
+            LogMonkey.Debug.logVariable("GearFitContributions.setDerailleurs","rdSprocket",rdSprocket);
             return;
         }
 
-        if(fdSprocket==null || fdSprocket==AntPlus.FRONT_GEAR_INVALID || fdSprocket==0){
-            System.println("GearFitContributions.setDerailleurs fdSprocket="+rdSprocket);
-            return;
-        }
-        
         if(mTimerRunning!=RUNNING) {
             return;
         }
         var ratio=fdSprocket/rdSprocket.toFloat() as Float;
         field_GearRatio.setData(ratio);
-        System.println("GearFitContributions.setDerailleurs ratio="+ratio.format("%.2f"));
+        LogMonkey.Debug.logVariable("GearFitContributions.setDerailleurs()","ratio",ratio.format("%.2f"));
     }
 
     public function changeIndex(change as Number) as Void {
@@ -74,18 +74,18 @@ class GearFitContributions {
             if(saveFitFile){
                 field_TotalShifts.setData(totalShifts);
             }
-            System.println("GearFitContributions.onChange totalShifts="+totalShifts+" save("+saveFitFile+")");
+            LogMonkey.Debug.logMessage("GearFitContributions.onChange()","totalShifts="+totalShifts+" save("+saveFitFile+")");
         }
     }
 
     public function addRdBatteryStatus(batteryStatus as AntPlus.BatteryStatusValue or Null) as Void {
-        System.println("GearFitContributions.addRdBatteryStatus "+batteryStatus+" save("+saveFitFile+")");
+        LogMonkey.Debug.logMessage("GearFitContributions.addRdBatteryStatus()",batteryStatus+" save("+saveFitFile+")");
         if(saveFitFile&&batteryStatus!=null){
             field_RdBatteryStatus.setData(batteryStatus);
         }
     }
     public function addRdBatteryVoltage(batteryVoltage as Float or Null) as Void {
-        System.println("GearFitContributions.addRdBatteryVoltage "+batteryVoltage+" save("+saveFitFile+")");
+        LogMonkey.Debug.logMessage("GearFitContributions.addRdBatteryVoltage()",batteryVoltage+" save("+saveFitFile+")");
         if(saveFitFile&&batteryVoltage!=null){
             field_RdBatteryVoltage.setData(batteryVoltage);
         }
@@ -98,30 +98,30 @@ class GearFitContributions {
     function onTimerReset() {
         totalShifts=0;
         mTimerRunning = STOP;
-        System.println("GearFitContributions.onTimerReset mTimerRunning="+mTimerRunning+" totalShifts="+totalShifts);
+        LogMonkey.Debug.logMessage("GearFitContributions.onTimerReset()","mTimerRunning="+mTimerRunning+" totalShifts="+totalShifts);
     }
     
     function onTimerPause() {
         mTimerRunning = PAUSE;
-        System.println("GearFitContributions.onTimerPause mTimerRunning="+mTimerRunning+" totalShifts="+totalShifts);
+        LogMonkey.Debug.logMessage("GearFitContributions.onTimerPause()","mTimerRunning="+mTimerRunning+" totalShifts="+totalShifts);
     }
     
     function onTimerResume() {
         mTimerRunning = RUNNING;
-        System.println("GearFitContributions.onTimerResume mTimerRunning="+mTimerRunning+" totalShifts="+totalShifts);
+        LogMonkey.Debug.logMessage("GearFitContributions.onTimerResume()","mTimerRunning="+mTimerRunning+" totalShifts="+totalShifts);
     }
     
     function onTimerStart() {
         if(mTimerRunning == STOP){
             totalShifts=0;
-            System.println("GearFitContributions.onTimerStart 1 mTimerRunning="+mTimerRunning+" totalShifts=RESET");
+            LogMonkey.Debug.logMessage("GearFitContributions.onTimerStart()","1 mTimerRunning="+mTimerRunning+" totalShifts=RESET");
         }
         mTimerRunning = RUNNING;
-        System.println("GearFitContributions.onTimerStart 2 mTimerRunning="+mTimerRunning+" totalShifts="+totalShifts);
+        LogMonkey.Debug.logMessage("GearFitContributions.onTimerStart()","2 mTimerRunning="+mTimerRunning+" totalShifts="+totalShifts);
     }
 
     function onTimerStop() {
         mTimerRunning = PAUSE;
-        System.println("GearFitContributions.onTimerStop mTimerRunning="+mTimerRunning+" totalShifts="+totalShifts);
+        LogMonkey.Debug.logMessage("GearFitContributions.onTimerStop()","mTimerRunning="+mTimerRunning+" totalShifts="+totalShifts);
     } 
 }

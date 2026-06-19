@@ -33,22 +33,23 @@ class Device {
     }
         
     (:release)
-    public function getDeviceState() as AntPlus.DeviceState {
-        return device.getDeviceState() as AntPlus.DeviceState;
+    public function getState() as AntPlus.DeviceState {
+        return self.device.getDeviceState() as AntPlus.DeviceState;
     }
 
     (:debug)
-    public function getDeviceState() as AntPlus.DeviceState {
+    public function getState() as AntPlus.DeviceState {
         var ds=new AntPlus.DeviceState() as AntPlus.DeviceState;
         ds.deviceNumber=999999;
         ds.state=AntPlus.DEVICE_STATE_TRACKING;
-        if(System.getClockTime().sec<6){
+        if(System.getClockTime().sec==7){
             ds.state=AntPlus.DEVICE_STATE_SEARCHING;
-        } else if(System.getClockTime().sec>54){
+        } else if(System.getClockTime().sec==13){
             ds.state=AntPlus.DEVICE_STATE_CLOSED;
         } else if(System.getClockTime().sec>58){
             ds.state=AntPlus.DEVICE_STATE_DEAD;
         }
+        LogMonkey.Debug.logMessage("Device.getState()","state="+getDeviceStateString(ds.state)+"["+ds.state+"]");
         return ds;
     }
 
@@ -99,7 +100,7 @@ class Device {
 
     public static function getBatteryStatusString(status as BatteryStatusValue or Null) as String {
         if(status==null){
-            return "null";
+            return "<null>";
         }
         switch(status){
             case 1:
@@ -118,6 +119,25 @@ class Device {
                 return "CNT";
             default:
                 return "unknown";
+        }
+    }
+    public static function getDeviceStateString(state as Number or Null) as String{
+        if(state==null){
+            return "<null>";
+        }
+        switch(state){
+            case 0:
+                return "DEAD";
+            case 1:
+                return "CLOSED";
+            case 2:
+                return "SEARCHING";
+            case 3:
+                return "TRACKING";
+            case 4:
+                return "CNT";
+            default:
+                return "unknown["+state+"]";
         }
     }
 }

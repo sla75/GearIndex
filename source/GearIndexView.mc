@@ -6,6 +6,7 @@ import Toybox.Lang;
 import Toybox.Math;
 import Toybox.System;
 import Toybox.WatchUi;
+import LogMonkey;
 
 class GearIndexView extends SlavicsSimpleDataField {
 
@@ -56,7 +57,7 @@ class GearIndexView extends SlavicsSimpleDataField {
     }
 
     function initialize() {
-        System.println("GearIndexView.initialize()");
+        LogMonkey.Debug.logMessage("GearIndexView.initialize()","");
         SlavicsSimpleDataField.initialize();
         gearFIT = new GearFitContributions(self);
         unitTeeths=Application.loadResource(Rez.Strings.unitTeeths);
@@ -76,7 +77,7 @@ class GearIndexView extends SlavicsSimpleDataField {
     }
 
     function onLayout(dc as Dc) as Void {
-        System.println("GearIndexView.onLayout() "+dc.getWidth()+"x"+dc.getHeight());
+        LogMonkey.Debug.logMessage("GearIndexView.onLayout()",dc.getWidth()+"x"+dc.getHeight());
         SlavicsSimpleDataField.onLayout(dc);
         if(dc.getHeight()==System.getDeviceSettings().screenHeight){
             screen=FULL;
@@ -111,15 +112,16 @@ class GearIndexView extends SlavicsSimpleDataField {
         /***/
     }
     public function onSettingsChanged() as Void {
-        System.println("GearIndexView.onSettingsChanged()");
+        LogMonkey.Debug.logMessage("GearIndexView.onSettingsChanged()","");
         topLeftLabel.setVisible(Properties.getValue(PROPERTY_SHOWTEETH) as Boolean);
         bottomLeftLabel.setVisible(Properties.getValue(PROPERTY_NUMBEROFSHIFTS) as Boolean);
         if(Properties.getValue(PROPERTY_NUMBEROFSHIFTS) as Boolean){
             totalShiftsTime=TOTAL_SHIFTS_TIME_COUNTER;
         }
         debugMode=Properties.getValue(PROPERTY_DEBUGMODE) as Boolean;
+        debugMode=!debugMode;
         gearFIT.handleSettingUpdate(Properties.getValue(PROPERTY_FITFILESAVING) as Boolean);
-        System.println("GearIndexView.onSettingsChanged() debugMode="+debugMode);
+        LogMonkey.Debug.logVariable("GearIndexView.onSettingsChanged()","debugMode",debugMode);
         colorMode.handleSettingUpdate();
     }
     /***
@@ -168,17 +170,17 @@ class GearIndexView extends SlavicsSimpleDataField {
                     }
                     if (Attention has :playTone) {
                         if(rds.gearIndex==rds.gearMax-1){
-                            System.println("GearIndex.compute() ALERT onChange Hi");
+                            LogMonkey.Debug.logMessage("GearIndex.compute()","ALERT onChange Hi");
                             Attention.playTone(Attention.TONE_ALERT_HI);
                         } else if (rds.gearIndex==0) {
-                            System.println("GearIndex.compute() ALERT onChange Lo");
+                            LogMonkey.Debug.logMessage("GearIndex.compute()","ALERT onChange Lo");
                             Attention.playTone(Attention.TONE_ALERT_LO);
                         }
                     }
                 } else if(rds.gearIndex==0||rds.gearIndex==rds.gearMax-1){
                     valueArea.setColor(colorMode.getFieldColor(:valueEdge));
                 }
-                System.println("GearIndex.compute() gearIndex="+(rds.gearIndex+1)+(rds.gearIndex!=lastIndex?" / "+(lastIndex+1):""));
+                LogMonkey.Debug.logMessage("GearIndex.compute()","gearIndex="+(rds.gearIndex+1)+(rds.gearIndex!=lastIndex?" / "+(lastIndex+1):""));
                 setTextValue((rds.gearIndex+1).toString());
                 topLeftLabel.setText(rds.gearSize+unitTeeths);
                 lastIndex=rds.gearIndex;
@@ -188,11 +190,11 @@ class GearIndexView extends SlavicsSimpleDataField {
                 invalidBoardShiftCount=rds.invalidInboardShiftCount+rds.invalidOutboardShiftCount;
                 if (Attention has :playTone) {
                     if(rds.gearIndex==rds.gearMax-1){
-                        System.println("GearIndex.compute() ALERT invalid Hi");
+                        LogMonkey.Debug.logMessage("GearIndex.compute()","ALERT invalid Hi");
                         Attention.playTone(Attention.TONE_ALERT_HI);
                         alertMessage=new AlertMessage("Hi\n"+(rds.gearIndex+1));
                     } else if (rds.gearIndex==0) {
-                        System.println("GearIndex.compute() ALERT invalid Lo");
+                        LogMonkey.Debug.logMessage("GearIndex.compute()","ALERT invalid Lo");
                         Attention.playTone(Attention.TONE_ALERT_LO);
                         alertMessage=new AlertMessage("Lo\n"+(rds.gearIndex+1));
                     }
@@ -301,7 +303,7 @@ class GearIndexView extends SlavicsSimpleDataField {
             }
         }
         if(alertMessage!=null){
-            System.println("GearIndexView.onUpdate() AlertMessage "+alertMessage);
+            LogMonkey.Debug.logVariable("GearIndexView.onUpdate()","AlertMessage",alertMessage);
             try {
                 showAlert(alertMessage);
             } catch (ex instanceof  Lang.OperationNotAllowedException ){
@@ -312,11 +314,11 @@ class GearIndexView extends SlavicsSimpleDataField {
         //View.onUpdate(dc);
     }
     public function onUpdateFullScreen(dc as Dc) as Void {
-        System.println("GearIndexView.onUpdateFullScreen()");
+        LogMonkey.Debug.logMessage("GearIndexView.onUpdateFullScreen()","");
         gearStatistic.draw(dc,valueArea.locX,valueArea.locY+Graphics.getFontHeight(Graphics.FONT_NUMBER_THAI_HOT)/2,valueArea.width,valueArea.height);
     }
     public function onUpdateDebugMode(dc as Dc) as Void {
-        System.println("GearIndexView.onUpdateDebugMode()");
+        LogMonkey.Debug.logMessage("GearIndexView.onUpdateDebugMode()","");
         var yLine=1;
         for(var i=0;i<debugData.size();i++){
             var dict=(debugData as Array)[i] as Dictionary;
@@ -345,7 +347,7 @@ class GearIndexView extends SlavicsSimpleDataField {
         
     }
     public function onUpdateField(dc as Dc) as Void {
-        System.println("GearIndexView.onUpdateField()");
+        LogMonkey.Debug.logMessage("GearIndexView.onUpdateField()","");
         
         if(versionTest!=null){
             dc.setColor(Graphics.COLOR_YELLOW,Graphics.COLOR_TRANSPARENT);
@@ -381,29 +383,28 @@ class GearIndexView extends SlavicsSimpleDataField {
     }
 
     function onTimerReset() {
-        System.println("GearIndexView.onTimerReset");
+        LogMonkey.Debug.logMessage("GearIndexView.onTimerReset()","");
         gearFIT.onTimerReset();
     }
     
     function onTimerPause() {
-        System.println("GearIndexView.onTimerPause");
+        LogMonkey.Debug.logMessage("GearIndexView.onTimerPause()","");
   	    gearFIT.onTimerPause();
     }
     
     function onTimerResume() {
-        System.println("GearIndexView.onTimerResume");
+        LogMonkey.Debug.logMessage("GearIndexView.onTimerResume()","");
   	    gearFIT.onTimerResume();
     }
     
     function onTimerStart() {
-        System.println("GearIndexView.onTimerStart");
+        LogMonkey.Debug.logMessage("GearIndexView.onTimerStart()","");
    	    gearFIT.onTimerStart();
     }
     
     function onTimerStop() {
-        System.println("GearIndexView.onTimerStop");
+        LogMonkey.Debug.logMessage("GearIndexView.onTimerStop()","");
    	    gearFIT.onTimerStop();
-        gearStatistic.print();
     }
 }
 /***
