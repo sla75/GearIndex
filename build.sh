@@ -40,10 +40,6 @@ elif [[ ${BRANCH} == "Test" ]]; then
     APP_NAME=$(xmllint --xpath "//strings/string[@id='AppName']/text()" ${APP_FILE})
     APP_VERSION=$(xmllint --xpath "//strings/string[@id='version']/text()" ${APP_FILE})
 #    APP_VERSION=${APP_VERSION}.${BRANCH}
-elif [[ ${BRANCH} == "38-build" ]]; then
-    APP_FILE=resourcesTest/strings/app.xml
-    APP_NAME=$(xmllint --xpath "//strings/string[@id='AppName']/text()" ${APP_FILE})
-    APP_VERSION=$(xmllint --xpath "//strings/string[@id='version']/text()" ${APP_FILE})
 else
     echo "Bad branch ${BRANCH}" >&2
     exit 1
