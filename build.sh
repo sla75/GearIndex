@@ -85,9 +85,9 @@ xmllint --xpath "/strings/string[@id='version']/text()" ${APP_FILE}
 
 echo -e "\n****************************************\nBUILD ${APP_NAME} ${APP_VERSION}.${GITCOUNT}\n----------------------------------------"
 
-git restore --staged ${APP_FILE}
-git restore ${APP_FILE}
-exit 0
+#git restore --staged ${APP_FILE}
+#git restore ${APP_FILE}
+#exit 0
 
 if [[ ${BRANCH}=="Main" || ${BRANCH}=="Test" ]]; then
     find bin/ -type f -name "${APP_NAME}-*.iq" -exec rm {} \;
