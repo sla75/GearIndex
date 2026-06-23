@@ -14,7 +14,11 @@ https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
 ```
 git checkout -b iss5
 ```
-
+***
+```
+git fetch origin
+git checkout <new_branch>
+```
 ## Edits
 ```
 vim index.html

@@ -37,16 +37,17 @@ if [[ ${BRANCH} == "Main" ]]; then
     APP_VERSION=$(xmllint --xpath "//strings/string[@id='version']/text()" ${APP_FILE})
 elif [[ ${BRANCH} == "Test" ]]; then
     APP_FILE=resourcesTest/strings/app.xml
-#    [[ ${BRANCH} == "test" ]] && 
     APP_NAME=$(xmllint --xpath "//strings/string[@id='AppName']/text()" ${APP_FILE})
     APP_VERSION=$(xmllint --xpath "//strings/string[@id='version']/text()" ${APP_FILE})
-    #APP_VERSION=${APP_VERSION}.${BRANCH}
+#    APP_VERSION=${APP_VERSION}.${BRANCH}
+elif [[ ${BRANCH} == "38-build" ]]; then
+    APP_FILE=resourcesTest/strings/app.xml
+    APP_NAME=$(xmllint --xpath "//strings/string[@id='AppName']/text()" ${APP_FILE})
+    APP_VERSION=$(xmllint --xpath "//strings/string[@id='version']/text()" ${APP_FILE})
 else
     echo "Bad branch ${BRANCH}" >&2
     exit 1
 fi;
-
-echo "Application name=${APP_NAME}, version=${APP_VERSION} from ${APP_FILE}"
 
 git log "${APP_VERSION}.0"..HEAD > /dev/null
 if [ $? -ne 0 ]; then
@@ -59,12 +60,16 @@ fi
 GITCOUNT=$(git rev-list --count HEAD)
 GITCOUNT=$(git log "${APP_VERSION}.0"..HEAD | wc -l)
 
-#exit 0
+echo "Application name=${APP_NAME}, version=${APP_VERSION}.${GITCOUNT} from ${APP_FILE}"
+
 #echo "  Write Application@id=${APP_ID} on ${BRANCH} on version ${APP_VERSION}"
 #echo -e "setns iq=http://www.garmin.com/xml/connectiq\ncd //iq:manifest/iq:application/@id\nset ${APP_ID}\nsave\nbye" | xmllint --shell manifest.xml | grep -v ">" 
 
+git add .
+git commit -m "${APP_NAME} ${APP_VERSION}.${GITCOUNT} on branch=${BRANCH}"
 
-if [[ ${BRANCH} == "test" ]]; then
+
+if [[ ${BRANCH} == "Test" ]]; then
     echo "Set AppName=${APP_NAME} ${APP_VERSION}.${GITCOUNT}"
     echo -e "cd /strings/string[@id=\"AppName\"]\nset ${APP_NAME} ${APP_VERSION}.${GITCOUNT}\nsave" | xmllint --shell ${APP_FILE} | grep -v ">"
     #APP_VERSION=${APP_VERSION}.${BRANCH}
@@ -72,12 +77,7 @@ fi;
 echo "Set version=${APP_VERSION}.${GITCOUNT}"
 echo -e "cd /strings/string[@id=\"version\"]\nset ${APP_VERSION}.${GITCOUNT}\nsave" | xmllint --shell ${APP_FILE} | grep -v ">"
 
-echo "Branch ${BRANCH} v. ${APP_VERSION}"
-
-
-
-
-
+echo "AppName: ${APP_NAME} ${APP_VERSION}.${GITCOUNT} on branch=${BRANCH}"
 
 xmllint --xpath "/strings/string[@id='AppName']/text()" ${APP_FILE}
 xmllint --xpath "/strings/string[@id='version']/text()" ${APP_FILE}
@@ -85,9 +85,9 @@ xmllint --xpath "/strings/string[@id='version']/text()" ${APP_FILE}
 
 echo -e "\n****************************************\nBUILD ${APP_NAME} ${APP_VERSION}.${GITCOUNT}\n----------------------------------------"
 
-#git restore --staged ${APP_FILE}
-#git restore ${APP_FILE}
-#exit 0
+git restore --staged ${APP_FILE}
+git restore ${APP_FILE}
+exit 0
 
 if [[ ${BRANCH}=="main" || ${BRANCH}=="test" ]]; then
     find bin/ -type f -name "${APP_NAME}-*.iq" -exec rm {} \;
