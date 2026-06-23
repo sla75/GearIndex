@@ -24,16 +24,9 @@ class GearStatistic {
         self.prefered=preferedMeasure;
         self.colorMode=colorMode;
     }
-    (:debug)
-    public function compute(info as Activity.Info) {
-        computeGraph(info);
-    }
-    (:release)
-    public function compute(info as Activity.Info) {
-        computeGraph(info);
-    }
-    private  function computeGraph(info as Activity.Info) {
-        if(info==null || info.frontDerailleurSize==null || info.rearDerailleurSize==null){
+    
+    public function compute(info as Activity.Info, derailleur as Derailleur) {
+        if(derailleur==null || !derailleur.isFrontValidStatus() || !derailleur.isRearValidStatus()){
             currentIndex=null;
             return;
         }
@@ -55,33 +48,33 @@ class GearStatistic {
 
             var distanceStats=stats.get(:distance) as SprocketStats;
             if(stats.get(:distance)==null){
-                distanceStats=new SprocketStats(info.rearDerailleurMax,"Distance on Gear","m",SprocketStats.TYPE_SUM);
+                distanceStats=new SprocketStats(derailleur.getRearStatus().gearMax,"Distance on Gear","m",SprocketStats.TYPE_SUM);
             }
 
             if((prefered==POWER||prefered==AUTO)&&info.currentPower!=null){
-                if(info.currentPower>0&&info.rearDerailleurSize!=0&&info.rearDerailleurSize!=AntPlus.FRONT_GEAR_INVALID){
+                if(info.currentPower>0&&derailleur.isRearValidStatus()){
                     var powerStats=stats.get(:power) as SprocketStats;
                     if(stats.get(:power)==null){
-                        powerStats=new SprocketStats(info.rearDerailleurMax,"Power on Gear","W",SprocketStats.TYPE_AVG);
+                        powerStats=new SprocketStats(derailleur.getRearStatus().gearMax,"Power on Gear","W",SprocketStats.TYPE_AVG);
                     }
-                    LogMonkey.Debug.logMessage("GearStat.computeGraph()","by POWER Sprocket "+info.rearDerailleurIndex+" on Power="+info.currentPower+"W and Distance="+diffDistance+"m");
-                    currentIndex=info.rearDerailleurIndex;
-                    powerStats.addDiff(info.rearDerailleurIndex,info.currentPower,diffDistance);
+                    LogMonkey.Debug.logMessage("GearStat.computeGraph()","by POWER Sprocket "+(derailleur.getRearStatus().gearIndex+1)+" on Power="+info.currentPower+"W and Distance="+diffDistance+"m");
+                    currentIndex=derailleur.getRearStatus().gearIndex;
+                    powerStats.addDiff(derailleur.getRearStatus().gearIndex,info.currentPower,diffDistance);
                     stats.put(:power,powerStats);
 
-                    distanceStats.add(info.rearDerailleurIndex,diffDistance);
+                    distanceStats.add(derailleur.getRearStatus().gearIndex,diffDistance);
                     stats.put(:distance,distanceStats);
                 }
                 lastTimerTime=info.timerTime;
             }else if((prefered==CADENCE||prefered==AUTO)&&info.currentCadence!=null){
                 if(info.currentCadence>0){
                     LogMonkey.Debug.logMessage("GearStat.computeGraph()","by CADENCE "+info.currentCadence+" on Distance="+diffDistance+"m");
-                    distanceStats.addDiff(info.rearDerailleurIndex,1,diffDistance);
+                    distanceStats.addDiff(derailleur.getRearStatus().gearIndex,1,diffDistance);
                     stats.put(:distance,distanceStats);
                 }
             } else {
                 LogMonkey.Debug.logMessage("GearStat.computeGraph()","by DEFAULT "+info.currentCadence+" on Distance="+diffDistance+"m");
-                distanceStats.addDiff(info.rearDerailleurIndex,1,diffDistance);
+                distanceStats.addDiff(derailleur.getRearStatus().gearIndex,1,diffDistance);
                 stats.put(:distance,distanceStats);
             }
             lastDistance=elapsedDistance;
@@ -239,14 +232,14 @@ public class SprocketStats {
         reset();
     }
 
-    public function add(infoGearIndex as Number,value as Numeric) as Void {
-        gears[infoGearIndex-1].sum+=value;
-        gears[infoGearIndex-1].count+=1;
+    public function add(gearIndex as Number,value as Numeric) as Void {
+        gears[gearIndex].sum+=value;
+        gears[gearIndex].count+=1;
     }
 
-    public function addDiff(infoGearIndex as Number,value as Numeric, range as Numeric) as Void {
-        gears[infoGearIndex-1].sum+=value*range;
-        gears[infoGearIndex-1].count+=range;
+    public function addDiff(gearIndex as Number,value as Numeric, range as Numeric) as Void {
+        gears[gearIndex].sum+=value*range;
+        gears[gearIndex].count+=range;
     }
 
     public function getSum(gearIndex as Number) as Numeric{

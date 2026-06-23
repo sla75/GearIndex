@@ -2,7 +2,7 @@ import Toybox.AntPlus;
 import Toybox.Graphics;
 import Toybox.Lang;
 
-class Device {
+class MyDevice {
 
     typedef BatteryData as {
             :identifier as Number,
@@ -97,7 +97,9 @@ class Device {
         }
         return batteries;
     }
-
+    public function getDevice() as Device {
+        return device;
+    }
     public static function getBatteryStatusString(status as BatteryStatusValue or Null) as String {
         if(status==null){
             return "<null>";

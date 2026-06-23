@@ -11,7 +11,7 @@ import LogMonkey;
 class GearIndexView extends SlavicsSimpleDataField {
 
     private var derailleur=new Derailleur() as Derailleur;
-    private var batteries=[] as Array<Device.BatteryData>;
+    private var batteries=[] as Array<MyDevice.BatteryData>;
 
     //private const INVALID_SHIFTS=[:shiftFailureCount,:invalidInboardShiftCount,:invalidOutboardShiftCount] as Array<Symbol>;
     private const RD_totalShifts_unit=Application.loadResource(Rez.Strings.RD_totalShifts_unit);
@@ -119,7 +119,7 @@ class GearIndexView extends SlavicsSimpleDataField {
             totalShiftsTime=TOTAL_SHIFTS_TIME_COUNTER;
         }
         debugMode=Properties.getValue(PROPERTY_DEBUGMODE) as Boolean;
-        #debugMode=!debugMode;
+        //debugMode=!debugMode;
         gearFIT.handleSettingUpdate(Properties.getValue(PROPERTY_FITFILESAVING) as Boolean);
         LogMonkey.Debug.logVariable("GearIndexView.onSettingsChanged()","debugMode",debugMode);
         colorMode.handleSettingUpdate();
@@ -134,14 +134,14 @@ class GearIndexView extends SlavicsSimpleDataField {
     private var invalidBoardShiftCount=0 as Number;
     function compute(info as Activity.Info) as Void {
         SlavicsSimpleDataField.compute(info);
-        derailleur.compute(info);
-        gearStatistic.compute(info);
+        derailleur.compute();
+        gearStatistic.compute(info,derailleur);
 
         colorMode.compute();
         SlavicsSimpleDataField.setColors(colorMode.getColors());
 
 
-        batteries=derailleur.getBatteries() as Array<Device.BatteryData>;
+        batteries=derailleur.getBatteries() as Array<MyDevice.BatteryData>;
         var rds=derailleur.getRearStatus() as AntPlus.DerailleurStatus;
 
         if(alertMessage!=null){
@@ -237,20 +237,25 @@ class GearIndexView extends SlavicsSimpleDataField {
             debugData.add({:label=>"info.currentPower",:value=>info.currentPower});
             debugData.add({:break=>true});
             /***
-            debugData.add({:label=>"info.distanceToDestination",:value=>info.distanceToDestination});
             debugData.add({:label=>"info.elapsedDistance",:value=>info.elapsedDistance});
+            debugData.add({:label=>"info.distanceToDestination",:value=>info.distanceToDestination});
             debugData.add({:label=>"info.nameOfNextPoint",:value=>info.nameOfNextPoint});
             debugData.add({:label=>"info.distanceToNextPoint",:value=>info.distanceToNextPoint});
-            /***/
-            
-            debugData.add({:label=>"info.frontDerailleurIndex",:value=>info.frontDerailleurIndex});
-            debugData.add({:label=>"info.frontDerailleurMax",:value=>info.frontDerailleurMax});
-            debugData.add({:label=>"info.frontDerailleurSize",:value=>info.frontDerailleurSize});
-            debugData.add({:label=>"info.rearDerailleurIndex",:value=>info.rearDerailleurIndex});
-            debugData.add({:label=>"info.rearDerailleurMax",:value=>info.rearDerailleurMax});
-            debugData.add({:label=>"info.rearDerailleurSize",:value=>info.rearDerailleurSize});
             debugData.add({:break=>true});
-
+            /***/
+            if(derailleur.getDevice()!=null){
+                if(derailleur.getDevice().getManufacturerInfo(null)!=null){
+                    debugData.add({:label=>"device.manufacturerId",:value=>derailleur.getDevice().getManufacturerInfo(null).manufacturerId});
+                    debugData.add({:label=>"device.modelNumber",:value=>derailleur.getDevice().getManufacturerInfo(null).modelNumber});
+                } else {
+                    debugData.add({:label=>"device.getManufacturerInfo()",:value=>"[null]"});    
+                }
+            } else {
+                debugData.add({:label=>"device",:value=>"[null]"});
+            }
+            
+            debugData.add({:break=>true});
+            /***/
             if(derailleur.getFrontStatus()!=null){
                 debugData.add({:label=>"FDS.gearIndex",:value=>getGearString(derailleur.getFrontStatus().gearIndex,AntPlus.FRONT_GEAR_INVALID)});
                 debugData.add({:label=>"FDS.gearMax",:value=>getGearString(derailleur.getFrontStatus().gearMax,AntPlus.MAX_GEARS_INVALID)});
@@ -270,9 +275,13 @@ class GearIndexView extends SlavicsSimpleDataField {
                     debugData.add({:break=>true});
                     for(var j=0;j<derailleur.getBatteries().size();j++){
                         var batt=(derailleur.getBatteries() as Array)[j];
-                        debugData.add({:label=>"RDS."+batt.get(:identifier)+".status",:value=>batt.get(:status)==null?null:Derailleur.getBatteryStatusString(batt.get(:status))+"["+batt.get(:status)+"]"});
-                        debugData.add({:label=>"RDS."+batt.get(:identifier)+".voltage",:value=>batt.get(:voltage)});
-                        debugData.add({:label=>"RDS."+batt.get(:identifier)+".operatingTime",:value=>batt.get(:operatingTime)});
+                        var voltage=batt.get(:voltage)==null?"[null]":batt.get(:voltage).format("%.2f")+"V";
+                        debugData.add({:label=>"RDS."+batt.get(:identifier)+".status .voltage",:value=>batt.get(:status)==null?null:Derailleur.getBatteryStatusString(batt.get(:status))+"["+batt.get(:status)+"] "+voltage});
+                        //debugData.add({:label=>"RDS."+batt.get(:identifier)+".operatingTime",:value=>batt.get(:operatingTime)});
+                        if(derailleur.getDevice().getManufacturerInfo(batt.get(:identifier))!=null){
+                            debugData.add({:label=>"device.manufacturerId",:value=>derailleur.getDevice().getManufacturerInfo(batt.get(:identifier)).manufacturerId});
+                            debugData.add({:label=>"device.modelNumber",:value=>derailleur.getDevice().getManufacturerInfo(batt.get(:identifier)).modelNumber});
+                        }
                     }
                 }
             } else {
@@ -361,7 +370,7 @@ class GearIndexView extends SlavicsSimpleDataField {
             battIcon.locY=dc.getHeight()-rim-Graphics.getFontAscent(battIcon.getFont());
             battIcon.setNightMode(System.getDeviceSettings().isNightModeEnabled);
             for(var i=0;i<batteries.size();i++){
-                var bd=(batteries as Array<Device.BatteryData>)[i] as Device.BatteryData;
+                var bd=(batteries as Array<MyDevice.BatteryData>)[i] as MyDevice.BatteryData;
                 // Vertically
                 if(bd.get(:status)!=null&&bd.get(:status)>0) {
 
