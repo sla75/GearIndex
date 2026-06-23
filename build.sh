@@ -67,7 +67,7 @@ echo "Application name=${APP_NAME}, version=${APP_VERSION}.${GITCOUNT} from ${AP
 
 git add .
 git commit -m "${APP_NAME} ${APP_VERSION}.${GITCOUNT} on branch=${BRANCH}"
-
+git log -1
 
 if [[ ${BRANCH} == "Test" ]]; then
     echo "Set AppName=${APP_NAME} ${APP_VERSION}.${GITCOUNT}"
@@ -89,7 +89,7 @@ git restore --staged ${APP_FILE}
 git restore ${APP_FILE}
 exit 0
 
-if [[ ${BRANCH}=="main" || ${BRANCH}=="test" ]]; then
+if [[ ${BRANCH}=="Main" || ${BRANCH}=="Test" ]]; then
     find bin/ -type f -name "${APP_NAME}-*.iq" -exec rm {} \;
     echo -e "\nGenerate ${APP_NAME}-${GITCOUNT}..."
     echo_and_exec java -Xms1g -"Dfile.encoding=UTF-8" -"Dapple.awt.UIElement=true"    \
@@ -101,7 +101,8 @@ if [[ ${BRANCH}=="main" || ${BRANCH}=="test" ]]; then
     echo -e "Generated bin/${APP_NAME}-${APP_VERSION}.${GITCOUNT}.iq"
 fi;
 
-declare -a devices=("edge840" "edge1050")
+#declare -a devices=("edge840" "edge1050")
+declare -a devices=("edge1050")
 
 if [[ -n "${1}" ]]; then
     devices=("${1}")
@@ -113,18 +114,19 @@ JUNGLEPATHS="${PWD}/monkey.jungle"
 
 for device in "${devices[@]}"; do
     echo "Device: ${device}"
+    PRGFILE="bin/${device^}_${APP_NAME}-${APP_VERSION}.${GITCOUNT}.prg"
     find bin/ -type f -name "${APP_NAME}-${device^}-*" -print -exec rm {} \;
     [[ -e "${PWD}/barrels.jungle" ]] && JUNGLEPATHS="${JUNGLEPATHS};${PWD}/barrels.jungle"
     echo_and_exec "${SDK}"bin/monkeyc \
         --private-key "${DEV_KEY}" \
         --jungles "monkey${BRANCH%%Main}.jungle;resources.jungle" \
-        --device ${device} --output "bin/${APP_NAME}-${device^}-${APP_VERSION}.${GITCOUNT}.prg" \
+        --device ${device} --output "${PRGFILE}" \
         --warn --typecheck 1 --release
     # --debug-log-output logs/monkeyc.zip --debug-log-level 3 
     # echo_and_exec "${SDK}"/bin/monkeydo "${OUTPUT_FILE}" ${DEVICE}
-    find bin/ -type f -name "${APP_NAME}-${device^}-*.json" -exec rm {} \;
-    echo -e "\nGenerated bin/${APP_NAME}-${device^}-${APP_VERSION}.${GITCOUNT}.prg\n"
-    cp -v bin/${APP_NAME}-${device^}-${APP_VERSION}.${GITCOUNT}.prg.debug.xml debug/
+    find bin/ -type f -name "${device^}*.json" -exec rm {} \;
+    echo -e "\nGenerated ${PRGFILE}\n"
+    cp -v ${PRGFILE}.debug.xml debug/
 done
 
 echo -e "########################################\n"
