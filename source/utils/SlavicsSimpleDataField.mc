@@ -3,6 +3,7 @@ import Toybox.Graphics;
 import Toybox.Lang;
 import Toybox.Math;
 import Toybox.System;
+import Toybox.Time;
 import Toybox.WatchUi;
 
 class SlavicsSimpleDataField extends WatchUi.DataField {
@@ -31,14 +32,40 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
             :font=>FONTS,
             :justification => Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER,
         }) as TextArea;
+    protected var labels={
+        :topLeft=>new Text({
+            :color=>Graphics.COLOR_DK_GRAY,
+            :font=>Graphics.FONT_SMALL,
+            :justification=>Graphics.TEXT_JUSTIFY_LEFT,
+            :visibility=>false
+        }),
+        :topRight=>new Text({
+            :color=>Graphics.COLOR_DK_GRAY,
+            :font=>Graphics.FONT_SMALL,
+            :justification=>Graphics.TEXT_JUSTIFY_RIGHT,
+            :visibility=>false
+        }),
+        :bottomLeft=>new Text({
+            :color=>Graphics.COLOR_DK_GRAY,
+            :font=>Graphics.FONT_SMALL,
+            :justification=>Graphics.TEXT_JUSTIFY_LEFT,
+            :visibility=>false
+        }),
+        :bottomRight=>new Text({
+            :color=>Graphics.COLOR_DK_GRAY,
+            :font=>Graphics.FONT_SMALL,
+            :justification=>Graphics.TEXT_JUSTIFY_RIGHT,
+            :visibility=>false
+        })
+    };
 
-    protected var topLeftLabel=new Text({
+    protected var XtopLeftLabel=new Text({
             :color=>Graphics.COLOR_DK_GRAY,
             :font=>Graphics.FONT_SMALL,
             :justification=>Graphics.TEXT_JUSTIFY_LEFT,
             :visibility=>false
         });
-    protected var topRightLabel=new Text({
+    protected var XtopRightLabel=new Text({
             :color=>Graphics.COLOR_DK_GRAY,
             :font=>Graphics.FONT_SMALL,
             :justification=>Graphics.TEXT_JUSTIFY_RIGHT,
@@ -62,6 +89,7 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
     public var colors={:background=>Graphics.COLOR_WHITE,:label=>Graphics.COLOR_DK_GRAY,:value=>Graphics.COLOR_BLACK} as Dictionary<Symbol,Graphics.ColorValue>;
     //protected var textLabel="Label" as String;
     //protected var textValue="Value" as String;
+    private var brt=0 as Number;
 
     function initialize() {
         System.println("SlavicsSimpleDataField.initialize()");
@@ -85,13 +113,13 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
         valueArea.height=dc.getHeight()-labelLine*0.667f;
         valueArea.setJustification(Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 
-        topLeftLabel.locX=self.rim;
-        topLeftLabel.locY=self.labelLine;
-        topLeftLabel.setJustification(Graphics.TEXT_JUSTIFY_LEFT);
+        labels.get(:topLeft).locX=self.rim;
+        labels.get(:topLeft).locY=self.labelLine;
+        labels.get(:topLeft).setJustification(Graphics.TEXT_JUSTIFY_LEFT);
 
-        topRightLabel.locX=dc.getWidth()-self.rim;
-        topRightLabel.locY=self.labelLine;
-        topRightLabel.setJustification(Graphics.TEXT_JUSTIFY_RIGHT);
+        labels.get(:topRight).locX=dc.getWidth()-self.rim;
+        labels.get(:topRight).locY=self.labelLine;
+        labels.get(:topRight).setJustification(Graphics.TEXT_JUSTIFY_RIGHT);
 
         bottomLeftLabel.locX=self.rim;
         bottomLeftLabel.locY=dc.getHeight()-self.rim-Graphics.getFontAscent(Graphics.FONT_SMALL);
@@ -162,5 +190,44 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
         dc.drawRectangle(valueArea.locX,valueArea.locY,valueArea.width,valueArea.height);
         dc.drawLine(valueArea.locX,valueArea.locY+valueArea.height/2,valueArea.locX+valueArea.width,valueArea.locY+valueArea.height/2);
     }
+    class MyText extends WatchUi.Text{
+        private var timer=null as SlavicsSimpleDataField.Timer;
+        function initialize(options as Dictionary){
+            Text.initialize(options);
+        }
+        function setTimer(durationSec as Number) as Void{
+            timer=new SlavicsSimpleDataField.Timer(durationSec);
+        }
+        function clearTimer() as Void{
+            timer=null;
+        }
+        function onUpdate(dc) as Void{
+            if(timer!=null){
+                if(timer.isExpiration()){
+                    self.setVisible(false);
+                } else {
+                    self.setVisible(true);
+                }
+            }
+            Text.onUpdate(dc);
+        }
+    }
+    class Timer {
+        private var timeValue as Time.Moment;
+        private var expiration=false as Boolean;
+        
+        function initialize(durationSec as Number){
+            timeValue=new Time.Moment(Time.today().value()+durationSec);
+        }
 
+        function isExpiration() as Boolean{
+            if(expiration){
+                return true;
+            }
+            if((new Time.Moment(Time.today().value())).greaterThan(timeValue)){
+                expiration=true;
+            }
+            return expiration;
+        }
+    }
 }
