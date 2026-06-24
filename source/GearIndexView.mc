@@ -383,7 +383,7 @@ class GearIndexView extends SlavicsSimpleDataField {
                     dc.drawText(
                         bLocX-battIcon.getWidth(dc)-2,
                         bLocY+(Graphics.getFontHeight(battIcon.getFont())-Graphics.getFontHeight(battFont)),
-                        battFont,Derailleur.getBatteryName(bd.get(:identifier)),Graphics.TEXT_JUSTIFY_RIGHT);
+                        battFont,derailleur.getBatteryName(bd.get(:identifier)),Graphics.TEXT_JUSTIFY_RIGHT);
 
                     bLocY-=Graphics.getFontHeight(battIcon.getFont())+3;
                 }

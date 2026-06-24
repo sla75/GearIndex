@@ -13,7 +13,7 @@ class Derailleur extends MyDevice {
     private const DEBUG_INDEX = [5,7,9,11,11,11,10,9,8,7,6,5,4,3,2,1,0,0,0,2,3,4,9,11,11,11,8] as Array<Number>;
 
     private var shiftDevice=new AntPlus.Shifting(new AntPlus.ShiftingListener()) as AntPlus.Shifting;
-    public static const BATTERY_NAME={0x00=>"Sys",0x01=>"FD",0x02=>"RD",0x03=>"LS",0x04=>"RS",0x05=>"Sh",0x06=>"les",0x07=>"res",0x08=>"es1",0x09=>"les2",0x0A=>"res2",0x0B=>"es2"} as Dictionary<Number,String>;
+    public static const BATTERY_NAME={268=>{0x00=>"Sys",0x01=>"FD",0x02=>"RD",0x03=>"LS",0x04=>"RS",0x05=>"Sh",0x06=>"les",0x07=>"res",0x08=>"es1",0x09=>"les2",0x0A=>"res2",0x0B=>"es2"} as Dictionary<Number,String>} as Dictionary<Number,Dictionary>;
 
     function initialize(){
         MyDevice.initialize(shiftDevice);
@@ -101,11 +101,16 @@ class Derailleur extends MyDevice {
         return rearDerailleur;
     }
 
-    public static function getBatteryName(id as Number or Null) as String {
+    public function getBatteryName(id as Number or Null) as String {
         if(id==null){
-            return "<null>";
+            return "--";
         }
-        return BATTERY_NAME.hasKey(id)?BATTERY_NAME.get(id):id.format("%x");
+        //LogMonkey.Debug.logVariable("Derailleur.getBatteryName("+id+")","getManufacturerId",self.getManufacturerId(id));
+        var mid=self.getManufacturerId(id);
+        if(mid!=null&&BATTERY_NAME.get(mid)!=null){
+            return BATTERY_NAME.get(mid).hasKey(id)?BATTERY_NAME.get(mid).get(id):id.format("%x");
+        }
+        return id.format("%x");
     }
 }
 

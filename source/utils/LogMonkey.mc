@@ -32,6 +32,7 @@ module LogMonkey {
 
         // The string formats to use when printing log messages
         private static var FORMAT_VARIABLE = "$1$=($2$) $3$" as String;
+        private static var FORMAT_VARIABLE_NULL = "$1$= <null>" as String;
         private static var FORMAT_LOG_MESSAGE = "$1$ [$2$] $3$: $4$" as String;
         private static var FORMAT_TIMESTAMP = "$1$:$2$:$3$" as String; // HH:MM:SS
 
@@ -69,7 +70,7 @@ module LogMonkey {
             // If the given value is null we can't switch on it so perform
             // a null check here. The return value should just be "null".
             if (variable == null) {
-                return "<null>";
+                return "empty";
             }
 
             // Switch on the type of the variable and return the variable's
@@ -127,14 +128,11 @@ module LogMonkey {
         //! @param variableName [Toybox::Lang::String] The name of the variable being logged
         //! @param variable [Toybox::Lang::Object] The variable to log
         function logVariable(tag, variableName, variable) as Void {
-            var type = getVariableType(variable);
-            var value;
             if (variable == null) {
-                value = "<null>";
+                log(tag, Lang.format(FORMAT_VARIABLE_NULL, [variableName]));
             } else {
-                value = variable.toString();
+                log(tag, Lang.format(FORMAT_VARIABLE, [variableName, getVariableType(variable), variable.toString()]));
             }
-            log(tag, Lang.format(FORMAT_VARIABLE, [variableName, type, value]));
         }
 
     }

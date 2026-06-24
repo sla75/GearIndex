@@ -12,6 +12,13 @@ class MyDevice {
             :color as Graphics.ColorType,
         };
 
+    public const MANUFACTURE = {
+        41=>{:name=>"Shimano",:color=>Graphics.COLOR_BLUE,:bacground=>Graphics.COLOR_WHITE},
+        51=>{:name=>"4iiii",:color=>Graphics.COLOR_BLACK,:bacground=>Graphics.COLOR_WHITE},
+        120=>{:name=>"InPeak",:color=>0x1CACA6,:bacground=>Graphics.COLOR_WHITE},
+        268=>{:name=>"SRAM",:color=>Graphics.COLOR_RED,:bacground=>Graphics.COLOR_WHITE}
+    };
+
     public static const BATTERY_STATUS_COLOR = [0,Graphics.COLOR_DK_GREEN,Graphics.COLOR_DK_GREEN,Graphics.COLOR_DK_GREEN,Graphics.COLOR_ORANGE,Graphics.COLOR_RED,0,Graphics.COLOR_DK_RED,Graphics.COLOR_LT_GRAY] as Array<ColorType>;
 
     public static const BATTERY_STATUSES =[AntPlus.BATT_STATUS_CNT,
@@ -99,6 +106,20 @@ class MyDevice {
     }
     public function getDevice() as Device {
         return device;
+    }
+    (:debug)
+    public function getManufacturerId(id as Number or Null) as Number or Null{
+        switch((System.getClockTime().sec/10)%6){
+            case 0: return 268;
+            case 1: return 120;
+            case 2: return 51;
+            case 3: return 41;
+            default: return null;
+        }
+    }
+    (:release)
+    public function getManufacturerId(id as Number or Null) as Number or Null{
+        return device.getManufacturerInfo(id)!=null?device.getManufacturerInfo(id).manufacturerId:null;
     }
     public static function getBatteryStatusString(status as BatteryStatusValue or Null) as String {
         if(status==null){
