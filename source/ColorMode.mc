@@ -5,28 +5,15 @@ import Toybox.Lang;
 
 class ColorMode {
     enum {
-        COLOR_VDK_BLUE=0x313152,
+        COLOR_VD_BLUE=0x313152,
     }
-    public static const BATTERY_STATUS_COLOR = [0,Graphics.COLOR_DK_GREEN,Graphics.COLOR_DK_GREEN,Graphics.COLOR_DK_GREEN,Graphics.COLOR_ORANGE,Graphics.COLOR_RED,0,Graphics.COLOR_DK_RED,Graphics.COLOR_LT_GRAY] as Array<ColorType>;
-    public static const BATTERY_NAME={0x01=>"FD",0x02=>"RD",0x03=>"LS",0x04=>"RS"} as Dictionary<Number,String>;
-    public static const BATTERY_STATUSES =[AntPlus.BATT_STATUS_CNT,
-                AntPlus.BATT_STATUS_NEW,
-                AntPlus.BATT_STATUS_GOOD,
-                AntPlus.BATT_STATUS_OK,
-                AntPlus.BATT_STATUS_LOW,
-                AntPlus.BATT_STATUS_CRITICAL,
-                AntPlus.BATT_STATUS_CNT,
-                AntPlus.BATT_STATUS_INVALID,
-                AntPlus.BATT_STATUS_CNT,
-
-            ] as Array<BatteryStatusValue>;
     
     public var isNight=false as Boolean;
 
     private const MODE_BLACKANDWHITE={:day=>{
                 :background=>Graphics.COLOR_WHITE,
-                :label=>COLOR_VDK_BLUE,
-                :value=>COLOR_VDK_BLUE,
+                :label=>COLOR_VD_BLUE,
+                :value=>COLOR_VD_BLUE,
                 :valueEdge=>Graphics.COLOR_DK_RED,
                 :valueChange=>Graphics.COLOR_LT_GRAY,
                 :error=>Graphics.COLOR_DK_RED,
@@ -40,10 +27,17 @@ class ColorMode {
             }
         } as Dictionary<Dictionary<Symbol,Graphics.ColorValue>>;
     private const MODE_BLUE={:day=>{
-                :background=>Graphics.COLOR_BLUE,
+                :background=>Graphics.COLOR_DK_BLUE,
                 :label=>Graphics.COLOR_WHITE,
                 :value=>Graphics.COLOR_WHITE,
-                :valueEdge=>Graphics.COLOR_DK_RED,
+                :valueEdge=>Graphics.COLOR_ORANGE,
+                :valueChange=>Graphics.COLOR_LT_GRAY,
+                :error=>Graphics.COLOR_LT_GRAY,
+            },:night=>{
+                :background=>Graphics.COLOR_BLUE,
+                :label=>COLOR_VD_BLUE,
+                :value=>Graphics.COLOR_BLACK,
+                :valueEdge=>Graphics.COLOR_ORANGE,
                 :valueChange=>Graphics.COLOR_LT_GRAY,
                 :error=>Graphics.COLOR_LT_GRAY,
             }
@@ -52,7 +46,7 @@ class ColorMode {
                 :background=>Graphics.COLOR_DK_GREEN,
                 :label=>Graphics.COLOR_WHITE,
                 :value=>Graphics.COLOR_WHITE,
-                :valueEdge=>Graphics.COLOR_DK_RED,
+                :valueEdge=>Graphics.COLOR_PINK,
                 :valueChange=>Graphics.COLOR_LT_GRAY,
                 :error=>Graphics.COLOR_DK_GRAY,
             }
@@ -61,14 +55,14 @@ class ColorMode {
                 :background=>Graphics.COLOR_PINK,
                 :label=>Graphics.COLOR_BLACK,
                 :value=>Graphics.COLOR_BLACK,
-                :valueEdge=>Graphics.COLOR_DK_RED,
+                :valueEdge=>Graphics.COLOR_PURPLE,
                 :valueChange=>Graphics.COLOR_DK_GRAY,
                 :error=>Graphics.COLOR_LT_GRAY,
             },:night=>{
                 :background=>Graphics.COLOR_PURPLE,
                 :label=>Graphics.COLOR_WHITE,
                 :value=>Graphics.COLOR_WHITE,
-                :valueEdge=>Graphics.COLOR_RED,
+                :valueEdge=>Graphics.COLOR_PINK,
                 :valueChange=>Graphics.COLOR_LT_GRAY,
                 :error=>Graphics.COLOR_DK_GRAY,
             }
