@@ -5,6 +5,7 @@ import Toybox.Math;
 import Toybox.System;
 import Toybox.Time;
 import Toybox.WatchUi;
+import LogMonkey;
 
 class SlavicsSimpleDataField extends WatchUi.DataField {
     private const LABELHEIGHT=0.25f as Numeric;
@@ -58,46 +59,21 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
             :visibility=>false
         })
     };
+    private var timer=null as SlavicsSimpleDataField.Timer;
 
-    protected var XtopLeftLabel=new Text({
-            :color=>Graphics.COLOR_DK_GRAY,
-            :font=>Graphics.FONT_SMALL,
-            :justification=>Graphics.TEXT_JUSTIFY_LEFT,
-            :visibility=>false
-        });
-    protected var XtopRightLabel=new Text({
-            :color=>Graphics.COLOR_DK_GRAY,
-            :font=>Graphics.FONT_SMALL,
-            :justification=>Graphics.TEXT_JUSTIFY_RIGHT,
-            :visibility=>false
-        });
-    protected var bottomLeftLabel=new Text({
-            :color=>Graphics.COLOR_DK_GRAY,
-            :font=>Graphics.FONT_SMALL,
-            :justification=>Graphics.TEXT_JUSTIFY_LEFT,
-            :visibility=>false
-        });
-    protected var bottomRightLabel=new Text({
-            :color=>Graphics.COLOR_DK_GRAY,
-            :font=>Graphics.FONT_SMALL,
-            :justification=>Graphics.TEXT_JUSTIFY_RIGHT,
-            :visibility=>false
-        });
-    
     public var rim=0 as Number;
     public var labelLine=0 as Number;
     public var colors={:background=>Graphics.COLOR_WHITE,:label=>Graphics.COLOR_DK_GRAY,:value=>Graphics.COLOR_BLACK} as Dictionary<Symbol,Graphics.ColorValue>;
     //protected var textLabel="Label" as String;
     //protected var textValue="Value" as String;
-    private var brt=0 as Number;
 
     function initialize() {
-        System.println("SlavicsSimpleDataField.initialize()");
+        //LogMonkey.Debug.logMessage("SlavicsSimpleDataField.initialize()","");
         DataField.initialize();
     }
 
     function onLayout(dc as Dc) as Void {
-        System.println("SlavicsSimpleDataField.onLayout() "+dc.getWidth()+"x"+dc.getHeight());
+        //LogMonkey.Debug.logMessage("SlavicsSimpleDataField.onLayout()",dc.getWidth()+"x"+dc.getHeight());
         rim=dc.getHeight()*0.02f;
         labelLine=dc.getHeight()*LABELHEIGHT;
 
@@ -121,22 +97,36 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
         labels.get(:topRight).locY=self.labelLine;
         labels.get(:topRight).setJustification(Graphics.TEXT_JUSTIFY_RIGHT);
 
-        bottomLeftLabel.locX=self.rim;
-        bottomLeftLabel.locY=dc.getHeight()-self.rim-Graphics.getFontAscent(Graphics.FONT_SMALL);
-        bottomLeftLabel.setJustification(Graphics.TEXT_JUSTIFY_LEFT);
+        labels.get(:bottomLeft).locX=self.rim;
+        labels.get(:bottomLeft).locY=dc.getHeight()-self.rim-Graphics.getFontAscent(Graphics.FONT_SMALL);
+        labels.get(:bottomLeft).setJustification(Graphics.TEXT_JUSTIFY_LEFT);
 
-        bottomRightLabel.locX=dc.getWidth()-self.rim;
-        bottomRightLabel.locY=dc.getHeight()-self.rim-Graphics.getFontAscent(Graphics.FONT_SMALL);
-        bottomRightLabel.setJustification(Graphics.TEXT_JUSTIFY_RIGHT);
+        labels.get(:bottomRight).locX=dc.getWidth()-self.rim;
+        labels.get(:bottomRight).locY=dc.getHeight()-self.rim-Graphics.getFontAscent(Graphics.FONT_SMALL);
+        labels.get(:bottomRight).setJustification(Graphics.TEXT_JUSTIFY_RIGHT);
     }
-
+    public function setTimer(duration as Number or Null) as Void {
+        //LogMonkey.Debug.logVariable("SlavicsSimpleDataField.setTimer()","duration",duration);
+        if(duration==null||duration==0){
+            self.timer=null;
+        } else {
+            self.timer=new SlavicsSimpleDataField.Timer(duration);
+        }
+    }
+    public function info(name as Symbol) as MyText {
+        return labels.get(name);
+    }
+    public function setTextInfo(name as Symbol,text as String or Null){
+        labels.get(name).setText(text!=null?text:"");
+        if(timer!=null){
+            timer.start();
+        }
+    }
     public function setTextLabel(text as String or Null){
-        //System.println("SlavicsSimpleDataField.setTextLabel('"+text+"')");
         labelArea.setText(text!=null?text:"");
     }
 
-    public function setTextValue(text as String or Null){
-        //System.println("SlavicsSimpleDataField.setTextValue('"+text+"')");
+    public function setValue(text as String or Null){
         valueArea.setText(text!=null?text:"");
     }
     
@@ -144,11 +134,10 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
         self.colors=colors;
         valueArea.setColor(colors.get(:value));
         labelArea.setColor(colors.get(:label));
-
-        topLeftLabel.setColor(colors.get(:label));
-        topRightLabel.setColor(colors.get(:label));
-        bottomLeftLabel.setColor(colors.get(:label));
-        bottomRightLabel.setColor(colors.get(:label));
+        labels.get(:topLeft).setColor(colors.get(:label));
+        labels.get(:topRight).setColor(colors.get(:label));
+        labels.get(:bottomLeft).setColor(colors.get(:label));
+        labels.get(:bottomRight).setColor(colors.get(:label));
     }
     /***
     public function compute(info as Activity.Info) as Void {
@@ -161,15 +150,18 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
     // once a second when the data field is visible.
     
     public function onUpdate(dc as Dc) as Void {
-        //System.println("SlavicsSimpleDataField.onUpdate()");
+        LogMonkey.Debug.logMessage("SlavicsSimpleDataField.onUpdate()",timer.toString());
         dc.setColor(Graphics.COLOR_TRANSPARENT,colors.get(:background));
         dc.clear();
         valueArea.draw(dc);
         labelArea.draw(dc);
-        topLeftLabel.draw(dc);
-        topRightLabel.draw(dc);
-        bottomLeftLabel.draw(dc);
-        bottomRightLabel.draw(dc);
+        if(timer==null||!timer.isExpired()){
+            LogMonkey.Debug.logMessage("SlavicsSimpleDataField.onUpdate()","draw topbottomleftright");
+            labels.get(:topLeft).draw(dc);
+            labels.get(:topRight).draw(dc);
+            labels.get(:bottomLeft).draw(dc);
+            labels.get(:bottomRight).draw(dc);
+        }
         onUpdateAfter(dc);
     }
     (:release)
@@ -190,44 +182,53 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
         dc.drawRectangle(valueArea.locX,valueArea.locY,valueArea.width,valueArea.height);
         dc.drawLine(valueArea.locX,valueArea.locY+valueArea.height/2,valueArea.locX+valueArea.width,valueArea.locY+valueArea.height/2);
     }
+
     class MyText extends WatchUi.Text{
-        private var timer=null as SlavicsSimpleDataField.Timer;
+        private var myFont as Graphics.FontType;
         function initialize(options as Dictionary){
             Text.initialize(options);
+            myFont=options.get(:font)==null?Graphics.FONT_TINY:options.get(:font);
+            Text.setFont(myFont);
         }
-        function setTimer(durationSec as Number) as Void{
-            timer=new SlavicsSimpleDataField.Timer(durationSec);
+        function setFont(font as Graphics.FontType) as Void {
+            myFont=font;
+            Text.setFont(font);
         }
-        function clearTimer() as Void{
-            timer=null;
-        }
-        function onUpdate(dc) as Void{
-            if(timer!=null){
-                if(timer.isExpiration()){
-                    self.setVisible(false);
-                } else {
-                    self.setVisible(true);
-                }
-            }
-            Text.onUpdate(dc);
+        function getFont() as Graphics.FontType {
+            return myFont;
         }
     }
+
     class Timer {
-        private var timeValue as Time.Moment;
-        private var expiration=false as Boolean;
+        private var timeValue=0 as Number;
+        private var defaultDuration as Number;
+        private var expired=true as Boolean;
         
         function initialize(durationSec as Number){
-            timeValue=new Time.Moment(Time.today().value()+durationSec);
+            defaultDuration=durationSec;
         }
 
-        function isExpiration() as Boolean{
-            if(expiration){
+        function start() as Void {
+            timeValue=Time.now().value()+defaultDuration;
+            //LogMonkey.Debug.logMessage("SlavicsSimpleDataField.Timer","START timeValue="+timeValue+"("+Time.now().value()+"+"+defaultDuration+")");
+            expired=false;
+        }
+
+        function isExpired() as Boolean{
+            //LogMonkey.Debug.logVariable("SlavicsSimpleDataField.isExpired()","Time.now().value()",Time.now().value());
+            if(expired){
                 return true;
             }
-            if((new Time.Moment(Time.today().value())).greaterThan(timeValue)){
-                expiration=true;
+            //LogMonkey.Debug.logMessage("SlavicsSimpleDataField.isExpired()",expiration+" diff="+(Time.now().value()-timeValue));
+            if(Time.now().value()>timeValue){
+                expired=true;
+                //LogMonkey.Debug.logVariable("SlavicsSimpleDataField.Timer","STOP expiration",expiration);
             }
-            return expiration;
+            return expired;
+        }
+
+        function toString() as String{
+            return "Timer("+defaultDuration+"s) expired="+expired;
         }
     }
 }

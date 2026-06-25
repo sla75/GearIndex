@@ -47,23 +47,14 @@ class GearFitContributions {
         }
     }
 
-    function setDerailleurs(fdSprocket as Number or Null,rdSprocket as Number or Null) as Void {
-        if(saveFitFile){
+    function setRatio(frontTeeths as Number or Null,rearTeeths as Number or Null) as Void {
+        if(saveFitFile||frontTeeths==null||frontTeeths==0||rearTeeths==null||rearTeeths==0){
             return;
         }
-        if(fdSprocket==null || fdSprocket==AntPlus.FRONT_GEAR_INVALID || fdSprocket==0){
-            LogMonkey.Debug.logVariable("GearFitContributions.setDerailleurs","fdSprocket",fdSprocket);
-            return;
-        }
-        if(rdSprocket==null || rdSprocket==AntPlus.REAR_GEAR_INVALID || rdSprocket==0){
-            LogMonkey.Debug.logVariable("GearFitContributions.setDerailleurs","rdSprocket",rdSprocket);
-            return;
-        }
-
         if(mTimerRunning!=RUNNING) {
             return;
         }
-        var ratio=fdSprocket/rdSprocket.toFloat() as Float;
+        var ratio=frontTeeths/rearTeeths.toFloat() as Float;
         field_GearRatio.setData(ratio);
         LogMonkey.Debug.logVariable("GearFitContributions.setDerailleurs()","ratio",ratio.format("%.2f"));
     }

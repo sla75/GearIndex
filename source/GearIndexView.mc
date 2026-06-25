@@ -39,8 +39,6 @@ class GearIndexView extends SlavicsSimpleDataField {
             :font=>Graphics.FONT_SMALL,
             :justification=>Graphics.TEXT_JUSTIFY_LEFT,
         });/***/
-    private const TOTAL_SHIFTS_TIME_COUNTER=10 as Number;
-    private var totalShiftsTime=TOTAL_SHIFTS_TIME_COUNTER as Number;
     private var unitTeeths as String;
     private var versionTest=null as String;
     private var lastIndex=-1 as Number;
@@ -77,7 +75,7 @@ class GearIndexView extends SlavicsSimpleDataField {
     }
 
     function onLayout(dc as Dc) as Void {
-        LogMonkey.Debug.logMessage("GearIndexView.onLayout()",dc.getWidth()+"x"+dc.getHeight());
+        //LogMonkey.Debug.logMessage("GearIndexView.onLayout()",dc.getWidth()+"x"+dc.getHeight());
         SlavicsSimpleDataField.onLayout(dc);
         if(dc.getHeight()==System.getDeviceSettings().screenHeight){
             screen=FULL;
@@ -90,15 +88,15 @@ class GearIndexView extends SlavicsSimpleDataField {
             valueArea.height=dc.getHeight()-labelArea.height-rim;
             valueArea.setJustification(Graphics.TEXT_JUSTIFY_RIGHT);
 
-            topLeftLabel.setVisible(false);
-            topLeftLabel.locY=labelArea.height;
-
-            bottomLeftLabel.setVisible(false);
+            info(:topLeft).locY=labelArea.height;
+            info(:topLeft).setVisible(false);
+            info(:bottomLeft).setVisible(false);
         } else {
             screen=FIELD;
-            topLeftLabel.setVisible(Properties.getValue(PROPERTY_SHOWTEETH) as Boolean);
-            bottomLeftLabel.setVisible(Properties.getValue(PROPERTY_NUMBEROFSHIFTS) as Boolean);
+            info(:topLeft).setVisible(Properties.getValue(PROPERTY_SHOWTEETH) as Boolean);
+            info(:bottomLeft).setVisible(Properties.getValue(PROPERTY_NUMBEROFSHIFTS) as Boolean);
         }
+        LogMonkey.Debug.logMessage("GearIndexView.onLayout()",dc.getWidth()+"x"+dc.getHeight()+" "+(screen==FULL?"FullScreen":""));
         /***
         System.println("PartNumber: "+System.getDeviceSettings().partNumber);
         System.println("Screen: "+dc.getWidth()+"x"+dc.getHeight());
@@ -113,15 +111,14 @@ class GearIndexView extends SlavicsSimpleDataField {
     }
     public function onSettingsChanged() as Void {
         LogMonkey.Debug.logMessage("GearIndexView.onSettingsChanged()","");
-        topLeftLabel.setVisible(Properties.getValue(PROPERTY_SHOWTEETH) as Boolean);
-        bottomLeftLabel.setVisible(Properties.getValue(PROPERTY_NUMBEROFSHIFTS) as Boolean);
-        if(Properties.getValue(PROPERTY_NUMBEROFSHIFTS) as Boolean){
-            totalShiftsTime=TOTAL_SHIFTS_TIME_COUNTER;
-        }
+        info(:topLeft).setVisible(Properties.getValue(PROPERTY_SHOWTEETH) as Boolean);
+        info(:bottomLeft).setVisible(Properties.getValue(PROPERTY_NUMBEROFSHIFTS) as Boolean);
+
         debugMode=Properties.getValue(PROPERTY_DEBUGMODE) as Boolean;
-        //debugMode=!debugMode;
+        debugMode=!debugMode;
         gearFIT.handleSettingUpdate(Properties.getValue(PROPERTY_FITFILESAVING) as Boolean);
         LogMonkey.Debug.logVariable("GearIndexView.onSettingsChanged()","debugMode",debugMode);
+        setTimer(3);
         colorMode.handleSettingUpdate();
     }
     /***
@@ -152,22 +149,22 @@ class GearIndexView extends SlavicsSimpleDataField {
             
             if(rds.gearIndex!=null&&rds.gearIndex!=AntPlus.REAR_GEAR_INVALID){
 
-                if(lastIndex>0&&rds.gearIndex!=lastIndex){
+                if(rds.gearIndex!=lastIndex){
                     valueArea.setColor(colorMode.getFieldColor(:valueChange));
 
                     if(derailleur.getFrontStatus()!=null){
-                        gearFIT.setDerailleurs(derailleur.getFrontStatus().gearSize,lastIndex);
-                        gearFIT.setDerailleurs(derailleur.getFrontStatus().gearSize,rds.gearSize);
+                        gearFIT.setRatio(derailleur.getFrontStatus().gearSize,rds.gearSize);
                     }
-                    gearFIT.changeIndex(rds.gearIndex-lastIndex);
-                    bottomLeftLabel.setText(gearFIT.getTotalShifts().toString()+RD_totalShifts_unit);
+                    if(lastIndex>=0){
+                        gearFIT.changeIndex(rds.gearIndex-lastIndex);
+                        setTextInfo(:bottomLeft,gearFIT.getTotalShifts().toString()+RD_totalShifts_unit);
+                    }
+                    setValue((rds.gearIndex+1).toString());
+                    setTextInfo(:topLeft,rds.gearSize+unitTeeths);
+                    
                     
 
-                    if(Properties.getValue(PROPERTY_NUMBEROFSHIFTS) as Boolean){
-                        bottomLeftLabel.setColor(colorMode.getFieldColor(:label));
-                        totalShiftsTime=TOTAL_SHIFTS_TIME_COUNTER;
-                        bottomLeftLabel.setVisible(true);
-                    }
+                    
                     if (Attention has :playTone) {
                         if(rds.gearIndex==rds.gearMax-1){
                             LogMonkey.Debug.logMessage("GearIndex.compute()","ALERT onChange Hi");
@@ -181,8 +178,6 @@ class GearIndexView extends SlavicsSimpleDataField {
                     valueArea.setColor(colorMode.getFieldColor(:valueEdge));
                 }
                 LogMonkey.Debug.logMessage("GearIndex.compute()","gearIndex="+(rds.gearIndex+1)+(rds.gearIndex!=lastIndex?" / "+(lastIndex+1):""));
-                setTextValue((rds.gearIndex+1).toString());
-                topLeftLabel.setText(rds.gearSize+unitTeeths);
                 lastIndex=rds.gearIndex;
             }
 
@@ -201,19 +196,11 @@ class GearIndexView extends SlavicsSimpleDataField {
                 }
             }
         } else {
-            setTextValue("--");
-            topLeftLabel.setText("");
+            setValue("--");
+            info(:topLeft).setText("");
             lastIndex=-1;
         }
 
-        if(totalShiftsTime>=0){
-            if(totalShiftsTime>0){
-                totalShiftsTime--;
-            } else {
-                totalShiftsTime=-1;
-                bottomLeftLabel.setVisible(false);
-            }
-        }
         if(debugMode){
             debugData=[] as Array<Dictionary>;
             switch(info.timerState){
