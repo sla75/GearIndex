@@ -3,18 +3,22 @@
     <string id="unitTeeths">z</string>
 
     <string id="property_version_title">Verze</string>
-    <!--string id="property_showTeeth_title">Zobrazit velikost pastorku</string-->
     <string id="property_nightMode_title">Inverzní noční mód</string>
     <string id="property_colorMode_title">Barevný režim</string>
-    <!--string id="property_numberOfShifts_title">Zobrazit počet přeřazení</string-->
     <string id="property_showAdditionalValues_title">Další hodnoty</string>
     <string id="property_showAdditionalValues_prompt">Zobrazit hodnoty po změně</string>
     <string id="Newer">Nikdy</string>
     <string id="Always">Vždycky</string>
 
     <string id="RD_totalShifts_label">Počet přeřazení</string>
-    <string id="RD_totalShifts_unit"> </string>
+    
     <string id="RD_gearRatio_title">Poměr zařazení</string>
     <string id="RD_gearRatio_label">Poměr</string>
+
+    <string id="RD_batteryStatus_title">Baterie řazení</string>
+    <string id="RD_batteryStatus_label">Status</string>
+
+    <string id="RD_batteryVoltage_title">Baterie řazení</string>
+    <string id="RD_batteryVoltage_label">Napětí</string>
 
 </strings>

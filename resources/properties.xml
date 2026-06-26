@@ -1,4 +1,12 @@
 <resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    <strings>
+        <string id="property_fitFileSaving_title" translatable="false">Save data to FIT file</string>
+        <string id="property_debugMode_title" translatable="false">Fullscreen Debug Mode</string>
+        <string id="RD_totalShifts_unit" translatable="false">x</string>
+        <string id="RD_gearRatio_unit" translatable="false"> </string>
+        <string id="RD_batteryStatus_unit" translatable="false"> </string>
+        <string id="RD_batteryVoltage_unit" translatable="false">V</string>
+    </strings>
 
     <properties>
         <property id="property_version" type="string">0.0.0</property>

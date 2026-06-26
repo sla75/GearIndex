@@ -1,38 +1,25 @@
 <?xml version="1.0"?>
 <strings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
-    <!--string id="AppName" translatable="false">SlavicGearIndex 1.iss2.80</string>
-    <string id="version" translatable="false">1.iss2.80Test</string-->
+    
     <string id="label">Gears</string>
     <string id="unitTeeths">t</string>
 
     <string id="property_version_title">Version</string>
-    <string id="property_fitFileSaving_title" translatable="false">Save data to FIT file</string>
-    <!--string id="property_showTeeth_title">Show sprocket size</string-->
     <string id="property_nightMode_title">Reverse night mode</string>
     <string id="property_colorMode_title">List of color modes</string>
-    <!--string id="property_numberOfShifts_title">Show number of shifts</string-->
     <string id="property_showAdditionalValues_title">Additional Values</string>
     <string id="property_showAdditionalValues_prompt">Show Values after change</string>
     <string id="Newer">Newer</string>
     <string id="Always">Always</string>
-    <string id="property_debugMode_title" translatable="false">Fullscreen Debug Mode</string>
-
+    
     <string id="RD_totalShifts_label">Count of Shifts</string>
-    <string id="RD_totalShifts_unit" translatable="false">x</string>
 
     <string id="RD_gearRatio_title">Gear</string>
     <string id="RD_gearRatio_label">Ratio</string>
-    <string id="RD_gearRatio_unit" translatable="false"> </string>
-
-    <!--string id="RD_gearIndex_title">Gear</string>
-    <string id="RD_gearIndex_label">Index</string>
-    <string id="RD_gearIndex_unit" translatable="false"> </string-->
 
     <string id="RD_batteryStatus_title">Battery Rear Derailleur</string>
     <string id="RD_batteryStatus_label">Status</string>
-    <string id="RD_batteryStatus_unit" translatable="false"> </string>
 
     <string id="RD_batteryVoltage_title">Battery Rear Derailleur</string>
     <string id="RD_batteryVoltage_label">Voltage</string>
-    <string id="RD_batteryVoltage_unit" translatable="false">V</string>
 </strings>
