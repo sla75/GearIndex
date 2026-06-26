@@ -3,8 +3,12 @@
     <string id="unitTeeths">z</string>
 
     <string id="property_version_title">Verzia</string>
-    <string id="property_showTeeth_title">Ukázať veľkosť pastorka</string>
+    <!--string id="property_showTeeth_title">Ukázať veľkosť pastorka</string-->
     <string id="property_nightMode_title">Nočný režim spätného chodu</string>
     <string id="property_colorMode_title">Zoznam farebných režimov</string>
     <!--string id="property_showFailure_title">Zobraziť chyby prehadzovačky</string-->
+    <string id="property_showAdditionalValues_title">Ďalšie hodnoty</string>
+    <string id="property_showAdditionalValues_prompt">Zobraziť hodnoty po zmene</string>
+    <string id="Newer">Nikdy</string>
+    <string id="Always">Vždy</string>
 </strings>

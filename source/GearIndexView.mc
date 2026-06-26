@@ -19,9 +19,10 @@ class GearIndexView extends SlavicsSimpleDataField {
     private enum {
         PROPERTY_FITFILESAVING="property_fitFileSaving",
         PROPERTY_VERSION="property_version",
-        PROPERTY_SHOWTEETH="property_showTeeth",
+        //PROPERTY_SHOWTEETH="property_showTeeth",
+        PROPERTY_SHOWADDITIONALVALUES="property_showAdditionalValues",
         PROPERTY_DEBUGMODE="property_debugMode",
-        PROPERTY_NUMBEROFSHIFTS="property_numberOfShifts",
+        //PROPERTY_NUMBEROFSHIFTS="property_numberOfShifts",
     }
     /***
     private var fails={
@@ -64,25 +65,33 @@ class GearIndexView extends SlavicsSimpleDataField {
         }
         self.setTextLabel(Application.loadResource(Rez.Strings.label));
         Properties.setValue(PROPERTY_VERSION,Application.loadResource(Rez.Strings.version));
-        Properties.setValue(PROPERTY_SHOWTEETH,Properties.getValue(PROPERTY_SHOWTEETH)==null?true:Properties.getValue(PROPERTY_SHOWTEETH) as Boolean);
+        //Properties.setValue(PROPERTY_SHOWTEETH,Properties.getValue(PROPERTY_SHOWTEETH)==null?true:Properties.getValue(PROPERTY_SHOWTEETH) as Boolean);
         Properties.setValue(PROPERTY_DEBUGMODE,Properties.getValue(PROPERTY_DEBUGMODE)==null?debugMode:Properties.getValue(PROPERTY_DEBUGMODE) as Boolean);
-        Properties.setValue(PROPERTY_NUMBEROFSHIFTS,Properties.getValue(PROPERTY_NUMBEROFSHIFTS)==null?true:Properties.getValue(PROPERTY_NUMBEROFSHIFTS) as Boolean);
+        //Properties.setValue(PROPERTY_NUMBEROFSHIFTS,Properties.getValue(PROPERTY_NUMBEROFSHIFTS)==null?true:Properties.getValue(PROPERTY_NUMBEROFSHIFTS) as Boolean);
+        Properties.setValue(PROPERTY_SHOWADDITIONALVALUES,Properties.getValue(PROPERTY_SHOWADDITIONALVALUES)==null?5:Properties.getValue(PROPERTY_SHOWADDITIONALVALUES) as Number);
         Properties.setValue(PROPERTY_FITFILESAVING,Properties.getValue(PROPERTY_FITFILESAVING)==null?true:Properties.getValue(PROPERTY_FITFILESAVING) as Boolean);
         colorMode=new ColorMode();
         gearStatistic=new GearStatistic(GearStatistic.POWER,colorMode);
+        Properties.setValue(PROPERTY_SHOWADDITIONALVALUES,3);
         onSettingsChanged();
     }
 
     public function onSettingsChanged() as Void {
         LogMonkey.Debug.logMessage("GearIndexView.onSettingsChanged()","");
-        info(:topLeft).setVisible(Properties.getValue(PROPERTY_SHOWTEETH) as Boolean);
-        info(:bottomLeft).setVisible(Properties.getValue(PROPERTY_NUMBEROFSHIFTS) as Boolean);
-
+        //info(:topLeft).setVisible(Properties.getValue(PROPERTY_SHOWTEETH) as Boolean);
+        //info(:bottomLeft).setVisible(Properties.getValue(PROPERTY_NUMBEROFSHIFTS) as Boolean);
+        var showAdditionalValues=Properties.getValue(PROPERTY_SHOWADDITIONALVALUES) as Number;
+        LogMonkey.Debug.logVariable("GearIndexView.onSettingsChanged()","PROPERTY_SHOWADDITIONALVALUES",showAdditionalValues);
+        visibleAdditionalValues(showAdditionalValues);
+        if(showAdditionalValues==0){
+            setTimer(null);
+        } else {
+            setTimer(showAdditionalValues);
+        }
         debugMode=Properties.getValue(PROPERTY_DEBUGMODE) as Boolean;
         //debugMode=!debugMode;
         gearFIT.handleSettingUpdate(Properties.getValue(PROPERTY_FITFILESAVING) as Boolean);
-        LogMonkey.Debug.logVariable("GearIndexView.onSettingsChanged()","debugMode",debugMode);
-        setTimer(3);
+        LogMonkey.Debug.logVariable("GearIndexView.onSettingsChanged()","PROPERTY_DEBUGMODE",debugMode);
         colorMode.handleSettingUpdate();
     }
 
@@ -100,13 +109,14 @@ class GearIndexView extends SlavicsSimpleDataField {
             valueArea.height=dc.getHeight()-labelArea.height-rim;
             valueArea.setJustification(Graphics.TEXT_JUSTIFY_RIGHT);
 
-            info(:topLeft).locY=labelArea.height;
-            info(:topLeft).setVisible(false);
-            info(:bottomLeft).setVisible(false);
+            //info(:topLeft).setVisible(false);
+            //info(:bottomLeft).setVisible(false);
+            visibleAdditionalValues(-1);
         } else {
             screen=FIELD;
-            info(:topLeft).setVisible(Properties.getValue(PROPERTY_SHOWTEETH) as Boolean);
-            info(:bottomLeft).setVisible(Properties.getValue(PROPERTY_NUMBEROFSHIFTS) as Boolean);
+            //info(:topLeft).setVisible(Properties.getValue(PROPERTY_SHOWTEETH) as Boolean);
+            //info(:bottomLeft).setVisible(Properties.getValue(PROPERTY_NUMBEROFSHIFTS) as Boolean);
+            visibleAdditionalValues(Properties.getValue(PROPERTY_SHOWADDITIONALVALUES) as Number);
         }
         LogMonkey.Debug.logMessage("GearIndexView.onLayout()",dc.getWidth()+"x"+dc.getHeight()+" "+(screen==FULL?"FullScreen":""));
         /***
@@ -121,7 +131,15 @@ class GearIndexView extends SlavicsSimpleDataField {
         System.println("|FONT_LARGE|"+Graphics.getFontHeight(Graphics.FONT_LARGE)+"|"+Graphics.getFontAscent(Graphics.FONT_LARGE)+"|"+Graphics.getFontDescent(Graphics.FONT_LARGE)+"|");
         /***/
     }
-
+    function visibleAdditionalValues(showAdditionalValues as Number) as Void{
+        if(showAdditionalValues==-1){
+            info(:topLeft).setVisible(false);
+            info(:bottomLeft).setVisible(false);
+        } else {
+            info(:topLeft).setVisible(true);
+            info(:bottomLeft).setVisible(true);
+        }
+    }
     /***
     function onShow() {
         System.println("SlavicsGearRearView.onShow()");
@@ -129,7 +147,7 @@ class GearIndexView extends SlavicsSimpleDataField {
         self.setTextLabel(label);
     }
     /***/
-    private var invalidBoardShiftCount=0 as Number;
+    //private var invalidBoardShiftCount=0 as Number;
     function compute(info as Activity.Info) as Void {
         SlavicsSimpleDataField.compute(info);
         derailleur.compute();
@@ -159,9 +177,6 @@ class GearIndexView extends SlavicsSimpleDataField {
                     setValue((rds.gearIndex+1).toString());
                     setTextInfo(:topLeft,rds.gearSize+unitTeeths);
                     
-                    
-
-                    
                     if (Attention has :playTone) {
                         if(rds.gearIndex==rds.gearMax-1){
                             LogMonkey.Debug.logMessage("GearIndex.compute()","ALERT onChange Hi");
@@ -171,6 +186,11 @@ class GearIndexView extends SlavicsSimpleDataField {
                             Attention.playTone(Attention.TONE_ALERT_LO);
                         }
                     }
+                    /***
+                    if(rds.gearIndex==0||rds.gearIndex==rds.gearMax-1){
+                        showToast("Max change "+(rds.gearIndex+1)+" !", {:icon=>Rez.Drawables.warningToastIcon});
+                    }
+                    /***/
                 } else if(rds.gearIndex==0||rds.gearIndex==rds.gearMax-1){
                     valueArea.setColor(colorMode.getFieldColor(:valueEdge));
                 }

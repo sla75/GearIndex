@@ -10,7 +10,7 @@ class Derailleur extends MyDevice {
     private const DEBUG_TEETHS = [51, 45, 39, 33, 28, 24, 21, 18, 16, 14, 12, 10] as Array<Number>;
 
     (:debug)
-    private const DEBUG_INDEX = [7,8,9,9,10,10,10,10,10,10,10,11,11,8,7,6,5,4,3,2,1,0,0,0,2,3,4,9,11,11,11,8] as Array<Number>;
+    private const DEBUG_INDEX = [7,8,9,9,10,10,10,10,10,10,10,10,10,11,11,8,7,6,5,4,3,2,1,0,0,0,2,3,4,9,11,11,11,8] as Array<Number>;
 
     private var shiftDevice=new AntPlus.Shifting(new AntPlus.ShiftingListener()) as AntPlus.Shifting;
     public static const BATTERY_NAME={268=>{0x00=>"Sys",0x01=>"FD",0x02=>"RD",0x03=>"LS",0x04=>"RS",0x05=>"Sh",0x06=>"les",0x07=>"res",0x08=>"es1",0x09=>"les2",0x0A=>"res2",0x0B=>"es2"} as Dictionary<Number,String>} as Dictionary<Number,Dictionary>;

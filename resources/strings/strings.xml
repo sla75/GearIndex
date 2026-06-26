@@ -7,13 +7,17 @@
 
     <string id="property_version_title">Version</string>
     <string id="property_fitFileSaving_title" translatable="false">Save data to FIT file</string>
-    <string id="property_showTeeth_title">Show sprocket size</string>
+    <!--string id="property_showTeeth_title">Show sprocket size</string-->
     <string id="property_nightMode_title">Reverse night mode</string>
     <string id="property_colorMode_title">List of color modes</string>
-    <string id="property_numberOfShifts_title">Show number of shifts</string>
-    <string id="property_debugMode_title">Debug Fullscreen Mode</string>
+    <!--string id="property_numberOfShifts_title">Show number of shifts</string-->
+    <string id="property_showAdditionalValues_title">Additional Values</string>
+    <string id="property_showAdditionalValues_prompt">Show Values after change</string>
+    <string id="Newer">Newer</string>
+    <string id="Always">Always</string>
+    <string id="property_debugMode_title" translatable="false">Fullscreen Debug Mode</string>
 
-    <string id="RD_totalShifts_label">Rear Derailleur Shifts</string>
+    <string id="RD_totalShifts_label">Count of Shifts</string>
     <string id="RD_totalShifts_unit" translatable="false">x</string>
 
     <string id="RD_gearRatio_title">Gear</string>
@@ -25,7 +29,7 @@
     <string id="RD_gearIndex_unit" translatable="false"> </string-->
 
     <string id="RD_batteryStatus_title">Battery Rear Derailleur</string>
-    <string id="RD_batteryStatus_label">Index</string>
+    <string id="RD_batteryStatus_label">Status</string>
     <string id="RD_batteryStatus_unit" translatable="false"> </string>
 
     <string id="RD_batteryVoltage_title">Battery Rear Derailleur</string>

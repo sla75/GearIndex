@@ -106,7 +106,7 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
         labels.get(:bottomRight).setJustification(Graphics.TEXT_JUSTIFY_RIGHT);
     }
     public function setTimer(duration as Number or Null) as Void {
-        //LogMonkey.Debug.logVariable("SlavicsSimpleDataField.setTimer()","duration",duration);
+        LogMonkey.Debug.logVariable("SlavicsSimpleDataField.setTimer()","duration",duration);
         if(duration==null||duration==0){
             self.timer=null;
         } else {
@@ -150,7 +150,7 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
     // once a second when the data field is visible.
     
     public function onUpdate(dc as Dc) as Void {
-        LogMonkey.Debug.logMessage("SlavicsSimpleDataField.onUpdate()",timer.toString());
+        LogMonkey.Debug.logMessage("SlavicsSimpleDataField.onUpdate()",timer);
         dc.setColor(Graphics.COLOR_TRANSPARENT,colors.get(:background));
         dc.clear();
         valueArea.draw(dc);

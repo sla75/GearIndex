@@ -3,8 +3,12 @@
     <string id="unitTeeths">z</string>
 
     <string id="property_version_title">Wersja</string>
-    <string id="property_showTeeth_title">Pokaż rozmiar zębatki</string>
+    <!--string id="property_showTeeth_title">Pokaż rozmiar zębatki</string-->
     <string id="property_nightMode_title">Odwróć tryb nocny</string>
     <string id="property_colorMode_title">Lista trybów kolorów</string>
     <!--string id="property_showFailure_title">Pokaż błędy przerzutki</string-->
+    <string id="property_showAdditionalValues_title">Wartości dodatkowe</string>
+    <string id="property_showAdditionalValues_prompt">Pokaż wartości po zmianie</string>
+    <string id="Newer">Nigdy</string>
+    <string id="Always">Zawsze</string>
 </strings>
