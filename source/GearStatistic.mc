@@ -48,14 +48,14 @@ class GearStatistic {
 
             var distanceStats=stats.get(:distance) as SprocketStats;
             if(stats.get(:distance)==null){
-                distanceStats=new SprocketStats(derailleur.getRearStatus().gearMax,"Distance on Gear","m",SprocketStats.TYPE_SUM);
+                distanceStats=new SprocketStats(derailleur.getRearStatus().gearMax,@Rez.Strings.SprocketStats_DistanceOnGear,"m",SprocketStats.TYPE_SUM);
             }
 
             if((prefered==POWER||prefered==AUTO)&&info.currentPower!=null){
                 if(info.currentPower>0&&derailleur.isRearValidStatus()){
                     var powerStats=stats.get(:power) as SprocketStats;
                     if(stats.get(:power)==null){
-                        powerStats=new SprocketStats(derailleur.getRearStatus().gearMax,"Power on Gear","W",SprocketStats.TYPE_AVG);
+                        powerStats=new SprocketStats(derailleur.getRearStatus().gearMax,@Rez.Strings.SprocketStats_PowerOnGear,"W",SprocketStats.TYPE_AVG);
                     }
                     LogMonkey.Debug.logMessage("GearStat.computeGraph()","by POWER Sprocket "+(derailleur.getRearStatus().gearIndex+1)+" on Power="+info.currentPower+"W and Distance="+diffDistance+"m");
                     currentIndex=derailleur.getRearStatus().gearIndex;
@@ -110,6 +110,9 @@ class GearStatistic {
                 max=ss.getValue(i);
             }
         }
+        dc.setColor(colorMode.getFieldColor(:label),Graphics.COLOR_TRANSPARENT);
+        dc.drawText(locX,locY-Graphics.getFontHeight(Graphics.FONT_MEDIUM)*1.1,Graphics.FONT_SMALL,ss.getName(),Graphics.TEXT_JUSTIFY_LEFT);
+        
         if(max!=0){
             var ks=0.75f*width/max.toFloat();
             var space=2;
@@ -201,8 +204,6 @@ class GearStatistic {
         //dc.drawText(locX-1,locY-1,Graphics.FONT_SMALL,ss.getName(),Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
         //dc.setColor(Graphics.COLOR_DK_GRAY,Graphics.COLOR_TRANSPARENT);
         //dc.drawText(locX+1,locY+1,Graphics.FONT_SMALL,ss.getName(),Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-        dc.setColor(colorMode.getFieldColor(:label),Graphics.COLOR_TRANSPARENT);
-        dc.drawText(locX,locY-Graphics.getFontHeight(Graphics.FONT_SMALL)*1.1,Graphics.FONT_SMALL,ss.getName(),Graphics.TEXT_JUSTIFY_LEFT);
     }
 }
 
@@ -224,9 +225,9 @@ public class SprocketStats {
     private var unit as String;
     private var gears as Array<Stat>;
 
-    public function initialize(gearMaxSize as Number, name as String, unit as String, type as Type_Value) {
+    public function initialize(gearMaxSize as Number, name as String or ResourceId, unit as String, type as Type_Value) {
         self.type=type;
-        self.name=name;
+        self.name=name instanceof ResourceId?Application.loadResource(name):name;
         self.unit=unit;
         gears=new[gearMaxSize] as Array<Stat>;
         reset();

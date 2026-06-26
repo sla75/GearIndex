@@ -89,7 +89,7 @@ class GearIndexView extends SlavicsSimpleDataField {
             setTimer(showAdditionalValues);
         }
         debugMode=Properties.getValue(PROPERTY_DEBUGMODE) as Boolean;
-        //debugMode=!debugMode;
+        debugMode=!debugMode;
         gearFIT.handleSettingUpdate(Properties.getValue(PROPERTY_FITFILESAVING) as Boolean);
         LogMonkey.Debug.logVariable("GearIndexView.onSettingsChanged()","PROPERTY_DEBUGMODE",debugMode);
         colorMode.handleSettingUpdate();
