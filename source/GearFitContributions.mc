@@ -48,7 +48,7 @@ class GearFitContributions {
     }
 
     function setRatio(frontTeeths as Number or Null,rearTeeths as Number or Null) as Void {
-        if(saveFitFile||frontTeeths==null||frontTeeths==0||rearTeeths==null||rearTeeths==0){
+        if(!saveFitFile||frontTeeths==null||frontTeeths==0||rearTeeths==null||rearTeeths==0){
             return;
         }
         if(mTimerRunning!=RUNNING) {
