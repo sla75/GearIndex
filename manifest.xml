@@ -33,7 +33,6 @@
         -->
         <iq:permissions>
             <iq:uses-permission id="Ant"/>
-            <iq:uses-permission id="DataFieldAlert"/>
             <iq:uses-permission id="FitContributor"/>
         </iq:permissions>
         <!--

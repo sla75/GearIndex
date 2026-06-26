@@ -48,7 +48,6 @@ class GearIndexView extends SlavicsSimpleDataField {
     private var gearStatistic as GearStatistic;
     private var screen=null as Screen;
     private var debugData=[] as Array<Dictionary>;
-    private var alertMessage=null as AlertMessage or Null;
 
     enum Screen {
         FULL,FIELD
@@ -72,6 +71,19 @@ class GearIndexView extends SlavicsSimpleDataField {
         colorMode=new ColorMode();
         gearStatistic=new GearStatistic(GearStatistic.POWER,colorMode);
         onSettingsChanged();
+    }
+
+    public function onSettingsChanged() as Void {
+        LogMonkey.Debug.logMessage("GearIndexView.onSettingsChanged()","");
+        info(:topLeft).setVisible(Properties.getValue(PROPERTY_SHOWTEETH) as Boolean);
+        info(:bottomLeft).setVisible(Properties.getValue(PROPERTY_NUMBEROFSHIFTS) as Boolean);
+
+        debugMode=Properties.getValue(PROPERTY_DEBUGMODE) as Boolean;
+        //debugMode=!debugMode;
+        gearFIT.handleSettingUpdate(Properties.getValue(PROPERTY_FITFILESAVING) as Boolean);
+        LogMonkey.Debug.logVariable("GearIndexView.onSettingsChanged()","debugMode",debugMode);
+        setTimer(3);
+        colorMode.handleSettingUpdate();
     }
 
     function onLayout(dc as Dc) as Void {
@@ -109,18 +121,7 @@ class GearIndexView extends SlavicsSimpleDataField {
         System.println("|FONT_LARGE|"+Graphics.getFontHeight(Graphics.FONT_LARGE)+"|"+Graphics.getFontAscent(Graphics.FONT_LARGE)+"|"+Graphics.getFontDescent(Graphics.FONT_LARGE)+"|");
         /***/
     }
-    public function onSettingsChanged() as Void {
-        LogMonkey.Debug.logMessage("GearIndexView.onSettingsChanged()","");
-        info(:topLeft).setVisible(Properties.getValue(PROPERTY_SHOWTEETH) as Boolean);
-        info(:bottomLeft).setVisible(Properties.getValue(PROPERTY_NUMBEROFSHIFTS) as Boolean);
 
-        debugMode=Properties.getValue(PROPERTY_DEBUGMODE) as Boolean;
-        debugMode=!debugMode;
-        gearFIT.handleSettingUpdate(Properties.getValue(PROPERTY_FITFILESAVING) as Boolean);
-        LogMonkey.Debug.logVariable("GearIndexView.onSettingsChanged()","debugMode",debugMode);
-        setTimer(3);
-        colorMode.handleSettingUpdate();
-    }
     /***
     function onShow() {
         System.println("SlavicsGearRearView.onShow()");
@@ -140,10 +141,6 @@ class GearIndexView extends SlavicsSimpleDataField {
 
         batteries=derailleur.getBatteries() as Array<MyDevice.BatteryData>;
         var rds=derailleur.getRearStatus() as AntPlus.DerailleurStatus;
-
-        if(alertMessage!=null){
-            alertMessage=null;
-        }
 
         if(rds!=null){
             
@@ -181,20 +178,6 @@ class GearIndexView extends SlavicsSimpleDataField {
                 lastIndex=rds.gearIndex;
             }
 
-            if(invalidBoardShiftCount!=(rds.invalidInboardShiftCount+rds.invalidOutboardShiftCount)){
-                invalidBoardShiftCount=rds.invalidInboardShiftCount+rds.invalidOutboardShiftCount;
-                if (Attention has :playTone) {
-                    if(rds.gearIndex==rds.gearMax-1){
-                        LogMonkey.Debug.logMessage("GearIndex.compute()","ALERT invalid Hi");
-                        Attention.playTone(Attention.TONE_ALERT_HI);
-                        alertMessage=new AlertMessage("Hi\n"+(rds.gearIndex+1));
-                    } else if (rds.gearIndex==0) {
-                        LogMonkey.Debug.logMessage("GearIndex.compute()","ALERT invalid Lo");
-                        Attention.playTone(Attention.TONE_ALERT_LO);
-                        alertMessage=new AlertMessage("Lo\n"+(rds.gearIndex+1));
-                    }
-                }
-            }
         } else {
             setValue("--");
             info(:topLeft).setText("");
@@ -297,15 +280,6 @@ class GearIndexView extends SlavicsSimpleDataField {
             } else {
                 onUpdateFullScreen(dc);                
             }
-        }
-        if(alertMessage!=null){
-            LogMonkey.Debug.logVariable("GearIndexView.onUpdate()","AlertMessage",alertMessage);
-            try {
-                showAlert(alertMessage);
-            } catch (ex instanceof  Lang.OperationNotAllowedException ){
-                System.println("Bad call Alert: "+ex.getErrorMessage());
-            }
-            alertMessage=null;
         }
         //View.onUpdate(dc);
     }
