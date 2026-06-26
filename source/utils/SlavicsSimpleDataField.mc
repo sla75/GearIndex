@@ -36,25 +36,25 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
     protected var labels={
         :topLeft=>new Text({
             :color=>Graphics.COLOR_DK_GRAY,
-            :font=>Graphics.FONT_SMALL,
+            :font=>Graphics.FONT_MEDIUM,
             :justification=>Graphics.TEXT_JUSTIFY_LEFT,
             :visibility=>false
         }),
         :topRight=>new Text({
             :color=>Graphics.COLOR_DK_GRAY,
-            :font=>Graphics.FONT_SMALL,
+            :font=>Graphics.FONT_MEDIUM,
             :justification=>Graphics.TEXT_JUSTIFY_RIGHT,
             :visibility=>false
         }),
         :bottomLeft=>new Text({
             :color=>Graphics.COLOR_DK_GRAY,
-            :font=>Graphics.FONT_SMALL,
+            :font=>Graphics.FONT_MEDIUM,
             :justification=>Graphics.TEXT_JUSTIFY_LEFT,
             :visibility=>false
         }),
         :bottomRight=>new Text({
             :color=>Graphics.COLOR_DK_GRAY,
-            :font=>Graphics.FONT_SMALL,
+            :font=>Graphics.FONT_MEDIUM,
             :justification=>Graphics.TEXT_JUSTIFY_RIGHT,
             :visibility=>false
         })
