@@ -89,7 +89,7 @@ class GearIndexView extends SlavicsSimpleDataField {
             setTimer(showAdditionalValues);
         }
         debugMode=Properties.getValue(PROPERTY_DEBUGMODE) as Boolean;
-        debugMode=!debugMode;
+        //debugMode=!debugMode;
         gearFIT.handleSettingUpdate(Properties.getValue(PROPERTY_FITFILESAVING) as Boolean);
         LogMonkey.Debug.logVariable("GearIndexView.onSettingsChanged()","PROPERTY_DEBUGMODE",debugMode);
         colorMode.handleSettingUpdate();
@@ -362,10 +362,11 @@ class GearIndexView extends SlavicsSimpleDataField {
 
                     dc.setColor(colorMode.getFieldColor(:label),Graphics.COLOR_TRANSPARENT);
                     dc.drawText(
-                        bLocX-battIcon.getWidth(dc)-2,
-                        bLocY+(Graphics.getFontHeight(battIcon.getFont())-Graphics.getFontHeight(battFont)),
-                        battFont,derailleur.getBatteryName(bd.get(:identifier)),Graphics.TEXT_JUSTIFY_RIGHT);
-
+                            bLocX-battIcon.getWidth(dc)-2,
+                            bLocY+(Graphics.getFontHeight(battIcon.getFont())-Graphics.getFontHeight(battFont)),
+                            battFont,derailleur.getBatteryName(bd.get(:identifier)),
+                            Graphics.TEXT_JUSTIFY_RIGHT
+                        );
                     bLocY-=Graphics.getFontHeight(battIcon.getFont())+3;
                 }
             }
