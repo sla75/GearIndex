@@ -52,19 +52,19 @@ class ColorMode {
             }
         } as Dictionary<Dictionary<Symbol,Graphics.ColorValue>>;
     private const MODE_PINK={:day=>{
-                :background=>Graphics.COLOR_PINK,
-                :label=>Graphics.COLOR_BLACK,
-                :value=>Graphics.COLOR_BLACK,
-                :valueEdge=>Graphics.COLOR_PURPLE,
-                :valueChange=>Graphics.COLOR_DK_GRAY,
-                :error=>Graphics.COLOR_LT_GRAY,
-            },:night=>{
                 :background=>Graphics.COLOR_PURPLE,
                 :label=>Graphics.COLOR_WHITE,
                 :value=>Graphics.COLOR_WHITE,
                 :valueEdge=>Graphics.COLOR_PINK,
                 :valueChange=>Graphics.COLOR_LT_GRAY,
                 :error=>Graphics.COLOR_DK_GRAY,
+            },:night=>{
+                :background=>Graphics.COLOR_PINK,
+                :label=>Graphics.COLOR_BLACK,
+                :value=>Graphics.COLOR_BLACK,
+                :valueEdge=>Graphics.COLOR_PURPLE,
+                :valueChange=>Graphics.COLOR_DK_GRAY,
+                :error=>Graphics.COLOR_LT_GRAY,
             }
         } as Dictionary<Dictionary<Symbol,Graphics.ColorValue>>;
     private var colors=MODE_BLACKANDWHITE as Dictionary<Symbol,Graphics.ColorValue>;

@@ -19,8 +19,6 @@ class GearFitContributions {
 
     private const FIT_RD_TOTALSHIFTS_ID = 0;
     private const FIT_RD_GEARRATIO_ID = 1;
-    private const FIT_RD_BATTERYSTATUS_ID = 3;
-    private const FIT_RD_BATTERYVOLTAGE_ID = 4;
 
     enum ActivityTimer {
         STOP,
@@ -40,10 +38,10 @@ class GearFitContributions {
                 :mesgType=>FitContributor.MESG_TYPE_SESSION});
             field_GearRatio = dataField.createField("FIT_RD_GEARRATIO_ID", FIT_RD_GEARRATIO_ID, FitContributor.DATA_TYPE_FLOAT, {
                 :mesgType=>FitContributor.MESG_TYPE_RECORD});
-            field_RdBatteryStatus = dataField.createField("FIT_RD_BATTERYSTATUS_ID", FIT_RD_BATTERYSTATUS_ID, FitContributor.DATA_TYPE_UINT8, {
-                :mesgType=>FitContributor.MESG_TYPE_RECORD});
-            field_RdBatteryVoltage = dataField.createField("FIT_RD_BATTERYVOLTAGE_ID", FIT_RD_BATTERYVOLTAGE_ID, FitContributor.DATA_TYPE_FLOAT, {
-                :mesgType=>FitContributor.MESG_TYPE_RECORD});
+            //field_RdBatteryStatus = dataField.createField("FIT_RD_BATTERYSTATUS_ID", FIT_RD_BATTERYSTATUS_ID, FitContributor.DATA_TYPE_UINT8, {
+            //    :mesgType=>FitContributor.MESG_TYPE_RECORD});
+            //field_RdBatteryVoltage = dataField.createField("FIT_RD_BATTERYVOLTAGE_ID", FIT_RD_BATTERYVOLTAGE_ID, FitContributor.DATA_TYPE_FLOAT, {
+            //    :mesgType=>FitContributor.MESG_TYPE_RECORD});
         }
     }
 

@@ -5,10 +5,10 @@
     <string id="property_version_title">Verze</string>
     <string id="property_nightMode_title">Inverzní noční mód</string>
     <string id="property_colorMode_title">Barevný režim</string>
-    <string id="property_showAdditionalValues_title">Další hodnoty</string>
-    <string id="property_showAdditionalValues_prompt">Zobrazit hodnoty po změně</string>
+    <string id="property_showAdditionalValues_title">Vedlejší hodnoty</string>
+    <string id="property_showAdditionalValues_prompt">Zobrazit vedlejší hodnoty po změně</string>
     <string id="Newer">Nikdy</string>
-    <string id="Always">Vždycky</string>
+    <string id="Always">Vždy</string>
 
     <string id="RD_totalShifts_label">Počet přeřazení</string>
     
