@@ -12,14 +12,17 @@
 
     <string id="RD_totalShifts_label">Počet přeřazení</string>
     
-    <string id="RD_gearRatio_title">Poměr zařazení</string>
+    <string id="RD_gearRatio_title">Převodový poměr</string>
     <string id="RD_gearRatio_label">Poměr</string>
 
-    <string id="RD_batteryStatus_title">Baterie řazení</string>
+    <string id="RD_gearIndex_title">Zadní přehazovačka</string>
+    <string id="RD_gearIndex_label">Převod</string>
+
+    <!--string id="RD_batteryStatus_title">Baterie řazení</string>
     <string id="RD_batteryStatus_label">Status</string>
 
     <string id="RD_batteryVoltage_title">Baterie řazení</string>
-    <string id="RD_batteryVoltage_label">Napětí</string>
+    <string id="RD_batteryVoltage_label">Napětí</string-->
 
     <string id="SprocketStats_DistanceOnGear">Vzálenost na pastorku</string>
     <string id="SprocketStats_PowerOnGear">Průměrná síla na pastorku</string>

@@ -9,8 +9,9 @@ class GearFitContributions {
 
     private var field_TotalShifts=null as FitContributor.Field;
     private var field_GearRatio=null as FitContributor.Field;
-    private var field_RdBatteryStatus=null as FitContributor.Field;
-    private var field_RdBatteryVoltage=null as FitContributor.Field;
+    private var field_GearIndex=null as FitContributor.Field;
+    //private var field_RdBatteryStatus=null as FitContributor.Field;
+    //private var field_RdBatteryVoltage=null as FitContributor.Field;
 
 	private var mTimerRunning = STOP as ActivityTimer;
     private var totalShifts=0 as Number;
@@ -19,6 +20,7 @@ class GearFitContributions {
 
     private const FIT_RD_TOTALSHIFTS_ID = 0;
     private const FIT_RD_GEARRATIO_ID = 1;
+    private const FIT_RD_GEARINDEX_ID = 2;
 
     enum ActivityTimer {
         STOP,
@@ -38,6 +40,8 @@ class GearFitContributions {
                 :mesgType=>FitContributor.MESG_TYPE_SESSION});
             field_GearRatio = dataField.createField("FIT_RD_GEARRATIO_ID", FIT_RD_GEARRATIO_ID, FitContributor.DATA_TYPE_FLOAT, {
                 :mesgType=>FitContributor.MESG_TYPE_RECORD});
+            field_GearIndex = dataField.createField("FIT_RD_GEARINDEX_ID", FIT_RD_GEARINDEX_ID, FitContributor.DATA_TYPE_FLOAT, {
+                :mesgType=>FitContributor.MESG_TYPE_RECORD});
             //field_RdBatteryStatus = dataField.createField("FIT_RD_BATTERYSTATUS_ID", FIT_RD_BATTERYSTATUS_ID, FitContributor.DATA_TYPE_UINT8, {
             //    :mesgType=>FitContributor.MESG_TYPE_RECORD});
             //field_RdBatteryVoltage = dataField.createField("FIT_RD_BATTERYVOLTAGE_ID", FIT_RD_BATTERYVOLTAGE_ID, FitContributor.DATA_TYPE_FLOAT, {
@@ -52,6 +56,7 @@ class GearFitContributions {
         if(mTimerRunning!=RUNNING) {
             return;
         }
+        field_GearIndex.setData(rearTeeths.toNumber());
         var ratio=frontTeeths/rearTeeths.toFloat() as Float;
         field_GearRatio.setData(ratio);
         LogMonkey.Debug.logVariable("GearFitContributions.setDerailleurs()","ratio",ratio.format("%.2f"));
@@ -66,7 +71,7 @@ class GearFitContributions {
             LogMonkey.Debug.logMessage("GearFitContributions.onChange()","totalShifts="+totalShifts+" save("+saveFitFile+")");
         }
     }
-
+    /***
     public function addRdBatteryStatus(batteryStatus as AntPlus.BatteryStatusValue or Null) as Void {
         LogMonkey.Debug.logMessage("GearFitContributions.addRdBatteryStatus()",batteryStatus+" save("+saveFitFile+")");
         if(saveFitFile&&batteryStatus!=null){
@@ -79,7 +84,7 @@ class GearFitContributions {
             field_RdBatteryVoltage.setData(batteryVoltage);
         }
     }
-
+    /***/
     function getTotalShifts() as Number{
         return totalShifts;
     }

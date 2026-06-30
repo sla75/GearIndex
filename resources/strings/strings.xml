@@ -17,11 +17,14 @@
     <string id="RD_gearRatio_title">Gear</string>
     <string id="RD_gearRatio_label">Ratio</string>
 
-    <string id="RD_batteryStatus_title">Battery Rear Derailleur</string>
+    <string id="RD_gearIndex_title">Rear Derailleur</string>
+    <string id="RD_gearIndex_label">Index</string>
+
+    <!--string id="RD_batteryStatus_title">Battery Rear Derailleur</string>
     <string id="RD_batteryStatus_label">Status</string>
 
     <string id="RD_batteryVoltage_title">Battery Rear Derailleur</string>
-    <string id="RD_batteryVoltage_label">Voltage</string>
+    <string id="RD_batteryVoltage_label">Voltage</string-->
 
     <string id="SprocketStats_DistanceOnGear">Distance on Gear</string>
     <string id="SprocketStats_PowerOnGear">Power on Gear</string>
