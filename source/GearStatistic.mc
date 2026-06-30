@@ -3,6 +3,7 @@ import Toybox.AntPlus;
 import Toybox.Graphics;
 import Toybox.Lang;
 import Toybox.Time;
+import Toybox.WatchUi;
 import LogMonkey;
 
 class GearStatistic {
@@ -19,6 +20,12 @@ class GearStatistic {
     private var currentIndex=null as Number;
     private var stats={} as Dictionary<Symbol,SprocketStats>;
     private var colorMode as ColorMode;
+    protected var valueArea=new WatchUi.TextArea({
+            :text=>"",
+            :color=>Graphics.COLOR_BLACK,
+            :font=>[Graphics.FONT_NUMBER_HOT,Graphics.FONT_NUMBER_MEDIUM,Graphics.FONT_NUMBER_MILD,Graphics.FONT_LARGE,Graphics.FONT_MEDIUM],
+            :justification => Graphics.TEXT_JUSTIFY_LEFT|Graphics.TEXT_JUSTIFY_VCENTER,
+        }) as TextArea;
 
     public function initialize(preferedMeasure as PreferedMeasure, colorMode as ColorMode) {
         self.prefered=preferedMeasure;
@@ -35,6 +42,7 @@ class GearStatistic {
             lastDistance=elapsedDistance;
         }
         LogMonkey.Debug.logMessage("GearStat.computeGraph()","timerState="+info.timerState+" distance="+elapsedDistance+" / "+lastDistance);
+
         var diffDistance=elapsedDistance-lastDistance;
         var ts=["TIMER_STATE_OFF","TIMER_STATE_STOPPED","TIMER_STATE_PAUSED","TIMER_STATE_ON"] as Array<String>;
         LogMonkey.Debug.logMessage("GearStat.computeGraph()","timerState["+info.timerState+"]="+ts[info.timerState]+" diffDistance="+diffDistance);
@@ -95,6 +103,7 @@ class GearStatistic {
     public function draw(dc as Dc, locX as Number, locY as Number, width as Number, height as Number) as Void{
         //dc.setColor(Graphics.COLOR_YELLOW,Graphics.COLOR_TRANSPARENT);
         //dc.drawRectangle(locX,locY,width,height);
+
         if(stats.size()==0){
             dc.setColor(Graphics.COLOR_LT_GRAY,Graphics.COLOR_TRANSPARENT);
             dc.drawText(locX+width/2,locY+height/2,Graphics.FONT_SMALL,"No Data",Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
@@ -110,9 +119,19 @@ class GearStatistic {
                 max=ss.getValue(i);
             }
         }
-        dc.setColor(colorMode.getFieldColor(:label),Graphics.COLOR_TRANSPARENT);
-        dc.drawText(locX,locY-Graphics.getFontHeight(Graphics.FONT_MEDIUM)*1.1,Graphics.FONT_SMALL,ss.getName(),Graphics.TEXT_JUSTIFY_LEFT);
-        
+        //dc.setColor(colorMode.getFieldColor(:label),Graphics.COLOR_TRANSPARENT);
+        //dc.drawText(locX,locY-Graphics.getFontHeight(Graphics.FONT_MEDIUM)*1.1,Graphics.FONT_SMALL,ss.getName(),Graphics.TEXT_JUSTIFY_LEFT);
+        valueArea.locX=locX;
+        valueArea.locY=locY-Graphics.getFontHeight(Graphics.FONT_MEDIUM)*1.5;
+        valueArea.height=Graphics.getFontHeight(Graphics.FONT_MEDIUM)*3;
+        valueArea.width=width*0.67;
+        valueArea.setColor(colorMode.getFieldColor(:label));
+        valueArea.setText(ss.getName());
+        //valueArea.setText("undefined for language 'hun'");
+        valueArea.draw(dc);
+        //dc.setColor(Graphics.COLOR_PURPLE,Graphics.COLOR_TRANSPARENT);
+        //dc.drawRectangle(valueArea.locX,valueArea.locY,valueArea.width,valueArea.height);
+
         if(max!=0){
             var ks=0.75f*width/max.toFloat();
             var space=2;

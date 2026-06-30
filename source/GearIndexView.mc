@@ -89,7 +89,7 @@ class GearIndexView extends SlavicsSimpleDataField {
             setTimer(showAdditionalValues);
         }
         debugMode=Properties.getValue(PROPERTY_DEBUGMODE) as Boolean;
-        //debugMode=!debugMode;
+        debugMode=!debugMode;
         gearFIT.handleSettingUpdate(Properties.getValue(PROPERTY_FITFILESAVING) as Boolean);
         LogMonkey.Debug.logVariable("GearIndexView.onSettingsChanged()","PROPERTY_DEBUGMODE",debugMode);
         colorMode.handleSettingUpdate();
@@ -111,7 +111,7 @@ class GearIndexView extends SlavicsSimpleDataField {
 
             //info(:topLeft).setVisible(false);
             //info(:bottomLeft).setVisible(false);
-            visibleAdditionalValues(-1);
+            visibleAdditionalValues(false);
         } else {
             screen=FIELD;
             //info(:topLeft).setVisible(Properties.getValue(PROPERTY_SHOWTEETH) as Boolean);
@@ -131,7 +131,16 @@ class GearIndexView extends SlavicsSimpleDataField {
         System.println("|FONT_LARGE|"+Graphics.getFontHeight(Graphics.FONT_LARGE)+"|"+Graphics.getFontAscent(Graphics.FONT_LARGE)+"|"+Graphics.getFontDescent(Graphics.FONT_LARGE)+"|");
         /***/
     }
-    function visibleAdditionalValues(showAdditionalValues as Number) as Void{
+    function visibleAdditionalValues(showAdditionalValues as Number or Boolean or Null) as Void{
+        switch(showAdditionalValues){
+            case instanceof Number:
+                break;
+            case instanceof Boolean:
+                showAdditionalValues=showAdditionalValues?0:-1;
+                break;
+            default:
+                showAdditionalValues=-1;
+        }
         if(showAdditionalValues==-1){
             info(:topLeft).setVisible(false);
             info(:bottomLeft).setVisible(false);
