@@ -21,7 +21,7 @@ class ColorMode {
                 :background=>Graphics.COLOR_BLACK,
                 :label=>Graphics.COLOR_WHITE,
                 :value=>Graphics.COLOR_WHITE,
-                :valueEdge=>Graphics.COLOR_RED,
+                :valueEdge=>Graphics.COLOR_ORANGE,
                 :valueChange=>Graphics.COLOR_LT_GRAY,
                 :error=>Graphics.COLOR_RED,
             }
