@@ -36,11 +36,11 @@ class GearFitContributions {
         self.saveFitFile=saveFitFile;
         LogMonkey.Debug.logMessage("GearFitContributions.handleSettingUpdate()","saveFile="+saveFitFile+" object="+(field_TotalShifts==null?"null":"Exists"));
         if(saveFitFile&&field_TotalShifts==null) {
-            field_TotalShifts = dataField.createField("FIT_RD_TOTALSHIFTS_ID", FIT_RD_TOTALSHIFTS_ID, FitContributor.DATA_TYPE_UINT8, {
+            field_TotalShifts = dataField.createField("Rear Derailleur Total Shifts", FIT_RD_TOTALSHIFTS_ID, FitContributor.DATA_TYPE_UINT8, {
                 :mesgType=>FitContributor.MESG_TYPE_SESSION});
-            field_GearRatio = dataField.createField("FIT_RD_GEARRATIO_ID", FIT_RD_GEARRATIO_ID, FitContributor.DATA_TYPE_FLOAT, {
+            field_GearRatio = dataField.createField("Rear Derailleur Ratio", FIT_RD_GEARRATIO_ID, FitContributor.DATA_TYPE_FLOAT, {
                 :mesgType=>FitContributor.MESG_TYPE_RECORD});
-            field_GearIndex = dataField.createField("FIT_RD_GEARINDEX_ID", FIT_RD_GEARINDEX_ID, FitContributor.DATA_TYPE_FLOAT, {
+            field_GearIndex = dataField.createField("Rear Derailleur Index", FIT_RD_GEARINDEX_ID, FitContributor.DATA_TYPE_FLOAT, {
                 :mesgType=>FitContributor.MESG_TYPE_RECORD});
             //field_RdBatteryStatus = dataField.createField("FIT_RD_BATTERYSTATUS_ID", FIT_RD_BATTERYSTATUS_ID, FitContributor.DATA_TYPE_UINT8, {
             //    :mesgType=>FitContributor.MESG_TYPE_RECORD});
