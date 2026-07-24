@@ -6,46 +6,56 @@ import Toybox.Lang;
 import Toybox.Math;
 import Toybox.System;
 import Toybox.WatchUi;
+import LogMonkey;
 
 class GearIndexView extends SlavicsSimpleDataField {
 
-    public static const BATTERY_STATUS_TEXT = ["0","New","Good","Ok","Low","Crit.","Unkn.","Inv.","Cnt"] as Array<String>;
-    private var rearShift=new RearShifting() as RearShifting;
-    private var batteries=[] as Array<RearShifting.BatteryData>;
-    private const INVALID_SHIFTS=[:shiftFailureCount,:invalidInboardShiftCount,:invalidOutboardShiftCount] as Array<Symbol>;
+    private var derailleur=new Derailleur() as Derailleur;
+    private var batteries=[] as Array<MyDevice.BatteryData>;
+
+    //private const INVALID_SHIFTS=[:shiftFailureCount,:invalidInboardShiftCount,:invalidOutboardShiftCount] as Array<Symbol>;
+    private const RD_totalShifts_unit=Application.loadResource(Rez.Strings.RD_totalShifts_unit);
+
+    private enum {
+        PROPERTY_FITFILESAVING="property_fitFileSaving",
+        PROPERTY_VERSION="property_version",
+        //PROPERTY_SHOWTEETH="property_showTeeth",
+        PROPERTY_SHOWADDITIONALVALUES="property_showAdditionalValues",
+        PROPERTY_DEBUGMODE="property_debugMode",
+        //PROPERTY_NUMBEROFSHIFTS="property_numberOfShifts",
+    }
+    /***
     private var fails={
             INVALID_SHIFTS[0]=>{:count=>0,:change=>false},
             INVALID_SHIFTS[1]=>{:count=>0,:change=>false},
             INVALID_SHIFTS[2]=>{:count=>0,:change=>false},
         } as Dictionary<Symbol,Dictionary<Symbol,Object>>;
+    /***/
     
     
-    private var teethsLabel=new Text({
-            :color=>Graphics.COLOR_DK_GRAY,
-            :font=>Graphics.FONT_SMALL,
-            :justification=>Graphics.TEXT_JUSTIFY_LEFT,
-        });
-    private var totalShiftsLabel=new Text({
-            :color=>Graphics.COLOR_DK_GRAY,
-            :font=>Graphics.FONT_SMALL,
-            :justification=>Graphics.TEXT_JUSTIFY_RIGHT,
-        });
+        /***
     private var failLabel=new Text({
             :text=>"fail",
             :color=>Graphics.COLOR_DK_RED,
             :font=>Graphics.FONT_SMALL,
             :justification=>Graphics.TEXT_JUSTIFY_LEFT,
-        });
-    private const FAIL_TIME_COUNTER=10 as Number;
-    private var failTime=FAIL_TIME_COUNTER as Number;
+        });/***/
     private var unitTeeths as String;
     private var versionTest=null as String;
     private var lastIndex=-1 as Number;
     private var colorMode as ColorMode;
-    private var gearFIT as GearFitContributions;
+    private var debugMode=false as Boolean;
+    private var gearFIT as GearFitContributions or Null;
+    private var gearStatistic as GearStatistic;
+    private var screen=null as Screen;
+    private var debugData=[] as Array<Dictionary>;
+
+    enum Screen {
+        FULL,FIELD
+    }
 
     function initialize() {
-        System.println("GearIndexView.initialize()");
+        LogMonkey.Debug.logMessage("GearIndexView.initialize()","");
         SlavicsSimpleDataField.initialize();
         gearFIT = new GearFitContributions(self);
         unitTeeths=Application.loadResource(Rez.Strings.unitTeeths);
@@ -54,20 +64,64 @@ class GearIndexView extends SlavicsSimpleDataField {
             versionTest=Application.loadResource(Rez.Strings.version);
         }
         self.setTextLabel(Application.loadResource(Rez.Strings.label));
-        Properties.setValue("property_version",Application.loadResource(Rez.Strings.version));
-        Properties.setValue("property_showteeth",Properties.getValue("property_showteeth")==null?true:Properties.getValue("property_showteeth") as Boolean);
+        Properties.setValue(PROPERTY_VERSION,Application.loadResource(Rez.Strings.version));
+        //Properties.setValue(PROPERTY_SHOWTEETH,Properties.getValue(PROPERTY_SHOWTEETH)==null?true:Properties.getValue(PROPERTY_SHOWTEETH) as Boolean);
+        Properties.setValue(PROPERTY_DEBUGMODE,Properties.getValue(PROPERTY_DEBUGMODE)==null?debugMode:Properties.getValue(PROPERTY_DEBUGMODE) as Boolean);
+        //Properties.setValue(PROPERTY_NUMBEROFSHIFTS,Properties.getValue(PROPERTY_NUMBEROFSHIFTS)==null?true:Properties.getValue(PROPERTY_NUMBEROFSHIFTS) as Boolean);
+        Properties.setValue(PROPERTY_SHOWADDITIONALVALUES,Properties.getValue(PROPERTY_SHOWADDITIONALVALUES)==null?5:Properties.getValue(PROPERTY_SHOWADDITIONALVALUES) as Number);
+        Properties.setValue(PROPERTY_FITFILESAVING,Properties.getValue(PROPERTY_FITFILESAVING)==null?true:Properties.getValue(PROPERTY_FITFILESAVING) as Boolean);
         colorMode=new ColorMode();
-        handleSettingUpdate();
+        gearStatistic=new GearStatistic(GearStatistic.POWER,colorMode);
+        Properties.setValue(PROPERTY_SHOWADDITIONALVALUES,3);
+        onSettingsChanged();
+    }
+
+    public function onSettingsChanged() as Void {
+        LogMonkey.Debug.logMessage("GearIndexView.onSettingsChanged()","");
+        //info(:topLeft).setVisible(Properties.getValue(PROPERTY_SHOWTEETH) as Boolean);
+        //info(:bottomLeft).setVisible(Properties.getValue(PROPERTY_NUMBEROFSHIFTS) as Boolean);
+        var showAdditionalValues=Properties.getValue(PROPERTY_SHOWADDITIONALVALUES) as Number;
+        LogMonkey.Debug.logVariable("GearIndexView.onSettingsChanged()","PROPERTY_SHOWADDITIONALVALUES",showAdditionalValues);
+        visibleAdditionalValues(showAdditionalValues);
+        if(showAdditionalValues==0){
+            setTimer(null);
+        } else {
+            setTimer(showAdditionalValues);
+        }
+        debugMode=Properties.getValue(PROPERTY_DEBUGMODE) as Boolean;
+        if(Application.loadResource(Rez.Strings.AppName).equals("GearIndexDev")){
+            debugMode=!debugMode;
+            LogMonkey.Debug.logMessage("GearIndexView.onSettingsChanged()","Rez.Strings.AppName="+Application.loadResource(Rez.Strings.AppName)+" REVERSE debugMode="+debugMode);
+        }
+        gearFIT.handleSettingUpdate(Properties.getValue(PROPERTY_FITFILESAVING) as Boolean);
+        LogMonkey.Debug.logVariable("GearIndexView.onSettingsChanged()","PROPERTY_DEBUGMODE",debugMode);
+        colorMode.handleSettingUpdate();
     }
 
     function onLayout(dc as Dc) as Void {
-        System.println("GearIndexView.onLayout() "+dc.getWidth()+"x"+dc.getHeight());
+        //LogMonkey.Debug.logMessage("GearIndexView.onLayout()",dc.getWidth()+"x"+dc.getHeight());
         SlavicsSimpleDataField.onLayout(dc);
-        teethsLabel.locX=self.rim;
-        teethsLabel.locY=self.labelLine;
-        totalShiftsLabel.locX=dc.getWidth()-self.rim;
-        totalShiftsLabel.locY=self.labelLine;
-        failLabel.locY=dc.getHeight()-Graphics.getFontAscent(Graphics.FONT_SMALL)-rim;
+        if(dc.getHeight()==System.getDeviceSettings().screenHeight){
+            screen=FULL;
+            labelArea.setJustification(Graphics.TEXT_JUSTIFY_RIGHT);
+            labelArea.height=dc.getHeight()*0.15f;
+
+            valueArea.locX=rim;
+            valueArea.locY=labelArea.height;
+            valueArea.width=dc.getWidth()-2*rim;
+            valueArea.height=dc.getHeight()-labelArea.height-rim;
+            valueArea.setJustification(Graphics.TEXT_JUSTIFY_RIGHT);
+
+            //info(:topLeft).setVisible(false);
+            //info(:bottomLeft).setVisible(false);
+            visibleAdditionalValues(false);
+        } else {
+            screen=FIELD;
+            //info(:topLeft).setVisible(Properties.getValue(PROPERTY_SHOWTEETH) as Boolean);
+            //info(:bottomLeft).setVisible(Properties.getValue(PROPERTY_NUMBEROFSHIFTS) as Boolean);
+            visibleAdditionalValues(Properties.getValue(PROPERTY_SHOWADDITIONALVALUES) as Number);
+        }
+        LogMonkey.Debug.logMessage("GearIndexView.onLayout()",dc.getWidth()+"x"+dc.getHeight()+" "+(screen==FULL?"FullScreen":""));
         /***
         System.println("PartNumber: "+System.getDeviceSettings().partNumber);
         System.println("Screen: "+dc.getWidth()+"x"+dc.getHeight());
@@ -80,10 +134,23 @@ class GearIndexView extends SlavicsSimpleDataField {
         System.println("|FONT_LARGE|"+Graphics.getFontHeight(Graphics.FONT_LARGE)+"|"+Graphics.getFontAscent(Graphics.FONT_LARGE)+"|"+Graphics.getFontDescent(Graphics.FONT_LARGE)+"|");
         /***/
     }
-    public function handleSettingUpdate() as Void {
-        System.println("GearIndexView.onSettingsChanged()");
-        teethsLabel.setVisible(Properties.getValue("property_showteeth") as Boolean);
-        colorMode.handleSettingUpdate();
+    function visibleAdditionalValues(showAdditionalValues as Number or Boolean or Null) as Void{
+        switch(showAdditionalValues){
+            case instanceof Number:
+                break;
+            case instanceof Boolean:
+                showAdditionalValues=showAdditionalValues?0:-1;
+                break;
+            default:
+                showAdditionalValues=-1;
+        }
+        if(showAdditionalValues==-1){
+            info(:topLeft).setVisible(false);
+            info(:bottomLeft).setVisible(false);
+        } else {
+            info(:topLeft).setVisible(true);
+            info(:bottomLeft).setVisible(true);
+        }
     }
     /***
     function onShow() {
@@ -92,92 +159,203 @@ class GearIndexView extends SlavicsSimpleDataField {
         self.setTextLabel(label);
     }
     /***/
+    //private var invalidBoardShiftCount=0 as Number;
     function compute(info as Activity.Info) as Void {
         SlavicsSimpleDataField.compute(info);
+        derailleur.compute();
+        gearStatistic.compute(info,derailleur);
+
         colorMode.compute();
         SlavicsSimpleDataField.setColors(colorMode.getColors());
 
-        batteries=rearShift.getBatteries() as Array<RearShifting.BatteryData>;
 
-        var rds=rearShift.getRearDerailleurStatus() as AntPlus.DerailleurStatus;
-        teethsLabel.setColor(colorMode.getFieldColor(:label));
-        totalShiftsLabel.setColor(colorMode.getFieldColor(:label));
+        batteries=derailleur.getBatteries() as Array<MyDevice.BatteryData>;
+        var rds=derailleur.getRearStatus() as AntPlus.DerailleurStatus;
+
         if(rds!=null){
-                if(rds.gearIndex!=null&&rds.gearIndex!=AntPlus.REAR_GEAR_INVALID){
-                    if(rearShift.getFrontDerailleurStatus()!=null){
-                        gearFIT.setDerailleurs(rearShift.getFrontDerailleurStatus().gearSize,rds.gearSize);
+            
+            if(rds.gearIndex!=null&&rds.gearIndex!=AntPlus.REAR_GEAR_INVALID){
+
+                if(rds.gearIndex!=lastIndex){
+                    valueArea.setColor(colorMode.getFieldColor(:valueChange));
+
+                    if(derailleur.getFrontStatus()!=null){
+                        gearFIT.setRatio(derailleur.getFrontStatus().gearSize,rds.gearSize);
                     }
-                    if(rds.gearIndex!=lastIndex){
-                        valueArea.setColor(colorMode.getFieldColor(:valueChange));
-                        totalShiftsLabel.setText(gearFIT.getTotalShifts().toString()+" sh");
-                    } else if(rds.gearIndex==0||rds.gearIndex==rds.gearMax-1){
-                        valueArea.setColor(colorMode.getFieldColor(:valueEdge));
+                    if(lastIndex>=0){
+                        gearFIT.changeIndex(rds.gearIndex-lastIndex);
+                        setTextInfo(:bottomLeft,gearFIT.getTotalShifts().toString()+RD_totalShifts_unit);
                     }
-                    setTextValue((rds.gearIndex+1).toString());
-                    teethsLabel.setText(rds.gearSize+unitTeeths);
-                    lastIndex=rds.gearIndex;
-                } else {
-                    setTextValue("--");
-                    teethsLabel.setText("");
-                    lastIndex=-1;
+                    setValue((rds.gearIndex+1).toString());
+                    setTextInfo(:topLeft,rds.gearSize+unitTeeths);
+                    
+                    if (Attention has :playTone) {
+                        if(rds.gearIndex==rds.gearMax-1){
+                            LogMonkey.Debug.logMessage("GearIndex.compute()","ALERT onChange Hi");
+                            Attention.playTone(Attention.TONE_ALERT_HI);
+                        } else if (rds.gearIndex==0) {
+                            LogMonkey.Debug.logMessage("GearIndex.compute()","ALERT onChange Lo");
+                            Attention.playTone(Attention.TONE_ALERT_LO);
+                        }
+                    }
+                    /***
+                    if(rds.gearIndex==0||rds.gearIndex==rds.gearMax-1){
+                        showToast("Max change "+(rds.gearIndex+1)+" !", {:icon=>Rez.Drawables.warningToastIcon});
+                    }
+                    /***/
+                } else if(rds.gearIndex==0||rds.gearIndex==rds.gearMax-1){
+                    valueArea.setColor(colorMode.getFieldColor(:valueEdge));
                 }
+                LogMonkey.Debug.logMessage("GearIndex.compute()","gearIndex="+(rds.gearIndex+1)+(rds.gearIndex!=lastIndex?" / "+(lastIndex+1):""));
+                lastIndex=rds.gearIndex;
+            }
+
         } else {
-            teethsLabel.setText("");
-            valueArea.setColor(colorMode.getFieldColor(:error));
-            setTextValue("xx");
-            lastIndex=-2;
+            setValue("--");
+            info(:topLeft).setText("");
+            lastIndex=-1;
         }
-        for(var j=0;j<INVALID_SHIFTS.size();j++){
-            var count=0;
-            switch(j){
+
+        if(debugMode){
+            debugData=[] as Array<Dictionary>;
+            switch(info.timerState){
                 case 0:
-                    count=rds.shiftFailureCount;
+                    debugData.add({:label=>"info.timerState",:value=>"OFF[0]"});
                     break;
                 case 1:
-                    count=rds.invalidInboardShiftCount;
+                    debugData.add({:label=>"info.timerState",:value=>"STOPPED[1]"});
                     break;
                 case 2:
-                    count=rds.invalidOutboardShiftCount;
+                    debugData.add({:label=>"info.timerState",:value=>"PAUSED[2]"});
                     break;
+                case 3:
+                    debugData.add({:label=>"info.timerState",:value=>"ON[3]"});
+                    break;
+                default:
+                    debugData.add({:label=>"info.timerState",:value=>"unknown["+info.timerState+"]"});
             }
-            if(fails.get(INVALID_SHIFTS[j]).get(:count)!=count){
-                fails.get(INVALID_SHIFTS[j]).put(:count,count);
-                fails.get(INVALID_SHIFTS[j]).put(:change,true);
-                failTime=FAIL_TIME_COUNTER;
-                failLabel.setVisible(true);
-                //System.println("FAIL start fail["+j+"]="+rds.shiftFailureCount);
-            }
-        }
-
-        if(failTime>=0){
-            if(failTime>0){
-                //System.println("FAIL countDown failTime="+failTime);
-                failTime--;
-            } else {
-                failTime=-1;
-                //System.println("FAIL end");
-                failLabel.setVisible(false);
-                for(var j=0;j<INVALID_SHIFTS.size();j++){
-                    fails.get(INVALID_SHIFTS[j]).put(:change,false);
+            debugData.add({:label=>"info.currentSpeed",:value=>info.currentSpeed});
+            debugData.add({:label=>"info.currentCadence",:value=>info.currentCadence});
+            debugData.add({:label=>"info.currentPower",:value=>info.currentPower});
+            debugData.add({:break=>true});
+            /***
+            debugData.add({:label=>"info.elapsedDistance",:value=>info.elapsedDistance});
+            debugData.add({:label=>"info.distanceToDestination",:value=>info.distanceToDestination});
+            debugData.add({:label=>"info.nameOfNextPoint",:value=>info.nameOfNextPoint});
+            debugData.add({:label=>"info.distanceToNextPoint",:value=>info.distanceToNextPoint});
+            debugData.add({:break=>true});
+            /***/
+            if(derailleur.getDevice()!=null){
+                if(derailleur.getDevice().getManufacturerInfo(null)!=null){
+                    debugData.add({:label=>"device.manufacturerId",:value=>derailleur.getDevice().getManufacturerInfo(null).manufacturerId});
+                    debugData.add({:label=>"device.modelNumber",:value=>derailleur.getDevice().getManufacturerInfo(null).modelNumber});
+                } else {
+                    debugData.add({:label=>"device.getManufacturerInfo()",:value=>"[null]"});    
                 }
+            } else {
+                debugData.add({:label=>"device",:value=>"[null]"});
+            }
+            
+            debugData.add({:break=>true});
+            /***/
+            if(derailleur.getFrontStatus()!=null){
+                debugData.add({:label=>"FDS.gearIndex",:value=>getGearString(derailleur.getFrontStatus().gearIndex,AntPlus.FRONT_GEAR_INVALID)});
+                debugData.add({:label=>"FDS.gearMax",:value=>getGearString(derailleur.getFrontStatus().gearMax,AntPlus.MAX_GEARS_INVALID)});
+                debugData.add({:label=>"FDS.gearSize",:value=>derailleur.getFrontStatus().gearSize});
+            } else {
+                debugData.add({:label=>"FrontDerailleurStatus",:value=>null});
+            }
+            debugData.add({:break=>true});
+            if(derailleur.getRearStatus()!=null){
+                debugData.add({:label=>"RDS.gearIndex",:value=>getGearString(derailleur.getRearStatus().gearIndex,AntPlus.REAR_GEAR_INVALID)});
+                debugData.add({:label=>"RDS.gearMax",:value=>getGearString(derailleur.getRearStatus().gearMax,AntPlus.MAX_GEARS_INVALID)});
+                debugData.add({:label=>"RDS.gearSize",:value=>derailleur.getRearStatus().gearSize});
+                debugData.add({:label=>"RDS.invalidInboardShiftCount",:value=>derailleur.getRearStatus().invalidInboardShiftCount});
+                debugData.add({:label=>"RDS.invalidOutboardShiftCount",:value=>derailleur.getRearStatus().invalidOutboardShiftCount});
+                debugData.add({:label=>"RDS.shiftFailureCount",:value=>derailleur.getRearStatus().shiftFailureCount});
+                if(derailleur.getBatteries().size()>0){
+                    debugData.add({:break=>true});
+                    for(var j=0;j<derailleur.getBatteries().size();j++){
+                        var batt=(derailleur.getBatteries() as Array)[j];
+                        var voltage=batt.get(:voltage)==null?"[null]":batt.get(:voltage).format("%.2f")+"V";
+                        debugData.add({:label=>"RDS."+batt.get(:identifier)+".status .voltage",:value=>batt.get(:status)==null?null:Derailleur.getBatteryStatusString(batt.get(:status))+"["+batt.get(:status)+"] "+voltage});
+                        //debugData.add({:label=>"RDS."+batt.get(:identifier)+".operatingTime",:value=>batt.get(:operatingTime)});
+                        if(derailleur.getDevice().getManufacturerInfo(batt.get(:identifier))!=null){
+                            debugData.add({:label=>"device.manufacturerId",:value=>derailleur.getDevice().getManufacturerInfo(batt.get(:identifier)).manufacturerId});
+                            debugData.add({:label=>"device.modelNumber",:value=>derailleur.getDevice().getManufacturerInfo(batt.get(:identifier)).modelNumber});
+                        }
+                    }
+                }
+            } else {
+                debugData.add({:label=>"RearDerailleurStatus",:value=>null});
             }
         }
 
     }
+    private function getGearString(gear as Number or Null,checkGear as Number or Null) as String {
+        if(gear==null){
+            return "<null>";
+        } else if(gear==checkGear){
+            return "Invalid["+gear+"]";
+        }
+        return gear.toString();
+    }
     var battIcon=new BatteryIcon({:font=>WatchUi.loadResource(Rez.Fonts.BatteryMedium),:justification=>Graphics.TEXT_JUSTIFY_RIGHT});
     var battFont=Graphics.FONT_XTINY;
-
     public function onUpdate(dc as Dc) as Void {
-        System.println("GearIndexView.onUpdate()");
         SlavicsSimpleDataField.onUpdate(dc);
+        if(screen==FIELD){
+            onUpdateField(dc);
+        } else {
+            if(debugMode){
+                onUpdateDebugMode(dc);
+            } else {
+                onUpdateFullScreen(dc);                
+            }
+        }
+        //View.onUpdate(dc);
+    }
+    public function onUpdateFullScreen(dc as Dc) as Void {
+        LogMonkey.Debug.logMessage("GearIndexView.onUpdateFullScreen()","");
+        gearStatistic.draw(dc,valueArea.locX,valueArea.locY+Graphics.getFontHeight(Graphics.FONT_NUMBER_THAI_HOT)/2,valueArea.width,valueArea.height);
+    }
+    public function onUpdateDebugMode(dc as Dc) as Void {
+        LogMonkey.Debug.logMessage("GearIndexView.onUpdateDebugMode()","");
+        var yLine=1;
+        for(var i=0;i<debugData.size();i++){
+            var dict=(debugData as Array)[i] as Dictionary;
+            if(dict.get(:break)!=null){
+                dc.setPenWidth(2);
+                dc.setColor(colorMode.getFieldColor(:label),Graphics.COLOR_TRANSPARENT);
+                dc.drawLine(2,yLine+1,dc.getWidth()-2,yLine+1);
+                //yLine+=Graphics.getFontDescent(Graphics.FONT_TINY);
+                yLine+=3;
+                continue;
+            }
+            var label=dict.get(:label)+": ";
+            var td=dc.getTextDimensions(label,Graphics.FONT_TINY);
+            dc.setColor(colorMode.getFieldColor(:label),Graphics.COLOR_TRANSPARENT);
+            dc.drawText(1,yLine,Graphics.FONT_TINY,label,Graphics.TEXT_JUSTIFY_LEFT);
+            var value=dict.get(:value);
+            if(value==null){
+                //dc.setColor(colorMode.getFieldColor(:label),Graphics.COLOR_TRANSPARENT);
+                value="<null>";
+            } else {
+                dc.setColor(colorMode.getFieldColor(:value),Graphics.COLOR_TRANSPARENT);
+            }
+            dc.drawText(1+td[0],yLine,Graphics.FONT_TINY,value,Graphics.TEXT_JUSTIFY_LEFT);
+            yLine+=td[1];
+        }
+        
+    }
+    public function onUpdateField(dc as Dc) as Void {
+        LogMonkey.Debug.logMessage("GearIndexView.onUpdateField()","");
+        
         if(versionTest!=null){
             dc.setColor(Graphics.COLOR_YELLOW,Graphics.COLOR_TRANSPARENT);
             dc.drawText(1,1,Graphics.FONT_XTINY,versionTest,Graphics.TEXT_JUSTIFY_LEFT);
         }
 
-        teethsLabel.draw(dc);
-        totalShiftsLabel.draw(dc);
-        
         if(batteries.size()>0){
             // Draw batteries
             var bLocX=dc.getWidth()-rim;
@@ -185,71 +363,51 @@ class GearIndexView extends SlavicsSimpleDataField {
             battIcon.locY=dc.getHeight()-rim-Graphics.getFontAscent(battIcon.getFont());
             battIcon.setNightMode(System.getDeviceSettings().isNightModeEnabled);
             for(var i=0;i<batteries.size();i++){
-                var bd=(batteries as Array<RearShifting.BatteryData>)[i] as RearShifting.BatteryData;
+                var bd=(batteries as Array<MyDevice.BatteryData>)[i] as MyDevice.BatteryData;
                 // Vertically
-                if(bd.get(:batteryStatus)>0) {
+                if(bd.get(:status)!=null&&bd.get(:status)>0) {
 
                     battIcon.locX=bLocX;
                     battIcon.locY=bLocY;
-                    battIcon.setStatus(bd.get(:batteryStatus));
+                    battIcon.setStatus(bd.get(:status));
                     battIcon.draw(dc);
 
                     dc.setColor(colorMode.getFieldColor(:label),Graphics.COLOR_TRANSPARENT);
                     dc.drawText(
-                        bLocX-battIcon.getWidth(dc)-2,
-                        bLocY+(Graphics.getFontHeight(battIcon.getFont())-Graphics.getFontHeight(battFont)),
-                        battFont,bd.get(:name),Graphics.TEXT_JUSTIFY_RIGHT);
-                    
+                            bLocX-battIcon.getWidth(dc)-2,
+                            bLocY+(Graphics.getFontHeight(battIcon.getFont())-Graphics.getFontHeight(battFont)),
+                            battFont,derailleur.getBatteryName(bd.get(:identifier)),
+                            Graphics.TEXT_JUSTIFY_RIGHT
+                        );
                     bLocY-=Graphics.getFontHeight(battIcon.getFont())+3;
                 }
             }
         }
-
-        if(Properties.getValue("property_showfailure") as Boolean && failLabel.isVisible){
-            
-            for(var j=0;j<INVALID_SHIFTS.size();j++){
-                if(j==0){
-                    failLabel.locX=rim;
-                } else {
-                    failLabel.locX+=dc.getTextWidthInPixels("/",Graphics.FONT_SMALL);
-                }
-                failLabel.setColor(fails.get(INVALID_SHIFTS[j]).get(:change)?colorMode.getFieldColor(:error):colorMode.getFieldColor(:label));
-                failLabel.setText(fails.get(INVALID_SHIFTS[j]).get(:count).toString());
-                failLabel.draw(dc);
-                if(j<2){
-                    failLabel.locX+=dc.getTextWidthInPixels(fails.get(INVALID_SHIFTS[j]).get(:count).toString(),Graphics.FONT_SMALL);
-                    failLabel.setColor(colorMode.getFieldColor(:label));
-                    failLabel.setText("/");
-                    failLabel.draw(dc);
-                }
-            }
-
-        }
-
     }
+
     function onTimerReset() {
-        System.println("GearIndexView.onTimerReset");
-    	gearFIT.onTimerReset();
+        LogMonkey.Debug.logMessage("GearIndexView.onTimerReset()","");
+        gearFIT.onTimerReset();
     }
     
     function onTimerPause() {
-        System.println("GearIndexView.onTimerPause");
-    	gearFIT.onTimerPause();
+        LogMonkey.Debug.logMessage("GearIndexView.onTimerPause()","");
+  	    gearFIT.onTimerPause();
     }
     
     function onTimerResume() {
-        System.println("GearIndexView.onTimerResume");
-    	gearFIT.onTimerResume();
+        LogMonkey.Debug.logMessage("GearIndexView.onTimerResume()","");
+  	    gearFIT.onTimerResume();
     }
     
     function onTimerStart() {
-        System.println("GearIndexView.onTimerStart");
-    	gearFIT.onTimerStart();
+        LogMonkey.Debug.logMessage("GearIndexView.onTimerStart()","");
+   	    gearFIT.onTimerStart();
     }
     
     function onTimerStop() {
-        System.println("GearIndexView.onTimerStop");
-    	gearFIT.onTimerStop();
+        LogMonkey.Debug.logMessage("GearIndexView.onTimerStop()","");
+   	    gearFIT.onTimerStop();
     }
 }
 /***

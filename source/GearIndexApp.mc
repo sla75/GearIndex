@@ -25,7 +25,7 @@ class GearIndexApp extends Application.AppBase {
 
     function onSettingsChanged() { // triggered by settings change in GCM
         System.println("GearIndexApp.onSettingsChanged()");
-        view.handleSettingUpdate();
+        view.onSettingsChanged();
         WatchUi.requestUpdate();   // update the view to reflect changes
     }
 

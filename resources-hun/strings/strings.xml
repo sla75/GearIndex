@@ -3,8 +3,12 @@
     <string id="unitTeeths">f</string>
 
     <string id="property_version_title">Verzió</string>
-    <string id="property_showteeth_title">Lánckerék méretének megjelenítése</string>
+    <!--string id="property_showTeeth_title">Lánckerék méretének megjelenítése</string-->
     <string id="property_nightMode_title">Éjszakai mód fordított váltása</string>
     <string id="property_colorMode_title">Színmódok listája</string>
-    <string id="property_showfailure_title">Váltóhibák megjelenítése</string>
+    <!--string id="property_showFailure_title">Váltóhibák megjelenítése</string-->
+    <string id="property_showAdditionalValues_title">Egyéb értékek</string>
+    <string id="property_showAdditionalValues_prompt">Értékek megjelenítése a módosítás után</string>
+    <string id="Newer">Soha</string>
+    <string id="Always">Mindig</string>
 </strings>

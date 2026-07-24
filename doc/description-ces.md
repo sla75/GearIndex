@@ -7,6 +7,7 @@ GearIndex
 Zobrazení aktuálního zařazeného pastorku pouze na zadní přehazovačce. Index přehazovačky se bere z univerzálně z AntPlus, primárně zkoušeno na SRAM AXS, jiná zařízení Shimano Di2, ... by měla být také podporována.
 Aplikace je nezávislá na počtu pastorků. Zobrazení počtu zubů na pastorku je volitelné v Nastavení aplikace.
 Při změně řazení na jiný pastorek je barva šedivá. Krajní pastorky jsou zobrazeny tmavou červenou barvou.
+Aplikace využívá standardní API Garmin pro sdílení dat z elektronického řazení přehazovačky bez ohledu na značku.
 
 Lokalizace EN, DE, CZ, PL, SK, IT, FR, HU.
 
@@ -33,8 +34,14 @@ Hodnota
 *    -- - No connect AntPlus.ShiftingStatus
 *    xx - No exists AntPlus.ShiftingStatus
 
-# *What’s New (Optional)*
-Maximum 4000 Characters
+Známé problémy
+* Pinion Smart.Shift C1.12i neposkytuje tato data tomuto rozhraní.
+
+# What’s New (Optional)
+*Maximum 4000 Characters*
+Přidáno zobrazení počtu přeřazení
+Ukládání počtu přeřazení a převodů a jejich poměrdo FIT souboru
+Přidány grafy při zobrazení celé obrazovky
 
 # *Hero Image (Optional)*
 Add an image optimized for mobile devices to advertise your app. The image (JPG, GIF or PNG) has to be 1440x720 pixels large and can have a maximum size of 2048 KB.

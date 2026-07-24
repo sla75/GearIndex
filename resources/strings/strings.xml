@@ -1,20 +1,32 @@
 <?xml version="1.0"?>
 <strings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
-    <!--string id="AppName" translatable="false">SlavicGearIndex 1.iss2.80</string>
-    <string id="version" translatable="false">1.iss2.80Test</string-->
+    
     <string id="label">Gears</string>
     <string id="unitTeeths">t</string>
 
     <string id="property_version_title">Version</string>
-    <string id="property_showteeth_title">Show sprocket size</string>
     <string id="property_nightMode_title">Reverse night mode</string>
     <string id="property_colorMode_title">List of color modes</string>
-    <string id="property_showfailure_title">Show derailleur errors</string>
+    <string id="property_showAdditionalValues_title">Additional Values</string>
+    <string id="property_showAdditionalValues_prompt">Show Values after change</string>
+    <string id="Newer">Newer</string>
+    <string id="Always">Always</string>
+    
+    <string id="RD_totalShifts_label">Count of Shifts</string>
 
-    <string id="RD_totalshifts_label" translatable="false">Total Shifts</string>
-    <string id="RD_totalshifts_unit" translatable="false">.</string>
-    <string id="RD_gearratio_title" translatable="false">Gear Ratio Graph</string>
-    <string id="RD_gearratio_label" translatable="false">Ratio</string>
-    <string id="RD_gearratio_unit" translatable="false">.</string>
+    <string id="RD_gearRatio_title">Gear</string>
+    <string id="RD_gearRatio_label">Ratio</string>
 
+    <string id="RD_gearIndex_title">Rear Derailleur</string>
+    <string id="RD_gearIndex_label">Index</string>
+
+    <!--string id="RD_batteryStatus_title">Battery Rear Derailleur</string>
+    <string id="RD_batteryStatus_label">Status</string>
+
+    <string id="RD_batteryVoltage_title">Battery Rear Derailleur</string>
+    <string id="RD_batteryVoltage_label">Voltage</string-->
+
+    <string id="SprocketStats_DistanceOnGear">Distance on Gear</string>
+    <string id="SprocketStats_PowerOnGear">Power on Gear</string>
+    
 </strings>
