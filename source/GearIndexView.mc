@@ -96,7 +96,6 @@ class GearIndexView extends SlavicsSimpleDataField {
         }
         debugMode=Properties.getValue(PROPERTY_DEBUGMODE) as Boolean;
         if(Application.loadResource(Rez.Strings.AppName).equals("GearIndexDev")){
-            debugMode=!debugMode;
             LogMonkey.Debug.logMessage("GearIndexView.onSettingsChanged()","Rez.Strings.AppName="+Application.loadResource(Rez.Strings.AppName)+" REVERSE debugMode="+debugMode);
         }
         gearFIT.handleSettingUpdate(Properties.getValue(PROPERTY_FITFILESAVING) as Boolean);
@@ -264,6 +263,11 @@ class GearIndexView extends SlavicsSimpleDataField {
             
             debugData.add({:break=>true});
             /***/
+            debugData.add({:label=>"info.rearDerailleurIndex",:value=>info.rearDerailleurIndex});
+            if(info.rearDerailleurIndex!=null){
+                debugData.add({:label=>"info.rearDerailleurSize",:value=>info.rearDerailleurSize});
+                debugData.add({:label=>"info.rearDerailleurMax",:value=>info.rearDerailleurMax});
+            }
             if(derailleur.getFrontStatus()!=null){
                 debugData.add({:label=>"FDS.gearIndex",:value=>getGearString(derailleur.getFrontStatus().gearIndex,AntPlus.FRONT_GEAR_INVALID)});
                 debugData.add({:label=>"FDS.gearMax",:value=>getGearString(derailleur.getFrontStatus().gearMax,AntPlus.MAX_GEARS_INVALID)});
