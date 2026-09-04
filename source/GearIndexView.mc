@@ -72,10 +72,16 @@ class GearIndexView extends SlavicsSimpleDataField {
         Properties.setValue(PROPERTY_FITFILESAVING,Properties.getValue(PROPERTY_FITFILESAVING)==null?true:Properties.getValue(PROPERTY_FITFILESAVING) as Boolean);
         colorMode=new ColorMode();
         gearStatistic=new GearStatistic(GearStatistic.POWER,colorMode);
-        Properties.setValue(PROPERTY_SHOWADDITIONALVALUES,3);
+        initializeDebugProperties();
         onSettingsChanged();
     }
-
+    (:debug)
+    public function initializeDebugProperties() as Void {
+        Properties.setValue(PROPERTY_SHOWADDITIONALVALUES,2);
+    }
+    (:release)
+    public function initializeDebugProperties() as Void {
+    }
     public function onSettingsChanged() as Void {
         LogMonkey.Debug.logMessage("GearIndexView.onSettingsChanged()","");
         //info(:topLeft).setVisible(Properties.getValue(PROPERTY_SHOWTEETH) as Boolean);
