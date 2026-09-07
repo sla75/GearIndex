@@ -83,8 +83,8 @@ echo -e "cd /strings/string[@id=\"version\"]\nset ${APP_VERSION}.${GITCOUNT}\nsa
 
 echo "AppName: ${APP_NAME} ${APP_VERSION}.${GITCOUNT} on branch=${BRANCH}"
 
-xmllint --xpath "/strings/string[@id='AppName']/text()" ${APP_FILE}
-xmllint --xpath "/strings/string[@id='version']/text()" resources/strings/app.xml
+echo xmllint --xpath "/strings/string[@id='AppName']/text()" ${APP_FILE}
+echo xmllint --xpath "/strings/string[@id='version']/text()" resources/strings/app.xml
 
 
 echo -e "\n****************************************\nBUILD ${APP_NAME} ${APP_VERSION}.${GITCOUNT}\n----------------------------------------"
