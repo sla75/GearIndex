@@ -84,7 +84,7 @@ echo -e "cd /strings/string[@id=\"version\"]\nset ${APP_VERSION}.${GITCOUNT}\nsa
 echo "AppName: ${APP_NAME} ${APP_VERSION}.${GITCOUNT} on branch=${BRANCH}"
 
 xmllint --xpath "/strings/string[@id='AppName']/text()" ${APP_FILE}
-xmllint --xpath "/strings/string[@id='version']/text()" ${APP_FILE}
+xmllint --xpath "/strings/string[@id='version']/text()" resources/strings/app.xml
 
 
 echo -e "\n****************************************\nBUILD ${APP_NAME} ${APP_VERSION}.${GITCOUNT}\n----------------------------------------"
@@ -136,11 +136,14 @@ done
 echo -e "########################################\n"
 
 xmllint --xpath "//strings/string[@id='AppName']/text()" ${APP_FILE}
-xmllint --xpath "//strings/string[@id='version']/text()" ${APP_FILE}
+xmllint --xpath "//strings/string[@id='version']/text()" resources/strings/app.xml
 
 echo "RESTORE Application@id=${APP_ID} in and ${APP_FILE}"
 git restore --staged ${APP_FILE}
 git restore ${APP_FILE}
+
+git restore --staged resources/strings/app.xml
+git restore resources/strings/app.xml
 
 #git status
 #git add .
@@ -148,4 +151,4 @@ git restore ${APP_FILE}
 
 # TODO check restore
 grep AppName ${APP_FILE}
-grep version ${APP_FILE}
+grep version resources/strings/app.xml
