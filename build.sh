@@ -79,7 +79,7 @@ if [[ ${BRANCH} == "Test" ]]; then
     #APP_VERSION=${APP_VERSION}.${BRANCH}
 fi;
 echo "Set version=${APP_VERSION}.${GITCOUNT}"
-echo -e "cd /strings/string[@id=\"version\"]\nset ${APP_VERSION}.${GITCOUNT}\nsave" | xmllint --shell ${APP_FILE} | grep -v ">"
+echo -e "cd /strings/string[@id=\"version\"]\nset ${APP_VERSION}.${GITCOUNT}\nsave" | xmllint --shell resources/strings/app.xml | grep -v ">"
 
 echo "AppName: ${APP_NAME} ${APP_VERSION}.${GITCOUNT} on branch=${BRANCH}"
 
