@@ -42,17 +42,17 @@ if [[ ${BRANCH} == "Main" ]]; then
     # Main count of commits without merges
     APP_FILE=resources/strings/app.xml
     APP_NAME=$(xmllint --xpath "//strings/string[@id='AppName']/text()" ${APP_FILE})
-    APP_VERSION=$(xmllint --xpath "//strings/string[@id='version']/text()" ${APP_FILE})
+    APP_VERSION=$(xmllint --xpath "//strings/string[@id='version']/text()" resources/strings/app.xml)
 elif [[ ${BRANCH} == "Test" ]]; then
     APP_FILE=resourcesTest/strings/app.xml
     APP_NAME=$(xmllint --xpath "//strings/string[@id='AppName']/text()" ${APP_FILE})
-    APP_VERSION=$(xmllint --xpath "//strings/string[@id='version']/text()" ${APP_FILE})
+    APP_VERSION=$(xmllint --xpath "//strings/string[@id='version']/text()" resources/strings/app.xml)
 #    APP_VERSION=${APP_VERSION}.${BRANCH}
 else
     echo "Bad branch ${BRANCH}" >&2
     exit 1
 fi;
-
+echo "Branch ${BRANCH}"
 git log "${APP_VERSION}.0"..HEAD > /dev/null
 if [ $? -ne 0 ]; then
     echo -e "\nBad APP_VERSION ${APP_VERSION} in file ${APP_FILE}\nexit 1" >&2
