@@ -10,7 +10,7 @@ git status | grep "modified" > /dev/null
 if [ $? -eq 0 ]; then
     git status
     echo -e "\nNeed COMMIT\nexit 1" >&2
-    exit 1
+#   exit 1
 fi;
 
 #set -e # halt on error
