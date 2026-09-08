@@ -10,7 +10,7 @@ git status | grep "modified" > /dev/null
 if [ $? -eq 0 ]; then
     git status
     echo -e "\nNeed COMMIT\nexit 1" >&2
-#   exit 1
+    exit 1
 fi;
 
 #set -e # halt on error
@@ -42,17 +42,17 @@ if [[ ${BRANCH} == "Main" ]]; then
     # Main count of commits without merges
     APP_FILE=resources/strings/app.xml
     APP_NAME=$(xmllint --xpath "//strings/string[@id='AppName']/text()" ${APP_FILE})
-    APP_VERSION=$(xmllint --xpath "//strings/string[@id='version']/text()" resources/strings/app.xml)
+    APP_VERSION=$(xmllint --xpath "//strings/string[@id='version']/text()" ${APP_FILE})
 elif [[ ${BRANCH} == "Test" ]]; then
     APP_FILE=resourcesTest/strings/app.xml
     APP_NAME=$(xmllint --xpath "//strings/string[@id='AppName']/text()" ${APP_FILE})
-    APP_VERSION=$(xmllint --xpath "//strings/string[@id='version']/text()" resources/strings/app.xml)
+    APP_VERSION=$(xmllint --xpath "//strings/string[@id='version']/text()" ${APP_FILE})
 #    APP_VERSION=${APP_VERSION}.${BRANCH}
 else
     echo "Bad branch ${BRANCH}" >&2
     exit 1
 fi;
-echo "Branch ${BRANCH}"
+
 git log "${APP_VERSION}.0"..HEAD > /dev/null
 if [ $? -ne 0 ]; then
     echo -e "\nBad APP_VERSION ${APP_VERSION} in file ${APP_FILE}\nexit 1" >&2
@@ -79,14 +79,13 @@ if [[ ${BRANCH} == "Test" ]]; then
     #APP_VERSION=${APP_VERSION}.${BRANCH}
 fi;
 echo "Set version=${APP_VERSION}.${GITCOUNT}"
-echo -e "cd /strings/string[@id=\"version\"]\nset ${APP_VERSION}.${GITCOUNT}\nsave" | xmllint --shell resources/strings/app.xml | grep -v ">"
+echo -e "cd /strings/string[@id=\"version\"]\nset ${APP_VERSION}.${GITCOUNT}\nsave" | xmllint --shell ${APP_FILE} | grep -v ">"
 
 echo "AppName: ${APP_NAME} ${APP_VERSION}.${GITCOUNT} on branch=${BRANCH}"
 
-echo "xmllint --xpath \"/strings/string[@id='AppName']/text()\" ${APP_FILE}"
 xmllint --xpath "/strings/string[@id='AppName']/text()" ${APP_FILE}
-echo "xmllint --xpath \"/strings/string[@id='version']/text()\" resources/strings/app.xml"
-xmllint --xpath "/strings/string[@id='version']/text()" resources/strings/app.xml
+xmllint --xpath "/strings/string[@id='version']/text()" ${APP_FILE}
+
 
 echo -e "\n****************************************\nBUILD ${APP_NAME} ${APP_VERSION}.${GITCOUNT}\n----------------------------------------"
 
@@ -137,14 +136,11 @@ done
 echo -e "########################################\n"
 
 xmllint --xpath "//strings/string[@id='AppName']/text()" ${APP_FILE}
-xmllint --xpath "//strings/string[@id='version']/text()" resources/strings/app.xml
+xmllint --xpath "//strings/string[@id='version']/text()" ${APP_FILE}
 
 echo "RESTORE Application@id=${APP_ID} in and ${APP_FILE}"
 git restore --staged ${APP_FILE}
 git restore ${APP_FILE}
-
-git restore --staged resources/strings/app.xml
-git restore resources/strings/app.xml
 
 #git status
 #git add .
@@ -152,4 +148,4 @@ git restore resources/strings/app.xml
 
 # TODO check restore
 grep AppName ${APP_FILE}
-grep version resources/strings/app.xml
+grep version ${APP_FILE}
