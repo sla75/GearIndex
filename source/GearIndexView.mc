@@ -25,6 +25,10 @@ class GearIndexView extends SlavicsSimpleDataField {
         PROPERTY_DEBUGMODE="property_debugMode",
         //PROPERTY_NUMBEROFSHIFTS="property_numberOfShifts",
     }
+    private enum {
+        MAINVALUE_INDEX=1,
+        MAINVALUE_TEETH=2,
+    }
     /***
     private var fails={
             INVALID_SHIFTS[0]=>{:count=>0,:change=>false},
@@ -45,7 +49,7 @@ class GearIndexView extends SlavicsSimpleDataField {
     private var lastIndex=-1 as Number;
     private var colorMode as ColorMode;
     private var debugMode=false as Boolean;
-    private var propertyMainValue="INDEX" as String;
+    private var propertyMainValue=MAINVALUE_INDEX as Number;
     private var gearFIT as GearFitContributions or Null;
     private var gearStatistic as GearStatistic;
     private var screen=null as Screen;
@@ -67,7 +71,7 @@ class GearIndexView extends SlavicsSimpleDataField {
         self.setTextLabel(Application.loadResource(Rez.Strings.label));
         Properties.setValue(PROPERTY_VERSION,Application.loadResource(Rez.Strings.version));
         //Properties.setValue(PROPERTY_SHOWTEETH,Properties.getValue(PROPERTY_SHOWTEETH)==null?true:Properties.getValue(PROPERTY_SHOWTEETH) as Boolean);
-        Properties.setValue(PROPERTY_MAINVALUE,Properties.getValue(PROPERTY_MAINVALUE)==null?propertyMainValue:Properties.getValue(PROPERTY_MAINVALUE) as String);
+        Properties.setValue(PROPERTY_MAINVALUE,Properties.getValue(PROPERTY_MAINVALUE)==null?propertyMainValue:Properties.getValue(PROPERTY_MAINVALUE) as Number);
         Properties.setValue(PROPERTY_MAINVALUEUNIT,Properties.getValue(PROPERTY_MAINVALUEUNIT)==null?false:Properties.getValue(PROPERTY_MAINVALUEUNIT) as Boolean);
 
         Properties.setValue(PROPERTY_DEBUGMODE,Properties.getValue(PROPERTY_DEBUGMODE)==null?debugMode:Properties.getValue(PROPERTY_DEBUGMODE) as Boolean);
@@ -82,7 +86,8 @@ class GearIndexView extends SlavicsSimpleDataField {
     (:debug)
     public function initializeDebugProperties() as Void {
         Properties.setValue(PROPERTY_SHOWADDITIONALVALUES,2);
-        Properties.setValue(PROPERTY_MAINVALUEUNIT,true);
+        Properties.setValue(PROPERTY_MAINVALUE,MAINVALUE_TEETH);
+        Properties.setValue(PROPERTY_MAINVALUEUNIT,false);
     }
     (:release)
     public function initializeDebugProperties() as Void {
@@ -106,14 +111,14 @@ class GearIndexView extends SlavicsSimpleDataField {
         }
         gearFIT.handleSettingUpdate(Properties.getValue(PROPERTY_FITFILESAVING) as Boolean);
 
-        propertyMainValue=Properties.getValue(PROPERTY_MAINVALUE) as String;
+        propertyMainValue=Properties.getValue(PROPERTY_MAINVALUE) as Number;
         
         if(Properties.getValue(PROPERTY_MAINVALUEUNIT) as Boolean){
-            units.put(:mainValue,!propertyMainValue.equals("INDEX")?Application.loadResource(Rez.Strings.unitTeeths):Application.loadResource(Rez.Strings.unitIndex));
+            units.put(:mainValue,propertyMainValue!=MAINVALUE_INDEX?Application.loadResource(Rez.Strings.unitTeeths):Application.loadResource(Rez.Strings.unitIndex));
         } else {
             units.put(:mainValue,null);
         }
-        units.put(:subValue,propertyMainValue.equals("INDEX")?Application.loadResource(Rez.Strings.unitTeeths):Application.loadResource(Rez.Strings.unitIndex));
+        units.put(:subValue,propertyMainValue==MAINVALUE_INDEX?Application.loadResource(Rez.Strings.unitTeeths):Application.loadResource(Rez.Strings.unitIndex));
 
         LogMonkey.Debug.logVariable("GearIndexView.onSettingsChanged()","units",units);
         LogMonkey.Debug.logVariable("GearIndexView.onSettingsChanged()","PROPERTY_DEBUGMODE",debugMode);
@@ -210,12 +215,12 @@ class GearIndexView extends SlavicsSimpleDataField {
                     }
 
                     // Show Main Value
-                    if(propertyMainValue.equals("INDEX")){
-                        setValue(rds.gearSize.toString()); // Show count of teeth
-                        setTextInfo(:topLeft,(rds.gearIndex+1).toString()+unitSubValue);
+                    if(!propertyMainValue.equals("INDEX")){
+                        setValue(rds.gearSize+(units.get(:mainValue)==null?"":units.get(:mainValue))); // Show count of teeth
+                        setTextInfo(:topLeft,(rds.gearIndex+1)+units.get(:subValue));
                     } else {
-                        setValue((rds.gearIndex+1).toString()); // Show Index
-                        setTextInfo(:topLeft,rds.gearSize+unitSubValue);
+                        setValue((rds.gearIndex+1).toString()+(units.get(:mainValue)==null?"":units.get(:mainValue))); // Show Index
+                        setTextInfo(:topLeft,rds.gearSize+units.get(:subValue));
                     }
                     
                     if (Attention has :playTone) {

@@ -4,13 +4,15 @@
         <string id="property_debugMode_title" translatable="false">Fullscreen Debug Mode</string>
         <string id="RD_totalShifts_unit" translatable="false"> </string>
         <string id="space" translatable="false"> </string>
+        <string id="groupMainTitle" translatable="false">Main value</string>
+        <string id="groupMainDescription" translatable="false">Show Main value</string>
     </strings>
 
     <properties>
         <property id="property_version" type="string">0.0.0</property>
         <property id="property_nightMode" type="boolean">false</property>
         <property id="property_colorMode" type="number">0</property>
-        <property id="property_mainValue" type="string">INDEX</property>
+        <property id="property_mainValue" type="number">1</property>
         <property id="property_mainValueUnit" type="boolean">false</property>
         <property id="property_showAdditionalValues" type="number">0</property>
         <property id="property_fitFileSaving" type="boolean">true</property>
@@ -24,12 +26,17 @@
         <setting propertyKey="@Properties.property_fitFileSaving" title="@Strings.property_fitFileSaving_title">
             <settingConfig type="boolean" required="true" />
         </setting>
-        <setting propertyKey="@Properties.property_mainValue" title="@Strings.property_mainValue_title"  prompt="@Strings.property_mainValue_prompt">
-            <settingConfig type="list">
-                <listEntry value="INDEX">Index</listEntry>
-                <listEntry value="TEETH">@Strings.Teeth</listEntry>
-            </settingConfig>
-        </setting>
+        <group id="groupName" title="@Strings.groupMainTitle" description="@Strings.groupMainDescription">
+            <setting propertyKey="@Properties.property_mainValue" title="@Strings.property_mainValue_title"  prompt="@Strings.property_mainValue_prompt">
+                <settingConfig type="list">
+                    <listEntry value="1">Index</listEntry>
+                    <listEntry value="2">@Strings.Teeth</listEntry>
+                </settingConfig>
+            </setting>
+            <setting propertyKey="@Properties.property_mainValueUnit" title="@Strings.property_mainValueUnit_title">
+                <settingConfig type="boolean" required="true" />
+            </setting>
+        </group>
         <setting propertyKey="@Properties.property_nightMode" title="@Strings.property_nightMode_title">
             <settingConfig type="boolean" required="true" />
         </setting>

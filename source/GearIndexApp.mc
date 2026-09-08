@@ -6,6 +6,7 @@ class GearIndexApp extends Application.AppBase {
 
     function initialize() {
         AppBase.initialize();
+        Properties.setValue("property_version",Application.loadResource(Rez.Strings.version));
     }
 
     // onStart() is called on application start up
