@@ -123,6 +123,7 @@ class GearIndexView extends SlavicsSimpleDataField {
         LogMonkey.Debug.logVariable("GearIndexView.onSettingsChanged()","units",units);
         LogMonkey.Debug.logVariable("GearIndexView.onSettingsChanged()","PROPERTY_DEBUGMODE",debugMode);
         colorMode.handleSettingUpdate();
+        lastIndex=-1;
     }
 
     function onLayout(dc as Dc) as Void {
