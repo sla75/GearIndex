@@ -198,7 +198,7 @@ class GearIndexView extends SlavicsSimpleDataField {
 
         batteries=derailleur.getBatteries() as Array<MyDevice.BatteryData>;
         var rds=derailleur.getRearStatus() as AntPlus.DerailleurStatus;
-
+        
         if(rds!=null){
             
             if(rds.gearIndex!=null&&rds.gearIndex!=AntPlus.REAR_GEAR_INVALID){
@@ -246,10 +246,11 @@ class GearIndexView extends SlavicsSimpleDataField {
                 }
                 LogMonkey.Debug.logMessage("GearIndex.compute()","gearIndex="+(rds.gearIndex+1)+(rds.gearIndex!=lastIndex?" / "+(lastIndex+1):""));
                 lastIndex=rds.gearIndex;
+            } else {
+                setValue("--");
             }
-
         } else {
-            setValue("--");
+            setValue("XX");
             info(:topLeft).setText("");
             lastIndex=-1;
         }
