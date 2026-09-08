@@ -3,13 +3,26 @@
     <string id="unitTeeths">d</string>
 
     <string id="property_version_title">Versione</string>
-    <!--string id="property_showTeeth_title">Mostra la dimensione del pignone</string-->
     <string id="property_nightMode_title">Nverti la modalità notturna</string>
     <string id="property_colorMode_title">Elenco delle modalità colore</string>
-    <!--string id="property_showFailure_title">Mostra gli errori del deragliatore</string-->
+    <string id="property_mainValueUnit_title">Unit for main value</string>
+    <string id="property_mainValue_title">Main value.</string>
+    <string id="property_mainValue_prompt">Main value</string>
     <string id="property_showAdditionalValues_title">Valori aggiuntivi</string>
     <string id="property_showAdditionalValues_prompt">Mostra i valori dopo la modifica</string>
     <string id="Newer">Mai</string>
     <string id="Always">Sempre</string>
+    <string id="Teeth">Teeth</string>
+    
+    <string id="RD_totalShifts_label">Count of Shifts</string>
+
+    <string id="RD_gearRatio_title">Gear</string>
+    <string id="RD_gearRatio_label">Ratio</string>
+
+    <string id="RD_gearIndex_title">Rear Derailleur</string>
+    <string id="RD_gearIndex_label">Index</string>
+
+    <string id="SprocketStats_DistanceOnGear">Distance on Gear</string>
+    <string id="SprocketStats_PowerOnGear">Power on Gear</string>
 
 </strings>

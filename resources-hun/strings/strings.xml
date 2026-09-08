@@ -6,9 +6,23 @@
     <!--string id="property_showTeeth_title">Lánckerék méretének megjelenítése</string-->
     <string id="property_nightMode_title">Éjszakai mód fordított váltása</string>
     <string id="property_colorMode_title">Színmódok listája</string>
-    <!--string id="property_showFailure_title">Váltóhibák megjelenítése</string-->
+        <string id="property_mainValueUnit_title">Fő érték mértékegysége</string>
+    <string id="property_mainValue_title">Fő érték.</string>
+    <string id="property_mainValue_prompt">Fő érték</string>
     <string id="property_showAdditionalValues_title">Egyéb értékek</string>
     <string id="property_showAdditionalValues_prompt">Értékek megjelenítése a módosítás után</string>
     <string id="Newer">Soha</string>
     <string id="Always">Mindig</string>
+    <string id="Teeth">Fogak</string>
+
+    <string id="RD_totalShifts_label">Count of Shifts</string>
+
+    <string id="RD_gearRatio_title">Gear</string>
+    <string id="RD_gearRatio_label">Ratio</string>
+
+    <string id="RD_gearIndex_title">Rear Derailleur</string>
+    <string id="RD_gearIndex_label">Index</string>
+
+    <string id="SprocketStats_DistanceOnGear">Távolság a sebességfokozatban</string>
+    <string id="SprocketStats_PowerOnGear">Kapcsold be a felszerelést</string>
 </strings>

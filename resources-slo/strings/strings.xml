@@ -13,4 +13,15 @@
     <string id="Newer">Nikdy</string>
     <string id="Always">Vždy</string>
     <string id="Teeth">Zuby</string>
+
+    <string id="RD_totalShifts_label">Počet preradení</string>
+    
+    <string id="RD_gearRatio_title">Prevodový pomer</string>
+    <string id="RD_gearRatio_label">Pomer</string>
+
+    <string id="RD_gearIndex_title">Zadná prehadzovačka</string>
+    <string id="RD_gearIndex_label">Prevod</string>
+
+    <string id="SprocketStats_DistanceOnGear">Vzálenosť na pastorku</string>
+    <string id="SprocketStats_PowerOnGear">Priemerná sila na pastorku</string>
 </strings>

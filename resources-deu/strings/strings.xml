@@ -14,4 +14,15 @@
     <string id="Newer">Neuere Werte</string>
     <string id="Always">Immer</string>
     <string id="Teeth">Zähne</string>
+
+    <string id="RD_totalShifts_label">Count of Shifts</string>
+
+    <string id="RD_gearRatio_title">Gear</string>
+    <string id="RD_gearRatio_label">Ratio</string>
+
+    <string id="RD_gearIndex_title">Rear Derailleur</string>
+    <string id="RD_gearIndex_label">Index</string>
+
+    <string id="SprocketStats_DistanceOnGear">Distanz im Gang</string>
+    <string id="SprocketStats_PowerOnGear">Gang einschalten</string>
 </strings>
