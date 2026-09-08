@@ -8,11 +8,14 @@
     <string id="property_version_title">Version</string>
     <string id="property_nightMode_title">Reverse night mode</string>
     <string id="property_colorMode_title">List of color modes</string>
-    <string id="property_switchValue_title">Switch Index and Teeth</string>
+    <string id="property_mainValueUnit_title">Unit for main value</string>
+    <string id="property_mainValue_title">Main value.</string>
+    <string id="property_mainValue_prompt">Main value</string>
     <string id="property_showAdditionalValues_title">Additional Values</string>
     <string id="property_showAdditionalValues_prompt">Show Values after change</string>
     <string id="Newer">Newer</string>
     <string id="Always">Always</string>
+    <string id="Teeth">Teeth</string>
     
     <string id="RD_totalShifts_label">Count of Shifts</string>
 

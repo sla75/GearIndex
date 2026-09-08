@@ -19,7 +19,8 @@ class GearIndexView extends SlavicsSimpleDataField {
     private enum {
         PROPERTY_FITFILESAVING="property_fitFileSaving",
         PROPERTY_VERSION="property_version",
-        PROPERTY_SWITCHVALUE="property_switchValue",
+        PROPERTY_MAINVALUE="property_mainValue",
+        PROPERTY_MAINVALUEUNIT="property_mainValueUnit",
         PROPERTY_SHOWADDITIONALVALUES="property_showAdditionalValues",
         PROPERTY_DEBUGMODE="property_debugMode",
         //PROPERTY_NUMBEROFSHIFTS="property_numberOfShifts",
@@ -40,16 +41,16 @@ class GearIndexView extends SlavicsSimpleDataField {
             :font=>Graphics.FONT_SMALL,
             :justification=>Graphics.TEXT_JUSTIFY_LEFT,
         });/***/
-    private var unitSubValue="" as String;
     private var versionTest=null as String;
     private var lastIndex=-1 as Number;
     private var colorMode as ColorMode;
-    private var switchValue=false as Boolean;
     private var debugMode=false as Boolean;
+    private var propertyMainValue="INDEX" as String;
     private var gearFIT as GearFitContributions or Null;
     private var gearStatistic as GearStatistic;
     private var screen=null as Screen;
     private var debugData=[] as Array<Dictionary>;
+    private var units={:mainValue=>null,:subValue=>null} as Dictionary<String>;
 
     enum Screen {
         FULL,FIELD
@@ -66,7 +67,9 @@ class GearIndexView extends SlavicsSimpleDataField {
         self.setTextLabel(Application.loadResource(Rez.Strings.label));
         Properties.setValue(PROPERTY_VERSION,Application.loadResource(Rez.Strings.version));
         //Properties.setValue(PROPERTY_SHOWTEETH,Properties.getValue(PROPERTY_SHOWTEETH)==null?true:Properties.getValue(PROPERTY_SHOWTEETH) as Boolean);
-        Properties.setValue(PROPERTY_SWITCHVALUE,Properties.getValue(PROPERTY_SWITCHVALUE)==null?debugMode:Properties.getValue(PROPERTY_SWITCHVALUE) as Boolean);
+        Properties.setValue(PROPERTY_MAINVALUE,Properties.getValue(PROPERTY_MAINVALUE)==null?propertyMainValue:Properties.getValue(PROPERTY_MAINVALUE) as String);
+        Properties.setValue(PROPERTY_MAINVALUEUNIT,Properties.getValue(PROPERTY_MAINVALUEUNIT)==null?false:Properties.getValue(PROPERTY_MAINVALUEUNIT) as Boolean);
+
         Properties.setValue(PROPERTY_DEBUGMODE,Properties.getValue(PROPERTY_DEBUGMODE)==null?debugMode:Properties.getValue(PROPERTY_DEBUGMODE) as Boolean);
         //Properties.setValue(PROPERTY_NUMBEROFSHIFTS,Properties.getValue(PROPERTY_NUMBEROFSHIFTS)==null?true:Properties.getValue(PROPERTY_NUMBEROFSHIFTS) as Boolean);
         Properties.setValue(PROPERTY_SHOWADDITIONALVALUES,Properties.getValue(PROPERTY_SHOWADDITIONALVALUES)==null?5:Properties.getValue(PROPERTY_SHOWADDITIONALVALUES) as Number);
@@ -79,7 +82,7 @@ class GearIndexView extends SlavicsSimpleDataField {
     (:debug)
     public function initializeDebugProperties() as Void {
         Properties.setValue(PROPERTY_SHOWADDITIONALVALUES,2);
-        Properties.setValue(PROPERTY_SWITCHVALUE,false);
+        Properties.setValue(PROPERTY_MAINVALUEUNIT,true);
     }
     (:release)
     public function initializeDebugProperties() as Void {
@@ -97,13 +100,22 @@ class GearIndexView extends SlavicsSimpleDataField {
             setTimer(showAdditionalValues);
         }
         debugMode=Properties.getValue(PROPERTY_DEBUGMODE) as Boolean;
-        switchValue=Properties.getValue(PROPERTY_SWITCHVALUE) as Boolean;
+
         if(Application.loadResource(Rez.Strings.AppName).equals("GearIndexDev")){
             LogMonkey.Debug.logMessage("GearIndexView.onSettingsChanged()","Rez.Strings.AppName="+Application.loadResource(Rez.Strings.AppName)+" REVERSE debugMode="+debugMode);
         }
         gearFIT.handleSettingUpdate(Properties.getValue(PROPERTY_FITFILESAVING) as Boolean);
-        unitSubValue=switchValue?Application.loadResource(Rez.Strings.unitIndex):Application.loadResource(Rez.Strings.unitTeeths);
-        LogMonkey.Debug.logVariable("GearIndexView.onSettingsChanged()","PROPERTY_SWITCHVALUE",switchValue);
+
+        propertyMainValue=Properties.getValue(PROPERTY_MAINVALUE) as String;
+        
+        if(Properties.getValue(PROPERTY_MAINVALUEUNIT) as Boolean){
+            units.put(:mainValue,!propertyMainValue.equals("INDEX")?Application.loadResource(Rez.Strings.unitTeeths):Application.loadResource(Rez.Strings.unitIndex));
+        } else {
+            units.put(:mainValue,null);
+        }
+        units.put(:subValue,propertyMainValue.equals("INDEX")?Application.loadResource(Rez.Strings.unitTeeths):Application.loadResource(Rez.Strings.unitIndex));
+
+        LogMonkey.Debug.logVariable("GearIndexView.onSettingsChanged()","units",units);
         LogMonkey.Debug.logVariable("GearIndexView.onSettingsChanged()","PROPERTY_DEBUGMODE",debugMode);
         colorMode.handleSettingUpdate();
     }
@@ -198,7 +210,7 @@ class GearIndexView extends SlavicsSimpleDataField {
                     }
 
                     // Show Main Value
-                    if(switchValue){
+                    if(propertyMainValue.equals("INDEX")){
                         setValue(rds.gearSize.toString()); // Show count of teeth
                         setTextInfo(:topLeft,(rds.gearIndex+1).toString()+unitSubValue);
                     } else {

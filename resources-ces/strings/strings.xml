@@ -5,11 +5,14 @@
     <string id="property_version_title">Verze</string>
     <string id="property_nightMode_title">Inverzní noční mód</string>
     <string id="property_colorMode_title">Barevný režim</string>
-    <string id="property_switchValue_title">Prohodit Index and počet zubů na pastorku</string>
+    <string id="property_mainValueUnit_title">Jednotka u hlavní hodnoty</string>
+    <string id="property_mainValue_title">Hlavní hodnota</string>
+    <string id="property_mainValue_prompt">Hlavní hodnota</string>
     <string id="property_showAdditionalValues_title">Vedlejší hodnoty</string>
     <string id="property_showAdditionalValues_prompt">Zobrazit vedlejší hodnoty po změně</string>
     <string id="Newer">Nikdy</string>
     <string id="Always">Vždy</string>
+    <string id="Teeth">Zuby</string>
 
     <string id="RD_totalShifts_label">Počet přeřazení</string>
     
