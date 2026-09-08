@@ -11,6 +11,8 @@
     <string id="property_mainValueUnit_title">Unit for main value</string>
     <string id="property_mainValue_title">Main value.</string>
     <string id="property_mainValue_prompt">Main value</string>
+    <!--string id="groupMainTitle">Main value</string>
+    <string id="groupMainDescription">Show Main value</string-->
     <string id="property_showAdditionalValues_title">Additional Values</string>
     <string id="property_showAdditionalValues_prompt">Show Values after change</string>
     <string id="Newer">Newer</string>
