@@ -86,7 +86,7 @@ class GearIndexView extends SlavicsSimpleDataField {
     (:debug)
     public function initializeDebugProperties() as Void {
         Properties.setValue(PROPERTY_SHOWADDITIONALVALUES,2);
-        Properties.setValue(PROPERTY_MAINVALUE,MAINVALUE_TEETH);
+        Properties.setValue(PROPERTY_MAINVALUE,MAINVALUE_INDEX);
         Properties.setValue(PROPERTY_MAINVALUEUNIT,false);
     }
     (:release)
@@ -215,12 +215,16 @@ class GearIndexView extends SlavicsSimpleDataField {
                     }
 
                     // Show Main Value
-                    if(!propertyMainValue.equals("INDEX")){
-                        setValue(rds.gearSize+(units.get(:mainValue)==null?"":units.get(:mainValue))); // Show count of teeth
-                        setTextInfo(:topLeft,(rds.gearIndex+1)+units.get(:subValue));
-                    } else {
-                        setValue((rds.gearIndex+1).toString()+(units.get(:mainValue)==null?"":units.get(:mainValue))); // Show Index
+                    if(propertyMainValue==MAINVALUE_INDEX){
+                        // Main value INDEX
+                        LogMonkey.Debug.logMessage("GearIndex.compute()","MainValue=INDEX "+propertyMainValue);
+                        setValue((rds.gearIndex+1).toString()+(units.get(:mainValue)==null?"":units.get(:mainValue)));
                         setTextInfo(:topLeft,rds.gearSize+units.get(:subValue));
+                    } else {
+                        // Main value TEETH
+                        LogMonkey.Debug.logMessage("GearIndex.compute()","MainValue=TEETH "+propertyMainValue);
+                        setValue(rds.gearSize+(units.get(:mainValue)==null?"":units.get(:mainValue)));
+                        setTextInfo(:topLeft,(rds.gearIndex+1)+units.get(:subValue));                        
                     }
                     
                     if (Attention has :playTone) {
