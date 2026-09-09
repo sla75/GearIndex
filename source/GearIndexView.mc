@@ -248,11 +248,15 @@ class GearIndexView extends SlavicsSimpleDataField {
                 LogMonkey.Debug.logMessage("GearIndex.compute()","gearIndex="+(rds.gearIndex+1)+(rds.gearIndex!=lastIndex?" / "+(lastIndex+1):""));
                 lastIndex=rds.gearIndex;
             } else {
-                setValue("--");
+                valueArea.setColor(colorMode.getFieldColor(:valueChange));
+                setValue(derailleur.getDeviceStateAsString());
+                info(:topLeft).setText(derailleur.getState().state.toString());
+                lastIndex=-1;
             }
         } else {
-            setValue("XX");
-            info(:topLeft).setText("");
+            valueArea.setColor(Graphics.COLOR_ORANGE);
+            setValue(derailleur.getDeviceStateAsString());
+            info(:topLeft).setText(derailleur.getState().state.toString());
             lastIndex=-1;
         }
 
@@ -298,6 +302,7 @@ class GearIndexView extends SlavicsSimpleDataField {
             
             debugData.add({:break=>true});
             /***/
+            debugData.add({:label=>"device.state",:value=>derailleur.getDeviceStateAsString()+"["+derailleur.getState().state+"]"});
             debugData.add({:label=>"info.rearDerailleurIndex",:value=>info.rearDerailleurIndex});
             if(info.rearDerailleurIndex!=null){
                 debugData.add({:label=>"info.rearDerailleurSize",:value=>info.rearDerailleurSize});

@@ -144,6 +144,9 @@ class MyDevice {
                 return "unknown";
         }
     }
+    public function getDeviceStateAsString() as String{
+        return getDeviceStateString(self.getState().state);
+    }
     public static function getDeviceStateString(state as Number or Null) as String{
         if(state==null){
             return "<null>";
