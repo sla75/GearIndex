@@ -254,7 +254,7 @@ class GearIndexView extends SlavicsSimpleDataField {
                     setValue("--");
                 }else if(derailleur.getState().state==AntPlus.DEVICE_STATE_DEAD){
                     valueArea.setColor(colorMode.getFieldColor(:valueChange));
-                    setValue("xx");
+                    setValue("-");
                 }else if(derailleur.getState().state==AntPlus.DEVICE_STATE_SEARCHING){
                     valueArea.setColor(Graphics.COLOR_GREEN);
                     setValue("..");
