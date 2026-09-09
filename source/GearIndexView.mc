@@ -248,14 +248,26 @@ class GearIndexView extends SlavicsSimpleDataField {
                 LogMonkey.Debug.logMessage("GearIndex.compute()","gearIndex="+(rds.gearIndex+1)+(rds.gearIndex!=lastIndex?" / "+(lastIndex+1):""));
                 lastIndex=rds.gearIndex;
             } else {
-                valueArea.setColor(colorMode.getFieldColor(:valueChange));
-                setValue(derailleur.getDeviceStateAsString());
-                info(:topLeft).setText(derailleur.getState().state.toString());
+                info(:topLeft).setText("");
+                if(derailleur.getState().state==AntPlus.DEVICE_STATE_CLOSED){
+                    valueArea.setColor(colorMode.getFieldColor(:valueChange));
+                    setValue("--");
+                }else if(derailleur.getState().state==AntPlus.DEVICE_STATE_DEAD){
+                    valueArea.setColor(colorMode.getFieldColor(:valueChange));
+                    setValue("xx");
+                }else if(derailleur.getState().state==AntPlus.DEVICE_STATE_SEARCHING){
+                    valueArea.setColor(Graphics.COLOR_GREEN);
+                    setValue("..");
+                }else {
+                    valueArea.setColor(colorMode.getFieldColor(:valueChange));
+                    setValue("??");
+                    info(:topLeft).setText(derailleur.getState().state.toString());
+                }
                 lastIndex=-1;
             }
         } else {
             valueArea.setColor(Graphics.COLOR_ORANGE);
-            setValue(derailleur.getDeviceStateAsString());
+            setValue("**");
             info(:topLeft).setText(derailleur.getState().state.toString());
             lastIndex=-1;
         }
