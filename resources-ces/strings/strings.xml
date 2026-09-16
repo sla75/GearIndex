@@ -7,7 +7,7 @@
     <string id="property_colorMode_title">Barevný režim</string>
     <string id="property_mainValueUnit_title">Jednotka u hlavní hodnoty</string>
     <string id="property_mainValue_title">Hlavní hodnota</string>
-    <string id="property_mainValue_prompt">Hlavní hodnota</string>
+    <string id="property_mainValue_prompt">Hlavní hodnota.</string>
     <string id="property_showAdditionalValues_title">Vedlejší hodnoty</string>
     <string id="property_showAdditionalValues_prompt">Zobrazit vedlejší hodnoty po změně</string>
     <string id="Newer">Nikdy</string>

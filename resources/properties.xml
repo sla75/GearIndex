@@ -27,7 +27,7 @@
         <!--group id="groupName" title="@Strings.groupMainTitle" description="@Strings.groupMainDescription"-->
             <setting propertyKey="@Properties.property_mainValue" title="@Strings.property_mainValue_title"  prompt="@Strings.property_mainValue_prompt">
                 <settingConfig type="list">
-                    <listEntry value="1">Index</listEntry>
+                    <listEntry value="1">@Strings.Index</listEntry>
                     <listEntry value="2">@Strings.Teeth</listEntry>
                 </settingConfig>
             </setting>

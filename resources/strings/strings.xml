@@ -17,6 +17,7 @@
     <string id="property_showAdditionalValues_prompt">Show Values after change</string>
     <string id="Newer">Newer</string>
     <string id="Always">Always</string>
+    <string id="Index">Index</string>
     <string id="Teeth">Teeth</string>
     
     <string id="RD_totalShifts_label">Count of Shifts</string>
