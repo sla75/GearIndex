@@ -1,9 +1,8 @@
 <strings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
-    <string id="label">Gänge</string>
+    <string id="label">Gang</string>
     <string id="unitTeeths">z</string>
 
     <string id="property_version_title">Version</string>
-    <!--string id="property_showTeeth_title">Kettenradgröße anzeigen</string-->
     <string id="property_nightMode_title">Nachtmodus umkehren</string>
     <string id="property_colorMode_title">Liste der Farbmodi</string>
     <string id="property_mainValueUnit_title">Einheit für den Hauptwert</string>
@@ -15,12 +14,12 @@
     <string id="Always">Immer</string>
     <string id="Teeth">Zähne</string>
 
-    <string id="RD_totalShifts_label">Count of Shifts</string>
+    <string id="RD_totalShifts_label">Anzahl der Schichten</string>
 
-    <string id="RD_gearRatio_title">Gear</string>
-    <string id="RD_gearRatio_label">Ratio</string>
+    <string id="RD_gearRatio_title">Gang</string>
+    <string id="RD_gearRatio_label">Übersetzungsverhältnis</string>
 
-    <string id="RD_gearIndex_title">Rear Derailleur</string>
+    <string id="RD_gearIndex_title">Schaltwerk hinten</string>
     <string id="RD_gearIndex_label">Index</string>
 
     <string id="SprocketStats_DistanceOnGear">Distanz im Gang</string>
