@@ -65,7 +65,7 @@ class GearIndexView extends SlavicsSimpleDataField {
         LogMonkey.Debug.logMessage("GearIndexView.initialize()","");
         SlavicsSimpleDataField.initialize();
         gearFIT = new GearFitContributions(self);
-        batteryFIT = new GearFitContributions(self);
+        batteryFIT = new BatteryFitContributions(self);
         var pos=Application.loadResource(Rez.Strings.AppName).find("Test") as Number or Null;
         if(pos!=null){
             versionTest=Application.loadResource(Rez.Strings.version);

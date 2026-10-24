@@ -39,29 +39,32 @@ class BatteryFitContributions {
 
     function handleSettingUpdate(saveFitFile as Boolean) as Void {
         self.saveFitFile=saveFitFile;
-        LogMonkey.Debug.logMessage("GearFitContributions.handleSettingUpdate()","saveFile="+saveFitFile+" object="+(field_TotalShifts==null?"null":"Exists"));
         if(saveFitFile&&field_RD_BatteryVoltage==null) {
-            field_RD_BatteryVoltage = dataField.createField("RearDerailleurBatteryVoltage", FIT_RD_BATTERYVOLTAGE_ID, FitContributor.DATA_TYPE_FLOAT, {
-                :mesgType=>FitContributor.MESG_TYPE_RECORD});
-            field_RD_BatteryStatus = dataField.createField("RearDerailleurBatteryStatus", FIT_RD_BATTERYSTATUS_ID, FitContributor.DATA_TYPE_UINT8, {
-                :mesgType=>FitContributor.MESG_TYPE_RECORD});
-            field_SL_BatteryVoltage = dataField.createField("ShiftLeverBatteryVoltage", FIT_RD_BATTERYVOLTAGE_ID, FitContributor.DATA_TYPE_FLOAT, {
-                :mesgType=>FitContributor.MESG_TYPE_RECORD});
-            field_SL_BatteryStatus = dataField.createField("ShiftLeverBatteryStatus", FIT_RD_BATTERYSTATUS_ID, FitContributor.DATA_TYPE_UINT8, {
-                :mesgType=>FitContributor.MESG_TYPE_RECORD});
+            field_RD_BatteryVoltage = dataField.createField("RearDerailleurBatteryVoltage"
+                , FIT_RD_BATTERYVOLTAGE_ID, FitContributor.DATA_TYPE_FLOAT
+                , {:mesgType=>FitContributor.MESG_TYPE_RECORD});
+            field_RD_BatteryStatus = dataField.createField("RearDerailleurBatteryStatus"
+                , FIT_RD_BATTERYSTATUS_ID, FitContributor.DATA_TYPE_UINT8
+                , {:mesgType=>FitContributor.MESG_TYPE_RECORD});
+            field_SL_BatteryVoltage = dataField.createField("ShiftLeverBatteryVoltage"
+                , FIT_SL_BATTERYVOLTAGE_ID, FitContributor.DATA_TYPE_FLOAT
+                , {:mesgType=>FitContributor.MESG_TYPE_RECORD});
+            field_SL_BatteryStatus = dataField.createField("ShiftLeverBatteryStatus"
+                , FIT_SL_BATTERYSTATUS_ID, FitContributor.DATA_TYPE_UINT8
+                , {:mesgType=>FitContributor.MESG_TYPE_RECORD});
         }
     }
 
     public function add(batteryData as MyDevice.BatteryData) as Void {
         if(saveFitFile&&field_RD_BatteryVoltage!=null&&batteryData!=null) {
-            switch(bd.get(:identifier)){
+            switch(batteryData.get(:identifier)){
              case 0x02:
-                    field_RD_BatteryVoltage.setData(bd.get(:voltage));
-                    field_RD_BatteryStatus.setData(bd.get(:status));
+                    field_RD_BatteryVoltage.setData(batteryData.get(:voltage));
+                    field_RD_BatteryStatus.setData(BATTERY_STATUS.get(batteryData.get(:status) as BatteryStatusValue));
                     break;
             case 0x04:
-                    field_SL_BatteryVoltage.setData(bd.get(:voltage));
-                    field_SL_BatteryStatus.setData(bd.get(:status));
+                    field_SL_BatteryVoltage.setData(batteryData.get(:voltage));
+                    field_SL_BatteryStatus.setData(BATTERY_STATUS.get(batteryData.get(:status) as BatteryStatusValue));
                     break;
             }
         }
