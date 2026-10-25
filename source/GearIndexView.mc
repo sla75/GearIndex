@@ -51,6 +51,7 @@ class GearIndexView extends SlavicsSimpleDataField {
     private var debugMode=false as Boolean;
     private var propertyMainValue=MAINVALUE_INDEX as Number;
     private var gearFIT as GearFitContributions or Null;
+    private var batteryFIT as BatteryFitContributions or Null;
     private var gearStatistic as GearStatistic;
     private var screen=null as Screen;
     private var debugData=[] as Array<Dictionary>;
@@ -64,6 +65,7 @@ class GearIndexView extends SlavicsSimpleDataField {
         LogMonkey.Debug.logMessage("GearIndexView.initialize()","");
         SlavicsSimpleDataField.initialize();
         gearFIT = new GearFitContributions(self);
+        batteryFIT = new BatteryFitContributions(self);
         var pos=Application.loadResource(Rez.Strings.AppName).find("Test") as Number or Null;
         if(pos!=null){
             versionTest=Application.loadResource(Rez.Strings.version);
@@ -110,6 +112,7 @@ class GearIndexView extends SlavicsSimpleDataField {
             LogMonkey.Debug.logMessage("GearIndexView.onSettingsChanged()","Rez.Strings.AppName="+Application.loadResource(Rez.Strings.AppName)+" REVERSE debugMode="+debugMode);
         }
         gearFIT.handleSettingUpdate(Properties.getValue(PROPERTY_FITFILESAVING) as Boolean);
+        batteryFIT.handleSettingUpdate(Properties.getValue(PROPERTY_FITFILESAVING) as Boolean);
 
         propertyMainValue=Properties.getValue(PROPERTY_MAINVALUE) as Number;
         
@@ -269,7 +272,7 @@ class GearIndexView extends SlavicsSimpleDataField {
             valueArea.setColor(Graphics.COLOR_ORANGE);
             setValue("**");
             info(:topLeft).setText(derailleur.getState().state.toString());
-            lastIndex=-1;
+            lastIndex=-1;gearFIT.handleSettingUpdate(Properties.getValue(PROPERTY_FITFILESAVING) as Boolean);
         }
 
         if(debugMode){
@@ -353,7 +356,13 @@ class GearIndexView extends SlavicsSimpleDataField {
             }
         }
 
+        /*** Batteries to FIT ***/
+        if(batteries!=null){
+            batteryFIT.add(batteries);
+        }
+
     }
+    
     private function getGearString(gear as Number or Null,checkGear as Number or Null) as String {
         if(gear==null){
             return "<null>";

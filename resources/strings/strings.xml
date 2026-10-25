@@ -30,5 +30,11 @@
 
     <string id="SprocketStats_DistanceOnGear">Distance on Gear</string>
     <string id="SprocketStats_PowerOnGear">Power on Gear</string>
+
+    <string id="RD_battery_title">Rear Derailleur Battery</string>
+    <string id="SL_battery_title">Shift Lever Battery</string>
+	<string id="batteryVoltage_label">Voltage</string>
+    <string id="batteryStatus_label">Status</string>
+	<string id="batteryVoltage_unit" translatable="false">V</string>
     
 </strings>

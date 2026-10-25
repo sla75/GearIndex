@@ -24,4 +24,8 @@
 
     <string id="SprocketStats_DistanceOnGear">Vzálenost na pastorku</string>
     <string id="SprocketStats_PowerOnGear">Průměrná síla na pastorku</string>
+
+    <string id="RD_battery_title">Baterie přehazovačky</string>
+    <string id="SL_battery_title">Baterie řazení</string>
+	<string id="batteryVoltage_label">Napětí</string>
 </strings>
