@@ -357,9 +357,10 @@ class GearIndexView extends SlavicsSimpleDataField {
         }
 
         /*** Batteries to FIT ***/
-        for(var i=0;i<batteries.size();i++){
-            batteryFIT.add((batteries as Array<MyDevice.BatteryData>)[i] as MyDevice.BatteryData);
+        if(batteries!=null){
+            batteryFIT.add(batteries);
         }
+
     }
     
     private function getGearString(gear as Number or Null,checkGear as Number or Null) as String {

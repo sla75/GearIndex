@@ -55,17 +55,22 @@ class BatteryFitContributions {
         }
     }
 
-    public function add(batteryData as MyDevice.BatteryData) as Void {
-        if(saveFitFile&&field_RD_BatteryVoltage!=null&&batteryData!=null) {
-            switch(batteryData.get(:identifier)){
-             case 0x02:
-                    field_RD_BatteryVoltage.setData(batteryData.get(:voltage));
-                    field_RD_BatteryStatus.setData(BATTERY_STATUS.get(batteryData.get(:status) as BatteryStatusValue));
-                    break;
-            case 0x04:
-                    field_SL_BatteryVoltage.setData(batteryData.get(:voltage));
-                    field_SL_BatteryStatus.setData(BATTERY_STATUS.get(batteryData.get(:status) as BatteryStatusValue));
-                    break;
+    public function add(batteryArrayData as Array<MyDevice.BatteryData>) as Void {
+        var batteryData;
+        for(var i=0;i<batteryArrayData.size();i++){
+            batteryData=(batteryArrayData as Array<MyDevice.BatteryData>)[i] as MyDevice.BatteryData;
+        
+            if(saveFitFile&&field_RD_BatteryVoltage!=null&&batteryData!=null) {
+                switch(batteryData.get(:identifier)){
+                case 0x02:
+                        field_RD_BatteryVoltage.setData(batteryData.get(:voltage));
+                        field_RD_BatteryStatus.setData(BATTERY_STATUS.get(batteryData.get(:status) as BatteryStatusValue));
+                        break;
+                case 0x04:
+                        field_SL_BatteryVoltage.setData(batteryData.get(:voltage));
+                        field_SL_BatteryStatus.setData(BATTERY_STATUS.get(batteryData.get(:status) as BatteryStatusValue));
+                        break;
+                }
             }
         }
     }
