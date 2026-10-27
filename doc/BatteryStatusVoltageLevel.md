@@ -1,3 +1,17 @@
-ComponentBattery TypeFully ChargedNominal / LowCritical
-AXS Derailleur300 mAh LiPo (SRAM AXS)\sim 8.40\text{ V}\sim 7.40\text{ V}< 6.80\text{ V}
-AXS Pod / ShifterCR2032 Coin Cell\sim 3.00\text{ V} - 3.20\text{ V}\sim 2.60\text{ V}< 2.40\text{ V}
+# ComponentBattery
+## AXS Derailleur 300 mAh LiPo (SRAM AXS)
+TypeFully ~ 8.40V
+ChargedNominal ~ 7.40V
+LowCritical < 6.80V
+##AXS Pod / Shifter
+CR2032 Coin Cell
+TypeFully ~ 3.00V - 3.20V
+ChargedNominal ~ 2.60V
+LowCritical < 2.40V
+
+# On-Device LED Quick Reference
+​If checking the GX Transmission derailleur directly without the Garmin head unit:
+* ​Solid Green: Good ~ 25% to 100%
+* ​Solid Red: Low ~ 15% to 25%
+* ​Flashing Red: Critically Low < 15%
+* ​Red / Green Alternate Flash: Shift rejected (e.g., extreme cold below -15°C or overload/bound chain).  
