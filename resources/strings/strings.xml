@@ -22,19 +22,23 @@
     
     <string id="RD_totalShifts_label">Count of Shifts</string>
 
-    <string id="RD_gearRatio_title">Gear</string>
+    <string id="RD_gearRatio_title">Gear Ratio</string>
     <string id="RD_gearRatio_label">Ratio</string>
 
-    <string id="RD_gearIndex_title">Rear Derailleur</string>
+    <string id="RD_gearIndex_title">Rear Derailleur Index</string>
     <string id="RD_gearIndex_label">Index</string>
 
     <string id="SprocketStats_DistanceOnGear">Distance on Gear</string>
     <string id="SprocketStats_PowerOnGear">Power on Gear</string>
 
-    <string id="RD_battery_title">Rear Derailleur Battery</string>
-    <string id="SL_battery_title">Shift Lever Battery</string>
-	<string id="batteryVoltage_label">Voltage</string>
-    <string id="batteryStatus_label">Status</string>
+    <string id="RD_batteryVoltage_title">Rear Derailleur Battery</string>
+    <string id="RD_batteryStatus_title">Rear Derailleur Battery</string>
+    <string id="RD_batteryRange_label">Rear Derailleur Battery</string>
+    <string id="SL_batteryVoltage_title">Shift RD Battery</string>
+    <string id="SL_batteryStatus_title">Shift RD Battery</string>
+    <string id="SL_batteryRange_label">Shift RD Battery</string>
+    <string id="batteryVoltage_label">Voltage</string>
+    <string id="batteryStatus_label" translatable="false">Status</string>
 	<string id="batteryVoltage_unit" translatable="false">V</string>
     
 </strings>

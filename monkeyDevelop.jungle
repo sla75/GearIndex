@@ -1,2 +1,0 @@
-project.manifest = manifestDevelop.xml
-base.resourcePath=$(base.resourcePath);resourcesDevelop

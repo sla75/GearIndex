@@ -62,7 +62,7 @@ class MyDevice {
 
     (:debug)
     public function getBatteries() as Array<BatteryData> {
-        var ids=[0x01,0x03,0x55] as Array<Number>;
+        var ids=[0x00,0x02,0x55] as Array<Number>;
         var batteries=[] as Array<BatteryData>;
         for(var i=0;i<ids.size();i++){
             var id=ids[i];
