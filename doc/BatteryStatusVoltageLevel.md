@@ -1,13 +1,14 @@
 # ComponentBattery
+
 ## AXS Derailleur 300 mAh LiPo (SRAM AXS)
-TypeFully ~ 8.40V
-ChargedNominal ~ 7.40V
-LowCritical < 6.80V
-##AXS Pod / Shifter
-CR2032 Coin Cell
-TypeFully ~ 3.00V - 3.20V
-ChargedNominal ~ 2.60V
-LowCritical < 2.40V
+* TypeFully ~ 8.40V
+* ChargedNominal ~ 7.40V
+* LowCritical < 6.80V
+
+## AXS Pod / Shifter CR2032 Coin Cell
+* TypeFully ~ 3.00V - 3.20V
+* ChargedNominal ~ 2.60V
+* LowCritical < 2.40V
 
 # On-Device LED Quick Reference
 ​If checking the GX Transmission derailleur directly without the Garmin head unit:
