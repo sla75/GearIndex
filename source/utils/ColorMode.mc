@@ -8,7 +8,7 @@ class ColorMode {
         COLOR_VD_BLUE=0x313152,
     }
     
-    public var isNight=false as Boolean;
+    public var isNight as Boolean=false;
 
     private const MODE_BLACKANDWHITE={:day=>{
                 :background=>Graphics.COLOR_WHITE,
@@ -67,7 +67,7 @@ class ColorMode {
                 :error=>Graphics.COLOR_LT_GRAY,
             }
         } as Dictionary<Dictionary<Symbol,Graphics.ColorValue>>;
-    private var colors=MODE_BLACKANDWHITE as Dictionary<Symbol,Graphics.ColorValue>;
+    private var colors as Dictionary<Symbol,Dictionary<Symbol,Graphics.ColorValue>> = MODE_BLACKANDWHITE as Dictionary<Symbol,Dictionary<Symbol,Graphics.ColorValue>>;
     function initialize() {
         System.println("ColorMode.initialize()");
     }
@@ -76,33 +76,39 @@ class ColorMode {
         System.println("ColorMode.onSettingsChanged()="+Properties.getValue("property_colorMode").toString());
         switch (Properties.getValue("property_colorMode") as Number) {
             case 0:
-                colors=MODE_BLACKANDWHITE as Dictionary<Symbol,Graphics.ColorValue>;
+                colors=MODE_BLACKANDWHITE as Dictionary<Symbol,Dictionary<Symbol,Graphics.ColorValue>>;
                 break;
             case 1:
-                colors=MODE_BLUE as Dictionary<Symbol,Graphics.ColorValue>;
+                colors=MODE_BLUE as Dictionary<Symbol,Dictionary<Symbol,Graphics.ColorValue>>;
                 break;
             case 2:
-                colors=MODE_GREEN as Dictionary<Symbol,Graphics.ColorValue>;
+                colors=MODE_GREEN as Dictionary<Symbol,Dictionary<Symbol,Graphics.ColorValue>>;
                 break;
             case 3:
-                colors=MODE_PINK as Dictionary<Symbol,Graphics.ColorValue>;
+                colors=MODE_PINK as Dictionary<Symbol,Dictionary<Symbol,Graphics.ColorValue>>;
                 break;
             default:
-                colors=MODE_BLACKANDWHITE as Dictionary<Symbol,Graphics.ColorValue>;
+                colors=MODE_BLACKANDWHITE as Dictionary<Symbol,Dictionary<Symbol,Graphics.ColorValue>>;
                 break;
         }
         if(!colors.hasKey(:night)){
-            colors.put(:night,colors.get(:day));
+            colors.put(:night,colors.get(:day) as Dictionary<Symbol,Graphics.ColorValue>);
         }
     }
     public function compute() as Void {
         isNight=(Properties.getValue("property_nightMode") as Boolean)?!System.getDeviceSettings().isNightModeEnabled:System.getDeviceSettings().isNightModeEnabled;
     }
+    
     public function getFieldColor(field as Symbol) as Graphics.ColorValue {
-        return colors.get(isNight?:night::day).get(field) as Graphics.ColorValue;
+        var x=getFieldColorsByDayNight(isNight?:night::day) as Dictionary<Symbol,Graphics.ColorValue> or Null;
+        if(x!=null && x.get(field)!=null){
+            return x.get(field) as Graphics.ColorValue;
+        } else {
+            return Graphics.COLOR_LT_GRAY;
+        }
     }
-    public function getNightFieldColor(field as Symbol) as Graphics.ColorValue {
-        return colors.get(:night).get(field) as Graphics.ColorValue;
+    private function getFieldColorsByDayNight(dayNight as Symbol) as Dictionary<Symbol,Graphics.ColorValue> or Null {
+        return colors.get(:dayNight) as Dictionary<Symbol,Graphics.ColorValue>;
     }
     public function getColors() as Dictionary<Symbol,Graphics.ColorValue> {
         return colors.get(isNight?:night::day) as Dictionary<Symbol,Graphics.ColorValue>;

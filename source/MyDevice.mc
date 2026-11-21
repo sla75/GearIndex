@@ -2,16 +2,14 @@ import Toybox.AntPlus;
 import Toybox.Graphics;
 import Toybox.Lang;
 
-class MyDevice {
-
-    typedef BatteryData as {
-            :identifier as Number,
-            :status as Number or Null,
-            :voltage as Float or Null,
-            :operatingTime as Number or Null,
-            :color as Graphics.ColorType,
-        };
-
+public class MyDevice {
+    public class BatteryData {
+            public var identifier as Number=-1;
+            public var status as AntPlus.BatteryStatusValue=AntPlus.BATT_STATUS_INVALID;
+            public var voltage as Float=-1f;
+            public var operatingTime as Number=-1;
+            public var color as Graphics.ColorType=Graphics.COLOR_LT_GRAY;
+    }
     public const MANUFACTURE = {
         41=>{:name=>"Shimano",:color=>Graphics.COLOR_BLUE,:bacground=>Graphics.COLOR_WHITE},
         51=>{:name=>"4iiii",:color=>Graphics.COLOR_BLACK,:bacground=>Graphics.COLOR_WHITE},
@@ -19,7 +17,7 @@ class MyDevice {
         268=>{:name=>"SRAM",:color=>Graphics.COLOR_RED,:bacground=>Graphics.COLOR_WHITE}
     };
 
-    public static const BATTERY_STATUS_COLOR = [0,Graphics.COLOR_DK_GREEN,Graphics.COLOR_DK_GREEN,Graphics.COLOR_DK_GREEN,Graphics.COLOR_ORANGE,Graphics.COLOR_RED,0,Graphics.COLOR_DK_RED,Graphics.COLOR_LT_GRAY] as Array<ColorType>;
+    public static const BATTERY_STATUS_COLOR as Array<ColorType> = [0,Graphics.COLOR_DK_GREEN,Graphics.COLOR_DK_GREEN,Graphics.COLOR_DK_GREEN,Graphics.COLOR_ORANGE,Graphics.COLOR_RED,0,Graphics.COLOR_DK_RED,Graphics.COLOR_LT_GRAY];
 
     public static const BATTERY_STATUSES =[AntPlus.BATT_STATUS_CNT,
                 AntPlus.BATT_STATUS_NEW,
@@ -67,17 +65,17 @@ class MyDevice {
         for(var i=0;i<ids.size();i++){
             var id=ids[i];
             var bs=new BatteryStatus();
-            bs.batteryStatus=BATTERY_STATUSES[(1+System.getClockTime().sec%8)];
+            bs.batteryStatus=BATTERY_STATUSES[(1+System.getClockTime().sec%8)] as BatteryStatusValue;
             bs.batteryVoltage=System.getClockTime().sec/7f;
             bs.operatingTime=System.getClockTime().min*60+System.getClockTime().sec;
             if(bs has :batteryStatus && bs!=null){
-                batteries.add({
-                        :identifier=>id,
-                        :status=>bs.batteryStatus==null?AntPlus.BATT_STATUS_INVALID:bs.batteryStatus,
-                        :color=>BATTERY_STATUS_COLOR[bs.batteryStatus],
-                        :voltage=>bs.batteryVoltage,
-                        :operatingTime=>bs.operatingTime
-                    });
+                var bd=new BatteryData();
+                bd.identifier=id;
+                bd.status=bs.batteryStatus==null?AntPlus.BATT_STATUS_INVALID:bs.batteryStatus as BatteryStatusValue;
+                bd.color=(BATTERY_STATUS_COLOR as Array)[bs.batteryStatus] as Graphics.ColorType;
+                bd.voltage=bs.batteryVoltage as Float;
+                bd.operatingTime=bs.operatingTime as Number;
+                batteries.add(bd);
             }
         }
         return batteries;
@@ -93,13 +91,13 @@ class MyDevice {
         for(var i=0;i<ids.size();i++){
             var bs=device.getBatteryStatus(ids[i]) as BatteryStatus;
             if(bs!=null){
-                batteries.add({
-                    :identifier=>ids[i],
-                    :status=>bs.batteryStatus==null?AntPlus.BATT_STATUS_INVALID:bs.batteryStatus,
-                    :color=>BATTERY_STATUS_COLOR[bs.batteryStatus],
-                    :voltage=>bs.batteryVoltage,
-                    :operatingTime=>bs.operatingTime
-                });
+                var bd=new BatteryData();
+                bd.identifier=ids[i];
+                bd.status=bs.batteryStatus==null?AntPlus.BATT_STATUS_INVALID:bs.batteryStatus;
+                bd.color=(BATTERY_STATUS_COLOR as Array)[bs.batteryStatus] as Graphics.ColorType;
+                bd.voltage=bs.batteryVoltage;
+                bd.operatingTime=bs.operatingTime;
+                batteries.add(bd);
             }
         }
         return batteries;

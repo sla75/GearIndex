@@ -342,10 +342,10 @@ class GearIndexView extends SlavicsSimpleDataField {
                     debugData.add({:break=>true});
                     for(var j=0;j<derailleur.getBatteries().size();j++){
                         var batt=(derailleur.getBatteries() as Array)[j];
-                        var voltage=batt.get(:voltage)==null?"[null]":batt.get(:voltage).format("%.2f")+"V";
-                        debugData.add({:label=>"RDS."+batt.get(:identifier)+".status .voltage",:value=>batt.get(:status)==null?null:Derailleur.getBatteryStatusString(batt.get(:status))+"["+batt.get(:status)+"] "+voltage});
+                        var voltage=batt.voltage==null?"[null]":batt.voltage.format("%.2f")+"V";
+                        debugData.add({:label=>"RDS."+batt.identifier+".status .voltage",:value=>batt.status==null?null:Derailleur.getBatteryStatusString(batt.status)+"["+batt.status+"] "+voltage});
                         //debugData.add({:label=>"RDS."+batt.get(:identifier)+".operatingTime",:value=>batt.get(:operatingTime)});
-                        if(derailleur.getDevice().getManufacturerInfo(batt.get(:identifier))!=null){
+                        if(derailleur.getDevice().getManufacturerInfo(batt.identifier)!=null){
                             debugData.add({:label=>"device.manufacturerId",:value=>derailleur.getDevice().getManufacturerInfo(batt.get(:identifier)).manufacturerId});
                             debugData.add({:label=>"device.modelNumber",:value=>derailleur.getDevice().getManufacturerInfo(batt.get(:identifier)).modelNumber});
                         }
@@ -436,18 +436,18 @@ class GearIndexView extends SlavicsSimpleDataField {
             for(var i=0;i<batteries.size();i++){
                 var bd=(batteries as Array<MyDevice.BatteryData>)[i] as MyDevice.BatteryData;
                 // Vertically
-                if(bd.get(:status)!=null&&bd.get(:status)>0) {
+                if(bd.status!=null&&bd.status>0) {
 
                     battIcon.locX=bLocX;
                     battIcon.locY=bLocY;
-                    battIcon.setStatus(bd.get(:status));
+                    battIcon.setStatus(bd.status);
                     battIcon.draw(dc);
 
                     dc.setColor(colorMode.getFieldColor(:label),Graphics.COLOR_TRANSPARENT);
                     dc.drawText(
                             bLocX-battIcon.getWidth(dc)-2,
                             bLocY+(Graphics.getFontHeight(battIcon.getFont())-Graphics.getFontHeight(battFont)),
-                            battFont,derailleur.getBatteryName(bd.get(:identifier)),
+                            battFont,derailleur.getBatteryName(bd.identifier),
                             Graphics.TEXT_JUSTIFY_RIGHT
                         );
                     bLocY-=Graphics.getFontHeight(battIcon.getFont())+3;
