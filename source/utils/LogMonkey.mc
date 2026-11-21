@@ -13,28 +13,26 @@ module LogMonkey {
 
     // Create some static Logger variables which act as the APIs a
     // developer uses to log information to the different log levels.
-    const Debug = new Logger("Debug", System);
-    const Warn  = new Logger("WARN", System);
-    const Error = new Logger("ERROR", System);
+    const Debug = new Logger("Debug");
+    const Warn  = new Logger("WARN");
+    const Error = new Logger("ERROR");
     (:debug)
     class Logger {
 
         private var mLogLevel as String;
-        private var mLogStream;
 
         //! Creates a new Logger object.
         //! @param logLevel [Toybox::Lang::String] The log level value to log messages through this class to
         //! @param logStream [Toybox::Lang::Object] An object which defines a println(message) function
-        function initialize(logLevel as String, logStream) {
+        function initialize(logLevel as String) {
             mLogLevel = logLevel;
-            mLogStream = logStream;
         }
 
         // The string formats to use when printing log messages
-        private static var FORMAT_VARIABLE = "$1$=($2$) $3$" as String;
-        private static var FORMAT_VARIABLE_NULL = "$1$= <null>" as String;
-        private static var FORMAT_LOG_MESSAGE = "$1$ [$2$] $3$: $4$" as String;
-        private static var FORMAT_TIMESTAMP = "$1$:$2$:$3$" as String; // HH:MM:SS
+        private static const FORMAT_VARIABLE = "$1$=($2$) $3$" as String;
+        private static const FORMAT_VARIABLE_NULL as String = "$1$= <null>" as String;
+        private static const FORMAT_LOG_MESSAGE = "$1$ [$2$] $3$: $4$" as String;
+        private static const FORMAT_TIMESTAMP = "$1$:$2$:$3$" as String; // HH:MM:SS
 
         //! Forms a log message based on the given values.
         //! @param tag [Toybox::Lang::String] The tag to apply to the log message
@@ -58,7 +56,7 @@ module LogMonkey {
         //! @param message [Toybox::Lang::String] The message to log
         private function log(tag as String, message as String) as Void {
             // Print the log message
-            mLogStream.println(formLogMessage(tag, message));
+            System.println(formLogMessage(tag, message));
         }
 
         //! Returns the type string of the given variable. Note, this function
@@ -66,7 +64,7 @@ module LogMonkey {
         //! given variable isn't a type defined there then "Object" will be returned.
         //! @param variable [Toybox::Lang::Object] The variable to get the type of
         //! @return [Toybox::Lang::String] The name of the type of the given variable
-        private function getVariableType(variable) as String {
+        private function getVariableType(variable as Object or Null) as String {
             // If the given value is null we can't switch on it so perform
             // a null check here. The return value should just be "null".
             if (variable == null) {
@@ -77,7 +75,7 @@ module LogMonkey {
             // class name accordingly.
             switch (variable) {
                 case instanceof Lang.Array:
-                    return "Array["+variable.size()+"]";
+                    return "Array["+(variable as Array).size()+"]";
                 case instanceof Lang.Boolean:
                     return "Boolean";
                 case instanceof Lang.Char:
@@ -118,7 +116,7 @@ module LogMonkey {
         //! @param tag [Toybox::Lang::String] The tag to apply to the log message
         //! @param exception [Toybox::Lang::Exception] The Exception to log
         function logException(tag as String, exception as Exception) as Void {
-            log(tag, exception.getErrorMessage());
+            log(tag, exception.getErrorMessage() as String);
             exception.printStackTrace();
             //TODO: Iteratre through stacktrace.
         }
@@ -127,7 +125,7 @@ module LogMonkey {
         //! @param tag [Toybox::Lang::String] The tag to apply to the log message
         //! @param variableName [Toybox::Lang::String] The name of the variable being logged
         //! @param variable [Toybox::Lang::Object] The variable to log
-        function logVariable(tag, variableName, variable) as Void {
+        function logVariable(tag as String, variableName as String, variable as Object or Null) as Void {
             if (variable == null) {
                 log(tag, Lang.format(FORMAT_VARIABLE_NULL, [variableName]));
             } else {

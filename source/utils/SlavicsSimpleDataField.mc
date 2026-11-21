@@ -21,19 +21,19 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
             Graphics.FONT_XTINY,
         ] as Array<Graphics.FontType>;
 
-    protected var labelArea = new WatchUi.TextArea({
+    protected var labelArea as TextArea = new WatchUi.TextArea({
             :text=>"",
             :color=>Graphics.COLOR_DK_GRAY,
             :font=>FONTS.slice(4,null),
             :justification => Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER,
-        }) as TextArea;
-    protected var valueArea=new WatchUi.TextArea({
+        });
+    protected var valueArea as TextArea = new WatchUi.TextArea({
             :text=>"",
             :color=>Graphics.COLOR_DK_BLUE,
             :font=>FONTS,
             :justification => Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER,
-        }) as TextArea;
-    protected var labels={
+        });
+    protected var labels as Dictionary<Symbol, Text or MyText> = {
         :topLeft=>new Text({
             :color=>Graphics.COLOR_DK_GRAY,
             :font=>Graphics.FONT_MEDIUM,
@@ -59,11 +59,11 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
             :visibility=>false
         })
     };
-    private var timer=null as SlavicsSimpleDataField.Timer;
+    private var timer as SlavicsSimpleDataField.Timer or Null;
 
-    public var rim=0 as Number;
-    public var labelLine=0 as Number;
-    public var colors={:background=>Graphics.COLOR_WHITE,:label=>Graphics.COLOR_DK_GRAY,:value=>Graphics.COLOR_BLACK} as Dictionary<Symbol,Graphics.ColorValue>;
+    public var rim as Number=0;
+    public var labelLine as Number=0;
+    public var colors as Dictionary<Symbol,Graphics.ColorValue> = {:background=>Graphics.COLOR_WHITE,:label=>Graphics.COLOR_DK_GRAY,:value=>Graphics.COLOR_BLACK};
     //protected var textLabel="Label" as String;
     //protected var textValue="Value" as String;
 
@@ -74,8 +74,8 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
 
     function onLayout(dc as Dc) as Void {
         //LogMonkey.Debug.logMessage("SlavicsSimpleDataField.onLayout()",dc.getWidth()+"x"+dc.getHeight());
-        rim=dc.getHeight()*0.02f;
-        labelLine=dc.getHeight()*LABELHEIGHT;
+        rim=(dc.getHeight()*0.02f).toNumber();
+        labelLine=(dc.getHeight()*LABELHEIGHT).toNumber();
 
         labelArea.locX=rim;
         labelArea.locY=rim;
@@ -89,21 +89,25 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
         valueArea.height=dc.getHeight()-labelLine*0.667f;
         valueArea.setJustification(Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 
-        labels.get(:topLeft).locX=self.rim;
-        labels.get(:topLeft).locY=self.labelLine;
-        labels.get(:topLeft).setJustification(Graphics.TEXT_JUSTIFY_LEFT);
+        var t=getText(:topLeft) as Text;
+        t.locX=self.rim;
+        t.locY=self.labelLine;
+        t.setJustification(Graphics.TEXT_JUSTIFY_LEFT);
 
-        labels.get(:topRight).locX=dc.getWidth()-self.rim;
-        labels.get(:topRight).locY=self.labelLine;
-        labels.get(:topRight).setJustification(Graphics.TEXT_JUSTIFY_RIGHT);
+        t=getText(:topRight) as Text;
+        t.locX=dc.getWidth()-self.rim;
+        t.locY=self.labelLine;
+        t.setJustification(Graphics.TEXT_JUSTIFY_RIGHT);
 
-        labels.get(:bottomLeft).locX=self.rim;
-        labels.get(:bottomLeft).locY=dc.getHeight()-self.rim-Graphics.getFontAscent(Graphics.FONT_SMALL);
-        labels.get(:bottomLeft).setJustification(Graphics.TEXT_JUSTIFY_LEFT);
-
-        labels.get(:bottomRight).locX=dc.getWidth()-self.rim;
-        labels.get(:bottomRight).locY=dc.getHeight()-self.rim-Graphics.getFontAscent(Graphics.FONT_SMALL);
-        labels.get(:bottomRight).setJustification(Graphics.TEXT_JUSTIFY_RIGHT);
+        t=getText(:bottomLeft);
+        t.locX=self.rim;
+        t.locY=dc.getHeight()-self.rim-Graphics.getFontAscent(Graphics.FONT_SMALL);
+        t.setJustification(Graphics.TEXT_JUSTIFY_LEFT);
+        
+        t=getText(:bottomRight);
+        t.locX=dc.getWidth()-self.rim;
+        t.locY=dc.getHeight()-self.rim-Graphics.getFontAscent(Graphics.FONT_SMALL);
+        t.setJustification(Graphics.TEXT_JUSTIFY_RIGHT);
     }
     public function setTimer(duration as Number or Null) as Void {
         LogMonkey.Debug.logVariable("SlavicsSimpleDataField.setTimer()","duration",duration);
@@ -113,31 +117,31 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
             self.timer=new SlavicsSimpleDataField.Timer(duration);
         }
     }
-    public function info(name as Symbol) as MyText {
-        return labels.get(name);
+    public function getText(name as Symbol) as Text {
+        return labels.get(name) as Text;
     }
-    public function setTextInfo(name as Symbol,text as String or Null){
-        labels.get(name).setText(text!=null?text:"");
+    public function setTextInfo(name as Symbol,text as String or Null) as Void{
+        getText(name).setText(text!=null?text:"");
         if(timer!=null){
             timer.start();
         }
     }
-    public function setTextLabel(text as String or Null){
+    public function setTextLabel(text as String or Null) as Void{
         labelArea.setText(text!=null?text:"");
     }
 
-    public function setValue(text as String or Null){
+    public function setValue(text as String or Null) as Void{
         valueArea.setText(text!=null?text:"");
     }
-    
+    (:typecheck(false))
     public function setColors(colors as Dictionary<Symbol,Graphics.ColorValue>){
         self.colors=colors;
         valueArea.setColor(colors.get(:value));
         labelArea.setColor(colors.get(:label));
-        labels.get(:topLeft).setColor(colors.get(:label));
-        labels.get(:topRight).setColor(colors.get(:label));
-        labels.get(:bottomLeft).setColor(colors.get(:label));
-        labels.get(:bottomRight).setColor(colors.get(:label));
+        getText(:topLeft).setColor(colors.get(:label));
+        getText(:topRight).setColor(colors.get(:label));
+        getText(:bottomLeft).setColor(colors.get(:label));
+        getText(:bottomRight).setColor(colors.get(:label));
     }
     /***
     public function compute(info as Activity.Info) as Void {
@@ -150,17 +154,17 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
     // once a second when the data field is visible.
     
     public function onUpdate(dc as Dc) as Void {
-        LogMonkey.Debug.logMessage("SlavicsSimpleDataField.onUpdate()",timer);
-        dc.setColor(Graphics.COLOR_TRANSPARENT,colors.get(:background));
+        LogMonkey.Debug.logMessage("SlavicsSimpleDataField.onUpdate()",timer!=null?timer.toString():"");
+        dc.setColor(Graphics.COLOR_TRANSPARENT,colors.get(:background) as Graphics.ColorValue);
         dc.clear();
         valueArea.draw(dc);
         labelArea.draw(dc);
         if(timer==null||!timer.isExpired()){
             LogMonkey.Debug.logMessage("SlavicsSimpleDataField.onUpdate()","draw topbottomleftright");
-            labels.get(:topLeft).draw(dc);
-            labels.get(:topRight).draw(dc);
-            labels.get(:bottomLeft).draw(dc);
-            labels.get(:bottomRight).draw(dc);
+            getText(:topLeft).draw(dc);
+            getText(:topRight).draw(dc);
+            getText(:bottomLeft).draw(dc);
+            getText(:bottomRight).draw(dc);
         }
         onUpdateAfter(dc);
     }
@@ -182,12 +186,13 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
         dc.drawRectangle(valueArea.locX,valueArea.locY,valueArea.width,valueArea.height);
         dc.drawLine(valueArea.locX,valueArea.locY+valueArea.height/2,valueArea.locX+valueArea.width,valueArea.locY+valueArea.height/2);
     }
-
+    
     class MyText extends WatchUi.Text{
         private var myFont as Graphics.FontType;
-        function initialize(options as Dictionary){
+        (:typecheck(false))
+        function initialize(options) {
             Text.initialize(options);
-            myFont=options.get(:font)==null?Graphics.FONT_TINY:options.get(:font);
+            myFont=options.get(:font)==null?Graphics.FONT_TINY:options.get(:font) as Graphics.FontType;
             Text.setFont(myFont);
         }
         function setFont(font as Graphics.FontType) as Void {
@@ -200,9 +205,9 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
     }
 
     class Timer {
-        private var timeValue=0 as Number;
+        private var timeValue as Number=0;
         private var defaultDuration as Number;
-        private var expired=true as Boolean;
+        private var expired as Boolean=true;
         
         function initialize(durationSec as Number){
             defaultDuration=durationSec;
@@ -228,7 +233,7 @@ class SlavicsSimpleDataField extends WatchUi.DataField {
         }
 
         function toString() as String{
-            return "Timer("+defaultDuration+"s) expired="+expired;
+            return "Timer("+defaultDuration.toString()+"s) expired="+expired.toString();
         }
     }
 }

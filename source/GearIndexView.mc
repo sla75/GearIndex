@@ -175,12 +175,12 @@ class GearIndexView extends SlavicsSimpleDataField {
             default:
                 showAdditionalValues=-1;
         }
-        if(showAdditionalValues==-1){
-            info(:topLeft).setVisible(false);
-            info(:bottomLeft).setVisible(false);
+        if(showAdditionalValues as Number==-1){
+            getText(:topLeft).setVisible(false);
+            getText(:bottomLeft).setVisible(false);
         } else {
-            info(:topLeft).setVisible(true);
-            info(:bottomLeft).setVisible(true);
+            getText(:topLeft).setVisible(true);
+            getText(:bottomLeft).setVisible(true);
         }
     }
     /***
@@ -251,7 +251,7 @@ class GearIndexView extends SlavicsSimpleDataField {
                 LogMonkey.Debug.logMessage("GearIndex.compute()","gearIndex="+(rds.gearIndex+1)+(rds.gearIndex!=lastIndex?" / "+(lastIndex+1):""));
                 lastIndex=rds.gearIndex;
             } else {
-                info(:topLeft).setText("");
+                getText(:topLeft).setText("");
                 if(derailleur.getState().state==AntPlus.DEVICE_STATE_CLOSED){
                     valueArea.setColor(colorMode.getFieldColor(:valueChange));
                     setValue("--");
@@ -264,14 +264,14 @@ class GearIndexView extends SlavicsSimpleDataField {
                 }else {
                     valueArea.setColor(colorMode.getFieldColor(:valueChange));
                     setValue("??");
-                    info(:topLeft).setText(derailleur.getState().state.toString());
+                    getText(:topLeft).setText(derailleur.getState().state.toString());
                 }
                 lastIndex=-1;
             }
         } else {
             valueArea.setColor(Graphics.COLOR_ORANGE);
             setValue("**");
-            info(:topLeft).setText(derailleur.getState().state.toString());
+            getText(:topLeft).setText(derailleur.getState().state.toString());
             lastIndex=-1;gearFIT.handleSettingUpdate(Properties.getValue(PROPERTY_FITFILESAVING) as Boolean);
         }
 
