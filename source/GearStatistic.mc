@@ -31,7 +31,13 @@ class GearStatistic {
         self.prefered=preferedMeasure;
         self.colorMode=colorMode;
     }
-    
+    function getCurrentPower(info as Activity.Info) as Float {
+        var power = info.currentPower;
+        if (power == null) {
+            return 0.0f;
+        }
+        return power as Float;
+    }
     public function compute(info as Activity.Info, derailleur as Derailleur) as Void {
         if(derailleur==null || !derailleur.isFrontValidStatus() || !derailleur.isRearValidStatus()){
             currentIndex=null;
@@ -66,25 +72,30 @@ class GearStatistic {
             if(stats.get(:distance)==null){
                 distanceStats=new SprocketStats(derailleur.getRearStatus().gearMax,@Rez.Strings.SprocketStats_DistanceOnGear,"m",SprocketStats.TYPE_SUM);
             }
-
-            if((prefered==POWER||prefered==AUTO)&&info.currentPower!=null){
-                if(info.currentPower>0&&derailleur.isRearValidStatus()){
+            var currentPower=getCurrentPower(info);
+            if((prefered==POWER||prefered==AUTO)&&currentPower>0){
+                if(derailleur.isRearValidStatus()){
                     var powerStats=stats.get(:power) as SprocketStats;
                     if(stats.get(:power)==null){
                         powerStats=new SprocketStats(derailleur.getRearStatus().gearMax,@Rez.Strings.SprocketStats_PowerOnGear,"W",SprocketStats.TYPE_AVG);
                     }
-                    LogMonkey.Debug.logMessage("GearStat.computeGraph()","by POWER Sprocket "+(derailleur.getRearStatus().gearIndex+1)+" on Power="+info.currentPower+"W and Distance="+diffDistance+"m");
+                    LogMonkey.Debug.logMessage("GearStat.computeGraph()","by POWER Sprocket "+(derailleur.getRearStatus().gearIndex+1)+" on Power="+currentPower+"W and Distance="+diffDistance+"m");
                     currentIndex=derailleur.getRearStatus().gearIndex;
-                    powerStats.addDiff(derailleur.getRearStatus().gearIndex,info.currentPower,diffDistance);
+                    powerStats.addDiff(derailleur.getRearStatus().gearIndex,currentPower,diffDistance);
                     stats.put(:power,powerStats);
 
                     distanceStats.add(derailleur.getRearStatus().gearIndex,diffDistance);
                     stats.put(:distance,distanceStats);
                 }
-                lastTimerTime=info.timerTime;
+                
+                if(info.timerTime!=null&&info.timerTime instanceof Number){
+                    lastTimerTime=info.timerTime as Number;
+                }
+                
             }else if((prefered==CADENCE||prefered==AUTO)&&info.currentCadence!=null){
-                if(info.currentCadence!=null&&info.currentCadence>0){
-                    LogMonkey.Debug.logMessage("GearStat.computeGraph()","by CADENCE "+info.currentCadence+" on Distance="+diffDistance+"m");
+                var currentCadence = info.currentCadence;
+                if(currentCadence!=null&&currentCadence instanceof Number){
+                    LogMonkey.Debug.logMessage("GearStat.computeGraph()","by CADENCE "+currentCadence+" on Distance="+diffDistance+"m");
                     distanceStats.addDiff(derailleur.getRearStatus().gearIndex,1,diffDistance);
                     stats.put(:distance,distanceStats);
                 }
