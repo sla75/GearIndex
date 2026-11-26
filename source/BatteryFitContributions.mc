@@ -3,7 +3,7 @@ import Toybox.Application;
 import Toybox.FitContributor;
 import Toybox.Lang;
 import Toybox.WatchUi;
-import LogMonkey;
+import BarrelIndex;
 
 class BatteryFitContributions {
 

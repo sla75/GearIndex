@@ -6,7 +6,7 @@ import Toybox.Lang;
 import Toybox.Math;
 import Toybox.System;
 import Toybox.WatchUi;
-import LogMonkey;
+import BarrelIndex;
 
 class GearIndexView extends SlavicsSimpleDataField {
 

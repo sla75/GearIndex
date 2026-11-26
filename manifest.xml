@@ -33,6 +33,8 @@
         -->
         <iq:permissions>
             <iq:uses-permission id="Ant"/>
+            <iq:uses-permission id="Ant"/>
+            <iq:uses-permission id="FitContributor"/>
             <iq:uses-permission id="FitContributor"/>
         </iq:permissions>
         <!--
@@ -41,18 +43,27 @@
         -->
         <iq:languages>
             <iq:language>ces</iq:language>
+            <iq:language>ces</iq:language>
+            <iq:language>deu</iq:language>
             <iq:language>deu</iq:language>
             <iq:language>fre</iq:language>
+            <iq:language>fre</iq:language>
+            <iq:language>hun</iq:language>
             <iq:language>hun</iq:language>
             <iq:language>ita</iq:language>
+            <iq:language>ita</iq:language>
             <iq:language>pol</iq:language>
+            <iq:language>pol</iq:language>
+            <iq:language>slo</iq:language>
             <iq:language>slo</iq:language>
         </iq:languages>
         <!--
             Use "Monkey C: Configure Monkey Barrel" from the Visual Studio Code
             command palette to edit the included barrels.
         -->
-        <iq:barrels/>
+        <iq:barrels>
+            <iq:depends name="BarrelIndex" version="0.1.0"/>
+        </iq:barrels>
         <iq:activityFilter/>
     </iq:application>
 </iq:manifest>

@@ -4,7 +4,7 @@ import Toybox.Graphics;
 import Toybox.Lang;
 import Toybox.Time;
 import Toybox.WatchUi;
-import LogMonkey;
+import BarrelIndex;
 
 class GearStatistic {
 

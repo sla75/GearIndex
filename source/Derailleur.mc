@@ -2,7 +2,7 @@ import Toybox.Activity;
 import Toybox.AntPlus;
 import Toybox.Graphics;
 import Toybox.Lang;
-import LogMonkey;
+import BarrelIndex;
 
 class Derailleur extends MyDevice {
 
